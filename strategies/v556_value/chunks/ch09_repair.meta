@@ -1,0 +1,8 @@
+chapter: 9
+title: 估值修复框架
+focus: 跨流派买卖逻辑统一、苹果买卖模型、一句话买入逻辑声明
+dependencies: ch02_soe_stream,ch06_valuation
+data_needed: daily_indicators,price_summary
+output_type: repair_framework
+line_count: 120
+char_count: 2011

@@ -1,0 +1,8 @@
+chapter: 1
+title: 数据核查与地缘政治排除
+focus: 数据源分级、地缘政治排除、快速初筛（5分钟排除法）、负债扫描
+dependencies: 
+data_needed: price_summary,basic_info
+output_type: screening
+line_count: 186
+char_count: 4025

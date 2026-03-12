@@ -1,0 +1,8 @@
+chapter: 5
+title: 极端情景测试
+focus: 连续三年营收下降10%压力测试、分红可持续性验证
+dependencies: ch03_debt_cycle,ch04_cash_trend
+data_needed: income,cashflow,dividend
+output_type: stress_test
+line_count: 22
+char_count: 366

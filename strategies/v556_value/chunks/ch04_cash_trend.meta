@@ -1,0 +1,8 @@
+chapter: 4
+title: 动态现金与周期拐点
+focus: 5年现金余额趋势、行业周期拐点判断、非现金项目还原
+dependencies: ch01_data_verify,ch03_debt_cycle
+data_needed: cashflow,balancesheet,income
+output_type: cash_analysis
+line_count: 40
+char_count: 668

@@ -1,0 +1,8 @@
+chapter: 8
+title: 高级烟蒂股分析框架
+focus: T级资产分层、REITs期限结构、债务偿还路径、静态价值型三要义
+dependencies: ch02_soe_stream,ch03_debt_cycle,ch06_valuation
+data_needed: balancesheet,income,cashflow
+output_type: cigar_butt
+line_count: 39
+char_count: 634

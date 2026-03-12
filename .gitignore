@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Data (contains API-fetched market data, too large for git)
+data/tushare/
+data/financial/
+data/snapshots/
+data/analysis_results/
+data/private/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.trae/
+
+# Environment
+.env
+.env.*
+!.env.example
+.conda/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# investTemplate (separate repo, see strategies/v556_value/README.md)
+investTemplate/
+
+# Generated backtest artifacts (keep samples.json and validation_report.md)
+strategies/*/backtest/prompts/
+strategies/*/backtest/reports/
+strategies/*/backtest/logs/
+strategies/*/backtest/screen_backtest_*

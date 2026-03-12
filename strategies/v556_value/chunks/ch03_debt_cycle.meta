@@ -1,0 +1,8 @@
+chapter: 3
+title: 深度负债与周期分析
+focus: 有息vs经营性负债、无有息负债特殊识别、周期性行业负债特判、管理人诚信评估
+dependencies: ch01_data_verify,ch02_soe_stream
+data_needed: balancesheet,income
+output_type: debt_analysis
+line_count: 63
+char_count: 1388

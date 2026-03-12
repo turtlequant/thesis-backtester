@@ -1,0 +1,8 @@
+chapter: 10
+title: 特殊轻资产模式
+focus: 航空IT等特殊商业模式估值
+dependencies: ch06_valuation
+data_needed: income,cashflow
+output_type: light_asset
+line_count: 333
+char_count: 7813

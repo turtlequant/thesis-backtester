@@ -1,0 +1,8 @@
+chapter: 2
+title: 央国企筛选与流派识别
+focus: 国企背景判定、四流派分类（纯硬收息/价值发现/烟蒂股/关联方资源）
+dependencies: ch01_data_verify
+data_needed: top10_holders,basic_info,daily_indicators
+output_type: classification
+line_count: 131
+char_count: 1997

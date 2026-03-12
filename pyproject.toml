@@ -1,0 +1,28 @@
+[project]
+name = "thesis-backtester"
+version = "0.1.0"
+description = "Backtest qualitative investment theses using LLM-powered blind analysis"
+requires-python = ">=3.9"
+license = {text = "Apache-2.0"}
+readme = "README.md"
+keywords = ["investment", "backtest", "llm", "ai", "value-investing", "qualitative-analysis"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Office/Business :: Financial :: Investment",
+]
+dependencies = [
+    "pandas>=1.5",
+    "tushare>=1.2",
+    "pyarrow>=10.0",
+    "pydantic>=2.0",
+    "pyyaml>=6.0",
+]
+
+[project.urls]
+Repository = "https://github.com/turtlequant/thesis-backtester"
+
+[tool.ruff]
+line-length = 100

@@ -1,0 +1,188 @@
+name: "V5.5.6 价值投资龟级评定"
+version: "5.5.6"
+description: "基于PE/PB/股息率的龟级筛选 + 10章深度分析框架"
+
+template_path: "template.md"
+chunks_dir: "chunks"
+backtest_dir: "backtest"
+output_schema_module: "strategies.v556_value.output_schema"
+
+# ==================== 筛选配置 ====================
+screening:
+  min_market_cap: 100        # 亿元
+  max_pe: 15
+  min_pe: 0
+
+  tiers:
+    - name: "金龟"
+      pe_max: 8
+      pb_max: 0.8
+      dv_min: 7.0
+    - name: "银龟"
+      pe_max: 10
+      pb_max: 1.0
+      dv_min: 5.0
+    - name: "铜龟"
+      pe_max: 12
+      pb_max: 1.2
+      dv_min: 4.0
+
+  default_tier_label: "不达标"
+
+  scoring_weights:
+    pe: 0.3
+    pb: 0.3
+    dv: 0.4
+
+  scoring_ranges:
+    pe_full: 6       # PE <= 此值得满分
+    pe_zero: 15      # PE >= 此值得零分
+    pb_full: 0.5
+    pb_zero: 1.5
+    dv_zero: 2       # 股息率 <= 此值得零分
+    dv_full: 8       # 股息率 >= 此值得满分
+
+# ==================== 分析框架 ====================
+framework:
+  version_string: "个股分析标准模版 V5.5.6"
+  analyst_role: "严谨的价值投资分析师"
+
+  chapters:
+    - id: "ch01_data_verify"
+      chapter: 1
+      title: "数据核查与地缘政治排除"
+      pattern: "## 第一章"
+      dependencies: []
+      focus: "数据源分级、地缘政治排除、快速初筛（5分钟排除法）、负债扫描"
+      data_needed: ["price_summary", "basic_info"]
+      output_type: "screening"
+
+    - id: "ch02_soe_stream"
+      chapter: 2
+      title: "央国企筛选与流派识别"
+      pattern: "## 第二章"
+      dependencies: ["ch01_data_verify"]
+      focus: "国企背景判定、四流派分类（纯硬收息/价值发现/烟蒂股/关联方资源）"
+      data_needed: ["top10_holders", "basic_info", "daily_indicators"]
+      output_type: "classification"
+
+    - id: "ch03_debt_cycle"
+      chapter: 3
+      title: "深度负债与周期分析"
+      pattern: "## 第三章"
+      dependencies: ["ch01_data_verify", "ch02_soe_stream"]
+      focus: "有息vs经营性负债、无有息负债特殊识别、周期性行业负债特判、管理人诚信评估"
+      data_needed: ["balancesheet", "income"]
+      output_type: "debt_analysis"
+
+    - id: "ch04_cash_trend"
+      chapter: 4
+      title: "动态现金与周期拐点"
+      pattern: "## 第四章"
+      dependencies: ["ch01_data_verify", "ch03_debt_cycle"]
+      focus: "5年现金余额趋势、行业周期拐点判断、非现金项目还原"
+      data_needed: ["cashflow", "balancesheet", "income"]
+      output_type: "cash_analysis"
+
+    - id: "ch05_stress_test"
+      chapter: 5
+      title: "极端情景测试"
+      pattern: "## 第五章"
+      dependencies: ["ch03_debt_cycle", "ch04_cash_trend"]
+      focus: "连续三年营收下降10%压力测试、分红可持续性验证"
+      data_needed: ["income", "cashflow", "dividend"]
+      output_type: "stress_test"
+
+    - id: "ch06_valuation"
+      chapter: 6
+      title: "估值与安全边际"
+      pattern: "## 第六章"
+      dependencies: ["ch03_debt_cycle", "ch04_cash_trend", "ch05_stress_test"]
+      focus: "V2债券视角/V3业主视角/V3.5FCEV估值、剔除净现金FCF倍数、FCF计算规范化、动态安全边际"
+      data_needed: ["income", "cashflow", "balancesheet", "daily_indicators", "dividend"]
+      output_type: "valuation"
+
+    - id: "ch07_decision"
+      chapter: 7
+      title: "决策流程与持仓管理"
+      pattern: "## 第七章"
+      dependencies: ["ch02_soe_stream", "ch06_valuation"]
+      focus: "核心卫星仓位、动态退出纪律、试探建仓与网格加仓、持仓状态标签、组合韧性评估"
+      data_needed: ["daily_indicators", "price_summary"]
+      output_type: "decision"
+
+    - id: "ch08_cigar_butt"
+      chapter: 8
+      title: "高级烟蒂股分析框架"
+      pattern: "## 第八章"
+      dependencies: ["ch02_soe_stream", "ch03_debt_cycle", "ch06_valuation"]
+      focus: "T级资产分层、REITs期限结构、债务偿还路径、静态价值型三要义"
+      data_needed: ["balancesheet", "income", "cashflow"]
+      output_type: "cigar_butt"
+
+    - id: "ch09_repair"
+      chapter: 9
+      title: "估值修复框架"
+      pattern: "## 第九章"
+      dependencies: ["ch02_soe_stream", "ch06_valuation"]
+      focus: "跨流派买卖逻辑统一、苹果买卖模型、一句话买入逻辑声明"
+      data_needed: ["daily_indicators", "price_summary"]
+      output_type: "repair_framework"
+
+    - id: "ch10_light_asset"
+      chapter: 10
+      title: "特殊轻资产模式"
+      pattern: "## 第十章"
+      dependencies: ["ch06_valuation"]
+      focus: "航空IT等特殊商业模式估值"
+      data_needed: ["income", "cashflow"]
+      output_type: "light_asset"
+
+  synthesis_fields:
+    - "流派判定: 纯硬收息 / 价值发现 / 烟蒂股 / 关联方资源"
+    - "龟级评定: 金龟 / 银龟 / 铜龟 / 不达标"
+    - "核心估值指标: EV/FCF倍数、安全边际"
+    - "苹果买卖模型: 正常价 / 买入价 / 卖出价"
+    - "一句话买入逻辑（强制）: 可证伪的投资命题"
+    - "关键风险: Top 3-5 风险点"
+    - "管理人诚信评估: 可信 / 存疑 / 不可信"
+    - "最终建议: 买入 / 观望 / 回避"
+    - "综合评分: 0-100分"
+    - "信心水平: 高 / 中 / 低"
+
+# ==================== 盲测配置 ====================
+blind_test:
+  score_patterns:
+    - '综合评分[：:]\s*\**(\d+)/100\**'
+    - '综合评分[：:]\s*\**(\d+)\**\s*/\s*100'
+    - '\*\*(\d+)/100\*\*'
+    - '(\d+)/100'
+
+  recommendation:
+    patterns:
+      - '投资(?:决策|建议)[：:]\s*\**([^*\n]+)\**'
+      - '建议[：:]\s*\**([^*\n]+)\**'
+    buy_keywords: ["买入", "建仓"]
+    avoid_keywords: ["回避", "排除", "不建议"]
+    hold_keywords: ["观望", "持有"]
+
+  thresholds:
+    buy_score_min: 60
+    avoid_score_max: 50
+    false_positive_return: -10
+    false_negative_return: 10
+
+  report_title: "盲测AI分析验证报告"
+  cross_section_label: "截面"
+
+# ==================== 回测配置 ====================
+backtest:
+  forward_periods:
+    - {months: 1, label: "1个月", attr: "return_1m"}
+    - {months: 3, label: "3个月", attr: "return_3m"}
+    - {months: 6, label: "6个月", attr: "return_6m"}
+    - {months: 12, label: "12个月", attr: "return_12m"}
+
+# ==================== 数据库 ====================
+database:
+  framework_version_tag: "V5.5.6"

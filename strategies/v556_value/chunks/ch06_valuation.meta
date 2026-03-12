@@ -1,0 +1,8 @@
+chapter: 6
+title: 估值与安全边际
+focus: V2债券视角/V3业主视角/V3.5FCEV估值、剔除净现金FCF倍数、FCF计算规范化、动态安全边际
+dependencies: ch03_debt_cycle,ch04_cash_trend,ch05_stress_test
+data_needed: income,cashflow,balancesheet,daily_indicators,dividend
+output_type: valuation
+line_count: 600
+char_count: 12461

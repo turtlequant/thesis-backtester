@@ -1,0 +1,8 @@
+chapter: 7
+title: 决策流程与持仓管理
+focus: 核心卫星仓位、动态退出纪律、试探建仓与网格加仓、持仓状态标签、组合韧性评估
+dependencies: ch02_soe_stream,ch06_valuation
+data_needed: daily_indicators,price_summary
+output_type: decision
+line_count: 306
+char_count: 6551

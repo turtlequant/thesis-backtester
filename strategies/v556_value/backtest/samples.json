@@ -1,0 +1,7186 @@
+[
+  {
+    "ts_code": "601818.SH",
+    "stock_name": "光大银行",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 94.2,
+    "fwd_6m": 16.5
+  },
+  {
+    "ts_code": "000898.SZ",
+    "stock_name": "鞍钢股份",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 94.0,
+    "fwd_6m": -15.0
+  },
+  {
+    "ts_code": "601988.SH",
+    "stock_name": "中国银行",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 93.5,
+    "fwd_6m": -1.3
+  },
+  {
+    "ts_code": "000825.SZ",
+    "stock_name": "太钢不锈",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 92.0,
+    "fwd_6m": -1.0
+  },
+  {
+    "ts_code": "000069.SZ",
+    "stock_name": "华侨城Ａ",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.0,
+    "fwd_6m": 9.2
+  },
+  {
+    "ts_code": "600153.SH",
+    "stock_name": "建发股份",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 85.8,
+    "fwd_6m": -1.8
+  },
+  {
+    "ts_code": "600019.SH",
+    "stock_name": "宝钢股份",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 82.0,
+    "fwd_6m": -12.6
+  },
+  {
+    "ts_code": "600269.SH",
+    "stock_name": "赣粤高速",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 81.5,
+    "fwd_6m": -8.3
+  },
+  {
+    "ts_code": "600266.SH",
+    "stock_name": "城建发展",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 76.9,
+    "fwd_6m": -0.7
+  },
+  {
+    "ts_code": "600808.SH",
+    "stock_name": "马钢股份",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 75.8,
+    "fwd_6m": -12.0
+  },
+  {
+    "ts_code": "601997.SH",
+    "stock_name": "贵阳银行",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 73.6,
+    "fwd_6m": 10.4
+  },
+  {
+    "ts_code": "600376.SH",
+    "stock_name": "首开股份",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 72.5,
+    "fwd_6m": -10.6
+  },
+  {
+    "ts_code": "600820.SH",
+    "stock_name": "隧道股份",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 59.5,
+    "fwd_6m": -5.9
+  },
+  {
+    "ts_code": "600282.SH",
+    "stock_name": "南钢股份",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 84.1,
+    "fwd_6m": -3.7
+  },
+  {
+    "ts_code": "601328.SH",
+    "stock_name": "交通银行",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 71.8,
+    "fwd_6m": -8.2
+  },
+  {
+    "ts_code": "601169.SH",
+    "stock_name": "北京银行",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 70.7,
+    "fwd_6m": -4.7
+  },
+  {
+    "ts_code": "601288.SH",
+    "stock_name": "农业银行",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 69.7,
+    "fwd_6m": 3.6
+  },
+  {
+    "ts_code": "601998.SH",
+    "stock_name": "中信银行",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 68.5,
+    "fwd_6m": 3.2
+  },
+  {
+    "ts_code": "600028.SH",
+    "stock_name": "中国石化",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 67.4,
+    "fwd_6m": -7.7
+  },
+  {
+    "ts_code": "601668.SH",
+    "stock_name": "中国建筑",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 67.0,
+    "fwd_6m": -4.5
+  },
+  {
+    "ts_code": "600188.SH",
+    "stock_name": "兖矿能源",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 66.2,
+    "fwd_6m": -8.1
+  },
+  {
+    "ts_code": "600782.SH",
+    "stock_name": "新钢股份",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 63.3,
+    "fwd_6m": -0.6
+  },
+  {
+    "ts_code": "601009.SH",
+    "stock_name": "南京银行",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 60.0,
+    "fwd_6m": 6.3
+  },
+  {
+    "ts_code": "601398.SH",
+    "stock_name": "工商银行",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 58.6,
+    "fwd_6m": 0.2
+  },
+  {
+    "ts_code": "601006.SH",
+    "stock_name": "大秦铁路",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 58.5,
+    "fwd_6m": 0.1
+  },
+  {
+    "ts_code": "600177.SH",
+    "stock_name": "雅戈尔",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 57.1,
+    "fwd_6m": 8.0
+  },
+  {
+    "ts_code": "600383.SH",
+    "stock_name": "金地集团",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 56.4,
+    "fwd_6m": 17.0
+  },
+  {
+    "ts_code": "000983.SZ",
+    "stock_name": "山西焦煤",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 56.1,
+    "fwd_6m": -2.5
+  },
+  {
+    "ts_code": "002146.SZ",
+    "stock_name": "荣盛发展",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 56.0,
+    "fwd_6m": 2.3
+  },
+  {
+    "ts_code": "000039.SZ",
+    "stock_name": "中集集团",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 55.4,
+    "fwd_6m": -5.8
+  },
+  {
+    "ts_code": "600409.SH",
+    "stock_name": "三友化工",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 47.2,
+    "fwd_6m": 8.5
+  },
+  {
+    "ts_code": "601088.SH",
+    "stock_name": "中国神华",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 45.6,
+    "fwd_6m": -12.6
+  },
+  {
+    "ts_code": "600025.SH",
+    "stock_name": "华能水电",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 11.0,
+    "fwd_6m": 3.9
+  },
+  {
+    "ts_code": "000415.SZ",
+    "stock_name": "渤海租赁",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 48.2,
+    "fwd_6m": -5.4
+  },
+  {
+    "ts_code": "002051.SZ",
+    "stock_name": "中工国际",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 19.4,
+    "fwd_6m": -17.0
+  },
+  {
+    "ts_code": "600606.SH",
+    "stock_name": "绿地控股",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 49.2,
+    "fwd_6m": -0.3
+  },
+  {
+    "ts_code": "600511.SH",
+    "stock_name": "国药股份",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 9.2,
+    "fwd_6m": 14.8
+  },
+  {
+    "ts_code": "600580.SH",
+    "stock_name": "卧龙电驱",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 4.3,
+    "fwd_6m": 43.8
+  },
+  {
+    "ts_code": "300459.SZ",
+    "stock_name": "汤姆猫",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 3.4,
+    "fwd_6m": -44.1
+  },
+  {
+    "ts_code": "600585.SH",
+    "stock_name": "海螺水泥",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 40.3,
+    "fwd_6m": 25.3
+  },
+  {
+    "ts_code": "000839.SZ",
+    "stock_name": "国安股份",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 23.8,
+    "fwd_6m": -13.7
+  },
+  {
+    "ts_code": "600021.SH",
+    "stock_name": "上海电力",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 36.7,
+    "fwd_6m": -8.1
+  },
+  {
+    "ts_code": "000718.SZ",
+    "stock_name": "苏宁环球",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 56.5,
+    "fwd_6m": 7.8
+  },
+  {
+    "ts_code": "000999.SZ",
+    "stock_name": "华润三九",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 6.0,
+    "fwd_6m": 1.8
+  },
+  {
+    "ts_code": "600352.SH",
+    "stock_name": "浙江龙盛",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 12.8,
+    "fwd_6m": -12.2
+  },
+  {
+    "ts_code": "600325.SH",
+    "stock_name": "华发股份",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 42.7,
+    "fwd_6m": -1.0
+  },
+  {
+    "ts_code": "601800.SH",
+    "stock_name": "中国交建",
+    "cutoff_date": "2019-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 35.0,
+    "fwd_6m": -23.6
+  },
+  {
+    "ts_code": "600188.SH",
+    "stock_name": "兖矿能源",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 89.7,
+    "fwd_6m": -16.7
+  },
+  {
+    "ts_code": "600282.SH",
+    "stock_name": "南钢股份",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 87.2,
+    "fwd_6m": -2.0
+  },
+  {
+    "ts_code": "600019.SH",
+    "stock_name": "宝钢股份",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.0,
+    "fwd_6m": -19.9
+  },
+  {
+    "ts_code": "600016.SH",
+    "stock_name": "民生银行",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 79.3,
+    "fwd_6m": -10.1
+  },
+  {
+    "ts_code": "601328.SH",
+    "stock_name": "交通银行",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 78.6,
+    "fwd_6m": -9.1
+  },
+  {
+    "ts_code": "601169.SH",
+    "stock_name": "北京银行",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 75.8,
+    "fwd_6m": -13.7
+  },
+  {
+    "ts_code": "600348.SH",
+    "stock_name": "华阳股份",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 72.3,
+    "fwd_6m": -22.8
+  },
+  {
+    "ts_code": "600153.SH",
+    "stock_name": "建发股份",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 71.4,
+    "fwd_6m": -1.1
+  },
+  {
+    "ts_code": "600376.SH",
+    "stock_name": "首开股份",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 69.4,
+    "fwd_6m": -26.9
+  },
+  {
+    "ts_code": "601988.SH",
+    "stock_name": "中国银行",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 74.9,
+    "fwd_6m": -6.2
+  },
+  {
+    "ts_code": "601288.SH",
+    "stock_name": "农业银行",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 70.2,
+    "fwd_6m": -8.7
+  },
+  {
+    "ts_code": "600919.SH",
+    "stock_name": "江苏银行",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 69.8,
+    "fwd_6m": -21.4
+  },
+  {
+    "ts_code": "601009.SH",
+    "stock_name": "南京银行",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 61.5,
+    "fwd_6m": -15.5
+  },
+  {
+    "ts_code": "601398.SH",
+    "stock_name": "工商银行",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 61.5,
+    "fwd_6m": -11.2
+  },
+  {
+    "ts_code": "600325.SH",
+    "stock_name": "华发股份",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 61.0,
+    "fwd_6m": -11.0
+  },
+  {
+    "ts_code": "601939.SH",
+    "stock_name": "建设银行",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 60.9,
+    "fwd_6m": -12.6
+  },
+  {
+    "ts_code": "000898.SZ",
+    "stock_name": "鞍钢股份",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 59.9,
+    "fwd_6m": -23.9
+  },
+  {
+    "ts_code": "601006.SH",
+    "stock_name": "大秦铁路",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 59.7,
+    "fwd_6m": -13.9
+  },
+  {
+    "ts_code": "600985.SH",
+    "stock_name": "淮北矿业",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 59.5,
+    "fwd_6m": -20.7
+  },
+  {
+    "ts_code": "002128.SZ",
+    "stock_name": "电投能源",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 58.5,
+    "fwd_6m": -9.7
+  },
+  {
+    "ts_code": "000581.SZ",
+    "stock_name": "威孚高科",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 57.6,
+    "fwd_6m": 7.0
+  },
+  {
+    "ts_code": "002146.SZ",
+    "stock_name": "荣盛发展",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 57.2,
+    "fwd_6m": -17.4
+  },
+  {
+    "ts_code": "600606.SH",
+    "stock_name": "绿地控股",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 56.7,
+    "fwd_6m": -18.4
+  },
+  {
+    "ts_code": "000983.SZ",
+    "stock_name": "山西焦煤",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 56.0,
+    "fwd_6m": -39.2
+  },
+  {
+    "ts_code": "601088.SH",
+    "stock_name": "中国神华",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 55.9,
+    "fwd_6m": -19.6
+  },
+  {
+    "ts_code": "000778.SZ",
+    "stock_name": "新兴铸管",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 55.2,
+    "fwd_6m": -18.0
+  },
+  {
+    "ts_code": "600350.SH",
+    "stock_name": "山东高速",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 53.0,
+    "fwd_6m": 26.1
+  },
+  {
+    "ts_code": "600704.SH",
+    "stock_name": "物产中大",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 51.0,
+    "fwd_6m": -19.6
+  },
+  {
+    "ts_code": "600104.SH",
+    "stock_name": "上汽集团",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 50.8,
+    "fwd_6m": -23.7
+  },
+  {
+    "ts_code": "000839.SZ",
+    "stock_name": "国安股份",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 27.8,
+    "fwd_6m": -31.1
+  },
+  {
+    "ts_code": "600655.SH",
+    "stock_name": "豫园股份",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 41.2,
+    "fwd_6m": 12.2
+  },
+  {
+    "ts_code": "600859.SH",
+    "stock_name": "王府井",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 41.0,
+    "fwd_6m": 187.3
+  },
+  {
+    "ts_code": "600901.SH",
+    "stock_name": "江苏金租",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 15.9,
+    "fwd_6m": -16.6
+  },
+  {
+    "ts_code": "002142.SZ",
+    "stock_name": "宁波银行",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 9.3,
+    "fwd_6m": -7.2
+  },
+  {
+    "ts_code": "600675.SH",
+    "stock_name": "中华企业",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 32.3,
+    "fwd_6m": -12.3
+  },
+  {
+    "ts_code": "600018.SH",
+    "stock_name": "上港集团",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 17.1,
+    "fwd_6m": -26.9
+  },
+  {
+    "ts_code": "002948.SZ",
+    "stock_name": "青岛银行",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 26.8,
+    "fwd_6m": -14.5
+  },
+  {
+    "ts_code": "600126.SH",
+    "stock_name": "杭钢股份",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 24.2,
+    "fwd_6m": 114.3
+  },
+  {
+    "ts_code": "600491.SH",
+    "stock_name": "龙元建设",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 24.7,
+    "fwd_6m": 19.0
+  },
+  {
+    "ts_code": "603609.SH",
+    "stock_name": "禾丰股份",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 7.7,
+    "fwd_6m": 23.2
+  },
+  {
+    "ts_code": "002099.SZ",
+    "stock_name": "海翔药业",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 16.4,
+    "fwd_6m": 6.0
+  },
+  {
+    "ts_code": "601216.SH",
+    "stock_name": "君正集团",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 41.9,
+    "fwd_6m": -17.6
+  },
+  {
+    "ts_code": "601229.SH",
+    "stock_name": "上海银行",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 57.3,
+    "fwd_6m": -13.2
+  },
+  {
+    "ts_code": "600064.SH",
+    "stock_name": "南京高科",
+    "cutoff_date": "2019-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 43.0,
+    "fwd_6m": -3.2
+  },
+  {
+    "ts_code": "600376.SH",
+    "stock_name": "首开股份",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 99.3,
+    "fwd_6m": 1.5
+  },
+  {
+    "ts_code": "600348.SH",
+    "stock_name": "华阳股份",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 98.2,
+    "fwd_6m": 39.1
+  },
+  {
+    "ts_code": "600919.SH",
+    "stock_name": "江苏银行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 97.5,
+    "fwd_6m": -4.9
+  },
+  {
+    "ts_code": "601398.SH",
+    "stock_name": "工商银行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 94.1,
+    "fwd_6m": -0.2
+  },
+  {
+    "ts_code": "600015.SH",
+    "stock_name": "华夏银行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 92.7,
+    "fwd_6m": 0.8
+  },
+  {
+    "ts_code": "600188.SH",
+    "stock_name": "兖矿能源",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 90.5,
+    "fwd_6m": 19.9
+  },
+  {
+    "ts_code": "601009.SH",
+    "stock_name": "南京银行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 90.2,
+    "fwd_6m": 7.9
+  },
+  {
+    "ts_code": "002128.SZ",
+    "stock_name": "电投能源",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 88.0,
+    "fwd_6m": 46.7
+  },
+  {
+    "ts_code": "600282.SH",
+    "stock_name": "南钢股份",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.5,
+    "fwd_6m": -0.3
+  },
+  {
+    "ts_code": "600016.SH",
+    "stock_name": "民生银行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.3,
+    "fwd_6m": -8.6
+  },
+  {
+    "ts_code": "601088.SH",
+    "stock_name": "中国神华",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.0,
+    "fwd_6m": 28.6
+  },
+  {
+    "ts_code": "600985.SH",
+    "stock_name": "淮北矿业",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.0,
+    "fwd_6m": 47.5
+  },
+  {
+    "ts_code": "601800.SH",
+    "stock_name": "中国交建",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 85.6,
+    "fwd_6m": -1.5
+  },
+  {
+    "ts_code": "601169.SH",
+    "stock_name": "北京银行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.8,
+    "fwd_6m": -2.7
+  },
+  {
+    "ts_code": "601328.SH",
+    "stock_name": "交通银行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.6,
+    "fwd_6m": -13.3
+  },
+  {
+    "ts_code": "601818.SH",
+    "stock_name": "光大银行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 83.7,
+    "fwd_6m": 8.1
+  },
+  {
+    "ts_code": "000932.SZ",
+    "stock_name": "华菱钢铁",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 81.0,
+    "fwd_6m": 28.6
+  },
+  {
+    "ts_code": "600295.SH",
+    "stock_name": "鄂尔多斯",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 80.8,
+    "fwd_6m": 61.6
+  },
+  {
+    "ts_code": "600153.SH",
+    "stock_name": "建发股份",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 80.7,
+    "fwd_6m": 2.0
+  },
+  {
+    "ts_code": "601988.SH",
+    "stock_name": "中国银行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 78.9,
+    "fwd_6m": -8.6
+  },
+  {
+    "ts_code": "601288.SH",
+    "stock_name": "农业银行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 76.5,
+    "fwd_6m": -6.8
+  },
+  {
+    "ts_code": "600019.SH",
+    "stock_name": "宝钢股份",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 74.9,
+    "fwd_6m": 32.9
+  },
+  {
+    "ts_code": "002146.SZ",
+    "stock_name": "荣盛发展",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 73.3,
+    "fwd_6m": -19.4
+  },
+  {
+    "ts_code": "000778.SZ",
+    "stock_name": "新兴铸管",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 71.8,
+    "fwd_6m": 8.2
+  },
+  {
+    "ts_code": "601006.SH",
+    "stock_name": "大秦铁路",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 71.6,
+    "fwd_6m": -8.2
+  },
+  {
+    "ts_code": "600704.SH",
+    "stock_name": "物产中大",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 66.0,
+    "fwd_6m": 3.3
+  },
+  {
+    "ts_code": "601003.SH",
+    "stock_name": "柳钢股份",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 82.1,
+    "fwd_6m": 23.0
+  },
+  {
+    "ts_code": "600782.SH",
+    "stock_name": "新钢股份",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 76.3,
+    "fwd_6m": 11.5
+  },
+  {
+    "ts_code": "601077.SH",
+    "stock_name": "渝农商行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 76.0,
+    "fwd_6m": -6.4
+  },
+  {
+    "ts_code": "601998.SH",
+    "stock_name": "中信银行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 75.0,
+    "fwd_6m": -1.6
+  },
+  {
+    "ts_code": "600104.SH",
+    "stock_name": "上汽集团",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 74.3,
+    "fwd_6m": 37.7
+  },
+  {
+    "ts_code": "000402.SZ",
+    "stock_name": "金融街",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 72.7,
+    "fwd_6m": -2.1
+  },
+  {
+    "ts_code": "601939.SH",
+    "stock_name": "建设银行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 72.5,
+    "fwd_6m": -0.6
+  },
+  {
+    "ts_code": "000069.SZ",
+    "stock_name": "华侨城Ａ",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 71.8,
+    "fwd_6m": 10.9
+  },
+  {
+    "ts_code": "601166.SH",
+    "stock_name": "兴业银行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 71.4,
+    "fwd_6m": 28.1
+  },
+  {
+    "ts_code": "601997.SH",
+    "stock_name": "贵阳银行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 70.6,
+    "fwd_6m": 9.2
+  },
+  {
+    "ts_code": "601601.SH",
+    "stock_name": "中国太保",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 70.3,
+    "fwd_6m": 29.9
+  },
+  {
+    "ts_code": "000709.SZ",
+    "stock_name": "河钢股份",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 69.5,
+    "fwd_6m": 14.7
+  },
+  {
+    "ts_code": "000830.SZ",
+    "stock_name": "鲁西化工",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 68.0,
+    "fwd_6m": 73.3
+  },
+  {
+    "ts_code": "601838.SH",
+    "stock_name": "成都银行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 67.7,
+    "fwd_6m": 31.2
+  },
+  {
+    "ts_code": "601229.SH",
+    "stock_name": "上海银行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 67.7,
+    "fwd_6m": -6.5
+  },
+  {
+    "ts_code": "601658.SH",
+    "stock_name": "邮储银行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 67.5,
+    "fwd_6m": 3.3
+  },
+  {
+    "ts_code": "600548.SH",
+    "stock_name": "深高速",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 65.7,
+    "fwd_6m": -3.1
+  },
+  {
+    "ts_code": "601699.SH",
+    "stock_name": "潞安环能",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 65.4,
+    "fwd_6m": 22.3
+  },
+  {
+    "ts_code": "600606.SH",
+    "stock_name": "绿地控股",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 64.8,
+    "fwd_6m": -7.8
+  },
+  {
+    "ts_code": "600057.SH",
+    "stock_name": "厦门象屿",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 64.2,
+    "fwd_6m": 9.3
+  },
+  {
+    "ts_code": "600325.SH",
+    "stock_name": "华发股份",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 62.9,
+    "fwd_6m": -11.2
+  },
+  {
+    "ts_code": "600048.SH",
+    "stock_name": "保利发展",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 62.7,
+    "fwd_6m": 6.4
+  },
+  {
+    "ts_code": "600755.SH",
+    "stock_name": "厦门国贸",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 62.0,
+    "fwd_6m": 0.9
+  },
+  {
+    "ts_code": "601000.SH",
+    "stock_name": "唐山港",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 60.3,
+    "fwd_6m": 10.8
+  },
+  {
+    "ts_code": "601298.SH",
+    "stock_name": "青岛港",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 58.6,
+    "fwd_6m": 10.9
+  },
+  {
+    "ts_code": "600383.SH",
+    "stock_name": "金地集团",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.8,
+    "fwd_6m": -2.6
+  },
+  {
+    "ts_code": "601225.SH",
+    "stock_name": "陕西煤业",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.4,
+    "fwd_6m": 31.8
+  },
+  {
+    "ts_code": "600483.SH",
+    "stock_name": "福能股份",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.0,
+    "fwd_6m": 14.3
+  },
+  {
+    "ts_code": "600655.SH",
+    "stock_name": "豫园股份",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 53.1,
+    "fwd_6m": -5.0
+  },
+  {
+    "ts_code": "601598.SH",
+    "stock_name": "中国外运",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 51.0,
+    "fwd_6m": 31.0
+  },
+  {
+    "ts_code": "600170.SH",
+    "stock_name": "上海建工",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 46.9,
+    "fwd_6m": -2.0
+  },
+  {
+    "ts_code": "600373.SH",
+    "stock_name": "中文传媒",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 41.5,
+    "fwd_6m": -14.3
+  },
+  {
+    "ts_code": "601607.SH",
+    "stock_name": "上海医药",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 16.2,
+    "fwd_6m": 1.4
+  },
+  {
+    "ts_code": "601928.SH",
+    "stock_name": "凤凰传媒",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 29.6,
+    "fwd_6m": -6.2
+  },
+  {
+    "ts_code": "002958.SZ",
+    "stock_name": "青农商行",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 46.1,
+    "fwd_6m": 18.1
+  },
+  {
+    "ts_code": "601866.SH",
+    "stock_name": "中远海发",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 10.4,
+    "fwd_6m": 63.0
+  },
+  {
+    "ts_code": "002299.SZ",
+    "stock_name": "圣农发展",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 42.0,
+    "fwd_6m": -7.9
+  },
+  {
+    "ts_code": "601669.SH",
+    "stock_name": "中国电建",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 56.5,
+    "fwd_6m": 11.8
+  },
+  {
+    "ts_code": "600578.SH",
+    "stock_name": "京能电力",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 28.1,
+    "fwd_6m": 4.1
+  },
+  {
+    "ts_code": "600350.SH",
+    "stock_name": "山东高速",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 29.4,
+    "fwd_6m": -1.0
+  },
+  {
+    "ts_code": "002010.SZ",
+    "stock_name": "传化智联",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 17.1,
+    "fwd_6m": -12.1
+  },
+  {
+    "ts_code": "000708.SZ",
+    "stock_name": "中信特钢",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 16.0,
+    "fwd_6m": 24.6
+  },
+  {
+    "ts_code": "002078.SZ",
+    "stock_name": "太阳纸业",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 14.8,
+    "fwd_6m": 39.8
+  },
+  {
+    "ts_code": "600643.SH",
+    "stock_name": "爱建集团",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 34.3,
+    "fwd_6m": -5.8
+  },
+  {
+    "ts_code": "000685.SZ",
+    "stock_name": "中山公用",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 29.9,
+    "fwd_6m": 8.3
+  },
+  {
+    "ts_code": "000825.SZ",
+    "stock_name": "太钢不锈",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 51.0,
+    "fwd_6m": 10.5
+  },
+  {
+    "ts_code": "002221.SZ",
+    "stock_name": "东华能源",
+    "cutoff_date": "2020-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 2.7,
+    "fwd_6m": 14.9
+  },
+  {
+    "ts_code": "600016.SH",
+    "stock_name": "民生银行",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 94.1,
+    "fwd_6m": -15.2
+  },
+  {
+    "ts_code": "601328.SH",
+    "stock_name": "交通银行",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 93.5,
+    "fwd_6m": 8.9
+  },
+  {
+    "ts_code": "002146.SZ",
+    "stock_name": "荣盛发展",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 90.8,
+    "fwd_6m": -13.6
+  },
+  {
+    "ts_code": "601169.SH",
+    "stock_name": "北京银行",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 88.0,
+    "fwd_6m": 1.2
+  },
+  {
+    "ts_code": "600000.SH",
+    "stock_name": "浦发银行",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.3,
+    "fwd_6m": 3.1
+  },
+  {
+    "ts_code": "601988.SH",
+    "stock_name": "中国银行",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 85.4,
+    "fwd_6m": -3.1
+  },
+  {
+    "ts_code": "601288.SH",
+    "stock_name": "农业银行",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 82.3,
+    "fwd_6m": -3.5
+  },
+  {
+    "ts_code": "600606.SH",
+    "stock_name": "绿地控股",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 81.1,
+    "fwd_6m": -6.7
+  },
+  {
+    "ts_code": "600153.SH",
+    "stock_name": "建发股份",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 80.2,
+    "fwd_6m": -1.5
+  },
+  {
+    "ts_code": "600376.SH",
+    "stock_name": "首开股份",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 80.1,
+    "fwd_6m": -4.4
+  },
+  {
+    "ts_code": "601077.SH",
+    "stock_name": "渝农商行",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 79.2,
+    "fwd_6m": -11.1
+  },
+  {
+    "ts_code": "601818.SH",
+    "stock_name": "光大银行",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 76.6,
+    "fwd_6m": -5.5
+  },
+  {
+    "ts_code": "600325.SH",
+    "stock_name": "华发股份",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 76.0,
+    "fwd_6m": 8.9
+  },
+  {
+    "ts_code": "601006.SH",
+    "stock_name": "大秦铁路",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 75.9,
+    "fwd_6m": 1.2
+  },
+  {
+    "ts_code": "601229.SH",
+    "stock_name": "上海银行",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 75.7,
+    "fwd_6m": 4.2
+  },
+  {
+    "ts_code": "601398.SH",
+    "stock_name": "工商银行",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 75.6,
+    "fwd_6m": 3.6
+  },
+  {
+    "ts_code": "600282.SH",
+    "stock_name": "南钢股份",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 73.9,
+    "fwd_6m": 12.8
+  },
+  {
+    "ts_code": "601916.SH",
+    "stock_name": "浙商银行",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 73.5,
+    "fwd_6m": -2.5
+  },
+  {
+    "ts_code": "601939.SH",
+    "stock_name": "建设银行",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 73.1,
+    "fwd_6m": 4.9
+  },
+  {
+    "ts_code": "600188.SH",
+    "stock_name": "兖矿能源",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 71.9,
+    "fwd_6m": 46.8
+  },
+  {
+    "ts_code": "000932.SZ",
+    "stock_name": "华菱钢铁",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 68.7,
+    "fwd_6m": 36.6
+  },
+  {
+    "ts_code": "600023.SH",
+    "stock_name": "浙能电力",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 67.9,
+    "fwd_6m": 0.0
+  },
+  {
+    "ts_code": "600704.SH",
+    "stock_name": "物产中大",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 66.7,
+    "fwd_6m": 94.5
+  },
+  {
+    "ts_code": "600340.SH",
+    "stock_name": "华夏幸福",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 83.7,
+    "fwd_6m": -58.8
+  },
+  {
+    "ts_code": "601003.SH",
+    "stock_name": "柳钢股份",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 78.9,
+    "fwd_6m": 12.3
+  },
+  {
+    "ts_code": "601998.SH",
+    "stock_name": "中信银行",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 76.4,
+    "fwd_6m": -0.6
+  },
+  {
+    "ts_code": "000402.SZ",
+    "stock_name": "金融街",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 74.5,
+    "fwd_6m": 5.3
+  },
+  {
+    "ts_code": "600782.SH",
+    "stock_name": "新钢股份",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 71.4,
+    "fwd_6m": 20.7
+  },
+  {
+    "ts_code": "000537.SZ",
+    "stock_name": "绿发电力",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 70.3,
+    "fwd_6m": -16.6
+  },
+  {
+    "ts_code": "601088.SH",
+    "stock_name": "中国神华",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 68.2,
+    "fwd_6m": 8.0
+  },
+  {
+    "ts_code": "601009.SH",
+    "stock_name": "南京银行",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 66.9,
+    "fwd_6m": 28.0
+  },
+  {
+    "ts_code": "000069.SZ",
+    "stock_name": "华侨城Ａ",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 65.1,
+    "fwd_6m": 7.3
+  },
+  {
+    "ts_code": "600027.SH",
+    "stock_name": "华电国际",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 64.3,
+    "fwd_6m": 1.8
+  },
+  {
+    "ts_code": "601658.SH",
+    "stock_name": "邮储银行",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 64.1,
+    "fwd_6m": 4.8
+  },
+  {
+    "ts_code": "600064.SH",
+    "stock_name": "南京高科",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 61.6,
+    "fwd_6m": -8.9
+  },
+  {
+    "ts_code": "600373.SH",
+    "stock_name": "中文传媒",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 60.1,
+    "fwd_6m": -2.9
+  },
+  {
+    "ts_code": "600985.SH",
+    "stock_name": "淮北矿业",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 59.4,
+    "fwd_6m": 7.1
+  },
+  {
+    "ts_code": "600383.SH",
+    "stock_name": "金地集团",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 58.9,
+    "fwd_6m": -24.1
+  },
+  {
+    "ts_code": "000778.SZ",
+    "stock_name": "新兴铸管",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 58.8,
+    "fwd_6m": 4.9
+  },
+  {
+    "ts_code": "600170.SH",
+    "stock_name": "上海建工",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 57.3,
+    "fwd_6m": -8.0
+  },
+  {
+    "ts_code": "601019.SH",
+    "stock_name": "山东出版",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.0,
+    "fwd_6m": 1.8
+  },
+  {
+    "ts_code": "600348.SH",
+    "stock_name": "华阳股份",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.0,
+    "fwd_6m": 26.2
+  },
+  {
+    "ts_code": "600019.SH",
+    "stock_name": "宝钢股份",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 52.3,
+    "fwd_6m": 27.2
+  },
+  {
+    "ts_code": "601666.SH",
+    "stock_name": "平煤股份",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 51.7,
+    "fwd_6m": 17.2
+  },
+  {
+    "ts_code": "600642.SH",
+    "stock_name": "申能股份",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 51.2,
+    "fwd_6m": 19.9
+  },
+  {
+    "ts_code": "600970.SH",
+    "stock_name": "中材国际",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 50.0,
+    "fwd_6m": 29.4
+  },
+  {
+    "ts_code": "601992.SH",
+    "stock_name": "金隅集团",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 49.1,
+    "fwd_6m": -9.1
+  },
+  {
+    "ts_code": "002100.SZ",
+    "stock_name": "天康生物",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 29.2,
+    "fwd_6m": -14.6
+  },
+  {
+    "ts_code": "002440.SZ",
+    "stock_name": "闰土股份",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 28.6,
+    "fwd_6m": -4.3
+  },
+  {
+    "ts_code": "000937.SZ",
+    "stock_name": "冀中能源",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 26.7,
+    "fwd_6m": -6.0
+  },
+  {
+    "ts_code": "600398.SH",
+    "stock_name": "海澜之家",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 16.8,
+    "fwd_6m": 19.9
+  },
+  {
+    "ts_code": "601117.SH",
+    "stock_name": "中国化学",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 48.8,
+    "fwd_6m": 48.0
+  },
+  {
+    "ts_code": "601766.SH",
+    "stock_name": "中国中车",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 17.5,
+    "fwd_6m": 14.5
+  },
+  {
+    "ts_code": "600863.SH",
+    "stock_name": "华能蒙电",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 30.6,
+    "fwd_6m": -9.3
+  },
+  {
+    "ts_code": "002948.SZ",
+    "stock_name": "青岛银行",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 29.7,
+    "fwd_6m": -16.4
+  },
+  {
+    "ts_code": "600820.SH",
+    "stock_name": "隧道股份",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 56.6,
+    "fwd_6m": -1.8
+  },
+  {
+    "ts_code": "600755.SH",
+    "stock_name": "厦门国贸",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 57.6,
+    "fwd_6m": 23.1
+  },
+  {
+    "ts_code": "000709.SZ",
+    "stock_name": "河钢股份",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 55.5,
+    "fwd_6m": 8.5
+  },
+  {
+    "ts_code": "600028.SH",
+    "stock_name": "中国石化",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 61.4,
+    "fwd_6m": 7.9
+  },
+  {
+    "ts_code": "601800.SH",
+    "stock_name": "中国交建",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 62.5,
+    "fwd_6m": -10.2
+  },
+  {
+    "ts_code": "002128.SZ",
+    "stock_name": "电投能源",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 42.9,
+    "fwd_6m": -5.9
+  },
+  {
+    "ts_code": "600578.SH",
+    "stock_name": "京能电力",
+    "cutoff_date": "2020-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 38.3,
+    "fwd_6m": -1.3
+  },
+  {
+    "ts_code": "600016.SH",
+    "stock_name": "民生银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 100.0,
+    "fwd_6m": -11.6
+  },
+  {
+    "ts_code": "601288.SH",
+    "stock_name": "农业银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 100.0,
+    "fwd_6m": -3.0
+  },
+  {
+    "ts_code": "002146.SZ",
+    "stock_name": "荣盛发展",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 99.8,
+    "fwd_6m": -22.3
+  },
+  {
+    "ts_code": "601988.SH",
+    "stock_name": "中国银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 99.5,
+    "fwd_6m": -0.6
+  },
+  {
+    "ts_code": "600376.SH",
+    "stock_name": "首开股份",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 92.8,
+    "fwd_6m": -1.1
+  },
+  {
+    "ts_code": "600170.SH",
+    "stock_name": "上海建工",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 90.9,
+    "fwd_6m": 29.7
+  },
+  {
+    "ts_code": "601166.SH",
+    "stock_name": "兴业银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 89.4,
+    "fwd_6m": -8.3
+  },
+  {
+    "ts_code": "600606.SH",
+    "stock_name": "绿地控股",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 89.0,
+    "fwd_6m": -20.2
+  },
+  {
+    "ts_code": "000778.SZ",
+    "stock_name": "新兴铸管",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 88.4,
+    "fwd_6m": 10.2
+  },
+  {
+    "ts_code": "601328.SH",
+    "stock_name": "交通银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 89.5,
+    "fwd_6m": -6.7
+  },
+  {
+    "ts_code": "600064.SH",
+    "stock_name": "南京高科",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 88.9,
+    "fwd_6m": 0.8
+  },
+  {
+    "ts_code": "601169.SH",
+    "stock_name": "北京银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 88.4,
+    "fwd_6m": -9.2
+  },
+  {
+    "ts_code": "600548.SH",
+    "stock_name": "深高速",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.5,
+    "fwd_6m": 11.8
+  },
+  {
+    "ts_code": "601000.SH",
+    "stock_name": "唐山港",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 85.8,
+    "fwd_6m": 14.5
+  },
+  {
+    "ts_code": "600000.SH",
+    "stock_name": "浦发银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 85.4,
+    "fwd_6m": -14.4
+  },
+  {
+    "ts_code": "601077.SH",
+    "stock_name": "渝农商行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 83.8,
+    "fwd_6m": -3.5
+  },
+  {
+    "ts_code": "600153.SH",
+    "stock_name": "建发股份",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 83.4,
+    "fwd_6m": 10.0
+  },
+  {
+    "ts_code": "600383.SH",
+    "stock_name": "金地集团",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 81.4,
+    "fwd_6m": 19.2
+  },
+  {
+    "ts_code": "002110.SZ",
+    "stock_name": "三钢闽光",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 81.2,
+    "fwd_6m": 0.4
+  },
+  {
+    "ts_code": "601818.SH",
+    "stock_name": "光大银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 80.7,
+    "fwd_6m": -11.9
+  },
+  {
+    "ts_code": "600048.SH",
+    "stock_name": "保利发展",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 80.3,
+    "fwd_6m": 27.0
+  },
+  {
+    "ts_code": "601006.SH",
+    "stock_name": "大秦铁路",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 78.7,
+    "fwd_6m": -3.5
+  },
+  {
+    "ts_code": "601916.SH",
+    "stock_name": "浙商银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 77.9,
+    "fwd_6m": -11.8
+  },
+  {
+    "ts_code": "600282.SH",
+    "stock_name": "南钢股份",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 77.0,
+    "fwd_6m": 1.1
+  },
+  {
+    "ts_code": "002244.SZ",
+    "stock_name": "滨江集团",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 76.0,
+    "fwd_6m": 9.1
+  },
+  {
+    "ts_code": "601398.SH",
+    "stock_name": "工商银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 75.5,
+    "fwd_6m": -9.9
+  },
+  {
+    "ts_code": "000090.SZ",
+    "stock_name": "天健集团",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 75.4,
+    "fwd_6m": -1.4
+  },
+  {
+    "ts_code": "601838.SH",
+    "stock_name": "成都银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 74.1,
+    "fwd_6m": -5.3
+  },
+  {
+    "ts_code": "600782.SH",
+    "stock_name": "新钢股份",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 74.1,
+    "fwd_6m": -4.7
+  },
+  {
+    "ts_code": "600325.SH",
+    "stock_name": "华发股份",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 73.3,
+    "fwd_6m": -10.8
+  },
+  {
+    "ts_code": "000069.SZ",
+    "stock_name": "华侨城Ａ",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 72.7,
+    "fwd_6m": -5.4
+  },
+  {
+    "ts_code": "002948.SZ",
+    "stock_name": "青岛银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 72.6,
+    "fwd_6m": -5.4
+  },
+  {
+    "ts_code": "600023.SH",
+    "stock_name": "浙能电力",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 71.3,
+    "fwd_6m": 12.8
+  },
+  {
+    "ts_code": "600373.SH",
+    "stock_name": "中文传媒",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 67.3,
+    "fwd_6m": 24.1
+  },
+  {
+    "ts_code": "601128.SH",
+    "stock_name": "常熟银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 65.4,
+    "fwd_6m": 6.6
+  },
+  {
+    "ts_code": "600177.SH",
+    "stock_name": "雅戈尔",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 79.5,
+    "fwd_6m": 2.6
+  },
+  {
+    "ts_code": "601998.SH",
+    "stock_name": "中信银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 77.4,
+    "fwd_6m": -10.0
+  },
+  {
+    "ts_code": "001979.SZ",
+    "stock_name": "招商蛇口",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 75.5,
+    "fwd_6m": 20.4
+  },
+  {
+    "ts_code": "600266.SH",
+    "stock_name": "城建发展",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 74.8,
+    "fwd_6m": -5.5
+  },
+  {
+    "ts_code": "601229.SH",
+    "stock_name": "上海银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 74.2,
+    "fwd_6m": -12.9
+  },
+  {
+    "ts_code": "600015.SH",
+    "stock_name": "华夏银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 73.5,
+    "fwd_6m": -9.7
+  },
+  {
+    "ts_code": "601939.SH",
+    "stock_name": "建设银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 72.2,
+    "fwd_6m": -11.7
+  },
+  {
+    "ts_code": "000402.SZ",
+    "stock_name": "金融街",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 71.7,
+    "fwd_6m": -16.0
+  },
+  {
+    "ts_code": "002233.SZ",
+    "stock_name": "塔牌集团",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 71.6,
+    "fwd_6m": 2.2
+  },
+  {
+    "ts_code": "601668.SH",
+    "stock_name": "中国建筑",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 71.6,
+    "fwd_6m": 7.7
+  },
+  {
+    "ts_code": "601997.SH",
+    "stock_name": "贵阳银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 71.3,
+    "fwd_6m": -9.1
+  },
+  {
+    "ts_code": "000581.SZ",
+    "stock_name": "威孚高科",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 71.2,
+    "fwd_6m": 3.9
+  },
+  {
+    "ts_code": "000690.SZ",
+    "stock_name": "宝新能源",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 67.8,
+    "fwd_6m": 18.4
+  },
+  {
+    "ts_code": "600919.SH",
+    "stock_name": "江苏银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 66.3,
+    "fwd_6m": -18.5
+  },
+  {
+    "ts_code": "600028.SH",
+    "stock_name": "中国石化",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 66.2,
+    "fwd_6m": -2.5
+  },
+  {
+    "ts_code": "601088.SH",
+    "stock_name": "中国神华",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 61.9,
+    "fwd_6m": 16.8
+  },
+  {
+    "ts_code": "600027.SH",
+    "stock_name": "华电国际",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 61.9,
+    "fwd_6m": 52.3
+  },
+  {
+    "ts_code": "001965.SZ",
+    "stock_name": "招商公路",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 60.8,
+    "fwd_6m": 5.8
+  },
+  {
+    "ts_code": "601992.SH",
+    "stock_name": "金隅集团",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 60.3,
+    "fwd_6m": 6.7
+  },
+  {
+    "ts_code": "600928.SH",
+    "stock_name": "西安银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 58.8,
+    "fwd_6m": -7.3
+  },
+  {
+    "ts_code": "600350.SH",
+    "stock_name": "山东高速",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 58.7,
+    "fwd_6m": -16.6
+  },
+  {
+    "ts_code": "601019.SH",
+    "stock_name": "山东出版",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 58.3,
+    "fwd_6m": 4.4
+  },
+  {
+    "ts_code": "000717.SZ",
+    "stock_name": "中南股份",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 55.4,
+    "fwd_6m": 9.4
+  },
+  {
+    "ts_code": "600057.SH",
+    "stock_name": "厦门象屿",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 53.6,
+    "fwd_6m": 27.4
+  },
+  {
+    "ts_code": "601163.SH",
+    "stock_name": "三角轮胎",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 48.2,
+    "fwd_6m": -7.6
+  },
+  {
+    "ts_code": "600104.SH",
+    "stock_name": "上汽集团",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 46.9,
+    "fwd_6m": -5.3
+  },
+  {
+    "ts_code": "601666.SH",
+    "stock_name": "平煤股份",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 46.6,
+    "fwd_6m": 21.0
+  },
+  {
+    "ts_code": "601928.SH",
+    "stock_name": "凤凰传媒",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 44.4,
+    "fwd_6m": 9.0
+  },
+  {
+    "ts_code": "601319.SH",
+    "stock_name": "中国人保",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 22.9,
+    "fwd_6m": -20.7
+  },
+  {
+    "ts_code": "600026.SH",
+    "stock_name": "中远海能",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 23.0,
+    "fwd_6m": -7.5
+  },
+  {
+    "ts_code": "601577.SH",
+    "stock_name": "长沙银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 56.3,
+    "fwd_6m": -12.4
+  },
+  {
+    "ts_code": "601216.SH",
+    "stock_name": "君正集团",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 48.9,
+    "fwd_6m": 4.5
+  },
+  {
+    "ts_code": "000921.SZ",
+    "stock_name": "海信家电",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 17.8,
+    "fwd_6m": 1.1
+  },
+  {
+    "ts_code": "601298.SH",
+    "stock_name": "青岛港",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 34.0,
+    "fwd_6m": -8.3
+  },
+  {
+    "ts_code": "600926.SH",
+    "stock_name": "杭州银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 34.5,
+    "fwd_6m": -11.7
+  },
+  {
+    "ts_code": "601688.SH",
+    "stock_name": "华泰证券",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 19.9,
+    "fwd_6m": 9.7
+  },
+  {
+    "ts_code": "003816.SZ",
+    "stock_name": "中国广核",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 16.1,
+    "fwd_6m": 18.7
+  },
+  {
+    "ts_code": "601326.SH",
+    "stock_name": "秦港股份",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 28.5,
+    "fwd_6m": 3.0
+  },
+  {
+    "ts_code": "000030.SZ",
+    "stock_name": "富奥股份",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 28.5,
+    "fwd_6m": 17.1
+  },
+  {
+    "ts_code": "600248.SH",
+    "stock_name": "陕建股份",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 42.2,
+    "fwd_6m": 9.2
+  },
+  {
+    "ts_code": "600395.SH",
+    "stock_name": "盘江股份",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 32.4,
+    "fwd_6m": 5.9
+  },
+  {
+    "ts_code": "300677.SZ",
+    "stock_name": "英科医疗",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 33.8,
+    "fwd_6m": -53.8
+  },
+  {
+    "ts_code": "601009.SH",
+    "stock_name": "南京银行",
+    "cutoff_date": "2021-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 48.0,
+    "fwd_6m": -16.1
+  },
+  {
+    "ts_code": "002146.SZ",
+    "stock_name": "荣盛发展",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 100.0,
+    "fwd_6m": -29.4
+  },
+  {
+    "ts_code": "600376.SH",
+    "stock_name": "首开股份",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 92.0,
+    "fwd_6m": -12.5
+  },
+  {
+    "ts_code": "601006.SH",
+    "stock_name": "大秦铁路",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 82.1,
+    "fwd_6m": 2.8
+  },
+  {
+    "ts_code": "601328.SH",
+    "stock_name": "交通银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 92.5,
+    "fwd_6m": 8.2
+  },
+  {
+    "ts_code": "601169.SH",
+    "stock_name": "北京银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 91.7,
+    "fwd_6m": 2.3
+  },
+  {
+    "ts_code": "000761.SZ",
+    "stock_name": "本钢板材",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 90.7,
+    "fwd_6m": -14.5
+  },
+  {
+    "ts_code": "601988.SH",
+    "stock_name": "中国银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 89.7,
+    "fwd_6m": 6.9
+  },
+  {
+    "ts_code": "601818.SH",
+    "stock_name": "光大银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 88.8,
+    "fwd_6m": -9.0
+  },
+  {
+    "ts_code": "600019.SH",
+    "stock_name": "宝钢股份",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 88.6,
+    "fwd_6m": -13.0
+  },
+  {
+    "ts_code": "601288.SH",
+    "stock_name": "农业银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 88.2,
+    "fwd_6m": 2.7
+  },
+  {
+    "ts_code": "600325.SH",
+    "stock_name": "华发股份",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 87.2,
+    "fwd_6m": 23.3
+  },
+  {
+    "ts_code": "600390.SH",
+    "stock_name": "五矿资本",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.8,
+    "fwd_6m": -8.1
+  },
+  {
+    "ts_code": "601077.SH",
+    "stock_name": "渝农商行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 85.1,
+    "fwd_6m": -4.2
+  },
+  {
+    "ts_code": "600000.SH",
+    "stock_name": "浦发银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.2,
+    "fwd_6m": -5.6
+  },
+  {
+    "ts_code": "601000.SH",
+    "stock_name": "唐山港",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 83.8,
+    "fwd_6m": -5.8
+  },
+  {
+    "ts_code": "002110.SZ",
+    "stock_name": "三钢闽光",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 83.3,
+    "fwd_6m": -10.1
+  },
+  {
+    "ts_code": "601998.SH",
+    "stock_name": "中信银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 83.3,
+    "fwd_6m": 3.0
+  },
+  {
+    "ts_code": "600016.SH",
+    "stock_name": "民生银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 83.1,
+    "fwd_6m": -4.6
+  },
+  {
+    "ts_code": "600028.SH",
+    "stock_name": "中国石化",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 82.8,
+    "fwd_6m": -3.1
+  },
+  {
+    "ts_code": "600015.SH",
+    "stock_name": "华夏银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 82.5,
+    "fwd_6m": -7.3
+  },
+  {
+    "ts_code": "601398.SH",
+    "stock_name": "工商银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 82.4,
+    "fwd_6m": 3.0
+  },
+  {
+    "ts_code": "601229.SH",
+    "stock_name": "上海银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 82.2,
+    "fwd_6m": -8.0
+  },
+  {
+    "ts_code": "000402.SZ",
+    "stock_name": "金融街",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 81.1,
+    "fwd_6m": 4.1
+  },
+  {
+    "ts_code": "600606.SH",
+    "stock_name": "绿地控股",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 80.7,
+    "fwd_6m": -8.1
+  },
+  {
+    "ts_code": "601939.SH",
+    "stock_name": "建设银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 80.6,
+    "fwd_6m": 3.2
+  },
+  {
+    "ts_code": "600177.SH",
+    "stock_name": "雅戈尔",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 80.3,
+    "fwd_6m": -3.5
+  },
+  {
+    "ts_code": "600919.SH",
+    "stock_name": "江苏银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 80.2,
+    "fwd_6m": 19.7
+  },
+  {
+    "ts_code": "600282.SH",
+    "stock_name": "南钢股份",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 79.9,
+    "fwd_6m": -14.9
+  },
+  {
+    "ts_code": "600782.SH",
+    "stock_name": "新钢股份",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 79.4,
+    "fwd_6m": -3.0
+  },
+  {
+    "ts_code": "600153.SH",
+    "stock_name": "建发股份",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 78.2,
+    "fwd_6m": 42.6
+  },
+  {
+    "ts_code": "000069.SZ",
+    "stock_name": "华侨城Ａ",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 76.5,
+    "fwd_6m": -13.8
+  },
+  {
+    "ts_code": "600755.SH",
+    "stock_name": "厦门国贸",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 76.1,
+    "fwd_6m": 4.0
+  },
+  {
+    "ts_code": "600350.SH",
+    "stock_name": "山东高速",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 74.6,
+    "fwd_6m": 1.7
+  },
+  {
+    "ts_code": "600064.SH",
+    "stock_name": "南京高科",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 73.7,
+    "fwd_6m": 18.0
+  },
+  {
+    "ts_code": "000825.SZ",
+    "stock_name": "太钢不锈",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 81.2,
+    "fwd_6m": -22.7
+  },
+  {
+    "ts_code": "601997.SH",
+    "stock_name": "贵阳银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 76.9,
+    "fwd_6m": -10.8
+  },
+  {
+    "ts_code": "601916.SH",
+    "stock_name": "浙商银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 74.1,
+    "fwd_6m": -4.6
+  },
+  {
+    "ts_code": "000002.SZ",
+    "stock_name": "万科Ａ",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 73.6,
+    "fwd_6m": -0.7
+  },
+  {
+    "ts_code": "002244.SZ",
+    "stock_name": "滨江集团",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 71.2,
+    "fwd_6m": 74.7
+  },
+  {
+    "ts_code": "601668.SH",
+    "stock_name": "中国建筑",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 70.6,
+    "fwd_6m": 10.6
+  },
+  {
+    "ts_code": "601577.SH",
+    "stock_name": "长沙银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 69.4,
+    "fwd_6m": 1.7
+  },
+  {
+    "ts_code": "601166.SH",
+    "stock_name": "兴业银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 69.2,
+    "fwd_6m": 3.3
+  },
+  {
+    "ts_code": "600928.SH",
+    "stock_name": "西安银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 66.9,
+    "fwd_6m": -14.9
+  },
+  {
+    "ts_code": "000581.SZ",
+    "stock_name": "威孚高科",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 66.6,
+    "fwd_6m": -10.0
+  },
+  {
+    "ts_code": "601009.SH",
+    "stock_name": "南京银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 65.5,
+    "fwd_6m": 24.3
+  },
+  {
+    "ts_code": "601658.SH",
+    "stock_name": "邮储银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 65.4,
+    "fwd_6m": 4.3
+  },
+  {
+    "ts_code": "601963.SH",
+    "stock_name": "重庆银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 65.1,
+    "fwd_6m": -11.0
+  },
+  {
+    "ts_code": "600383.SH",
+    "stock_name": "金地集团",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 64.6,
+    "fwd_6m": -0.2
+  },
+  {
+    "ts_code": "600985.SH",
+    "stock_name": "淮北矿业",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 64.6,
+    "fwd_6m": 30.9
+  },
+  {
+    "ts_code": "600820.SH",
+    "stock_name": "隧道股份",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 63.8,
+    "fwd_6m": 14.7
+  },
+  {
+    "ts_code": "601003.SH",
+    "stock_name": "柳钢股份",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 63.7,
+    "fwd_6m": -22.0
+  },
+  {
+    "ts_code": "600901.SH",
+    "stock_name": "江苏金租",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 62.9,
+    "fwd_6m": 1.4
+  },
+  {
+    "ts_code": "601019.SH",
+    "stock_name": "山东出版",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 59.8,
+    "fwd_6m": 5.9
+  },
+  {
+    "ts_code": "000717.SZ",
+    "stock_name": "中南股份",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 57.5,
+    "fwd_6m": -25.3
+  },
+  {
+    "ts_code": "600048.SH",
+    "stock_name": "保利发展",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 57.4,
+    "fwd_6m": 10.7
+  },
+  {
+    "ts_code": "600548.SH",
+    "stock_name": "深高速",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 56.0,
+    "fwd_6m": -5.5
+  },
+  {
+    "ts_code": "600373.SH",
+    "stock_name": "中文传媒",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 55.3,
+    "fwd_6m": -19.7
+  },
+  {
+    "ts_code": "601857.SH",
+    "stock_name": "中国石油",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.0,
+    "fwd_6m": 8.1
+  },
+  {
+    "ts_code": "601318.SH",
+    "stock_name": "中国平安",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 50.7,
+    "fwd_6m": -7.2
+  },
+  {
+    "ts_code": "002233.SZ",
+    "stock_name": "塔牌集团",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 50.5,
+    "fwd_6m": -16.4
+  },
+  {
+    "ts_code": "000157.SZ",
+    "stock_name": "中联重科",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 50.0,
+    "fwd_6m": -15.1
+  },
+  {
+    "ts_code": "600170.SH",
+    "stock_name": "上海建工",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 49.3,
+    "fwd_6m": -15.6
+  },
+  {
+    "ts_code": "601298.SH",
+    "stock_name": "青岛港",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 49.2,
+    "fwd_6m": -3.5
+  },
+  {
+    "ts_code": "000690.SZ",
+    "stock_name": "宝新能源",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 45.2,
+    "fwd_6m": -25.2
+  },
+  {
+    "ts_code": "601601.SH",
+    "stock_name": "中国太保",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 44.1,
+    "fwd_6m": -14.0
+  },
+  {
+    "ts_code": "600675.SH",
+    "stock_name": "中华企业",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 42.6,
+    "fwd_6m": 2.7
+  },
+  {
+    "ts_code": "000725.SZ",
+    "stock_name": "京东方Ａ",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 21.3,
+    "fwd_6m": -22.4
+  },
+  {
+    "ts_code": "002092.SZ",
+    "stock_name": "中泰化学",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 38.8,
+    "fwd_6m": -18.6
+  },
+  {
+    "ts_code": "601607.SH",
+    "stock_name": "上海医药",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 28.0,
+    "fwd_6m": -9.2
+  },
+  {
+    "ts_code": "601838.SH",
+    "stock_name": "成都银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 56.6,
+    "fwd_6m": 36.8
+  },
+  {
+    "ts_code": "000528.SZ",
+    "stock_name": "柳工",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 46.4,
+    "fwd_6m": -15.2
+  },
+  {
+    "ts_code": "600377.SH",
+    "stock_name": "宁沪高速",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 40.6,
+    "fwd_6m": -1.9
+  },
+  {
+    "ts_code": "000898.SZ",
+    "stock_name": "鞍钢股份",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 59.0,
+    "fwd_6m": -14.1
+  },
+  {
+    "ts_code": "600398.SH",
+    "stock_name": "海澜之家",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 27.0,
+    "fwd_6m": -25.7
+  },
+  {
+    "ts_code": "600966.SH",
+    "stock_name": "博汇纸业",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 29.3,
+    "fwd_6m": -26.1
+  },
+  {
+    "ts_code": "002440.SZ",
+    "stock_name": "闰土股份",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 28.9,
+    "fwd_6m": -16.0
+  },
+  {
+    "ts_code": "600123.SH",
+    "stock_name": "兰花科创",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 45.4,
+    "fwd_6m": 85.3
+  },
+  {
+    "ts_code": "000685.SZ",
+    "stock_name": "中山公用",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 47.1,
+    "fwd_6m": -13.3
+  },
+  {
+    "ts_code": "002936.SZ",
+    "stock_name": "郑州银行",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 52.8,
+    "fwd_6m": -14.6
+  },
+  {
+    "ts_code": "601699.SH",
+    "stock_name": "潞安环能",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 44.5,
+    "fwd_6m": 29.8
+  },
+  {
+    "ts_code": "002532.SZ",
+    "stock_name": "天山铝业",
+    "cutoff_date": "2021-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 37.1,
+    "fwd_6m": -19.3
+  },
+  {
+    "ts_code": "601818.SH",
+    "stock_name": "光大银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 100.0,
+    "fwd_6m": 1.7
+  },
+  {
+    "ts_code": "600015.SH",
+    "stock_name": "华夏银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 100.0,
+    "fwd_6m": -0.6
+  },
+  {
+    "ts_code": "600782.SH",
+    "stock_name": "新钢股份",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 96.7,
+    "fwd_6m": -17.7
+  },
+  {
+    "ts_code": "601825.SH",
+    "stock_name": "沪农商行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 95.7,
+    "fwd_6m": -8.0
+  },
+  {
+    "ts_code": "002110.SZ",
+    "stock_name": "三钢闽光",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 94.4,
+    "fwd_6m": -21.0
+  },
+  {
+    "ts_code": "600028.SH",
+    "stock_name": "中国石化",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 93.7,
+    "fwd_6m": 7.1
+  },
+  {
+    "ts_code": "600019.SH",
+    "stock_name": "宝钢股份",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 93.4,
+    "fwd_6m": -7.0
+  },
+  {
+    "ts_code": "600282.SH",
+    "stock_name": "南钢股份",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 92.1,
+    "fwd_6m": 0.6
+  },
+  {
+    "ts_code": "000761.SZ",
+    "stock_name": "本钢板材",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 90.4,
+    "fwd_6m": -17.2
+  },
+  {
+    "ts_code": "601187.SH",
+    "stock_name": "厦门银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 83.1,
+    "fwd_6m": -5.7
+  },
+  {
+    "ts_code": "601077.SH",
+    "stock_name": "渝农商行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 92.2,
+    "fwd_6m": -5.1
+  },
+  {
+    "ts_code": "000898.SZ",
+    "stock_name": "鞍钢股份",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 92.0,
+    "fwd_6m": -15.8
+  },
+  {
+    "ts_code": "601169.SH",
+    "stock_name": "北京银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 90.7,
+    "fwd_6m": -5.5
+  },
+  {
+    "ts_code": "000825.SZ",
+    "stock_name": "太钢不锈",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 89.1,
+    "fwd_6m": -19.6
+  },
+  {
+    "ts_code": "601328.SH",
+    "stock_name": "交通银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 89.1,
+    "fwd_6m": -5.4
+  },
+  {
+    "ts_code": "600755.SH",
+    "stock_name": "厦门国贸",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 88.8,
+    "fwd_6m": -2.5
+  },
+  {
+    "ts_code": "601288.SH",
+    "stock_name": "农业银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 87.5,
+    "fwd_6m": -4.3
+  },
+  {
+    "ts_code": "601229.SH",
+    "stock_name": "上海银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 87.4,
+    "fwd_6m": -9.9
+  },
+  {
+    "ts_code": "601988.SH",
+    "stock_name": "中国银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 87.0,
+    "fwd_6m": -3.4
+  },
+  {
+    "ts_code": "600000.SH",
+    "stock_name": "浦发银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.6,
+    "fwd_6m": -9.9
+  },
+  {
+    "ts_code": "600325.SH",
+    "stock_name": "华发股份",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.1,
+    "fwd_6m": 20.5
+  },
+  {
+    "ts_code": "601155.SH",
+    "stock_name": "新城控股",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.1,
+    "fwd_6m": -18.6
+  },
+  {
+    "ts_code": "600177.SH",
+    "stock_name": "雅戈尔",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 85.0,
+    "fwd_6m": -4.4
+  },
+  {
+    "ts_code": "600016.SH",
+    "stock_name": "民生银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.8,
+    "fwd_6m": -7.8
+  },
+  {
+    "ts_code": "601000.SH",
+    "stock_name": "唐山港",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 83.8,
+    "fwd_6m": 5.8
+  },
+  {
+    "ts_code": "601998.SH",
+    "stock_name": "中信银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 82.3,
+    "fwd_6m": 3.2
+  },
+  {
+    "ts_code": "601398.SH",
+    "stock_name": "工商银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 81.7,
+    "fwd_6m": -9.9
+  },
+  {
+    "ts_code": "600350.SH",
+    "stock_name": "山东高速",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 81.1,
+    "fwd_6m": 7.0
+  },
+  {
+    "ts_code": "601997.SH",
+    "stock_name": "贵阳银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 81.1,
+    "fwd_6m": -6.4
+  },
+  {
+    "ts_code": "601939.SH",
+    "stock_name": "建设银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 79.9,
+    "fwd_6m": -7.9
+  },
+  {
+    "ts_code": "600373.SH",
+    "stock_name": "中文传媒",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 79.6,
+    "fwd_6m": -5.5
+  },
+  {
+    "ts_code": "601006.SH",
+    "stock_name": "大秦铁路",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 78.2,
+    "fwd_6m": -0.2
+  },
+  {
+    "ts_code": "600928.SH",
+    "stock_name": "西安银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 78.2,
+    "fwd_6m": -6.5
+  },
+  {
+    "ts_code": "600919.SH",
+    "stock_name": "江苏银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 78.0,
+    "fwd_6m": 2.1
+  },
+  {
+    "ts_code": "002233.SZ",
+    "stock_name": "塔牌集团",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 77.2,
+    "fwd_6m": -18.1
+  },
+  {
+    "ts_code": "000932.SZ",
+    "stock_name": "华菱钢铁",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 76.5,
+    "fwd_6m": -6.3
+  },
+  {
+    "ts_code": "601166.SH",
+    "stock_name": "兴业银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 75.7,
+    "fwd_6m": -12.4
+  },
+  {
+    "ts_code": "600390.SH",
+    "stock_name": "五矿资本",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 73.0,
+    "fwd_6m": 5.5
+  },
+  {
+    "ts_code": "600997.SH",
+    "stock_name": "开滦股份",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 72.3,
+    "fwd_6m": -10.2
+  },
+  {
+    "ts_code": "000402.SZ",
+    "stock_name": "金融街",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 70.9,
+    "fwd_6m": -9.1
+  },
+  {
+    "ts_code": "600383.SH",
+    "stock_name": "金地集团",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 66.4,
+    "fwd_6m": -23.7
+  },
+  {
+    "ts_code": "001872.SZ",
+    "stock_name": "招商港口",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 60.8,
+    "fwd_6m": -5.5
+  },
+  {
+    "ts_code": "002839.SZ",
+    "stock_name": "张家港行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 59.6,
+    "fwd_6m": -14.9
+  },
+  {
+    "ts_code": "601916.SH",
+    "stock_name": "浙商银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 77.5,
+    "fwd_6m": -11.4
+  },
+  {
+    "ts_code": "000581.SZ",
+    "stock_name": "威孚高科",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 77.2,
+    "fwd_6m": -7.5
+  },
+  {
+    "ts_code": "600585.SH",
+    "stock_name": "海螺水泥",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 74.7,
+    "fwd_6m": -20.2
+  },
+  {
+    "ts_code": "601963.SH",
+    "stock_name": "重庆银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 74.0,
+    "fwd_6m": -14.9
+  },
+  {
+    "ts_code": "601668.SH",
+    "stock_name": "中国建筑",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 73.1,
+    "fwd_6m": 1.7
+  },
+  {
+    "ts_code": "002958.SZ",
+    "stock_name": "青农商行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 73.0,
+    "fwd_6m": -13.9
+  },
+  {
+    "ts_code": "600606.SH",
+    "stock_name": "绿地控股",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 70.2,
+    "fwd_6m": -23.0
+  },
+  {
+    "ts_code": "600901.SH",
+    "stock_name": "江苏金租",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 69.8,
+    "fwd_6m": 5.8
+  },
+  {
+    "ts_code": "601577.SH",
+    "stock_name": "长沙银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 69.7,
+    "fwd_6m": -16.5
+  },
+  {
+    "ts_code": "002948.SZ",
+    "stock_name": "青岛银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 66.2,
+    "fwd_6m": -6.6
+  },
+  {
+    "ts_code": "002966.SZ",
+    "stock_name": "苏州银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 66.1,
+    "fwd_6m": 23.6
+  },
+  {
+    "ts_code": "600064.SH",
+    "stock_name": "南京高科",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 66.0,
+    "fwd_6m": -38.6
+  },
+  {
+    "ts_code": "000401.SZ",
+    "stock_name": "金隅冀东",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 65.1,
+    "fwd_6m": -20.2
+  },
+  {
+    "ts_code": "000709.SZ",
+    "stock_name": "河钢股份",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 63.6,
+    "fwd_6m": 0.9
+  },
+  {
+    "ts_code": "601009.SH",
+    "stock_name": "南京银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 61.2,
+    "fwd_6m": -1.5
+  },
+  {
+    "ts_code": "600170.SH",
+    "stock_name": "上海建工",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 60.6,
+    "fwd_6m": -13.9
+  },
+  {
+    "ts_code": "600582.SH",
+    "stock_name": "天地科技",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 59.1,
+    "fwd_6m": 4.6
+  },
+  {
+    "ts_code": "601928.SH",
+    "stock_name": "凤凰传媒",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 58.9,
+    "fwd_6m": 6.0
+  },
+  {
+    "ts_code": "000517.SZ",
+    "stock_name": "荣安地产",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 58.1,
+    "fwd_6m": -5.0
+  },
+  {
+    "ts_code": "600567.SH",
+    "stock_name": "山鹰国际",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 57.6,
+    "fwd_6m": -10.8
+  },
+  {
+    "ts_code": "000002.SZ",
+    "stock_name": "万科Ａ",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 57.1,
+    "fwd_6m": -9.7
+  },
+  {
+    "ts_code": "601857.SH",
+    "stock_name": "中国石油",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 56.3,
+    "fwd_6m": -5.5
+  },
+  {
+    "ts_code": "601298.SH",
+    "stock_name": "青岛港",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.6,
+    "fwd_6m": 1.5
+  },
+  {
+    "ts_code": "601098.SH",
+    "stock_name": "中南传媒",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.4,
+    "fwd_6m": 1.9
+  },
+  {
+    "ts_code": "600126.SH",
+    "stock_name": "杭钢股份",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.0,
+    "fwd_6m": -18.9
+  },
+  {
+    "ts_code": "601019.SH",
+    "stock_name": "山东出版",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 53.6,
+    "fwd_6m": -4.5
+  },
+  {
+    "ts_code": "601318.SH",
+    "stock_name": "中国平安",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 53.5,
+    "fwd_6m": -2.4
+  },
+  {
+    "ts_code": "601601.SH",
+    "stock_name": "中国太保",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 53.0,
+    "fwd_6m": 2.5
+  },
+  {
+    "ts_code": "600548.SH",
+    "stock_name": "深高速",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 52.3,
+    "fwd_6m": -6.6
+  },
+  {
+    "ts_code": "000157.SZ",
+    "stock_name": "中联重科",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 51.1,
+    "fwd_6m": -9.9
+  },
+  {
+    "ts_code": "600048.SH",
+    "stock_name": "保利发展",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 49.2,
+    "fwd_6m": -12.6
+  },
+  {
+    "ts_code": "601336.SH",
+    "stock_name": "新华保险",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 47.4,
+    "fwd_6m": -9.2
+  },
+  {
+    "ts_code": "601665.SH",
+    "stock_name": "齐鲁银行",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 58.5,
+    "fwd_6m": -15.6
+  },
+  {
+    "ts_code": "000778.SZ",
+    "stock_name": "新兴铸管",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 48.5,
+    "fwd_6m": -23.7
+  },
+  {
+    "ts_code": "600623.SH",
+    "stock_name": "华谊集团",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 51.0,
+    "fwd_6m": -22.3
+  },
+  {
+    "ts_code": "600362.SH",
+    "stock_name": "江西铜业",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 38.9,
+    "fwd_6m": -2.7
+  },
+  {
+    "ts_code": "601992.SH",
+    "stock_name": "金隅集团",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 44.5,
+    "fwd_6m": -7.6
+  },
+  {
+    "ts_code": "601156.SH",
+    "stock_name": "东航物流",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 35.7,
+    "fwd_6m": -20.4
+  },
+  {
+    "ts_code": "002601.SZ",
+    "stock_name": "龙佰集团",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 44.2,
+    "fwd_6m": -3.6
+  },
+  {
+    "ts_code": "688009.SH",
+    "stock_name": "中国通号",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 28.4,
+    "fwd_6m": 6.4
+  },
+  {
+    "ts_code": "600717.SH",
+    "stock_name": "天津港",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 35.5,
+    "fwd_6m": 1.7
+  },
+  {
+    "ts_code": "002532.SZ",
+    "stock_name": "天山铝业",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 67.9,
+    "fwd_6m": 22.5
+  },
+  {
+    "ts_code": "000685.SZ",
+    "stock_name": "中山公用",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 55.3,
+    "fwd_6m": -9.5
+  },
+  {
+    "ts_code": "002432.SZ",
+    "stock_name": "九安医疗",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 30.0,
+    "fwd_6m": -11.1
+  },
+  {
+    "ts_code": "601666.SH",
+    "stock_name": "平煤股份",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 47.8,
+    "fwd_6m": -16.2
+  },
+  {
+    "ts_code": "601088.SH",
+    "stock_name": "中国神华",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 34.6,
+    "fwd_6m": -15.7
+  },
+  {
+    "ts_code": "601919.SH",
+    "stock_name": "中远海控",
+    "cutoff_date": "2022-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 58.4,
+    "fwd_6m": -24.6
+  },
+  {
+    "ts_code": "600782.SH",
+    "stock_name": "新钢股份",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 100.0,
+    "fwd_6m": -10.3
+  },
+  {
+    "ts_code": "601328.SH",
+    "stock_name": "交通银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 96.6,
+    "fwd_6m": 20.9
+  },
+  {
+    "ts_code": "601077.SH",
+    "stock_name": "渝农商行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 94.4,
+    "fwd_6m": 0.6
+  },
+  {
+    "ts_code": "601288.SH",
+    "stock_name": "农业银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 94.0,
+    "fwd_6m": 19.9
+  },
+  {
+    "ts_code": "601169.SH",
+    "stock_name": "北京银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 93.8,
+    "fwd_6m": 6.7
+  },
+  {
+    "ts_code": "601155.SH",
+    "stock_name": "新城控股",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 92.4,
+    "fwd_6m": -29.7
+  },
+  {
+    "ts_code": "600028.SH",
+    "stock_name": "中国石化",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 89.2,
+    "fwd_6m": 44.5
+  },
+  {
+    "ts_code": "600282.SH",
+    "stock_name": "南钢股份",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 88.6,
+    "fwd_6m": 6.3
+  },
+  {
+    "ts_code": "600755.SH",
+    "stock_name": "厦门国贸",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 85.1,
+    "fwd_6m": 8.7
+  },
+  {
+    "ts_code": "601006.SH",
+    "stock_name": "大秦铁路",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 79.7,
+    "fwd_6m": 12.0
+  },
+  {
+    "ts_code": "601988.SH",
+    "stock_name": "中国银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 93.3,
+    "fwd_6m": 22.2
+  },
+  {
+    "ts_code": "601229.SH",
+    "stock_name": "上海银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 91.8,
+    "fwd_6m": -3.9
+  },
+  {
+    "ts_code": "601398.SH",
+    "stock_name": "工商银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 91.5,
+    "fwd_6m": 10.1
+  },
+  {
+    "ts_code": "601818.SH",
+    "stock_name": "光大银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 90.3,
+    "fwd_6m": 0.0
+  },
+  {
+    "ts_code": "600177.SH",
+    "stock_name": "雅戈尔",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 90.2,
+    "fwd_6m": -1.1
+  },
+  {
+    "ts_code": "600585.SH",
+    "stock_name": "海螺水泥",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 90.1,
+    "fwd_6m": -13.5
+  },
+  {
+    "ts_code": "601919.SH",
+    "stock_name": "中远海控",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 88.8,
+    "fwd_6m": -9.2
+  },
+  {
+    "ts_code": "601939.SH",
+    "stock_name": "建设银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 88.8,
+    "fwd_6m": 10.1
+  },
+  {
+    "ts_code": "600015.SH",
+    "stock_name": "华夏银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 88.6,
+    "fwd_6m": 4.0
+  },
+  {
+    "ts_code": "600016.SH",
+    "stock_name": "民生银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 87.8,
+    "fwd_6m": 8.4
+  },
+  {
+    "ts_code": "601998.SH",
+    "stock_name": "中信银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 87.1,
+    "fwd_6m": 18.9
+  },
+  {
+    "ts_code": "000401.SZ",
+    "stock_name": "金隅冀东",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 85.8,
+    "fwd_6m": -11.3
+  },
+  {
+    "ts_code": "601963.SH",
+    "stock_name": "重庆银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.3,
+    "fwd_6m": 15.6
+  },
+  {
+    "ts_code": "600000.SH",
+    "stock_name": "浦发银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.2,
+    "fwd_6m": -1.4
+  },
+  {
+    "ts_code": "600997.SH",
+    "stock_name": "开滦股份",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.0,
+    "fwd_6m": -12.7
+  },
+  {
+    "ts_code": "601166.SH",
+    "stock_name": "兴业银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 83.8,
+    "fwd_6m": -11.6
+  },
+  {
+    "ts_code": "600064.SH",
+    "stock_name": "南京高科",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 83.6,
+    "fwd_6m": -1.2
+  },
+  {
+    "ts_code": "601916.SH",
+    "stock_name": "浙商银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 83.2,
+    "fwd_6m": -12.6
+  },
+  {
+    "ts_code": "601997.SH",
+    "stock_name": "贵阳银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 83.1,
+    "fwd_6m": -6.9
+  },
+  {
+    "ts_code": "000932.SZ",
+    "stock_name": "华菱钢铁",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 82.8,
+    "fwd_6m": 4.7
+  },
+  {
+    "ts_code": "601598.SH",
+    "stock_name": "中国外运",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 82.3,
+    "fwd_6m": 19.0
+  },
+  {
+    "ts_code": "600383.SH",
+    "stock_name": "金地集团",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 81.0,
+    "fwd_6m": -29.6
+  },
+  {
+    "ts_code": "600928.SH",
+    "stock_name": "西安银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 80.9,
+    "fwd_6m": -1.4
+  },
+  {
+    "ts_code": "601577.SH",
+    "stock_name": "长沙银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 80.9,
+    "fwd_6m": 13.8
+  },
+  {
+    "ts_code": "600623.SH",
+    "stock_name": "华谊集团",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 79.3,
+    "fwd_6m": -2.2
+  },
+  {
+    "ts_code": "601857.SH",
+    "stock_name": "中国石油",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 79.3,
+    "fwd_6m": 50.3
+  },
+  {
+    "ts_code": "601825.SH",
+    "stock_name": "沪农商行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 78.8,
+    "fwd_6m": -7.8
+  },
+  {
+    "ts_code": "600919.SH",
+    "stock_name": "江苏银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 78.5,
+    "fwd_6m": 0.1
+  },
+  {
+    "ts_code": "601658.SH",
+    "stock_name": "邮储银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 78.4,
+    "fwd_6m": 5.6
+  },
+  {
+    "ts_code": "600373.SH",
+    "stock_name": "中文传媒",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 77.9,
+    "fwd_6m": 39.0
+  },
+  {
+    "ts_code": "000581.SZ",
+    "stock_name": "威孚高科",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 77.0,
+    "fwd_6m": -11.7
+  },
+  {
+    "ts_code": "601000.SH",
+    "stock_name": "唐山港",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 73.1,
+    "fwd_6m": 36.1
+  },
+  {
+    "ts_code": "600350.SH",
+    "stock_name": "山东高速",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 72.0,
+    "fwd_6m": 14.6
+  },
+  {
+    "ts_code": "000002.SZ",
+    "stock_name": "万科Ａ",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 60.0,
+    "fwd_6m": -23.0
+  },
+  {
+    "ts_code": "000937.SZ",
+    "stock_name": "冀中能源",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 82.6,
+    "fwd_6m": 15.7
+  },
+  {
+    "ts_code": "601866.SH",
+    "stock_name": "中远海发",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 81.1,
+    "fwd_6m": 1.7
+  },
+  {
+    "ts_code": "600019.SH",
+    "stock_name": "宝钢股份",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 77.2,
+    "fwd_6m": 0.5
+  },
+  {
+    "ts_code": "600012.SH",
+    "stock_name": "皖通高速",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 75.3,
+    "fwd_6m": 46.1
+  },
+  {
+    "ts_code": "601668.SH",
+    "stock_name": "中国建筑",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 73.5,
+    "fwd_6m": 10.1
+  },
+  {
+    "ts_code": "002948.SZ",
+    "stock_name": "青岛银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 72.7,
+    "fwd_6m": -7.7
+  },
+  {
+    "ts_code": "000090.SZ",
+    "stock_name": "天健集团",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 71.6,
+    "fwd_6m": -9.0
+  },
+  {
+    "ts_code": "600548.SH",
+    "stock_name": "深高速",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 71.0,
+    "fwd_6m": 0.8
+  },
+  {
+    "ts_code": "601665.SH",
+    "stock_name": "齐鲁银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 70.8,
+    "fwd_6m": -6.7
+  },
+  {
+    "ts_code": "600123.SH",
+    "stock_name": "兰花科创",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 69.0,
+    "fwd_6m": -39.3
+  },
+  {
+    "ts_code": "601187.SH",
+    "stock_name": "厦门银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 68.9,
+    "fwd_6m": -13.3
+  },
+  {
+    "ts_code": "600820.SH",
+    "stock_name": "隧道股份",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 68.4,
+    "fwd_6m": 13.3
+  },
+  {
+    "ts_code": "600901.SH",
+    "stock_name": "江苏金租",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 68.1,
+    "fwd_6m": -24.8
+  },
+  {
+    "ts_code": "600985.SH",
+    "stock_name": "淮北矿业",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 67.9,
+    "fwd_6m": -11.6
+  },
+  {
+    "ts_code": "600801.SH",
+    "stock_name": "华新建材",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 66.7,
+    "fwd_6m": -17.3
+  },
+  {
+    "ts_code": "601009.SH",
+    "stock_name": "南京银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 64.7,
+    "fwd_6m": -23.4
+  },
+  {
+    "ts_code": "600325.SH",
+    "stock_name": "华发股份",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 62.5,
+    "fwd_6m": 10.4
+  },
+  {
+    "ts_code": "600104.SH",
+    "stock_name": "上汽集团",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 60.9,
+    "fwd_6m": -1.8
+  },
+  {
+    "ts_code": "600639.SH",
+    "stock_name": "浦东金桥",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 60.9,
+    "fwd_6m": 10.0
+  },
+  {
+    "ts_code": "600153.SH",
+    "stock_name": "建发股份",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 60.8,
+    "fwd_6m": -20.1
+  },
+  {
+    "ts_code": "601019.SH",
+    "stock_name": "山东出版",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 60.1,
+    "fwd_6m": 46.2
+  },
+  {
+    "ts_code": "000778.SZ",
+    "stock_name": "新兴铸管",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 58.1,
+    "fwd_6m": 11.2
+  },
+  {
+    "ts_code": "002128.SZ",
+    "stock_name": "电投能源",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 57.6,
+    "fwd_6m": 7.0
+  },
+  {
+    "ts_code": "601992.SH",
+    "stock_name": "金隅集团",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 56.6,
+    "fwd_6m": -15.4
+  },
+  {
+    "ts_code": "601838.SH",
+    "stock_name": "成都银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 55.6,
+    "fwd_6m": -20.0
+  },
+  {
+    "ts_code": "601211.SH",
+    "stock_name": "国泰海通",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.7,
+    "fwd_6m": 1.4
+  },
+  {
+    "ts_code": "600741.SH",
+    "stock_name": "华域汽车",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.5,
+    "fwd_6m": 6.5
+  },
+  {
+    "ts_code": "600648.SH",
+    "stock_name": "外高桥",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.4,
+    "fwd_6m": -6.4
+  },
+  {
+    "ts_code": "601318.SH",
+    "stock_name": "中国平安",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.4,
+    "fwd_6m": -1.5
+  },
+  {
+    "ts_code": "000685.SZ",
+    "stock_name": "中山公用",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.4,
+    "fwd_6m": 8.0
+  },
+  {
+    "ts_code": "601298.SH",
+    "stock_name": "青岛港",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.1,
+    "fwd_6m": 24.2
+  },
+  {
+    "ts_code": "000725.SZ",
+    "stock_name": "京东方Ａ",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 52.8,
+    "fwd_6m": 17.2
+  },
+  {
+    "ts_code": "600655.SH",
+    "stock_name": "豫园股份",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 52.6,
+    "fwd_6m": -10.8
+  },
+  {
+    "ts_code": "600036.SH",
+    "stock_name": "招商银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 50.1,
+    "fwd_6m": -12.3
+  },
+  {
+    "ts_code": "001965.SZ",
+    "stock_name": "招商公路",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 49.5,
+    "fwd_6m": 23.6
+  },
+  {
+    "ts_code": "600941.SH",
+    "stock_name": "中国移动",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 48.1,
+    "fwd_6m": 38.9
+  },
+  {
+    "ts_code": "601336.SH",
+    "stock_name": "新华保险",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 47.2,
+    "fwd_6m": 20.9
+  },
+  {
+    "ts_code": "601601.SH",
+    "stock_name": "中国太保",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 44.8,
+    "fwd_6m": 7.0
+  },
+  {
+    "ts_code": "002004.SZ",
+    "stock_name": "华邦健康",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 42.7,
+    "fwd_6m": -4.1
+  },
+  {
+    "ts_code": "000425.SZ",
+    "stock_name": "徐工机械",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 42.4,
+    "fwd_6m": 31.8
+  },
+  {
+    "ts_code": "002432.SZ",
+    "stock_name": "九安医疗",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 37.8,
+    "fwd_6m": -31.8
+  },
+  {
+    "ts_code": "600295.SH",
+    "stock_name": "鄂尔多斯",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 70.0,
+    "fwd_6m": -9.6
+  },
+  {
+    "ts_code": "601098.SH",
+    "stock_name": "中南传媒",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 49.6,
+    "fwd_6m": 23.2
+  },
+  {
+    "ts_code": "600508.SH",
+    "stock_name": "上海能源",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 50.2,
+    "fwd_6m": 0.8
+  },
+  {
+    "ts_code": "603565.SH",
+    "stock_name": "中谷物流",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 67.4,
+    "fwd_6m": -26.0
+  },
+  {
+    "ts_code": "600926.SH",
+    "stock_name": "杭州银行",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 47.5,
+    "fwd_6m": -10.6
+  },
+  {
+    "ts_code": "600039.SH",
+    "stock_name": "四川路桥",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 30.0,
+    "fwd_6m": -11.7
+  },
+  {
+    "ts_code": "000402.SZ",
+    "stock_name": "金融街",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 52.6,
+    "fwd_6m": -14.7
+  },
+  {
+    "ts_code": "600377.SH",
+    "stock_name": "宁沪高速",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 39.9,
+    "fwd_6m": 20.0
+  },
+  {
+    "ts_code": "000651.SZ",
+    "stock_name": "格力电器",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 66.4,
+    "fwd_6m": 13.8
+  },
+  {
+    "ts_code": "000429.SZ",
+    "stock_name": "粤高速Ａ",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 48.9,
+    "fwd_6m": -0.5
+  },
+  {
+    "ts_code": "000408.SZ",
+    "stock_name": "藏格矿业",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 56.7,
+    "fwd_6m": -15.3
+  },
+  {
+    "ts_code": "600409.SH",
+    "stock_name": "三友化工",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 34.1,
+    "fwd_6m": -18.5
+  },
+  {
+    "ts_code": "002736.SZ",
+    "stock_name": "国信证券",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 45.1,
+    "fwd_6m": -3.3
+  },
+  {
+    "ts_code": "601928.SH",
+    "stock_name": "凤凰传媒",
+    "cutoff_date": "2022-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 59.6,
+    "fwd_6m": 50.3
+  },
+  {
+    "ts_code": "601229.SH",
+    "stock_name": "上海银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 100.0,
+    "fwd_6m": 4.3
+  },
+  {
+    "ts_code": "600383.SH",
+    "stock_name": "金地集团",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 100.0,
+    "fwd_6m": -41.7
+  },
+  {
+    "ts_code": "601166.SH",
+    "stock_name": "兴业银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 97.3,
+    "fwd_6m": -7.2
+  },
+  {
+    "ts_code": "601077.SH",
+    "stock_name": "渝农商行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 97.1,
+    "fwd_6m": 15.6
+  },
+  {
+    "ts_code": "600015.SH",
+    "stock_name": "华夏银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 93.9,
+    "fwd_6m": 6.3
+  },
+  {
+    "ts_code": "600123.SH",
+    "stock_name": "兰花科创",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 91.0,
+    "fwd_6m": 36.7
+  },
+  {
+    "ts_code": "600177.SH",
+    "stock_name": "雅戈尔",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 85.4,
+    "fwd_6m": 2.4
+  },
+  {
+    "ts_code": "601169.SH",
+    "stock_name": "北京银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 90.6,
+    "fwd_6m": -3.5
+  },
+  {
+    "ts_code": "600755.SH",
+    "stock_name": "厦门国贸",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 89.6,
+    "fwd_6m": -11.5
+  },
+  {
+    "ts_code": "601919.SH",
+    "stock_name": "中远海控",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 89.4,
+    "fwd_6m": 3.4
+  },
+  {
+    "ts_code": "601666.SH",
+    "stock_name": "平煤股份",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 89.4,
+    "fwd_6m": 56.1
+  },
+  {
+    "ts_code": "600985.SH",
+    "stock_name": "淮北矿业",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 89.1,
+    "fwd_6m": 48.3
+  },
+  {
+    "ts_code": "601825.SH",
+    "stock_name": "沪农商行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 88.1,
+    "fwd_6m": 5.5
+  },
+  {
+    "ts_code": "601916.SH",
+    "stock_name": "浙商银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 87.8,
+    "fwd_6m": -5.3
+  },
+  {
+    "ts_code": "601328.SH",
+    "stock_name": "交通银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 87.5,
+    "fwd_6m": 0.2
+  },
+  {
+    "ts_code": "601009.SH",
+    "stock_name": "南京银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.3,
+    "fwd_6m": -8.5
+  },
+  {
+    "ts_code": "601398.SH",
+    "stock_name": "工商银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.3,
+    "fwd_6m": 0.2
+  },
+  {
+    "ts_code": "601818.SH",
+    "stock_name": "光大银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 85.6,
+    "fwd_6m": -6.2
+  },
+  {
+    "ts_code": "601997.SH",
+    "stock_name": "贵阳银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 85.4,
+    "fwd_6m": -1.0
+  },
+  {
+    "ts_code": "600064.SH",
+    "stock_name": "南京高科",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 85.0,
+    "fwd_6m": -9.7
+  },
+  {
+    "ts_code": "600016.SH",
+    "stock_name": "民生银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.7,
+    "fwd_6m": -0.3
+  },
+  {
+    "ts_code": "601288.SH",
+    "stock_name": "农业银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.5,
+    "fwd_6m": 4.5
+  },
+  {
+    "ts_code": "600000.SH",
+    "stock_name": "浦发银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.4,
+    "fwd_6m": -8.8
+  },
+  {
+    "ts_code": "601939.SH",
+    "stock_name": "建设银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 83.7,
+    "fwd_6m": 4.6
+  },
+  {
+    "ts_code": "601988.SH",
+    "stock_name": "中国银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 83.0,
+    "fwd_6m": 3.6
+  },
+  {
+    "ts_code": "000002.SZ",
+    "stock_name": "万科Ａ",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 82.7,
+    "fwd_6m": -27.5
+  },
+  {
+    "ts_code": "601187.SH",
+    "stock_name": "厦门银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 81.9,
+    "fwd_6m": 0.2
+  },
+  {
+    "ts_code": "600048.SH",
+    "stock_name": "保利发展",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 81.0,
+    "fwd_6m": -27.2
+  },
+  {
+    "ts_code": "601998.SH",
+    "stock_name": "中信银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 79.8,
+    "fwd_6m": -12.2
+  },
+  {
+    "ts_code": "600919.SH",
+    "stock_name": "江苏银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 79.2,
+    "fwd_6m": -9.5
+  },
+  {
+    "ts_code": "601598.SH",
+    "stock_name": "中国外运",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 78.0,
+    "fwd_6m": 12.2
+  },
+  {
+    "ts_code": "600153.SH",
+    "stock_name": "建发股份",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 77.2,
+    "fwd_6m": -13.6
+  },
+  {
+    "ts_code": "002948.SZ",
+    "stock_name": "青岛银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 77.2,
+    "fwd_6m": -3.8
+  },
+  {
+    "ts_code": "002432.SZ",
+    "stock_name": "九安医疗",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 76.0,
+    "fwd_6m": 5.9
+  },
+  {
+    "ts_code": "002966.SZ",
+    "stock_name": "苏州银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 74.9,
+    "fwd_6m": -0.9
+  },
+  {
+    "ts_code": "000932.SZ",
+    "stock_name": "华菱钢铁",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 72.8,
+    "fwd_6m": 8.8
+  },
+  {
+    "ts_code": "600585.SH",
+    "stock_name": "海螺水泥",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 70.5,
+    "fwd_6m": -6.7
+  },
+  {
+    "ts_code": "600655.SH",
+    "stock_name": "豫园股份",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 69.0,
+    "fwd_6m": -11.8
+  },
+  {
+    "ts_code": "601006.SH",
+    "stock_name": "大秦铁路",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 66.5,
+    "fwd_6m": -2.2
+  },
+  {
+    "ts_code": "601857.SH",
+    "stock_name": "中国石油",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 59.8,
+    "fwd_6m": -4.7
+  },
+  {
+    "ts_code": "601318.SH",
+    "stock_name": "中国平安",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 59.6,
+    "fwd_6m": -15.9
+  },
+  {
+    "ts_code": "601699.SH",
+    "stock_name": "潞安环能",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 81.8,
+    "fwd_6m": 38.4
+  },
+  {
+    "ts_code": "000937.SZ",
+    "stock_name": "冀中能源",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 81.8,
+    "fwd_6m": 14.6
+  },
+  {
+    "ts_code": "600348.SH",
+    "stock_name": "华阳股份",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 81.2,
+    "fwd_6m": 25.7
+  },
+  {
+    "ts_code": "601963.SH",
+    "stock_name": "重庆银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 76.5,
+    "fwd_6m": -13.1
+  },
+  {
+    "ts_code": "600928.SH",
+    "stock_name": "西安银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 75.8,
+    "fwd_6m": -6.3
+  },
+  {
+    "ts_code": "601577.SH",
+    "stock_name": "长沙银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 75.1,
+    "fwd_6m": -14.6
+  },
+  {
+    "ts_code": "601601.SH",
+    "stock_name": "中国太保",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 75.0,
+    "fwd_6m": -12.5
+  },
+  {
+    "ts_code": "601665.SH",
+    "stock_name": "齐鲁银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 75.0,
+    "fwd_6m": -2.0
+  },
+  {
+    "ts_code": "000001.SZ",
+    "stock_name": "平安银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 74.5,
+    "fwd_6m": -18.8
+  },
+  {
+    "ts_code": "601211.SH",
+    "stock_name": "国泰海通",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 73.8,
+    "fwd_6m": 4.9
+  },
+  {
+    "ts_code": "601658.SH",
+    "stock_name": "邮储银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 73.1,
+    "fwd_6m": -12.3
+  },
+  {
+    "ts_code": "601668.SH",
+    "stock_name": "中国建筑",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 72.0,
+    "fwd_6m": -17.6
+  },
+  {
+    "ts_code": "601838.SH",
+    "stock_name": "成都银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 71.1,
+    "fwd_6m": -9.4
+  },
+  {
+    "ts_code": "600596.SH",
+    "stock_name": "新安股份",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 69.9,
+    "fwd_6m": -19.3
+  },
+  {
+    "ts_code": "000830.SZ",
+    "stock_name": "鲁西化工",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 69.2,
+    "fwd_6m": -6.3
+  },
+  {
+    "ts_code": "600548.SH",
+    "stock_name": "深高速",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 68.4,
+    "fwd_6m": 1.6
+  },
+  {
+    "ts_code": "600282.SH",
+    "stock_name": "南钢股份",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 68.0,
+    "fwd_6m": 10.1
+  },
+  {
+    "ts_code": "600901.SH",
+    "stock_name": "江苏金租",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 64.4,
+    "fwd_6m": 18.4
+  },
+  {
+    "ts_code": "600036.SH",
+    "stock_name": "招商银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 63.8,
+    "fwd_6m": -16.7
+  },
+  {
+    "ts_code": "601866.SH",
+    "stock_name": "中远海发",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 62.4,
+    "fwd_6m": -4.5
+  },
+  {
+    "ts_code": "601001.SH",
+    "stock_name": "晋控煤业",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 59.7,
+    "fwd_6m": 35.7
+  },
+  {
+    "ts_code": "600639.SH",
+    "stock_name": "浦东金桥",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 56.7,
+    "fwd_6m": -19.7
+  },
+  {
+    "ts_code": "600373.SH",
+    "stock_name": "中文传媒",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 56.6,
+    "fwd_6m": -8.8
+  },
+  {
+    "ts_code": "600350.SH",
+    "stock_name": "山东高速",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 56.2,
+    "fwd_6m": 10.8
+  },
+  {
+    "ts_code": "600008.SH",
+    "stock_name": "首创环保",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.4,
+    "fwd_6m": -7.6
+  },
+  {
+    "ts_code": "600741.SH",
+    "stock_name": "华域汽车",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 52.5,
+    "fwd_6m": -13.9
+  },
+  {
+    "ts_code": "600028.SH",
+    "stock_name": "中国石化",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 49.9,
+    "fwd_6m": -13.2
+  },
+  {
+    "ts_code": "600328.SH",
+    "stock_name": "中盐化工",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 49.0,
+    "fwd_6m": -15.0
+  },
+  {
+    "ts_code": "601000.SH",
+    "stock_name": "唐山港",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 47.1,
+    "fwd_6m": 3.1
+  },
+  {
+    "ts_code": "600801.SH",
+    "stock_name": "华新建材",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 41.8,
+    "fwd_6m": 0.6
+  },
+  {
+    "ts_code": "601717.SH",
+    "stock_name": "中创智领",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 45.9,
+    "fwd_6m": -0.7
+  },
+  {
+    "ts_code": "601336.SH",
+    "stock_name": "新华保险",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 54.6,
+    "fwd_6m": -20.2
+  },
+  {
+    "ts_code": "601186.SH",
+    "stock_name": "中国铁建",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 61.3,
+    "fwd_6m": -23.7
+  },
+  {
+    "ts_code": "600926.SH",
+    "stock_name": "杭州银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 56.8,
+    "fwd_6m": -17.4
+  },
+  {
+    "ts_code": "000708.SZ",
+    "stock_name": "中信特钢",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 26.0,
+    "fwd_6m": -14.6
+  },
+  {
+    "ts_code": "002466.SZ",
+    "stock_name": "天齐锂业",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 45.3,
+    "fwd_6m": -23.5
+  },
+  {
+    "ts_code": "600325.SH",
+    "stock_name": "华发股份",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 40.8,
+    "fwd_6m": -28.4
+  },
+  {
+    "ts_code": "600999.SH",
+    "stock_name": "招商证券",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 29.2,
+    "fwd_6m": -0.3
+  },
+  {
+    "ts_code": "600352.SH",
+    "stock_name": "浙江龙盛",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 35.8,
+    "fwd_6m": -12.1
+  },
+  {
+    "ts_code": "601128.SH",
+    "stock_name": "常熟银行",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 59.0,
+    "fwd_6m": -7.5
+  },
+  {
+    "ts_code": "600582.SH",
+    "stock_name": "天地科技",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 31.4,
+    "fwd_6m": -7.5
+  },
+  {
+    "ts_code": "600039.SH",
+    "stock_name": "四川路桥",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 57.8,
+    "fwd_6m": -23.8
+  },
+  {
+    "ts_code": "002244.SZ",
+    "stock_name": "滨江集团",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 42.1,
+    "fwd_6m": -18.5
+  },
+  {
+    "ts_code": "600546.SH",
+    "stock_name": "山煤国际",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 70.0,
+    "fwd_6m": 22.3
+  },
+  {
+    "ts_code": "600483.SH",
+    "stock_name": "福能股份",
+    "cutoff_date": "2023-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 31.3,
+    "fwd_6m": -27.7
+  },
+  {
+    "ts_code": "600153.SH",
+    "stock_name": "建发股份",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 99.4,
+    "fwd_6m": -7.3
+  },
+  {
+    "ts_code": "601166.SH",
+    "stock_name": "兴业银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 95.5,
+    "fwd_6m": 8.7
+  },
+  {
+    "ts_code": "600755.SH",
+    "stock_name": "厦门国贸",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 93.3,
+    "fwd_6m": 2.9
+  },
+  {
+    "ts_code": "601009.SH",
+    "stock_name": "南京银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 92.9,
+    "fwd_6m": 40.8
+  },
+  {
+    "ts_code": "601919.SH",
+    "stock_name": "中远海控",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 91.2,
+    "fwd_6m": 61.7
+  },
+  {
+    "ts_code": "601169.SH",
+    "stock_name": "北京银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 92.3,
+    "fwd_6m": 28.9
+  },
+  {
+    "ts_code": "600015.SH",
+    "stock_name": "华夏银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 92.1,
+    "fwd_6m": 13.9
+  },
+  {
+    "ts_code": "601229.SH",
+    "stock_name": "上海银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 91.3,
+    "fwd_6m": 21.6
+  },
+  {
+    "ts_code": "601077.SH",
+    "stock_name": "渝农商行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 91.0,
+    "fwd_6m": 23.0
+  },
+  {
+    "ts_code": "601818.SH",
+    "stock_name": "光大银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 90.3,
+    "fwd_6m": 9.3
+  },
+  {
+    "ts_code": "600064.SH",
+    "stock_name": "南京高科",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 90.2,
+    "fwd_6m": 0.5
+  },
+  {
+    "ts_code": "601328.SH",
+    "stock_name": "交通银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 90.0,
+    "fwd_6m": 30.1
+  },
+  {
+    "ts_code": "601916.SH",
+    "stock_name": "浙商银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 89.8,
+    "fwd_6m": 9.5
+  },
+  {
+    "ts_code": "601398.SH",
+    "stock_name": "工商银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 88.5,
+    "fwd_6m": 19.2
+  },
+  {
+    "ts_code": "601998.SH",
+    "stock_name": "中信银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 88.1,
+    "fwd_6m": 26.7
+  },
+  {
+    "ts_code": "000002.SZ",
+    "stock_name": "万科Ａ",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 88.0,
+    "fwd_6m": -33.7
+  },
+  {
+    "ts_code": "601825.SH",
+    "stock_name": "沪农商行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.3,
+    "fwd_6m": 17.1
+  },
+  {
+    "ts_code": "601838.SH",
+    "stock_name": "成都银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.1,
+    "fwd_6m": 34.9
+  },
+  {
+    "ts_code": "601288.SH",
+    "stock_name": "农业银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.0,
+    "fwd_6m": 19.8
+  },
+  {
+    "ts_code": "601997.SH",
+    "stock_name": "贵阳银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 85.6,
+    "fwd_6m": 2.5
+  },
+  {
+    "ts_code": "600919.SH",
+    "stock_name": "江苏银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 85.3,
+    "fwd_6m": 11.1
+  },
+  {
+    "ts_code": "600016.SH",
+    "stock_name": "民生银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.8,
+    "fwd_6m": 1.3
+  },
+  {
+    "ts_code": "601939.SH",
+    "stock_name": "建设银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.5,
+    "fwd_6m": 13.7
+  },
+  {
+    "ts_code": "601658.SH",
+    "stock_name": "邮储银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.5,
+    "fwd_6m": 16.6
+  },
+  {
+    "ts_code": "601963.SH",
+    "stock_name": "重庆银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.3,
+    "fwd_6m": 11.4
+  },
+  {
+    "ts_code": "601988.SH",
+    "stock_name": "中国银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.2,
+    "fwd_6m": 15.8
+  },
+  {
+    "ts_code": "600820.SH",
+    "stock_name": "隧道股份",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.1,
+    "fwd_6m": 13.4
+  },
+  {
+    "ts_code": "601187.SH",
+    "stock_name": "厦门银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 82.5,
+    "fwd_6m": 5.1
+  },
+  {
+    "ts_code": "601668.SH",
+    "stock_name": "中国建筑",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 81.7,
+    "fwd_6m": 10.4
+  },
+  {
+    "ts_code": "601577.SH",
+    "stock_name": "长沙银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 80.9,
+    "fwd_6m": 19.9
+  },
+  {
+    "ts_code": "600177.SH",
+    "stock_name": "雅戈尔",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 80.1,
+    "fwd_6m": 8.7
+  },
+  {
+    "ts_code": "002948.SZ",
+    "stock_name": "青岛银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 80.0,
+    "fwd_6m": 10.5
+  },
+  {
+    "ts_code": "600036.SH",
+    "stock_name": "招商银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 79.7,
+    "fwd_6m": 22.9
+  },
+  {
+    "ts_code": "600655.SH",
+    "stock_name": "豫园股份",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 79.1,
+    "fwd_6m": -17.1
+  },
+  {
+    "ts_code": "002966.SZ",
+    "stock_name": "苏州银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 77.1,
+    "fwd_6m": 16.1
+  },
+  {
+    "ts_code": "601318.SH",
+    "stock_name": "中国平安",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 70.9,
+    "fwd_6m": 2.6
+  },
+  {
+    "ts_code": "601006.SH",
+    "stock_name": "大秦铁路",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 68.2,
+    "fwd_6m": -0.7
+  },
+  {
+    "ts_code": "601857.SH",
+    "stock_name": "中国石油",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 68.2,
+    "fwd_6m": 46.2
+  },
+  {
+    "ts_code": "600741.SH",
+    "stock_name": "华域汽车",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 65.6,
+    "fwd_6m": 0.6
+  },
+  {
+    "ts_code": "600971.SH",
+    "stock_name": "恒源煤电",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 82.3,
+    "fwd_6m": 7.1
+  },
+  {
+    "ts_code": "000937.SZ",
+    "stock_name": "冀中能源",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 80.0,
+    "fwd_6m": -6.2
+  },
+  {
+    "ts_code": "600928.SH",
+    "stock_name": "西安银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 79.7,
+    "fwd_6m": -1.8
+  },
+  {
+    "ts_code": "600000.SH",
+    "stock_name": "浦发银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 78.9,
+    "fwd_6m": 24.3
+  },
+  {
+    "ts_code": "601665.SH",
+    "stock_name": "齐鲁银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 75.2,
+    "fwd_6m": 25.6
+  },
+  {
+    "ts_code": "601666.SH",
+    "stock_name": "平煤股份",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 74.5,
+    "fwd_6m": -3.1
+  },
+  {
+    "ts_code": "600123.SH",
+    "stock_name": "兰花科创",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 73.9,
+    "fwd_6m": -18.9
+  },
+  {
+    "ts_code": "600057.SH",
+    "stock_name": "厦门象屿",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 73.0,
+    "fwd_6m": 1.3
+  },
+  {
+    "ts_code": "600585.SH",
+    "stock_name": "海螺水泥",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 72.5,
+    "fwd_6m": 4.6
+  },
+  {
+    "ts_code": "600048.SH",
+    "stock_name": "保利发展",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 72.5,
+    "fwd_6m": -11.5
+  },
+  {
+    "ts_code": "600639.SH",
+    "stock_name": "浦东金桥",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 70.3,
+    "fwd_6m": 1.0
+  },
+  {
+    "ts_code": "000932.SZ",
+    "stock_name": "华菱钢铁",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 70.2,
+    "fwd_6m": -14.0
+  },
+  {
+    "ts_code": "001227.SZ",
+    "stock_name": "兰州银行",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 69.9,
+    "fwd_6m": -8.5
+  },
+  {
+    "ts_code": "600985.SH",
+    "stock_name": "淮北矿业",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 69.7,
+    "fwd_6m": 0.7
+  },
+  {
+    "ts_code": "600089.SH",
+    "stock_name": "特变电工",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 67.9,
+    "fwd_6m": 0.5
+  },
+  {
+    "ts_code": "600997.SH",
+    "stock_name": "开滦股份",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 67.2,
+    "fwd_6m": -10.1
+  },
+  {
+    "ts_code": "600028.SH",
+    "stock_name": "中国石化",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 61.9,
+    "fwd_6m": 13.3
+  },
+  {
+    "ts_code": "601512.SH",
+    "stock_name": "中新集团",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 60.5,
+    "fwd_6m": -1.2
+  },
+  {
+    "ts_code": "600373.SH",
+    "stock_name": "中文传媒",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 59.2,
+    "fwd_6m": 12.6
+  },
+  {
+    "ts_code": "600395.SH",
+    "stock_name": "盘江股份",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 58.9,
+    "fwd_6m": -2.6
+  },
+  {
+    "ts_code": "600508.SH",
+    "stock_name": "上海能源",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 58.5,
+    "fwd_6m": 2.1
+  },
+  {
+    "ts_code": "601898.SH",
+    "stock_name": "中煤能源",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 55.7,
+    "fwd_6m": 28.8
+  },
+  {
+    "ts_code": "601601.SH",
+    "stock_name": "中国太保",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 53.7,
+    "fwd_6m": 17.2
+  },
+  {
+    "ts_code": "601298.SH",
+    "stock_name": "青岛港",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 52.6,
+    "fwd_6m": 54.7
+  },
+  {
+    "ts_code": "601000.SH",
+    "stock_name": "唐山港",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 52.0,
+    "fwd_6m": 34.3
+  },
+  {
+    "ts_code": "601717.SH",
+    "stock_name": "中创智领",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 51.9,
+    "fwd_6m": 17.0
+  },
+  {
+    "ts_code": "600141.SH",
+    "stock_name": "兴发集团",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 51.5,
+    "fwd_6m": 4.5
+  },
+  {
+    "ts_code": "600350.SH",
+    "stock_name": "山东高速",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 50.3,
+    "fwd_6m": 27.5
+  },
+  {
+    "ts_code": "601216.SH",
+    "stock_name": "君正集团",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 48.9,
+    "fwd_6m": -1.3
+  },
+  {
+    "ts_code": "601598.SH",
+    "stock_name": "中国外运",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 46.9,
+    "fwd_6m": 7.4
+  },
+  {
+    "ts_code": "600801.SH",
+    "stock_name": "华新建材",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 45.2,
+    "fwd_6m": 10.6
+  },
+  {
+    "ts_code": "001965.SZ",
+    "stock_name": "招商公路",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 41.4,
+    "fwd_6m": 21.4
+  },
+  {
+    "ts_code": "600098.SH",
+    "stock_name": "广州发展",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 46.4,
+    "fwd_6m": 19.2
+  },
+  {
+    "ts_code": "600499.SH",
+    "stock_name": "科达制造",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 53.3,
+    "fwd_6m": -20.1
+  },
+  {
+    "ts_code": "600348.SH",
+    "stock_name": "华阳股份",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 63.7,
+    "fwd_6m": 2.0
+  },
+  {
+    "ts_code": "601669.SH",
+    "stock_name": "中国电建",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 55.3,
+    "fwd_6m": 14.3
+  },
+  {
+    "ts_code": "000429.SZ",
+    "stock_name": "粤高速Ａ",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 29.5,
+    "fwd_6m": 23.0
+  },
+  {
+    "ts_code": "600104.SH",
+    "stock_name": "上汽集团",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 46.0,
+    "fwd_6m": 2.4
+  },
+  {
+    "ts_code": "600481.SH",
+    "stock_name": "双良节能",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 41.6,
+    "fwd_6m": -44.8
+  },
+  {
+    "ts_code": "600428.SH",
+    "stock_name": "中远海特",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 31.5,
+    "fwd_6m": 14.2
+  },
+  {
+    "ts_code": "002497.SZ",
+    "stock_name": "雅化集团",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 36.8,
+    "fwd_6m": -31.9
+  },
+  {
+    "ts_code": "600325.SH",
+    "stock_name": "华发股份",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 57.5,
+    "fwd_6m": -9.8
+  },
+  {
+    "ts_code": "600012.SH",
+    "stock_name": "皖通高速",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 33.0,
+    "fwd_6m": 26.8
+  },
+  {
+    "ts_code": "000552.SZ",
+    "stock_name": "甘肃能化",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 57.2,
+    "fwd_6m": 13.8
+  },
+  {
+    "ts_code": "600582.SH",
+    "stock_name": "天地科技",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 44.0,
+    "fwd_6m": 26.7
+  },
+  {
+    "ts_code": "600438.SH",
+    "stock_name": "通威股份",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 70.0,
+    "fwd_6m": -23.7
+  },
+  {
+    "ts_code": "600717.SH",
+    "stock_name": "天津港",
+    "cutoff_date": "2023-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 32.6,
+    "fwd_6m": 3.9
+  },
+  {
+    "ts_code": "600153.SH",
+    "stock_name": "建发股份",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 100.0,
+    "fwd_6m": 16.3
+  },
+  {
+    "ts_code": "601077.SH",
+    "stock_name": "渝农商行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 100.0,
+    "fwd_6m": 17.7
+  },
+  {
+    "ts_code": "601668.SH",
+    "stock_name": "中国建筑",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 99.3,
+    "fwd_6m": 13.7
+  },
+  {
+    "ts_code": "000932.SZ",
+    "stock_name": "华菱钢铁",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 96.0,
+    "fwd_6m": -3.8
+  },
+  {
+    "ts_code": "601288.SH",
+    "stock_name": "农业银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 95.9,
+    "fwd_6m": 21.8
+  },
+  {
+    "ts_code": "600919.SH",
+    "stock_name": "江苏银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 95.7,
+    "fwd_6m": 30.7
+  },
+  {
+    "ts_code": "000001.SZ",
+    "stock_name": "平安银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 93.9,
+    "fwd_6m": 16.6
+  },
+  {
+    "ts_code": "000002.SZ",
+    "stock_name": "万科Ａ",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "金龟",
+    "turtle_score": 93.4,
+    "fwd_6m": 8.9
+  },
+  {
+    "ts_code": "601166.SH",
+    "stock_name": "兴业银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 91.6,
+    "fwd_6m": 9.8
+  },
+  {
+    "ts_code": "601229.SH",
+    "stock_name": "上海银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 88.9,
+    "fwd_6m": 24.8
+  },
+  {
+    "ts_code": "600015.SH",
+    "stock_name": "华夏银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.7,
+    "fwd_6m": 24.2
+  },
+  {
+    "ts_code": "601818.SH",
+    "stock_name": "光大银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.6,
+    "fwd_6m": 20.5
+  },
+  {
+    "ts_code": "601916.SH",
+    "stock_name": "浙商银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.3,
+    "fwd_6m": 6.9
+  },
+  {
+    "ts_code": "600064.SH",
+    "stock_name": "南京高科",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 86.2,
+    "fwd_6m": 27.5
+  },
+  {
+    "ts_code": "600016.SH",
+    "stock_name": "民生银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.3,
+    "fwd_6m": 8.2
+  },
+  {
+    "ts_code": "601997.SH",
+    "stock_name": "贵阳银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 83.4,
+    "fwd_6m": 15.2
+  },
+  {
+    "ts_code": "601187.SH",
+    "stock_name": "厦门银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 82.8,
+    "fwd_6m": 7.7
+  },
+  {
+    "ts_code": "601825.SH",
+    "stock_name": "沪农商行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 82.2,
+    "fwd_6m": 26.5
+  },
+  {
+    "ts_code": "601169.SH",
+    "stock_name": "北京银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 82.1,
+    "fwd_6m": 5.3
+  },
+  {
+    "ts_code": "600928.SH",
+    "stock_name": "西安银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 80.3,
+    "fwd_6m": 12.8
+  },
+  {
+    "ts_code": "601398.SH",
+    "stock_name": "工商银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 79.8,
+    "fwd_6m": 21.4
+  },
+  {
+    "ts_code": "601963.SH",
+    "stock_name": "重庆银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 79.8,
+    "fwd_6m": 20.8
+  },
+  {
+    "ts_code": "600123.SH",
+    "stock_name": "兰花科创",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 79.2,
+    "fwd_6m": -3.4
+  },
+  {
+    "ts_code": "000719.SZ",
+    "stock_name": "中原传媒",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 78.8,
+    "fwd_6m": 14.2
+  },
+  {
+    "ts_code": "601939.SH",
+    "stock_name": "建设银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 78.5,
+    "fwd_6m": 18.5
+  },
+  {
+    "ts_code": "601988.SH",
+    "stock_name": "中国银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 77.4,
+    "fwd_6m": 18.6
+  },
+  {
+    "ts_code": "601658.SH",
+    "stock_name": "邮储银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 76.9,
+    "fwd_6m": 10.3
+  },
+  {
+    "ts_code": "001227.SZ",
+    "stock_name": "兰州银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 76.1,
+    "fwd_6m": 6.3
+  },
+  {
+    "ts_code": "002966.SZ",
+    "stock_name": "苏州银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 75.3,
+    "fwd_6m": 8.0
+  },
+  {
+    "ts_code": "600820.SH",
+    "stock_name": "隧道股份",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 75.1,
+    "fwd_6m": 10.1
+  },
+  {
+    "ts_code": "601009.SH",
+    "stock_name": "南京银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 72.9,
+    "fwd_6m": 2.2
+  },
+  {
+    "ts_code": "000581.SZ",
+    "stock_name": "威孚高科",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 72.3,
+    "fwd_6m": 16.6
+  },
+  {
+    "ts_code": "600755.SH",
+    "stock_name": "厦门国贸",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 71.7,
+    "fwd_6m": -6.7
+  },
+  {
+    "ts_code": "600177.SH",
+    "stock_name": "雅戈尔",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 70.9,
+    "fwd_6m": 24.6
+  },
+  {
+    "ts_code": "601838.SH",
+    "stock_name": "成都银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 69.8,
+    "fwd_6m": 10.9
+  },
+  {
+    "ts_code": "600048.SH",
+    "stock_name": "保利发展",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 69.6,
+    "fwd_6m": 4.2
+  },
+  {
+    "ts_code": "600036.SH",
+    "stock_name": "招商银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 68.8,
+    "fwd_6m": 15.1
+  },
+  {
+    "ts_code": "600741.SH",
+    "stock_name": "华域汽车",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "银龟",
+    "turtle_score": 66.7,
+    "fwd_6m": 8.7
+  },
+  {
+    "ts_code": "601328.SH",
+    "stock_name": "交通银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 77.2,
+    "fwd_6m": 3.2
+  },
+  {
+    "ts_code": "002948.SZ",
+    "stock_name": "青岛银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 75.7,
+    "fwd_6m": 14.5
+  },
+  {
+    "ts_code": "000937.SZ",
+    "stock_name": "冀中能源",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 74.7,
+    "fwd_6m": -6.1
+  },
+  {
+    "ts_code": "601577.SH",
+    "stock_name": "长沙银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 74.4,
+    "fwd_6m": 7.7
+  },
+  {
+    "ts_code": "601998.SH",
+    "stock_name": "中信银行",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 74.1,
+    "fwd_6m": 3.6
+  },
+  {
+    "ts_code": "600971.SH",
+    "stock_name": "恒源煤电",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 67.8,
+    "fwd_6m": -20.9
+  },
+  {
+    "ts_code": "600057.SH",
+    "stock_name": "厦门象屿",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 67.4,
+    "fwd_6m": -4.9
+  },
+  {
+    "ts_code": "600835.SH",
+    "stock_name": "上海机电",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 65.4,
+    "fwd_6m": 60.8
+  },
+  {
+    "ts_code": "600998.SH",
+    "stock_name": "九州通",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 64.1,
+    "fwd_6m": 7.8
+  },
+  {
+    "ts_code": "002091.SZ",
+    "stock_name": "江苏国泰",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 63.6,
+    "fwd_6m": 10.6
+  },
+  {
+    "ts_code": "000690.SZ",
+    "stock_name": "宝新能源",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 61.8,
+    "fwd_6m": -9.0
+  },
+  {
+    "ts_code": "600985.SH",
+    "stock_name": "淮北矿业",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 60.7,
+    "fwd_6m": -17.2
+  },
+  {
+    "ts_code": "600089.SH",
+    "stock_name": "特变电工",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 60.0,
+    "fwd_6m": -7.7
+  },
+  {
+    "ts_code": "601512.SH",
+    "stock_name": "中新集团",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 59.6,
+    "fwd_6m": 2.4
+  },
+  {
+    "ts_code": "601006.SH",
+    "stock_name": "大秦铁路",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 58.1,
+    "fwd_6m": -5.0
+  },
+  {
+    "ts_code": "603599.SH",
+    "stock_name": "广信股份",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.6,
+    "fwd_6m": -0.7
+  },
+  {
+    "ts_code": "002048.SZ",
+    "stock_name": "宁波华翔",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 54.3,
+    "fwd_6m": 0.8
+  },
+  {
+    "ts_code": "002060.SZ",
+    "stock_name": "广东建工",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 52.6,
+    "fwd_6m": 10.2
+  },
+  {
+    "ts_code": "600018.SH",
+    "stock_name": "上港集团",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 51.2,
+    "fwd_6m": 4.7
+  },
+  {
+    "ts_code": "600325.SH",
+    "stock_name": "华发股份",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 50.7,
+    "fwd_6m": -8.6
+  },
+  {
+    "ts_code": "002459.SZ",
+    "stock_name": "晶澳科技",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 49.5,
+    "fwd_6m": 25.7
+  },
+  {
+    "ts_code": "600373.SH",
+    "stock_name": "中文传媒",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 45.3,
+    "fwd_6m": -13.7
+  },
+  {
+    "ts_code": "601877.SH",
+    "stock_name": "正泰电器",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "铜龟",
+    "turtle_score": 45.2,
+    "fwd_6m": 22.6
+  },
+  {
+    "ts_code": "001965.SZ",
+    "stock_name": "招商公路",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 25.5,
+    "fwd_6m": 17.3
+  },
+  {
+    "ts_code": "600256.SH",
+    "stock_name": "广汇能源",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 40.7,
+    "fwd_6m": -1.0
+  },
+  {
+    "ts_code": "000778.SZ",
+    "stock_name": "新兴铸管",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 51.1,
+    "fwd_6m": 13.5
+  },
+  {
+    "ts_code": "002541.SZ",
+    "stock_name": "鸿路钢构",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 28.8,
+    "fwd_6m": 6.5
+  },
+  {
+    "ts_code": "600390.SH",
+    "stock_name": "五矿资本",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 47.6,
+    "fwd_6m": 66.4
+  },
+  {
+    "ts_code": "600704.SH",
+    "stock_name": "物产中大",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 64.4,
+    "fwd_6m": 19.4
+  },
+  {
+    "ts_code": "600585.SH",
+    "stock_name": "海螺水泥",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 43.6,
+    "fwd_6m": 1.9
+  },
+  {
+    "ts_code": "601117.SH",
+    "stock_name": "中国化学",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 40.0,
+    "fwd_6m": 1.6
+  },
+  {
+    "ts_code": "688516.SH",
+    "stock_name": "奥特维",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 27.3,
+    "fwd_6m": 6.1
+  },
+  {
+    "ts_code": "000552.SZ",
+    "stock_name": "甘肃能化",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 42.1,
+    "fwd_6m": -19.0
+  },
+  {
+    "ts_code": "601101.SH",
+    "stock_name": "昊华能源",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 30.2,
+    "fwd_6m": -9.2
+  },
+  {
+    "ts_code": "000728.SZ",
+    "stock_name": "国元证券",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 26.6,
+    "fwd_6m": 44.2
+  },
+  {
+    "ts_code": "601928.SH",
+    "stock_name": "凤凰传媒",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 36.2,
+    "fwd_6m": 2.3
+  },
+  {
+    "ts_code": "601216.SH",
+    "stock_name": "君正集团",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 57.8,
+    "fwd_6m": 49.1
+  },
+  {
+    "ts_code": "600008.SH",
+    "stock_name": "首创环保",
+    "cutoff_date": "2024-06-30",
+    "turtle_rating": "不达标",
+    "turtle_score": 35.0,
+    "fwd_6m": 25.0
+  },
+  {
+    "ts_code": "600016.SH",
+    "stock_name": "民生银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 100.0,
+    "fwd_6m": -0.7
+  },
+  {
+    "ts_code": "000001.SZ",
+    "stock_name": "平安银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 98.6,
+    "fwd_6m": 1.3
+  },
+  {
+    "ts_code": "601229.SH",
+    "stock_name": "上海银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 97.5,
+    "fwd_6m": 2.3
+  },
+  {
+    "ts_code": "601187.SH",
+    "stock_name": "厦门银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 96.9,
+    "fwd_6m": -1.1
+  },
+  {
+    "ts_code": "601998.SH",
+    "stock_name": "中信银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 92.5,
+    "fwd_6m": 1.0
+  },
+  {
+    "ts_code": "601009.SH",
+    "stock_name": "南京银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 90.7,
+    "fwd_6m": -5.7
+  },
+  {
+    "ts_code": "601825.SH",
+    "stock_name": "沪农商行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 87.1,
+    "fwd_6m": -4.8
+  },
+  {
+    "ts_code": "002966.SZ",
+    "stock_name": "苏州银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "金龟",
+    "turtle_score": 87.1,
+    "fwd_6m": -4.4
+  },
+  {
+    "ts_code": "601916.SH",
+    "stock_name": "浙商银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 84.2,
+    "fwd_6m": -1.7
+  },
+  {
+    "ts_code": "601166.SH",
+    "stock_name": "兴业银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 81.9,
+    "fwd_6m": 10.8
+  },
+  {
+    "ts_code": "601169.SH",
+    "stock_name": "北京银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 81.4,
+    "fwd_6m": -5.2
+  },
+  {
+    "ts_code": "600971.SH",
+    "stock_name": "恒源煤电",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 80.2,
+    "fwd_6m": -10.9
+  },
+  {
+    "ts_code": "600985.SH",
+    "stock_name": "淮北矿业",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 78.1,
+    "fwd_6m": -3.2
+  },
+  {
+    "ts_code": "600926.SH",
+    "stock_name": "杭州银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 76.4,
+    "fwd_6m": 0.2
+  },
+  {
+    "ts_code": "600348.SH",
+    "stock_name": "华阳股份",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 75.9,
+    "fwd_6m": -7.5
+  },
+  {
+    "ts_code": "002091.SZ",
+    "stock_name": "江苏国泰",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 63.6,
+    "fwd_6m": 7.9
+  },
+  {
+    "ts_code": "600036.SH",
+    "stock_name": "招商银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 62.8,
+    "fwd_6m": 10.8
+  },
+  {
+    "ts_code": "600219.SH",
+    "stock_name": "南山铝业",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "银龟",
+    "turtle_score": 56.4,
+    "fwd_6m": -1.0
+  },
+  {
+    "ts_code": "601997.SH",
+    "stock_name": "贵阳银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 78.9,
+    "fwd_6m": -3.5
+  },
+  {
+    "ts_code": "600015.SH",
+    "stock_name": "华夏银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 78.6,
+    "fwd_6m": -10.4
+  },
+  {
+    "ts_code": "601077.SH",
+    "stock_name": "渝农商行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 76.5,
+    "fwd_6m": -8.1
+  },
+  {
+    "ts_code": "601818.SH",
+    "stock_name": "光大银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 76.5,
+    "fwd_6m": -2.3
+  },
+  {
+    "ts_code": "601666.SH",
+    "stock_name": "平煤股份",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 76.3,
+    "fwd_6m": -12.8
+  },
+  {
+    "ts_code": "601668.SH",
+    "stock_name": "中国建筑",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 75.1,
+    "fwd_6m": -10.8
+  },
+  {
+    "ts_code": "601328.SH",
+    "stock_name": "交通银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 74.8,
+    "fwd_6m": -8.5
+  },
+  {
+    "ts_code": "601577.SH",
+    "stock_name": "长沙银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 73.7,
+    "fwd_6m": -2.0
+  },
+  {
+    "ts_code": "601717.SH",
+    "stock_name": "中创智领",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 73.2,
+    "fwd_6m": 16.3
+  },
+  {
+    "ts_code": "002807.SZ",
+    "stock_name": "江阴银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 72.6,
+    "fwd_6m": -4.8
+  },
+  {
+    "ts_code": "600153.SH",
+    "stock_name": "建发股份",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 72.3,
+    "fwd_6m": -4.7
+  },
+  {
+    "ts_code": "601963.SH",
+    "stock_name": "重庆银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 71.4,
+    "fwd_6m": -7.4
+  },
+  {
+    "ts_code": "600248.SH",
+    "stock_name": "陕建股份",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 70.6,
+    "fwd_6m": -5.8
+  },
+  {
+    "ts_code": "002948.SZ",
+    "stock_name": "青岛银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 70.5,
+    "fwd_6m": 6.2
+  },
+  {
+    "ts_code": "600919.SH",
+    "stock_name": "江苏银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 70.3,
+    "fwd_6m": -6.1
+  },
+  {
+    "ts_code": "601658.SH",
+    "stock_name": "邮储银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 70.2,
+    "fwd_6m": -7.7
+  },
+  {
+    "ts_code": "000937.SZ",
+    "stock_name": "冀中能源",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 69.9,
+    "fwd_6m": -8.5
+  },
+  {
+    "ts_code": "002839.SZ",
+    "stock_name": "张家港行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 69.7,
+    "fwd_6m": -5.0
+  },
+  {
+    "ts_code": "601939.SH",
+    "stock_name": "建设银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 68.9,
+    "fwd_6m": -3.9
+  },
+  {
+    "ts_code": "001227.SZ",
+    "stock_name": "兰州银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 68.9,
+    "fwd_6m": -6.1
+  },
+  {
+    "ts_code": "601398.SH",
+    "stock_name": "工商银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 67.9,
+    "fwd_6m": -2.9
+  },
+  {
+    "ts_code": "000932.SZ",
+    "stock_name": "华菱钢铁",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 67.1,
+    "fwd_6m": 21.8
+  },
+  {
+    "ts_code": "601838.SH",
+    "stock_name": "成都银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 66.5,
+    "fwd_6m": -3.3
+  },
+  {
+    "ts_code": "601988.SH",
+    "stock_name": "中国银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 66.4,
+    "fwd_6m": -3.3
+  },
+  {
+    "ts_code": "601288.SH",
+    "stock_name": "农业银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 65.9,
+    "fwd_6m": -5.4
+  },
+  {
+    "ts_code": "600820.SH",
+    "stock_name": "隧道股份",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 63.5,
+    "fwd_6m": -13.6
+  },
+  {
+    "ts_code": "600704.SH",
+    "stock_name": "物产中大",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 60.6,
+    "fwd_6m": 1.6
+  },
+  {
+    "ts_code": "601898.SH",
+    "stock_name": "中煤能源",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 60.3,
+    "fwd_6m": -17.3
+  },
+  {
+    "ts_code": "000581.SZ",
+    "stock_name": "威孚高科",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 59.1,
+    "fwd_6m": 38.2
+  },
+  {
+    "ts_code": "601919.SH",
+    "stock_name": "中远海控",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 58.6,
+    "fwd_6m": -9.0
+  },
+  {
+    "ts_code": "600741.SH",
+    "stock_name": "华域汽车",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 55.7,
+    "fwd_6m": -1.6
+  },
+  {
+    "ts_code": "601598.SH",
+    "stock_name": "中国外运",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 52.8,
+    "fwd_6m": -5.6
+  },
+  {
+    "ts_code": "601318.SH",
+    "stock_name": "中国平安",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 52.8,
+    "fwd_6m": -2.8
+  },
+  {
+    "ts_code": "601163.SH",
+    "stock_name": "三角轮胎",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 51.1,
+    "fwd_6m": 1.7
+  },
+  {
+    "ts_code": "002048.SZ",
+    "stock_name": "宁波华翔",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 50.0,
+    "fwd_6m": 36.4
+  },
+  {
+    "ts_code": "601857.SH",
+    "stock_name": "中国石油",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 48.6,
+    "fwd_6m": -14.2
+  },
+  {
+    "ts_code": "600582.SH",
+    "stock_name": "天地科技",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 46.6,
+    "fwd_6m": 6.1
+  },
+  {
+    "ts_code": "600273.SH",
+    "stock_name": "嘉化能源",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 46.2,
+    "fwd_6m": -1.1
+  },
+  {
+    "ts_code": "601101.SH",
+    "stock_name": "昊华能源",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 46.1,
+    "fwd_6m": -11.7
+  },
+  {
+    "ts_code": "600023.SH",
+    "stock_name": "浙能电力",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 44.7,
+    "fwd_6m": -4.6
+  },
+  {
+    "ts_code": "600033.SH",
+    "stock_name": "福建高速",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 43.9,
+    "fwd_6m": -6.2
+  },
+  {
+    "ts_code": "600057.SH",
+    "stock_name": "厦门象屿",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 41.5,
+    "fwd_6m": -9.2
+  },
+  {
+    "ts_code": "002060.SZ",
+    "stock_name": "广东建工",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "铜龟",
+    "turtle_score": 41.2,
+    "fwd_6m": -4.4
+  },
+  {
+    "ts_code": "601827.SH",
+    "stock_name": "三峰环境",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 20.8,
+    "fwd_6m": -3.8
+  },
+  {
+    "ts_code": "000591.SZ",
+    "stock_name": "太阳能",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 34.7,
+    "fwd_6m": -5.5
+  },
+  {
+    "ts_code": "603355.SH",
+    "stock_name": "莱克电气",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 44.8,
+    "fwd_6m": 18.1
+  },
+  {
+    "ts_code": "603515.SH",
+    "stock_name": "欧普照明",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 24.6,
+    "fwd_6m": 6.7
+  },
+  {
+    "ts_code": "000623.SZ",
+    "stock_name": "吉林敖东",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 42.9,
+    "fwd_6m": -4.6
+  },
+  {
+    "ts_code": "600188.SH",
+    "stock_name": "兖矿能源",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 60.4,
+    "fwd_6m": -6.1
+  },
+  {
+    "ts_code": "601688.SH",
+    "stock_name": "华泰证券",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 39.9,
+    "fwd_6m": 0.2
+  },
+  {
+    "ts_code": "600803.SH",
+    "stock_name": "新奥股份",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 34.6,
+    "fwd_6m": -11.1
+  },
+  {
+    "ts_code": "000883.SZ",
+    "stock_name": "湖北能源",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 23.4,
+    "fwd_6m": -5.6
+  },
+  {
+    "ts_code": "600901.SH",
+    "stock_name": "江苏金租",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 38.3,
+    "fwd_6m": -5.2
+  },
+  {
+    "ts_code": "600720.SH",
+    "stock_name": "中交设计",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 25.5,
+    "fwd_6m": -2.8
+  },
+  {
+    "ts_code": "603393.SH",
+    "stock_name": "新天然气",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 22.3,
+    "fwd_6m": -0.6
+  },
+  {
+    "ts_code": "000685.SZ",
+    "stock_name": "中山公用",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 33.2,
+    "fwd_6m": -3.6
+  },
+  {
+    "ts_code": "601128.SH",
+    "stock_name": "常熟银行",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 55.9,
+    "fwd_6m": -7.9
+  },
+  {
+    "ts_code": "600583.SH",
+    "stock_name": "海油工程",
+    "cutoff_date": "2024-12-31",
+    "turtle_rating": "不达标",
+    "turtle_score": 31.1,
+    "fwd_6m": -7.7
+  }
+]
