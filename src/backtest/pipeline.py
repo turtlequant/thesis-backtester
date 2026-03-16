@@ -183,7 +183,7 @@ class AgentProgress:
         return f"{remaining/60:.0f}min"
 
 
-def step_agent(config: "StrategyConfig", max_retry: int = 1) -> AgentProgress:
+def step_agent(config: "StrategyConfig", max_retry: int = 1, dry_run: bool = False) -> AgentProgress:
     """
     读取筛选 CSV → 并发 Agent 分析 → 保存报告
 
@@ -193,9 +193,7 @@ def step_agent(config: "StrategyConfig", max_retry: int = 1) -> AgentProgress:
     Args:
         config: 策略配置
         max_retry: 失败后最大重试轮数
-
-    Returns:
-        AgentProgress 包含完成/失败统计
+        dry_run: 仅统计任务量，不实际运行
     """
     screen_dir, reports_dir, _ = _bt_dirs(config)
     dates = generate_crosssection_dates(
@@ -204,9 +202,11 @@ def step_agent(config: "StrategyConfig", max_retry: int = 1) -> AgentProgress:
         config.get_cross_section_interval(),
     )
     concurrency = config.get_agent_concurrency()
+    avg_minutes_per_stock = 6  # 经验值，用于估算耗时
 
     # 收集所有待分析任务
     tasks = []  # [(ts_code, cutoff_date)]
+    per_date_stats = []  # [(date, total, existing, pending)]
     for date in dates:
         df = load_screen_csv(date, screen_dir)
         if df is None:
@@ -216,23 +216,48 @@ def step_agent(config: "StrategyConfig", max_retry: int = 1) -> AgentProgress:
         batch_n = config.get_agent_batch_size(len(df))
         codes = df['ts_code'].head(batch_n).tolist()
 
-        # 跳过已有报告
         existing = load_agent_reports(reports_dir, date)
         new_codes = [c for c in codes if c not in existing]
-        skipped = len(codes) - len(new_codes)
-        if skipped:
-            print(f"{date}: {skipped} 只已有报告, {len(new_codes)} 只待分析")
+        per_date_stats.append((date, batch_n, len(existing), len(new_codes)))
         for c in new_codes:
             tasks.append((c, date))
 
-    if not tasks:
-        print("所有截面的 Agent 分析均已完成，无需重新运行。")
+    # 打印任务概览
+    print(f"Agent 批量分析{'（模拟）' if dry_run else ''}")
+    print(f"  截面: {len(dates)} 个")
+    print(f"  并发数: {concurrency}")
+    print()
+    print(f"  {'截面':<12} {'选中':>4} {'已有':>4} {'待跑':>4}")
+    print(f"  {'-'*12} {'-'*4} {'-'*4} {'-'*4}")
+    for date, total, done, pending in per_date_stats:
+        print(f"  {date:<12} {total:>4} {done:>4} {pending:>4}")
+
+    total_pending = len(tasks)
+    total_selected = sum(t for _, t, _, _ in per_date_stats)
+    total_done = sum(d for _, _, d, _ in per_date_stats)
+    print(f"  {'-'*12} {'-'*4} {'-'*4} {'-'*4}")
+    print(f"  {'合计':<12} {total_selected:>4} {total_done:>4} {total_pending:>4}")
+
+    if total_pending == 0:
+        print("\n所有截面的 Agent 分析均已完成，无需重新运行。")
         return AgentProgress()
 
-    print(f"\nAgent 批量分析")
-    print(f"  待分析: {len(tasks)} 只")
-    print(f"  并发数: {concurrency}")
+    # 估算耗时和成本
+    est_minutes = total_pending * avg_minutes_per_stock / concurrency
+    est_cost = total_pending * 0.4  # 经验值 0.4元/只
+    print(f"\n  预估耗时: {est_minutes:.0f} 分钟 ({est_minutes/60:.1f} 小时)")
+    print(f"  预估成本: ¥{est_cost:.1f} ({total_pending} 只 × ¥0.4/只)")
     print(f"  报告目录: {reports_dir}")
+
+    if dry_run:
+        # 打印任务列表
+        print(f"\n  待分析股票列表:")
+        for date, _, _, _ in per_date_stats:
+            codes_for_date = [c for c, d in tasks if d == date]
+            if codes_for_date:
+                print(f"    {date}: {', '.join(codes_for_date)}")
+        return AgentProgress(total=total_pending)
+
     print()
 
     # 运行（含重试）

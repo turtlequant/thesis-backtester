@@ -311,8 +311,11 @@ async def run_agent_loop(
         if message.content:
             full_text_parts.append(message.content)
 
-        # 检查是否结束
-        if choice.finish_reason == "stop" or not message.tool_calls:
+        # 检查是否结束 (不同 API 返回的 finish_reason 不同)
+        terminal_reasons = {"stop", "end_turn", "end", None}
+        if choice.finish_reason in terminal_reasons or not message.tool_calls:
+            if choice.finish_reason == "length":
+                logger.warning("LLM 输出达到 max_tokens 限制，回复可能被截断")
             break
 
         # 处理 tool calls

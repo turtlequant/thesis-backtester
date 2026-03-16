@@ -180,8 +180,12 @@ def create_snapshot(
         ('share_float', 'share_float', 'float_date'),
     ]:
         df = _fin_data[key]
-        if not df.empty and date_col in df.columns:
-            df = df[df[date_col] <= cutoff_date]
+        if not df.empty:
+            if date_col in df.columns:
+                df = df[df[date_col] <= cutoff_date]
+            elif 'end_date' in df.columns:
+                # 兜底: 用 end_date 过滤，防止未来数据泄露
+                df = df[df['end_date'] <= cutoff_date.replace('-', '')]
         setattr(snapshot, attr, df)
         if not df.empty:
             snapshot.data_sources.append(key)

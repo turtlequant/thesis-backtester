@@ -77,7 +77,7 @@ def _print_usage():
     print()
     print("  回测 Pipeline (三步独立):")
     print("    backtest-screen                       ① 生成截面日期 + 逐截面筛选 + 保存 CSV")
-    print("    backtest-agent [--retry N]            ② 并发 Agent 分析 (增量/重试/进度)")
+    print("    backtest-agent [--retry N] [--dry-run] ② 并发 Agent 分析 (增量/重试/进度)")
     print("    backtest-eval                         ③ 采集前向收益 + 多基准绩效评估")
     print()
     print("═══ 数据命令 (不需要 strategy.yaml) ═══")
@@ -380,11 +380,12 @@ def _cmd_backtest_agent(config: StrategyConfig, args: list):
     """Step 2: 并发 Agent 分析 (增量/重试/进度)"""
     from src.backtest.pipeline import step_agent
     max_retry = 1
+    dry_run = '--dry-run' in args
     if '--retry' in args:
         idx = args.index('--retry')
         if idx + 1 < len(args):
             max_retry = int(args[idx + 1])
-    step_agent(config, max_retry=max_retry)
+    step_agent(config, max_retry=max_retry, dry_run=dry_run)
 
 
 def _cmd_backtest_eval(config: StrategyConfig, args: list):

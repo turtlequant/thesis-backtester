@@ -8,12 +8,13 @@ LLM 客户端 — OpenAI 兼容格式
     client = LLMClient.from_config(strategy_config)
     response = await client.chat(messages, tools)
 """
+import asyncio
 import os
 import logging
 from dataclasses import dataclass, field
 from typing import List, Dict, Any, Optional
 
-from openai import AsyncOpenAI
+from openai import AsyncOpenAI, APIError, APIConnectionError, RateLimitError, APITimeoutError
 
 logger = logging.getLogger(__name__)
 
@@ -79,13 +80,17 @@ class LLMClient:
         self,
         messages: List[Dict[str, Any]],
         tools: Optional[List[Dict[str, Any]]] = None,
+        max_retries: int = 3,
+        timeout: float = 300,
     ) -> Any:
         """
-        发送聊天请求
+        发送聊天请求（带重试和超时）
 
         Args:
             messages: OpenAI 格式的消息列表
             tools: OpenAI 格式的工具定义列表
+            max_retries: 最大重试次数
+            timeout: 单次请求超时秒数
 
         Returns:
             ChatCompletion response
@@ -95,13 +100,38 @@ class LLMClient:
             "messages": messages,
             "max_tokens": self.config.max_tokens,
             "temperature": self.config.temperature,
+            "timeout": timeout,
         }
         if tools:
             kwargs["tools"] = tools
             kwargs["tool_choice"] = "auto"
 
-        response = await self._client.chat.completions.create(**kwargs)
-        return response
+        last_error = None
+        for attempt in range(1, max_retries + 1):
+            try:
+                response = await self._client.chat.completions.create(**kwargs)
+                return response
+            except RateLimitError as e:
+                last_error = e
+                wait = min(2 ** attempt * 5, 60)  # 10s, 20s, 40s (max 60s)
+                logger.warning(f"限流，{wait}s 后重试 (第{attempt}次): {e}")
+                await asyncio.sleep(wait)
+            except (APIConnectionError, APITimeoutError) as e:
+                last_error = e
+                wait = 2 ** attempt * 2  # 4s, 8s, 16s
+                logger.warning(f"连接/超时错误，{wait}s 后重试 (第{attempt}次): {e}")
+                await asyncio.sleep(wait)
+            except APIError as e:
+                # 5xx 服务端错误可重试，4xx 客户端错误不重试
+                if e.status_code and e.status_code >= 500:
+                    last_error = e
+                    wait = 2 ** attempt * 3
+                    logger.warning(f"服务端错误 {e.status_code}，{wait}s 后重试 (第{attempt}次)")
+                    await asyncio.sleep(wait)
+                else:
+                    raise  # 400/401/403 等直接抛出
+
+        raise last_error  # 重试耗尽
 
     async def close(self):
         """关闭客户端连接"""
