@@ -61,6 +61,9 @@ python -m src.engine.launcher strategies/v6_value/strategy.yaml screen 2024-06-3
 
 # Agent-driven analysis (requires LLM_API_KEY + LLM_BASE_URL)
 python -m src.engine.launcher strategies/v6_value/strategy.yaml agent-analyze 601288.SH 2024-06-30
+
+# Batch: screen + auto agent analysis on top candidates
+python -m src.engine.launcher strategies/v6_value/strategy.yaml batch-analyze 2024-06-30
 ```
 
 ### Direct module invocation

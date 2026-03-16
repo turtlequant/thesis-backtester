@@ -70,6 +70,7 @@ def _print_usage():
     print("策略命令:")
     print("  screen <cutoff_date> [--top N]        量化筛选")
     print("  agent-analyze <ts_code> <cutoff_date> Agent驱动的自动分析")
+    print("  batch-analyze <cutoff_date> [--top N]  筛选+批量Agent分析")
     print()
     print("数据命令:")
     print("  data update-daily [start] [end]       增量更新日线行情")
@@ -97,6 +98,8 @@ def _dispatch_strategy(config: StrategyConfig, command: str, args: list):
         _cmd_screen(config, args)
     elif command == "agent-analyze":
         _cmd_agent_analyze(config, args)
+    elif command == "batch-analyze":
+        _cmd_batch_analyze(config, args)
     else:
         print(f"未知策略命令: {command}")
         sys.exit(1)
@@ -259,6 +262,85 @@ def _cmd_agent_analyze(config: StrategyConfig, args: list):
         print(f"\n综合研判:")
         for k, v in synthesis.items():
             print(f"  {k}: {v}")
+
+
+def _cmd_batch_analyze(config: StrategyConfig, args: list):
+    """筛选 + 批量 Agent 分析"""
+    if not args:
+        print("用法: batch-analyze <cutoff_date> [--top N] [--no-blind]")
+        sys.exit(1)
+
+    import asyncio
+    from src.screener.quick_filter import screen_at_date, format_screen_result
+    from src.agent.runtime import run_blind_analysis
+
+    cutoff_date = args[0]
+    blind_mode = "--no-blind" not in args
+    top_n = 50
+    if '--top' in args:
+        idx = args.index('--top')
+        if idx + 1 < len(args):
+            top_n = int(args[idx + 1])
+
+    # Step 1: 量化筛选
+    print(f"[1/2] 量化筛选: {cutoff_date} (top {top_n})")
+    result = screen_at_date(cutoff_date, top_n=top_n, config=config)
+    print(format_screen_result(result))
+
+    if result.candidates.empty:
+        print("无候选股票，退出。")
+        return
+
+    # Step 2: 确定 agent 分析数量
+    total = len(result.candidates)
+    batch_n = config.get_agent_batch_size(total)
+    codes = result.candidates['ts_code'].head(batch_n).tolist()
+
+    print(f"\n[2/2] Agent 批量分析: {batch_n}/{total} 只 "
+          f"(ratio={config.get_agent_batch_config().get('ratio')}, "
+          f"max={config.get_agent_batch_config().get('max')})")
+    print(f"  股票列表: {', '.join(codes)}")
+    print(f"  模式: {'盲测' if blind_mode else '非盲测'}")
+    print()
+
+    output_dir = config.get_backtest_dir() / "agent_reports"
+
+    # 逐个分析（串行，避免 API 限流）
+    summaries = []
+    for i, ts_code in enumerate(codes, 1):
+        print(f"--- [{i}/{batch_n}] {ts_code} ---")
+        try:
+            r = asyncio.run(
+                run_blind_analysis(ts_code, cutoff_date, config, blind_mode, output_dir)
+            )
+            meta = r["metadata"]
+            synthesis = r.get("synthesis", {})
+            score = synthesis.get("综合评分", "?")
+            recommendation = synthesis.get("最终建议", "?")
+            print(f"  完成: {meta['elapsed_seconds']}s | 评分: {score} | 建议: {recommendation}")
+            summaries.append({
+                "ts_code": ts_code,
+                "score": score,
+                "recommendation": recommendation,
+                "elapsed": meta['elapsed_seconds'],
+            })
+        except Exception as e:
+            print(f"  失败: {e}")
+            summaries.append({
+                "ts_code": ts_code,
+                "score": "ERR",
+                "recommendation": str(e)[:50],
+                "elapsed": 0,
+            })
+
+    # 汇总
+    print(f"\n{'='*60}")
+    print(f"批量分析完成: {len([s for s in summaries if s['score'] != 'ERR'])}/{batch_n} 成功")
+    print(f"{'='*60}")
+    print(f"{'股票':<12} {'评分':<8} {'建议':<8} {'耗时':<8}")
+    print(f"{'-'*12} {'-'*8} {'-'*8} {'-'*8}")
+    for s in summaries:
+        print(f"{s['ts_code']:<12} {str(s['score']):<8} {str(s['recommendation']):<8} {s['elapsed']}s")
 
 
 if __name__ == '__main__':
