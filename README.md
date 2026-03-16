@@ -118,32 +118,17 @@ graph LR
 
 ## 回测 Pipeline
 
-```mermaid
-graph LR
-    subgraph S1["Step 1: backtest-screen"]
-        D1[strategy.yaml<br/>起止日期 + 间隔] --> D2[生成截面日期<br/>月末对齐]
-        D2 --> D3[逐截面筛选<br/>50只/截面]
-        D3 --> D4[保存 CSV]
-    end
-
-    subgraph S2["Step 2: backtest-agent"]
-        A1[读取 CSV] --> A2[并发 Agent 分析<br/>10 并发]
-        A2 --> A3[进度/重试/增量]
-        A3 --> A4[保存报告<br/>JSON + MD]
-    end
-
-    subgraph S3["Step 3: backtest-eval"]
-        E1[读取 CSV + 报告] --> E2[采集前向收益<br/>带缓存]
-        E2 --> E3[五基准绩效评估]
-        E3 --> E4[输出报告 + 曲线图]
-    end
-
-    D4 --> A1
-    A4 --> E1
-
-    style S1 fill:#E3F2FD
-    style S2 fill:#FFF3E0
-    style S3 fill:#E8F5E9
+```
+ Step 1: backtest-screen (秒级)        Step 2: backtest-agent (小时级)       Step 3: backtest-eval (分钟级)
+┌──────────────────────────┐      ┌──────────────────────────┐      ┌──────────────────────────┐
+│ strategy.yaml            │      │ 读取筛选 CSV             │      │ 读取 CSV + Agent 报告     │
+│   ↓                      │      │   ↓                      │      │   ↓                      │
+│ 生成截面日期 (月末对齐)    │ CSV  │ 并发 Agent 分析 (10路)   │ JSON │ 采集前向收益 (带缓存)     │
+│   ↓                      │ ───→ │   ↓                      │ ───→ │   ↓                      │
+│ 逐截面筛选 (50只/截面)    │      │ 进度 / 重试 / 增量跳过   │      │ 五基准绩效评估            │
+│   ↓                      │      │   ↓                      │      │   ↓                      │
+│ 保存 screen_*.csv        │      │ 保存 report.md + .json   │      │ 输出报告 + 收益曲线图     │
+└──────────────────────────┘      └──────────────────────────┘      └──────────────────────────┘
 ```
 
 每步独立运行，可随时中断/续跑。Agent 自动跳过已完成的分析。
