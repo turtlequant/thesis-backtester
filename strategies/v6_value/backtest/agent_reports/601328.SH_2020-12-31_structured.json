@@ -1,0 +1,122 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺少审计意见数据",
+        "缺少主营业务地域分布数据",
+        "缺少银行专属指标（资本充足率、不良率等）"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于上海，中国内地，属于极低风险区域，有国家信用背书和政策支持",
+      "geo_excluded": false,
+      "price_position_pct": 3.7,
+      "debt_ratio_pct": 92.25,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过快速筛选：1) 地缘政治风险极低；2) 上市超过3年且持续盈利；3) 估值较低（PB 0.47倍，PE 4.76倍）；4) 股息率高（7.03%）；5) 价格接近52周低点（位置3.7%）。但需要进一步分析银行专属指标。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "央企",
+      "controlling_shareholder": "基于行业特征判断为国有资本控股",
+      "investment_stream": "纯硬收息",
+      "stream_reasoning": "1) 股息率7.03% > 5%；2) 连续3年稳定派息且逐年增长；3) PB 0.47倍显示深度价值；4) PE 4.76倍显示低估；5) 银行行业特性适合收息策略",
+      "interest_bearing_debt": 5184.09,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "可接受",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "持续增长",
+      "latest_cash_balance": 0,
+      "reported_profit": 527.12,
+      "non_cash_adjustments": 0,
+      "adjusted_profit": 527.12,
+      "owner_earnings": 374.3,
+      "owner_earnings_formula": "金融行业替代方法：可分配利润 ≈ 净利润 × (1 - 资本补充需求比例)，前三季度净利润534.71亿，假设资本补充需求30%，计算得374.30亿",
+      "fcf": 0,
+      "maintenance_capex": 0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "银行行业禁止使用PE估值",
+        "金融企业净利润被利息支出、拨备计提等大幅影响，PE无法反映真实估值水平"
+      ],
+      "valuation_method": "PB-ROE估值 + 股息率",
+      "net_cash": 0,
+      "ev": 3326.97,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 8.6,
+      "topdown_return_pct": 7.03,
+      "valuation_crosscheck": "一致（PB深度折价+高股息率双重验证）",
+      "dividend_yield_pct": 7.03,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 48,
+      "market_condition": "熊市",
+      "buy_point": 4.48,
+      "sell_point": 8.6
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 384.27,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "安全边际不足",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 92.5
+    },
+    "ch06_decision": {
+      "apple_normal_price": 8.6,
+      "apple_buy_price": 5.16,
+      "apple_sell_price": 5.16,
+      "buy_logic_statement": "我以'高股息修复'类型买入该银行股，在PB=0.47倍、股息率=7.03%时建仓，目标是PB从0.47倍修复到0.8倍，股息率从7.03%降至4%，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若ROE持续低于8%或不良率大幅上升导致股息削减超过30%，则逻辑失败，立即止损。",
+      "repair_target": "保守目标6.69元(PB 0.7倍，上行49.3%)，中性目标7.65元(PB 0.8倍，上行70.8%)，乐观目标9.56元(PB 1.0倍，上行113.4%)",
+      "repair_catalyst": "经济复苏改善资产质量、利率上行改善净息差、监管政策边际放松、市场风格向价值切换",
+      "expected_repair_return_pct": 49.3,
+      "recommendation": "买入",
+      "position_type": "卫星",
+      "suggested_position_pct": 6,
+      "exit_conditions": [
+        "PB修复至0.8倍（股价7.65元）减仓50%",
+        "涨幅超过5年股息总和（股价6.055元）清仓",
+        "ROE持续低于8%或股息削减超过30%止损",
+        "发现PB更低且股息率更高的银行股（PB差>0.2倍）切换"
+      ],
+      "macro_event_impact": "短期压制，长期利好"
+    }
+  },
+  "synthesis": {
+    "流派判定": "纯硬收息",
+    "龟级评定": "银龟",
+    "核心估值指标": "PB 0.47倍（合理0.8倍），安全边际41%，股息率7.03%",
+    "苹果买卖模型": "正常价8.6元，买入价5.16元，卖出价7.65元",
+    "一句话买入逻辑（强制）": "我以'高股息修复'逻辑买入该银行股，在PB=0.47倍、股息率=7.03%时建仓，目标是PB从0.47倍修复到0.8倍，股息率从7.03%降至4%，预计持有2年，修复完成即卖出。证伪条件：若ROE持续低于8%或不良率大幅上升导致股息削减超过30%，则逻辑失败，立即止损。",
+    "关键风险": [
+      "银行资产质量恶化风险（不良率上升）",
+      "经济下行导致坏账增加",
+      "利率下行压缩净息差",
+      "监管政策收紧影响盈利能力",
+      "房地产风险暴露影响抵押品价值"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "买入",
+    "综合评分": 75,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "601328.SH",
+    "cutoff_date": "2020-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 515.1,
+    "chapters_completed": 6
+  }
+}

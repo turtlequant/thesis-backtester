@@ -1,0 +1,124 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据缺失，需人工核实"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司注册地在北京（中国内地），股东包含国有/政府关联股东，无高风险区域业务敞口",
+      "geo_excluded": false,
+      "price_position_pct": 7.8,
+      "debt_ratio_pct": 80.27,
+      "consecutive_profit_years": 1,
+      "pass_screening": false,
+      "screening_notes": "触发快速排除条件：1) 价格位置不佳（距52周高点跌幅仅26.3%，安全边际不足）；2) FCF倍数15.8倍 > 10倍阈值（估值偏高）。公司虽有高现金（315.61亿）和低PB（0.55），但净负债740.85亿，且2021年Q1出现亏损需关注。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "未知（第一大股东为法人股东，持股47.12%）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型三项核心条件：1) PE=5.39<10；2) FCF收益率=11.27%>10%；3) PB=0.55<1.0且ROE(2020)=10.28%>8%。同时行业处于政策调控期，可视为周期底部区域。",
+      "interest_bearing_debt": 1056.46,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "警惕",
+      "cycle_debt_tolerance": "需观察",
+      "is_cyclical": true,
+      "cycle_position": "下行",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "审计意见数据缺失",
+        "信息披露不完整"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "持续增长",
+      "latest_cash_balance": 315.61,
+      "reported_profit": 31.4,
+      "non_cash_adjustments": 6.1,
+      "adjusted_profit": 30.02,
+      "owner_earnings": 30.02,
+      "owner_earnings_formula": "净利润31.40亿 + 折旧摊销1.10亿 + 非现金减值5.00亿（估算）- 维持性CAPEX7.48亿 = 30.02亿",
+      "fcf": 17.16,
+      "maintenance_capex": 7.48
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "净利润波动巨大",
+        "PE低但现金流差"
+      ],
+      "valuation_method": "FCF/市值比率",
+      "net_cash": -740.85,
+      "ev": 885.31,
+      "ev_fcf_multiple": 127.1,
+      "turtle_rating": "高估",
+      "fair_value_per_share": 5.54,
+      "topdown_return_pct": 7.14,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 7.14,
+      "dividend_sustainable": false,
+      "safety_margin_pct": 15.8,
+      "market_condition": "震荡市",
+      "buy_point": 5.54,
+      "sell_point": 8.31
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 22.89,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "安全边际不足",
+      "is_cigar_butt": false,
+      "liquidation_value": -1288.54,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 15
+    },
+    "ch06_decision": {
+      "apple_normal_price": 8.52,
+      "apple_buy_price": 5.11,
+      "apple_sell_price": 8.16,
+      "buy_logic_statement": "我以'修复型'逻辑买入该区域地产股，在PB=0.55倍时建仓，目标是PB从0.55倍修复到0.8倍，预计持有2年，修复完成即卖出。证伪条件：若2021年归母净利润继续为负或净资产下降超过10%，则逻辑失败，立即止损。",
+      "repair_target": "保守目标7.14元（PB 0.7倍），中性目标8.16元（PB 0.8倍），乐观目标10.20元（PB 1.0倍）",
+      "repair_catalyst": "地产政策边际改善、公司销售回暖、市场风险偏好提升、高股息吸引力显现",
+      "expected_repair_return_pct": 27.5,
+      "recommendation": "观察",
+      "position_type": "观察",
+      "suggested_position_pct": 2,
+      "exit_conditions": [
+        "PB修复至0.8倍（8.16元）减仓50%",
+        "PB修复至1.0倍（10.20元）清仓",
+        "2021年全年净利润为负，止损退出",
+        "净资产下降超过10%，止损退出"
+      ],
+      "macro_event_impact": "短期压制"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数127.1倍，安全边际15.8%",
+    "苹果买卖模型": "正常价8.52元，买入价5.11元，卖出价8.16元",
+    "一句话买入逻辑（强制）": "我以'修复型'逻辑买入该区域地产股，在PB=0.55倍时建仓，目标是PB从0.55倍修复到0.8倍，预计持有2年，修复完成即卖出。证伪条件：若2021年归母净利润继续为负或净资产下降超过10%，则逻辑失败，立即止损。",
+    "关键风险": [
+      "高杠杆风险：净负债率236.7%，有息负债1056.46亿",
+      "行业下行风险：房地产行业面临严格调控，政策不确定性高",
+      "盈利波动风险：2021年Q1已出现亏损，盈利稳定性差",
+      "现金流波动风险：经营现金流季度波动剧烈，可持续性存疑",
+      "信息透明度风险：审计意见缺失，管理层诚信评估存疑"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "观望",
+    "综合评分": 45,
+    "信心水平": "低"
+  },
+  "metadata": {
+    "ts_code": "600376.SH",
+    "cutoff_date": "2021-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 571.1,
+    "chapters_completed": 6
+  }
+}

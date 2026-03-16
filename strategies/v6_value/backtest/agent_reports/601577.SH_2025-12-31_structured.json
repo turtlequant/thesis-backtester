@@ -1,0 +1,128 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "审计意见数据缺失，需要进一步核实"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国湖南，属于极低风险区域，业务主要在中国内地",
+      "geo_excluded": false,
+      "price_position_pct": 62.1,
+      "debt_ratio_pct": 93.31,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "未通过5分钟快速排除法：价格位置不佳，距52周高点跌幅仅9.26%（要求30%以上），安全边际不足。虽然基本面良好（连续3年盈利，ROE稳定8-11%，股息率6.39%），但当前价格偏高，建议等待回调至更安全位置。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "无法穿透识别（第一大股东为其他法人股东，持股16.82%）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "PE 4.76 < 10，PB 0.56 < 1.0且ROE 8.26% > 8%，符合价值发现型核心条件；股息率6.39%较高但派息率22.5%不足纯硬收息标准",
+      "interest_bearing_debt": 2219.42,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": false,
+      "cycle_position": "非周期",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "审计意见数据缺失",
+        "关联交易数据不可得",
+        "股权质押数据不可得"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动稳定",
+      "latest_cash_balance": 0,
+      "reported_profit": 65.57,
+      "non_cash_adjustments": 0,
+      "adjusted_profit": 65.57,
+      "owner_earnings": 45.9,
+      "owner_earnings_formula": "金融行业替代方法 - 可分配利润 = 净利润65.57亿 × (1 - 资本补充需求比例30%)",
+      "fcf": 0,
+      "maintenance_capex": 0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "金融行业禁止使用PE作为主要估值依据"
+      ],
+      "valuation_method": "PB-ROE估值 + 股息率",
+      "net_cash": -1411.16,
+      "ev": 1801.25,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 14.34,
+      "topdown_return_pct": 6.39,
+      "valuation_crosscheck": "不适用（金融行业）",
+      "dividend_yield_pct": 6.39,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 32.4,
+      "market_condition": "震荡市",
+      "buy_point": 9.7,
+      "sell_point": 14.34
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 47.8,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "安全边际不足",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 90
+    },
+    "ch06_decision": {
+      "apple_normal_price": 14.17,
+      "apple_buy_price": 9.21,
+      "apple_sell_price": 7.79,
+      "buy_logic_statement": "我以'PB-ROE修复'逻辑买入这家湖南银行，在PB=0.56倍（当前股价9.7元）时建仓，目标是PB从0.56倍修复到0.8倍（对应股价13.9元），预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若ROE连续2年低于8%或不良率大幅上升超过行业平均50%，则逻辑失败，立即止损。",
+      "repair_target": "中性修复目标价13.89元（对应PB 0.8倍），上行空间43.2%",
+      "repair_catalyst": "宏观经济企稳、利率环境改善、区域经济发展、银行股整体估值修复",
+      "expected_repair_return_pct": 43.2,
+      "recommendation": "观察",
+      "position_type": "卫星",
+      "suggested_position_pct": 1,
+      "exit_conditions": [
+        "PB修复至0.7倍（12.15元）减仓30%",
+        "PB修复至0.8倍（13.89元）再减仓30%",
+        "PB修复至0.9倍（15.62元）清仓",
+        "ROE连续2年低于8%止损",
+        "不良率大幅恶化止损"
+      ],
+      "macro_event_impact": "短期压制"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "铜龟",
+    "核心估值指标": "EV/FCF倍数不适用（金融行业），安全边际32.4%",
+    "苹果买卖模型": {
+      "正常价": 14.17,
+      "买入价": 9.21,
+      "卖出价": 7.79
+    },
+    "一句话买入逻辑": "我以'PB-ROE修复'逻辑买入这家湖南银行，在PB=0.56倍（当前股价9.7元）时建仓，目标是PB从0.56倍修复到0.8倍（对应股价13.9元），预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若ROE连续2年低于8%或不良率大幅上升超过行业平均50%，则逻辑失败，立即止损。",
+    "关键风险": [
+      "宏观经济下行导致信贷需求萎缩和净息差收窄",
+      "银行资产质量恶化（不良率上升）",
+      "当前价格位置偏高（62.1%），安全边际不足",
+      "管理层诚信评估存疑（审计意见数据缺失）",
+      "经营现金流为负，需关注现金流质量"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "观望",
+    "综合评分": 60,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "601577.SH",
+    "cutoff_date": "2025-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 554.4,
+    "chapters_completed": 6
+  }
+}

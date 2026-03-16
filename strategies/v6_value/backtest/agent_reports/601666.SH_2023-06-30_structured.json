@@ -1,0 +1,121 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据缺失",
+        "主营业务构成数据缺失"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国河南，主要资产和业务在中国内地，有国有股东背景，地缘政治风险极低",
+      "geo_excluded": false,
+      "price_position_pct": 4.2,
+      "debt_ratio_pct": 66.51,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过所有筛选：1) 地缘政治风险极低；2) 上市超16年；3) 价格距52周高点跌幅50.1%，安全边际充足；4) 有息负债率仅19.2%，财务稳健；5) 现金/市值125%，现金充裕；6) FCF倍数仅1.05倍，估值极低"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "无法确定（第一大股东为其他法人股东）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型多项条件：1) PE(TTM)=3.33<10；2) FCF收益率=15.6%>10%；3) PB=0.85<1.0且ROE=29.70%>8%；同时具备纯硬收息特征（股息率11.54%）",
+      "interest_bearing_debt": 157.97,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "高位",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "持续增长",
+      "latest_cash_balance": 218.28,
+      "reported_profit": 57.25,
+      "non_cash_adjustments": 27.0,
+      "adjusted_profit": 59.25,
+      "owner_earnings": 59.25,
+      "owner_earnings_formula": "净利润57.25亿 + 折旧摊销25亿 + 非现金减值2亿 - 维持性CAPEX25亿 = 59.25亿（基于煤炭行业特征估算）",
+      "fcf": 4.57,
+      "maintenance_capex": 25.0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "PE与FCF收益率矛盾"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": 60.31,
+      "ev": 114.26,
+      "ev_fcf_multiple": 1.36,
+      "turtle_rating": "极品级",
+      "fair_value_per_share": 13.52,
+      "topdown_return_pct": 14.54,
+      "valuation_crosscheck": "一致",
+      "dividend_yield_pct": 11.54,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 79.8,
+      "market_condition": "熊市",
+      "buy_point": 10.0,
+      "sell_point": 13.0
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 41.73,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "勉强通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 75.0
+    },
+    "ch06_decision": {
+      "apple_normal_price": 13.52,
+      "apple_buy_price": 8.11,
+      "apple_sell_price": 10.82,
+      "buy_logic_statement": "我以'估值修复'类型买入该煤炭公司，在EV/FCF=1.36倍时建仓，目标是EV/FCF从1.36倍修复到8倍，预计持有1-2年，修复完成即卖出，绝不恋战。证伪条件：若煤炭价格持续下跌导致2023年自由现金流转为负值，或公司有息负债大幅增加导致净现金转为净负债，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价11.99元（EV/FCF 8倍），中性目标价14.34元（EV/FCF 10倍），乐观目标价16.68元（EV/FCF 12倍）",
+      "repair_catalyst": "煤炭价格企稳回升、公司派息政策维持（股息率11.54%）、行业供给侧改革深化、市场对煤炭股估值重估、公司净现金优势凸显（60.31亿净现金）",
+      "expected_repair_return_pct": 59.0,
+      "recommendation": "买入",
+      "position_type": "核心",
+      "suggested_position_pct": 12.0,
+      "exit_conditions": [
+        "EV/FCF修复至8倍（11.99元）减仓50%",
+        "涨幅透支5年股息总和（从7.54元涨至11.89元）清仓",
+        "自由现金流转负或有息负债大幅增加立即止损",
+        "发现EV/FCF倍数差>2倍的更优标的切换"
+      ],
+      "macro_event_impact": "短期压制"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "金龟",
+    "核心估值指标": "EV/FCF倍数=1.36倍，安全边际=79.8%",
+    "苹果买卖模型": "正常价=13.52元，买入价=8.11元，卖出价=10.82元",
+    "一句话买入逻辑": "我以'估值修复'类型买入该煤炭公司，在EV/FCF=1.36倍时建仓，目标是EV/FCF从1.36倍修复到8倍，预计持有1-2年，修复完成即卖出，绝不恋战。证伪条件：若煤炭价格持续下跌导致2023年自由现金流转为负值，或公司有息负债大幅增加导致净现金转为净负债，则逻辑失败，立即止损。",
+    "关键风险": [
+      "煤炭价格大幅下跌导致盈利恶化",
+      "高股息政策在极端情景下难以为继",
+      "估值修复时间可能较长",
+      "行业周期性下行风险",
+      "能源政策变化影响"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "买入",
+    "综合评分": 85,
+    "信心水平": "高"
+  },
+  "metadata": {
+    "ts_code": "601666.SH",
+    "cutoff_date": "2023-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 525.1,
+    "chapters_completed": 6
+  }
+}

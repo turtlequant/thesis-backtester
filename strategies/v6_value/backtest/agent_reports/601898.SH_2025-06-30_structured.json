@@ -1,0 +1,121 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据不可获取",
+        "主营业务构成数据不可获取"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司注册地在北京（中国内地），属于极低风险区域；煤炭开采行业主要资产和收入在国内，无高风险区域敞口",
+      "geo_excluded": false,
+      "price_position_pct": 23.4,
+      "debt_ratio_pct": 44.8,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过所有快速筛选检查：1) 无ST标记，上市超3年；2) 价格位置安全（距52周高点跌幅31.3%）；3) 负债健康（有息负债率13.4%），连续盈利；4) 现金充裕（现金/市值54.5%），FCF倍数仅3.33倍"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "无法穿透确认（基于行业特性推断为国有背景）",
+      "investment_stream": "纯硬收息",
+      "stream_reasoning": "同时符合纯硬收息和价值发现特征：1)股息率7.09%>5%；2)经营现金流/净利润=136.8%>100%；3)有息负债率29.9%相对较低；4)PE=7.91<10；5)FCF收益率17.3%>10%；6)PB=0.93<1.0且ROE=13.05%>8%。根据混合型处理规则，以纯硬收息为主（更确定性高）。",
+      "interest_bearing_debt": 475.89,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "中部",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "下降",
+      "latest_cash_balance": 790.22,
+      "reported_profit": 249.54,
+      "non_cash_adjustments": 97.58,
+      "adjusted_profit": 328.6,
+      "owner_earnings": 249.54,
+      "owner_earnings_formula": "净利润249.54亿元 + 折旧摊销97.58亿元 - 维持性CAPEX97.58亿元 = 249.54亿元",
+      "fcf": 220.91,
+      "maintenance_capex": 97.58
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业PE陷阱",
+        "PE与FCF收益率矛盾（PE=7.91倍，FCF收益率=16.8%）"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": 314.33,
+      "ev": 1136.17,
+      "ev_fcf_multiple": 4.66,
+      "turtle_rating": "优质级",
+      "fair_value_per_share": 11.56,
+      "topdown_return_pct": 9.09,
+      "valuation_crosscheck": "需调整（Top-Down回报9.09%低于Bottom-Up FCF收益率16.8%，可能低估资产增值预期）",
+      "dividend_yield_pct": 7.09,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 16.1,
+      "market_condition": "熊市",
+      "buy_point": 7.89,
+      "sell_point": 11.56
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 181.91,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "安全边际不足",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 85
+    },
+    "ch06_decision": {
+      "apple_normal_price": 18.5,
+      "apple_buy_price": 11.5,
+      "apple_sell_price": 17.08,
+      "buy_logic_statement": "我以'估值修复'类型买入该煤炭公司，在EV/FCF倍数=4.66倍时建仓，目标是EV/FCF倍数从4.66倍修复到8倍，预计持有1-2年，修复完成即卖出，绝不恋战。证伪条件：若煤炭价格持续下跌导致FCF连续2个季度下滑超过30%，或公司净现金转为净负债，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价17.08元（EV/FCF 8倍），中性目标价20.76元（EV/FCF 10倍），乐观目标价24.43元（EV/FCF 12倍）",
+      "repair_catalyst": "煤炭价格周期触底回升、持续高分红政策（股息率7.09%）、净现金充裕（314.33亿元）、资产负债率持续下降、行业供给侧改革深化",
+      "expected_repair_return_pct": 56.1,
+      "recommendation": "买入",
+      "position_type": "核心",
+      "suggested_position_pct": 15,
+      "exit_conditions": [
+        "EV/FCF倍数修复至8倍（股价≈17.08元）开始减仓",
+        "涨幅超过5年股息总和（当前股息0.479元/年，5年=2.395元，对应涨幅21.9%）",
+        "FCF连续2季度下滑>30%或净现金转为净负债",
+        "发现EV/FCF倍数差>2倍的更优标的"
+      ],
+      "macro_event_impact": "无影响"
+    }
+  },
+  "synthesis": {
+    "流派判定": "混合型（纯硬收息为主，兼具价值发现特征）",
+    "龟级评定": "银龟",
+    "核心估值指标": "EV/FCF倍数=4.66倍，安全边际=16.1%（距52周低点涨幅）",
+    "苹果买卖模型": "正常价=18.50元，买入价=11.50元，卖出价=17.08元",
+    "一句话买入逻辑": "我以'估值修复+高股息'逻辑买入该煤炭公司，在EV/FCF倍数=4.66倍、股息率7.09%时建仓，目标是EV/FCF倍数从4.66倍修复到8倍（对应股价17.08元），同时享受高股息作为安全垫，预计持有1-2年。证伪条件：若煤炭价格持续下跌导致FCF连续2个季度下滑超过30%，或公司净现金转为净负债，则逻辑失败，立即止损。",
+    "关键风险": [
+      "煤炭价格周期性下跌风险",
+      "能源结构转型长期压力",
+      "分红历史相对较短（连续分红仅2年）",
+      "环保政策收紧影响产能",
+      "宏观经济下行影响煤炭需求"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "买入",
+    "综合评分": 78,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "601898.SH",
+    "cutoff_date": "2025-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 669.7,
+    "chapters_completed": 6
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "缺少审计意见数据",
+        "缺少主营业务构成数据"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地安徽，煤炭开采行业，无高风险区域资产或收入敞口",
+      "geo_excluded": false,
+      "price_position_pct": 7.7,
+      "debt_ratio_pct": 53.43,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过所有快速筛选步骤：1) 无ST标记，上市超3年；2) 距52周高点跌幅34.55%，安全边际充足；3) 有息负债率仅11.66%，连续多年盈利；4) 现金/市值27.77%，FCF倍数仅1.85倍，估值极具吸引力。煤炭行业周期性特征已考虑。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "无法从现有数据确定",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型多项核心条件：1) PE(TTM) 3.81 < 10；2) FCF收益率18.1% > 10%；3) PB 0.86 < 1.0且ROE 23.11% > 8%；4) 煤炭行业周期性特征明显，当前盈利维持高位。同时兼具高股息特征（股息率6.08%），但派息率37.1%略低于40%且存在有息负债，不满足纯硬收息全部条件。",
+      "interest_bearing_debt": 101.43,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "上行",
+      "management_integrity": "存疑",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "增长",
+      "latest_cash_balance": 79.37,
+      "reported_profit": 71.39,
+      "non_cash_adjustments": 69.06,
+      "adjusted_profit": 140.45,
+      "owner_earnings": 71.39,
+      "owner_earnings_formula": "净利润71.39亿 + 折旧摊销69.06亿 - 维持性CAPEX69.06亿 = 71.39亿",
+      "fcf": 97.63,
+      "maintenance_capex": 69.06
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "折旧摊销占比高（96.7%）"
+      ],
+      "valuation_method": "FCF",
+      "net_cash": -22.1,
+      "ev": 307.92,
+      "ev_fcf_multiple": 3.15,
+      "turtle_rating": "优质级",
+      "fair_value_per_share": 26.24,
+      "topdown_return_pct": 14.11,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 6.08,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 56.1,
+      "market_condition": "熊市",
+      "buy_point": 10.97,
+      "sell_point": 29.25
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 52.04,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "基本安全",
+      "is_cigar_butt": false,
+      "liquidation_value": -6.83,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 100
+    },
+    "ch06_decision": {
+      "apple_normal_price": 20.0,
+      "apple_buy_price": 9.56,
+      "apple_sell_price": 15.82,
+      "buy_logic_statement": "我以'估值修复'类型买入该煤炭公司，在剔除净现金FCF倍数=3.15倍时建仓，目标是FCF倍数从3.15倍修复到8倍，预计持有1-2年，修复完成即卖出，绝不恋战。证伪条件：若煤炭价格持续下跌导致2023年自由现金流下降超过30%，或公司净负债率上升至60%以上，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价15.82元（FCF倍数8倍，上行空间37.33%），中性目标价20.00元（FCF倍数10倍，上行空间73.61%）",
+      "repair_catalyst": "煤炭价格企稳回升、高股息吸引力、估值修复轮动、国企改革预期",
+      "expected_repair_return_pct": 37.33,
+      "recommendation": "买入",
+      "position_type": "卫星",
+      "suggested_position_pct": 6,
+      "exit_conditions": [
+        "股价达到15.82元（FCF倍数8倍）减仓30-50%",
+        "股价达到20.00元（FCF倍数10倍）再减仓30%",
+        "股价达到24.18元（FCF倍数12倍）清仓",
+        "煤炭价格涨至70%分位减仓50%",
+        "煤炭价格涨至90%分位清仓",
+        "FCF连续2季下滑>20%止损",
+        "净负债率上升至60%以上止损",
+        "持有超过3年未达修复目标重新评估"
+      ],
+      "macro_event_impact": "短期压制"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "银龟",
+    "核心估值指标": "EV/FCF倍数3.15倍，安全边际56.1%",
+    "苹果买卖模型": "正常价20.00元，买入价9.56元，卖出价15.82元",
+    "一句话买入逻辑": "我以'估值修复'类型买入该煤炭公司，在剔除净现金FCF倍数=3.15倍时建仓，目标是FCF倍数从3.15倍修复到8倍，预计持有1-2年，修复完成即卖出，绝不恋战。证伪条件：若煤炭价格持续下跌导致2023年自由现金流下降超过30%，或公司净负债率上升至60%以上，则逻辑失败，立即止损。",
+    "关键风险": [
+      "煤炭价格周期性下跌风险",
+      "净负债状态（-22.1亿元）在行业下行期可能加剧财务压力",
+      "能源转型政策可能影响长期需求",
+      "管理层信息不足，需额外安全边际补偿"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "买入",
+    "综合评分": 78,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600985.SH",
+    "cutoff_date": "2023-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 617.7,
+    "chapters_completed": 6
+  }
+}

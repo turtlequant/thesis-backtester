@@ -1,0 +1,126 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "缺少审计意见数据",
+        "缺少主营业务地域分布数据"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于北京，前两大股东均为国有/政府关联股东，合计持股89.27%，具有国家信用背书，属于极低风险区域",
+      "geo_excluded": false,
+      "price_position_pct": 57.1,
+      "debt_ratio_pct": 54.86,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "价格位置触发排除条件：距52周高点跌幅仅6.4%（价格位置57.1%），安全边际不足。其他财务指标良好：资产负债率54.86%健康，连续3年盈利，现金/市值41.46%充裕。建议放入观察列表，等待价格回调至安全区域（距52周高点跌幅>30%）"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "央企",
+      "controlling_shareholder": "国务院国资委",
+      "investment_stream": "关联方资源",
+      "stream_reasoning": "1)控股股东为大型央企集团（前两大股东合计持股89.27%）；2)PB仅0.67，明显低于行业平均，存在估值折价；3)石油加工行业央企存在资产整合预期；4)同时具备价值发现特征：PE 7.69<10，PB 0.67<1.0，ROE 7.28%接近8%，经营现金流从Q1的-467.81亿改善至Q3的592.44亿",
+      "interest_bearing_debt": 1195.45,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "景气区域",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动增长",
+      "latest_cash_balance": 2167.28,
+      "reported_profit": 566.6,
+      "non_cash_adjustments": 405.0,
+      "adjusted_profit": 915.0,
+      "owner_earnings": 671.6,
+      "owner_earnings_formula": "净利润566.60亿 + 折旧摊销330.00亿 + 非现金减值75.00亿 - 维持性CAPEX 300.00亿 = 671.60亿",
+      "fcf": -42.56,
+      "maintenance_capex": 300.0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "自由现金流连续为负",
+        "应收账款增速超收入增速",
+        "存货增速超收入增速",
+        "PE与FCF收益率矛盾"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": 971.83,
+      "ev": 4255.65,
+      "ev_fcf_multiple": 3.62,
+      "turtle_rating": "优质级",
+      "fair_value_per_share": 4.69,
+      "topdown_return_pct": 9.68,
+      "valuation_crosscheck": "一致",
+      "dividend_yield_pct": 6.68,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 40.2,
+      "market_condition": "震荡市",
+      "buy_point": 3.72,
+      "sell_point": 8.58
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 413.05,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 95
+    },
+    "ch06_decision": {
+      "apple_normal_price": 9.64,
+      "apple_buy_price": 5.78,
+      "apple_sell_price": 5.78,
+      "buy_logic_statement": "我以'修复型'逻辑买入该石油加工公司，在EV/FCF=3.62倍时建仓，目标是EV/FCF从3.62倍修复到8倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若自由现金流连续2年下滑超过30%，或净现金/市值比例降至20%以下，则逻辑失败，立即止损。",
+      "repair_target": "保守目标8.66元（EV/FCF 8倍），中性目标10.62元（EV/FCF 10倍），乐观目标12.59元（EV/FCF 12倍）",
+      "repair_catalyst": "1.行业周期触底反转；2.高股息率吸引资金（当前6.68%，TTM 10.83%）；3.净现金971.83亿元提供安全垫；4.央国企改革预期",
+      "expected_repair_return_pct": 98.6,
+      "recommendation": "买入",
+      "position_type": "核心",
+      "suggested_position_pct": 10,
+      "exit_conditions": [
+        "EV/FCF修复至8倍以上（对应股价8.66元）减仓30%",
+        "EV/FCF修复至10倍以上（对应股价10.62元）再减仓30%",
+        "EV/FCF修复至12倍以上（对应股价12.59元）清仓退出",
+        "自由现金流连续2年下滑超过30%立即止损",
+        "净现金/市值比例降至20%以下重新评估",
+        "涨幅透支5年股息总和（约1.6元）清仓退出"
+      ],
+      "macro_event_impact": "短期压制"
+    }
+  },
+  "synthesis": {
+    "流派判定": "关联方资源",
+    "龟级评定": "银龟",
+    "核心估值指标": "EV/FCF倍数3.62倍，安全边际40.2%",
+    "苹果买卖模型": "正常价9.64元，买入价5.78元，卖出价5.78元",
+    "一句话买入逻辑": "我以'修复型'逻辑买入该石油加工央企，在EV/FCF=3.62倍时建仓，目标是EV/FCF从3.62倍修复到8倍，预计持有2年，修复完成即卖出。证伪条件：若自由现金流连续2年下滑超过30%，或净现金/市值比例降至20%以下，则逻辑失败，立即止损。",
+    "关键风险": [
+      "国际油价大幅下跌导致炼油利润压缩",
+      "宏观经济下行导致成品油需求下降",
+      "资本支出持续高企侵蚀自由现金流",
+      "国企改革进度不及预期，估值修复延迟",
+      "周期性行业波动风险"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "买入",
+    "综合评分": 75,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600028.SH",
+    "cutoff_date": "2022-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 624.8,
+    "chapters_completed": 6
+  }
+}

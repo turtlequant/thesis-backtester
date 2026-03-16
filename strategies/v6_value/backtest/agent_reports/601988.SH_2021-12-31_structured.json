@@ -1,0 +1,123 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "审计意见数据不可获取",
+        "主营业务构成数据不可获取",
+        "银行行业关键指标（净息差、不良率、资本充足率）缺失"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地北京，国有控股比例超过92%，属于极低风险区域",
+      "geo_excluded": false,
+      "price_position_pct": 21.4,
+      "debt_ratio_pct": 91.28,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "虽然价格位置距52周高点跌幅不足30%（仅9.76%），但考虑到银行行业特殊性：1) PB仅0.48倍提供安全边际；2) 股息率6.26%具有吸引力；3) 国有控股背景风险低；4) 连续盈利能力强。建议进入深度分析，但需关注估值修复空间。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "央企",
+      "controlling_shareholder": "国务院（通过中央汇金等国有股东）",
+      "investment_stream": "关联方资源",
+      "stream_reasoning": "同时符合关联方资源和价值发现特征：1)控股股东为国有股东（前两大股东合计持股91.83%）；2)PB仅0.48倍，估值明显折价；3)PE=4.26<10，FCF收益率40.7%>10%；4)国有背景提供政策支持和资源注入预期；5)股息率6.26%提供收息保护。以关联方资源为主，兼具价值发现特征。",
+      "interest_bearing_debt": 13419.63,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": false,
+      "cycle_position": "非周期",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "大幅改善",
+      "latest_cash_balance": 0,
+      "reported_profit": 1723.58,
+      "non_cash_adjustments": 0,
+      "adjusted_profit": 1723.58,
+      "owner_earnings": 861.79,
+      "owner_earnings_formula": "金融行业替代方法：净利润1723.58亿 × 50%（假设50%留存补充资本）= 861.79亿可分配利润",
+      "fcf": 0,
+      "maintenance_capex": 0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "金融行业禁止使用PE估值",
+        "银行财务报表结构与一般企业不同",
+        "负债率80-95%属于行业正常水平"
+      ],
+      "valuation_method": "PB-ROE估值 + 股息率",
+      "net_cash": 0,
+      "ev": 8978.83,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 5.7,
+      "topdown_return_pct": 10.16,
+      "valuation_crosscheck": "不适用（金融行业）",
+      "dividend_yield_pct": 6.26,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 65.9,
+      "market_condition": "震荡市",
+      "buy_point": 3.5,
+      "sell_point": 5.5
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 1256.49,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "基本安全",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 95
+    },
+    "ch06_decision": {
+      "apple_normal_price": 5.06,
+      "apple_buy_price": 3.29,
+      "apple_sell_price": 5.06,
+      "buy_logic_statement": "我以'PB-ROE修复'类型买入该银行股，在PB=0.48倍时建仓，目标是PB从0.48倍修复到0.8倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若ROE连续2年低于8%或不良率大幅上升超过行业平均，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价4.42元（PB 0.7倍），中性目标价5.06元（PB 0.8倍），乐观目标价6.32元（PB 1.0倍）",
+      "repair_catalyst": "经济复苏带动银行业绩改善、利率环境改善提升净息差、资产质量改善降低拨备压力、国有大行估值修复行情",
+      "expected_repair_return_pct": 65.9,
+      "recommendation": "买入",
+      "position_type": "卫星",
+      "suggested_position_pct": 8,
+      "exit_conditions": [
+        "PB修复至0.8倍（目标价5.06元）开始分批退出",
+        "股息率降至4%以下时减仓",
+        "ROE连续2季度低于7%时止损",
+        "发现PB<0.4倍的更优银行股时切换"
+      ],
+      "macro_event_impact": "短期压制"
+    }
+  },
+  "synthesis": {
+    "流派判定": "关联方资源",
+    "龟级评定": "银龟",
+    "核心估值指标": "PB=0.48倍，安全边际65.9%",
+    "苹果买卖模型": "正常价5.06元/买入价3.29元/卖出价5.06元",
+    "一句话买入逻辑（强制）": "我以'PB-ROE修复'类型买入该国有银行股，在PB=0.48倍时建仓，目标是PB从0.48倍修复到0.8倍，预计持有2年，修复完成即卖出。证伪条件：若ROE连续2年低于7%或不良率大幅上升超过行业平均，则逻辑失败，立即止损。",
+    "关键风险": [
+      "银行行业系统性风险（经济下行、净息差收窄）",
+      "估值修复不确定性（银行股长期低估）",
+      "缺乏关键银行指标数据（不良率、净息差、资本充足率）",
+      "分红历史较短（仅2年记录）",
+      "房地产相关贷款风险敞口"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "买入",
+    "综合评分": 70,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "601988.SH",
+    "cutoff_date": "2021-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 486.9,
+    "chapters_completed": 6
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "2023年经营现金流异常波动需关注",
+        "审计意见数据不可获取但公司无ST标记"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司注册地为中国上海，主要业务在中国境内，无高风险区域资产或收入敞口，有国有股东背景",
+      "geo_excluded": false,
+      "price_position_pct": 34.6,
+      "debt_ratio_pct": 77.68,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过所有筛选步骤：1)无ST标记，上市29年；2)价格位置34.6%，距52周高点跌幅65.4%，有安全边际；3)资产负债率77.68%在建筑工程行业合理范围内，连续盈利至少3年；4)现金覆盖率107%，FCF倍数8.9倍（基于2022年数据）。需关注2023年现金流波动。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "基于现有数据无法穿透至最终控制人",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型3项核心条件：1)PE 6.15倍<10倍；2)建筑工程行业处于周期底部区域；3)经营现金流2023年Q3由负转正（3.68亿），显示边际改善。同时PB 0.66倍提供安全边际。",
+      "interest_bearing_debt": 345.42,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "良",
+      "cycle_debt_tolerance": "排除",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "持续增长",
+      "latest_cash_balance": 193.7,
+      "reported_profit": 14.94,
+      "non_cash_adjustments": 4.0,
+      "adjusted_profit": 18.44,
+      "owner_earnings": 15.44,
+      "owner_earnings_formula": "净利润14.94亿 + 折旧摊销3.50亿 + 非现金减值0.50亿 - 维持性CAPEX 3.50亿 = 15.44亿",
+      "fcf": -1.77,
+      "maintenance_capex": 3.5
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业利润波动大",
+        "经营现金流/净利润仅24.6%",
+        "自由现金流为负"
+      ],
+      "valuation_method": "PB法（FCF为负无法使用）",
+      "net_cash": -151.71,
+      "ev": 332.81,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用（FCF为负）",
+      "fair_value_per_share": 7.02,
+      "topdown_return_pct": 7.8,
+      "valuation_crosscheck": "矛盾（Top-Down 7.8% vs Bottom-Up -0.98%）",
+      "dividend_yield_pct": 3.99,
+      "dividend_sustainable": false,
+      "safety_margin_pct": 18.0,
+      "market_condition": "震荡市",
+      "buy_point": 4.91,
+      "sell_point": 9.13
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 14.52,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "安全边际不足",
+      "is_cigar_butt": false,
+      "liquidation_value": -812.06,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 20.0
+    },
+    "ch06_decision": {
+      "apple_normal_price": 7.9,
+      "apple_buy_price": 5.14,
+      "apple_sell_price": 7.02,
+      "buy_logic_statement": "我以'修复型'逻辑买入该建筑工程公司，在PB=0.66倍时建仓，目标是PB从0.66倍修复到0.9倍，预计持有2年，修复完成即卖出。证伪条件：若公司自由现金流连续2年持续为负且资产负债率超过80%，则逻辑失败，立即止损。",
+      "repair_target": "保守目标7.02元（PB 0.8倍），中性目标7.90元（PB 0.9倍），乐观目标8.78元（PB 1.0倍）",
+      "repair_catalyst": "1)基建投资政策加码；2)公司现金流改善；3)行业估值修复；4)股息率吸引力显现",
+      "expected_repair_return_pct": 37.2,
+      "recommendation": "观察",
+      "position_type": "卫星",
+      "suggested_position_pct": 2.0,
+      "exit_conditions": [
+        "PB修复至0.9倍（7.90元）开始分批退出",
+        "自由现金流连续2年持续为负",
+        "资产负债率超过80%",
+        "发现PB<0.5倍且基本面更优的替代标的"
+      ],
+      "macro_event_impact": "短期压制"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数为负（FCF为负），安全边际18.0%",
+    "苹果买卖模型": "正常价7.90元/买入价5.14元/卖出价7.02元",
+    "一句话买入逻辑": "我以'修复型'逻辑买入该建筑工程公司，在PB=0.66倍时建仓，目标是PB从0.66倍修复到0.9倍，预计持有2年，修复完成即卖出。证伪条件：若公司自由现金流连续2年持续为负且资产负债率超过80%，则逻辑失败，立即止损。",
+    "关键风险": [
+      "现金流恶化风险：2023年经营现金流大幅下降，自由现金流为负",
+      "行业周期风险：建筑工程行业处于下行周期，受房地产调控影响",
+      "负债率风险：资产负债率77.68%，有息负债345.42亿",
+      "利润质量风险：经营现金流/净利润仅24.6%，利润含金量低",
+      "股息可持续性风险：FCF为负，股息支付依赖历史积累"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "观望",
+    "综合评分": 55,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600820.SH",
+    "cutoff_date": "2023-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 548.3,
+    "chapters_completed": 6
+  }
+}

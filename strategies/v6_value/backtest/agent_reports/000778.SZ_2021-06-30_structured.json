@@ -1,0 +1,127 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "审计意见数据缺失",
+        "主营业务构成数据缺失"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地河北，属于极低风险区域，国家信用背书",
+      "geo_excluded": false,
+      "price_position_pct": 27.4,
+      "debt_ratio_pct": 51.56,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "排除原因：1) 价格位置不佳（距52周高点跌幅仅18.6%，未达30%安全边际要求）；2) 财务费用过高（约11.93亿元/年，远超5亿元排除标准）。公司为钢加工行业，负债率51.56%尚可，连续盈利3年以上，现金覆盖率52.4%良好，但价格和财务费用不满足快速排除标准。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "民营",
+      "controlling_shareholder": "未知（其他法人股东持股39.96%）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型多项条件：1) PE=7.87<10；2) FCF收益率=19.8%>10%；3) PB=0.68<1.0且ROE=8.37%>8%；4) 股息率TTM=8.06%提供额外安全边际。不满足纯硬收息（派息历史仅2年），不满足烟蒂股（PB=0.68>0.3，清算价值<市值）",
+      "interest_bearing_debt": 106.55,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "可接受",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "下行",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "实际控制人信息不透明",
+        "关联交易数据缺失",
+        "审计意见数据缺失"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动",
+      "latest_cash_balance": 77.79,
+      "reported_profit": 19.64,
+      "non_cash_adjustments": 10.0,
+      "adjusted_profit": 20.98,
+      "owner_earnings": 20.98,
+      "owner_earnings_formula": "净利润19.64亿 + 折旧摊销估计10亿 - 维持性CAPEX 8.66亿 = 20.98亿（基于钢加工行业特性估算）",
+      "fcf": 25.22,
+      "maintenance_capex": 8.66
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业利润波动大",
+        "PE与同行可能严重偏离"
+      ],
+      "valuation_method": "FCF",
+      "net_cash": -28.76,
+      "ev": 177.22,
+      "ev_fcf_multiple": 7.04,
+      "turtle_rating": "显著低估",
+      "fair_value_per_share": 2.44,
+      "topdown_return_pct": 11.5,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 8.06,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 15.0,
+      "market_condition": "震荡市",
+      "buy_point": 2.44,
+      "sell_point": 4.43
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 14.32,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": -52.82,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 30
+    },
+    "ch06_decision": {
+      "apple_normal_price": 5.0,
+      "apple_buy_price": 3.25,
+      "apple_sell_price": 4.33,
+      "buy_logic_statement": "我以'估值修复'类型买入该钢加工公司，在剔除净现金FCF倍数7.04倍时建仓，目标是FCF倍数从7.04倍修复到8倍，预计持有1-2年，修复完成即卖出，绝不恋战。证伪条件：若2021年全年自由现金流同比下降超过30%，或钢价周期进入下行通道，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价4.33元（EV/FCF 8倍），中性目标价5.59元（EV/FCF 10倍），乐观目标价6.85元（EV/FCF 12倍）",
+      "repair_catalyst": "1.钢价上升周期；2.供给侧改革政策支持；3.8.06%高股息率提供安全边际；4.PB仅0.68倍显著低估",
+      "expected_repair_return_pct": 16.4,
+      "recommendation": "买入",
+      "position_type": "卫星",
+      "suggested_position_pct": 2,
+      "exit_conditions": [
+        "达到保守目标价4.33元减仓30%",
+        "达到中性目标价5.59元再减仓30%",
+        "达到乐观目标价6.85元清仓",
+        "FCF连续2季下滑>20%减仓",
+        "钢价涨至90%分位清仓",
+        "持有超过2年未达修复目标重新评估"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "铜龟",
+    "核心估值指标": "EV/FCF倍数=7.04倍，安全边际=15.0%",
+    "苹果买卖模型": "正常价=5.00元，买入价=3.25元，卖出价=4.33元",
+    "一句话买入逻辑": "我以'估值修复'类型买入该钢加工公司，在剔除净现金FCF倍数7.04倍时建仓，目标是FCF倍数从7.04倍修复到8倍，预计持有1-2年，修复完成即卖出，绝不恋战。证伪条件：若2021年全年自由现金流同比下降超过30%，或钢价周期进入下行通道，则逻辑失败，立即止损。",
+    "关键风险": [
+      "钢加工行业强周期性风险，当前可能处于下行阶段",
+      "财务杠杆较高，有息负债106.55亿，净现金为负28.76亿",
+      "价格位置不佳，距52周高点仅下跌18.6%，安全边际不足",
+      "管理人诚信存疑，实际控制人不透明，关联交易数据缺失",
+      "压力测试不通过，极端情景下安全边际不足"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "观望",
+    "综合评分": 50,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "000778.SZ",
+    "cutoff_date": "2021-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 643.8,
+    "chapters_completed": 6
+  }
+}

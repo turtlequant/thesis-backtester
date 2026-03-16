@@ -1,0 +1,126 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺少审计意见数据",
+        "缺少主营业务构成和地域分布数据"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司注册地在深圳，属于中国内地极低风险区域；行业为全国地产，主要业务应在中国境内；前十大股东中包含国有/政府关联股东",
+      "geo_excluded": false,
+      "price_position_pct": 2.4,
+      "debt_ratio_pct": 72.56,
+      "consecutive_profit_years": 2,
+      "pass_screening": true,
+      "screening_notes": "通过快速筛选：1)无ST标记，上市超3年；2)价格距52周高点跌幅47.4%，安全边际充足；3)有息负债率18.9%可控，连续盈利；4)现金覆盖率153.7%极高，FCF倍数仅3.14倍显示估值吸引力。需补充审计意见和业务构成数据。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "机构投资者（第一大股东持股21.69%）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型5项核心条件中的5项：1)PE=5.43<10；2)FCF收益率29.6%>10%；3)PB=0.50<1.0且ROE=9.53%>8%；4)房地产行业处于周期底部；5)经营现金流2022年大幅改善至199.07亿。不满足纯硬收息型（派息率仅10%且有息负债），不满足烟蒂股（PB=0.50>0.3，净现金为负），不满足关联方资源（无大型央企控股）。",
+      "interest_bearing_debt": 799.55,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "良",
+      "cycle_debt_tolerance": "需观察",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "分红大幅下降（2021年0.63元→2022年0.136元）",
+        "缺乏审计意见和关联交易数据"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "下降",
+      "latest_cash_balance": 500.42,
+      "reported_profit": 91.66,
+      "non_cash_adjustments": 30.87,
+      "adjusted_profit": 199.07,
+      "owner_earnings": 121.86,
+      "owner_earnings_formula": "净利润91.66亿 + 折旧摊销0.67亿 + 非现金减值30.20亿 - 维持性CAPEX0.67亿 = 121.86亿（基于地产行业特征估算）",
+      "fcf": 74.53,
+      "maintenance_capex": 0.67
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业利润波动巨大",
+        "资产减值占净利润32.9%扭曲利润",
+        "经营现金流与净利润背离严重"
+      ],
+      "valuation_method": "EV/FCF",
+      "net_cash": -299.13,
+      "ev": 624.63,
+      "ev_fcf_multiple": 3.15,
+      "turtle_rating": "优质级",
+      "fair_value_per_share": 14.0,
+      "topdown_return_pct": 13.74,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 8.74,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 48.5,
+      "market_condition": "熊市",
+      "buy_point": 6.8,
+      "sell_point": 11.3
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 66.82,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "基本安全",
+      "is_cigar_butt": false,
+      "liquidation_value": -1629.06,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 10.0
+    },
+    "ch06_decision": {
+      "apple_normal_price": 16.23,
+      "apple_buy_price": 9.74,
+      "apple_sell_price": 8.93,
+      "buy_logic_statement": "我以'修复型'逻辑买入该地产公司，在EV/FCF=3.15倍、PB=0.50倍时建仓，目标是EV/FCF从3.15倍修复到8倍，PB从0.50倍修复到0.8倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若公司净负债率从72.56%上升至80%以上，或经营现金流连续2个季度为负且超过50亿元，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价28.64元（EV/FCF 8倍），中性目标价37.47元（EV/FCF 10倍），乐观目标价46.28元（EV/FCF 12倍）",
+      "repair_catalyst": "地产政策边际放松、公司去杠杆完成（净负债率下降）、经营现金流持续为正、行业估值修复带动",
+      "expected_repair_return_pct": 297.0,
+      "recommendation": "买入",
+      "position_type": "卫星",
+      "suggested_position_pct": 8.0,
+      "exit_conditions": [
+        "EV/FCF修复至8倍（28.64元）时减仓50%",
+        "持仓盈利超过50%时强制减仓50%",
+        "EV/FCF超过12倍时清仓",
+        "净负债率上升至80%以上时止损",
+        "经营现金流连续2个季度为负且超过50亿元时止损"
+      ],
+      "macro_event_impact": "短期压制"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "银龟",
+    "核心估值指标": "EV/FCF=3.15倍，安全边际48.5%",
+    "苹果买卖模型": "正常价16.23元/买入价9.74元/卖出价8.93元（但基于EV/FCF修复的卖出价更高）",
+    "一句话买入逻辑（强制）": "我以'修复型'逻辑买入该地产公司，在EV/FCF=3.15倍、PB=0.50倍时建仓，目标是EV/FCF从3.15倍修复到8倍，PB从0.50倍修复到0.8倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若公司净负债率从72.56%上升至80%以上，或经营现金流连续2个季度为负且超过50亿元，则逻辑失败，立即止损。",
+    "关键风险": [
+      "地产行业政策风险持续",
+      "净负债率72.56%较高",
+      "管理层分红政策不稳定",
+      "现金流季节性波动大",
+      "缺乏审计意见数据"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "买入",
+    "综合评分": 72,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600383.SH",
+    "cutoff_date": "2023-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 618.5,
+    "chapters_completed": 6
+  }
+}

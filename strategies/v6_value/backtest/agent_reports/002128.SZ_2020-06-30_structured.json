@@ -1,0 +1,120 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据缺失，但基于公司正常经营状态可视为标准无保留意见"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内蒙古，属于极低风险区域，无地缘政治风险敞口",
+      "geo_excluded": false,
+      "price_position_pct": 38.6,
+      "debt_ratio_pct": 44.2,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "排除原因：1) 价格位置不佳（距52周高点仅下跌13.5%，安全边际不足）；2) 现金覆盖率不足（现金/市值仅17.9%，低于20%的安全边际要求）。标的虽基本面稳健（连续盈利、负债率合理），但估值安全边际不足，建议放入观察列表等待更好价格。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "未知（需进一步穿透股权链）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "符合价值发现型多项条件：1) PE=5.62<10；2) 2019年FCF收益率约19.2%>10%；3) PB=0.90<1.0且2019年ROE=17.34%>8%；4) 煤炭行业处于周期底部；5) 经营现金流持续为正。股息率虽高（5.16%），但有息负债存在且派息率31.25%未达纯硬收息标准。",
+      "interest_bearing_debt": 115.91,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "警惕",
+      "cycle_debt_tolerance": "排除",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动",
+      "latest_cash_balance": 26.73,
+      "reported_profit": 10.94,
+      "non_cash_adjustments": 6.0,
+      "adjusted_profit": 16.94,
+      "owner_earnings": 28.06,
+      "owner_earnings_formula": "净利润27.06亿 + 折旧摊销23.94亿 + 非现金减值1.00亿 - 维持性CAPEX23.94亿 = 28.06亿（基于2019年数据估算）",
+      "fcf": 11.04,
+      "maintenance_capex": 24.0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "PE与FCF收益率矛盾"
+      ],
+      "valuation_method": "FCF+周期位置",
+      "net_cash": -89.18,
+      "ev": 238.1,
+      "ev_fcf_multiple": 22.4,
+      "turtle_rating": "高估",
+      "fair_value_per_share": 5.52,
+      "topdown_return_pct": 7.16,
+      "valuation_crosscheck": "一致",
+      "dividend_yield_pct": 5.16,
+      "dividend_sustainable": true,
+      "safety_margin_pct": -28.9,
+      "market_condition": "震荡市",
+      "buy_point": 5.52,
+      "sell_point": 8.28
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 19.73,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 100
+    },
+    "ch06_decision": {
+      "apple_normal_price": 8.79,
+      "apple_buy_price": 5.52,
+      "apple_sell_price": 7.3,
+      "buy_logic_statement": "当前不适用买入逻辑：EV/FCF倍数22.4倍远高于合理区间8-10倍，净现金为负-89.18亿元，安全边际为负28.9%，价格高于合理估值5.52元。",
+      "repair_target": "估值压缩目标：EV/FCF从22.4倍压缩至8倍对应股价7.30元（中性），压缩至5倍对应股价2.82元（悲观）。",
+      "repair_catalyst": "无修复催化剂，需等待估值压缩：1)煤炭价格下跌导致盈利下滑；2)行业政策收紧；3)财务风险暴露导致市场重新定价。",
+      "expected_repair_return_pct": -5.8,
+      "recommendation": "减仓",
+      "position_type": "观察",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "EV/FCF倍数压缩至8倍以下（当前22.4倍）",
+        "净现金转正（当前-89.18亿元）",
+        "煤炭价格进入下行周期",
+        "发现FCF倍数<5倍的更优标的"
+      ],
+      "macro_event_impact": "需警惕：煤炭行业面临环保政策收紧、能源转型压力、周期性价格波动风险，建议减仓观望。"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数=22.4倍，安全边际=-28.9%",
+    "苹果买卖模型": "正常价=8.79元，买入价=5.52元，卖出价=7.30元",
+    "一句话买入逻辑": "当前不适用买入逻辑：EV/FCF倍数22.4倍远高于合理区间8-10倍，净现金为负-89.18亿元，安全边际为负28.9%，价格高于合理估值5.52元。",
+    "关键风险": [
+      "高有息负债风险（有息负债115.91亿，有息负债率73.1%）",
+      "净现金为负（-89.18亿），财务缓冲不足",
+      "煤炭行业周期性下行风险",
+      "EV/FCF倍数过高（22.4倍），估值压缩风险",
+      "安全边际为负（-28.9%），价格高于合理价值"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "观望",
+    "综合评分": 45,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "002128.SZ",
+    "cutoff_date": "2020-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 552.0,
+    "chapters_completed": 6
+  }
+}

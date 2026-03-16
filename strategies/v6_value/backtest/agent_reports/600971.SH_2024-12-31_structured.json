@@ -1,0 +1,126 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "审计意见数据缺失",
+        "主营业务地域分布数据缺失",
+        "更早年份连续盈利记录不完整"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地安徽，煤炭开采行业受国家政策支持，国有股东持股显示国家信用背书，无高风险区域业务",
+      "geo_excluded": false,
+      "price_position_pct": 17.1,
+      "debt_ratio_pct": 38.7,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过快速筛选：1) 地缘政治风险极低；2) 上市超3年无ST标记；3) 价格距52周高点跌幅82.9%，安全边际充足；4) 负债率仅38.7%，有息负债率7.42%，财务稳健；5) 现金覆盖率53%，FCF倍数仅1.91倍，估值吸引力强。需补充审计意见和更完整盈利记录验证。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "信息不足，第一大股东为其他法人股东持股54.96%",
+      "investment_stream": "纯硬收息",
+      "stream_reasoning": "1) 股息率10.63%远超5%门槛；2) 经营现金流/净利润=138.9%>100%；3) 派息率50%合理可持续；4) 虽有有息负债但整体财务稳健；5) PE=8.38提供估值安全边际",
+      "interest_bearing_debt": 15.35,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "需观察",
+      "is_cyclical": true,
+      "cycle_position": "下行",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "审计意见数据缺失",
+        "关联交易信息不足",
+        "股权质押数据缺失"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "下降",
+      "latest_cash_balance": 59.86,
+      "reported_profit": 9.45,
+      "non_cash_adjustments": 3.97,
+      "adjusted_profit": 13.42,
+      "owner_earnings": 9.45,
+      "owner_earnings_formula": "净利润9.45亿 + 折旧摊销4.13亿 - 维持性CAPEX4.13亿 = 9.45亿",
+      "fcf": 0.43,
+      "maintenance_capex": 4.13
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "利润随煤炭价格剧烈波动"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": 44.51,
+      "ev": 68.41,
+      "ev_fcf_multiple": 8.55,
+      "turtle_rating": "合理区间",
+      "fair_value_per_share": 9.04,
+      "topdown_return_pct": 12.63,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 10.63,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -5.3,
+      "market_condition": "熊市",
+      "buy_point": 5.71,
+      "sell_point": 9.04
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 9.19,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 2.64,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 95
+    },
+    "ch06_decision": {
+      "apple_normal_price": 20.36,
+      "apple_buy_price": 5.71,
+      "apple_sell_price": 10.38,
+      "buy_logic_statement": "我以'估值修复'类型买入该煤炭公司，在FCF倍数=8.55倍时建仓，目标是FCF倍数从8.55倍修复到10倍，预计持有1-2年，修复完成即卖出。证伪条件：若煤炭价格持续下跌导致FCF下降30%以上，或股息率降至5%以下且无增长预期，则逻辑失败，立即止损。",
+      "repair_target": "中性目标价10.38元（对应EV/FCF 10倍），乐观目标价11.71元（对应EV/FCF 12倍）",
+      "repair_catalyst": "煤炭价格企稳回升、高股息吸引力、净现金充足提供安全垫",
+      "expected_repair_return_pct": 10.31,
+      "recommendation": "观察",
+      "position_type": "观察",
+      "suggested_position_pct": 2,
+      "exit_conditions": [
+        "达到中性目标价10.38元减仓50%",
+        "FCF下降30%以上立即止损",
+        "股息率降至5%以下且无增长预期",
+        "持有2年未达修复目标重新评估"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "纯硬收息",
+    "龟级评定": "铜龟",
+    "核心估值指标": "EV/FCF倍数=8.55倍，安全边际=-5.3%（当前价9.41元 vs 合理价9.04元）",
+    "苹果买卖模型": "正常价9.04元，买入价5.71元，卖出价10.38元",
+    "一句话买入逻辑": "我以'高股息+有限估值修复'逻辑买入该煤炭公司，在股息率10.63%时建仓，目标是获取稳定股息收益并在EV/FCF从8.55倍修复至10倍时获得约10%的估值修复收益。证伪条件：若煤炭价格持续下跌导致股息率降至5%以下或FCF下降30%以上，则逻辑失败，立即止损。",
+    "关键风险": [
+      "煤炭价格持续下跌导致盈利下滑和股息不可持续",
+      "碳中和政策长期压制行业估值",
+      "管理人诚信信息缺失（审计意见、关联交易等）",
+      "周期性行业处于下行周期，盈利指标显示压缩趋势",
+      "股息支付率可能过高，FCF覆盖率不足"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "观望",
+    "综合评分": 55,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600971.SH",
+    "cutoff_date": "2024-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 581.1,
+    "chapters_completed": 6
+  }
+}

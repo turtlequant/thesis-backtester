@@ -1,0 +1,126 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺少审计意见数据",
+        "缺少主营业务构成数据",
+        "缺少财务费用明细数据"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于江苏（中国内地），属于极低风险区域；股东包含国有/政府关联股东；基于园区开发行业特性，资产和收入应主要集中在中国内地",
+      "geo_excluded": false,
+      "price_position_pct": 24.8,
+      "debt_ratio_pct": 49.28,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "排除原因：1) 价格位置不佳（距52周高点仅下跌15.2%，安全边际不足）；2) 现金覆盖率低（现金/市值仅10.4%）；3) 经营现金流持续为负（2023年-21.77亿，盈利质量差）；4) 有息负债较高（约77.35亿）。虽然公司连续盈利且地缘政治风险极低，但安全边际不足且现金流状况不佳，不符合快速筛选标准。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "法人股东（持股34.74%）",
+      "investment_stream": "无法归类",
+      "stream_reasoning": "1) 纯硬收息：股息率6.92%>5%但派息不稳定且FCF为负无法覆盖分红；2) 烟蒂股：PB=0.58>0.3且净现金为负；3) 关联方资源：控股股东非大型央企/国企集团；4) 价值发现：仅PE=7.27<10满足，其他条件均不满足",
+      "interest_bearing_debt": 77.35,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "警惕",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": false,
+      "cycle_position": "非周期",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "派息政策不稳定（2023年0.28元 vs 2022年0.42元，降幅33.3%）",
+        "关键治理数据缺失（审计意见、关联交易、股权质押）"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动稳定",
+      "latest_cash_balance": 10.92,
+      "reported_profit": 14.83,
+      "non_cash_adjustments": 0.04,
+      "adjusted_profit": -21.77,
+      "owner_earnings": 14.37,
+      "owner_earnings_formula": "净利润14.83亿 + 折旧摊销0.04亿 - 维持性CAPEX0.50亿 = 14.37亿",
+      "fcf": -25.48,
+      "maintenance_capex": 0.5
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "经营现金流/净利润严重背离（-146.8%）",
+        "自由现金流连续为负",
+        "PE低但现金流差的价值陷阱"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": -66.43,
+      "ev": 171.46,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "无法评级",
+      "fair_value_per_share": 6.07,
+      "topdown_return_pct": 6.92,
+      "valuation_crosscheck": "严重矛盾",
+      "dividend_yield_pct": 6.92,
+      "dividend_sustainable": false,
+      "safety_margin_pct": 0,
+      "market_condition": "震荡市",
+      "buy_point": 5.23,
+      "sell_point": 7.34
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 11.38,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": -125.09,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 30
+    },
+    "ch06_decision": {
+      "apple_normal_price": 11.23,
+      "apple_buy_price": 6.74,
+      "apple_sell_price": 6.74,
+      "buy_logic_statement": "我以'高股息修复'类型买入该标的，在股息率6.92%时建仓，目标是股息率从6.92%修复到4%，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若连续2年经营现金流净额为负且自由现金流为负，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价7.00元（对应股息率4%），中性目标价8.38元（对应PB 0.8倍），乐观目标价10.82元（对应PE 12倍）",
+      "repair_catalyst": "经营现金流改善转正、园区开发业务周期性复苏、政策支持园区经济发展",
+      "expected_repair_return_pct": 15.3,
+      "recommendation": "观察",
+      "position_type": "卫星",
+      "suggested_position_pct": 2,
+      "exit_conditions": [
+        "股价达到7.00元（股息率降至4%）",
+        "经营现金流连续2年为负",
+        "股息率降至5%以下且无改善迹象",
+        "发现FCF倍数为正且<5倍的更优标的"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值陷阱型",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数无法计算（FCF为负），安全边际0%",
+    "苹果买卖模型": "正常价11.23元，买入价6.74元，卖出价6.74元",
+    "一句话买入逻辑（强制）": "我以'高股息修复'类型买入该标的，在股息率6.92%时建仓，目标是股息率从6.92%修复到4%，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若连续2年经营现金流净额为负且自由现金流为负，则逻辑失败，立即止损。",
+    "关键风险": [
+      "经营现金流持续为负且无改善迹象",
+      "自由现金流连续为负，股息支付依赖外部融资",
+      "现金转化率极低（2023年-146.8%），利润质量可疑",
+      "大存大贷现象明显，财务风险较高",
+      "派息政策不稳定，2023年派息大幅下降33.3%"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "回避",
+    "综合评分": 35,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600064.SH",
+    "cutoff_date": "2024-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 559.2,
+    "chapters_completed": 6
+  }
+}

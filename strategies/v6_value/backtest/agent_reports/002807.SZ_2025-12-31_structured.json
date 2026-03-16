@@ -1,0 +1,129 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺少审计意见数据",
+        "缺少银行专属指标（资本充足率等）",
+        "缺少主营业务地域分布数据"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地江苏地区，属于极低风险区域；银行行业具有属地经营特性；前十大股东包括国有/政府关联股东",
+      "geo_excluded": false,
+      "price_position_pct": 39.7,
+      "debt_ratio_pct": 90.68,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "价格位置安全边际不足：当前价4.57元，距52周高点5.39元仅下跌15.2%，未达到30%的安全边际要求。但基本面良好：PB 0.60倍有估值优势，股息率TTM 6.56%较高，连续盈利。建议放入观察列表，等待价格回调至更安全位置。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "无法穿透识别（股权分散，存在国有股东）",
+      "investment_stream": "纯硬收息",
+      "stream_reasoning": "股息率TTM 6.56%超过5%门槛，连续4年稳定派息（2022-2025年），派息额从0.18元增长至0.20元，2025年中期派息0.10元，PE仅5.14倍提供安全边际，符合纯硬收息型核心特征",
+      "interest_bearing_debt": 20.5,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "可接受",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": false,
+      "cycle_position": "非周期",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "缺少审计意见数据",
+        "缺少关联交易数据",
+        "缺少股权质押数据"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动稳定",
+      "latest_cash_balance": 0,
+      "reported_profit": 12.58,
+      "non_cash_adjustments": -0.39,
+      "adjusted_profit": 12.19,
+      "owner_earnings": 11.75,
+      "owner_earnings_formula": "金融行业替代方法：可分配利润 = 净利润 × (1 - 资本补充需求比例)，其中净利润采用2025年前三季度年化值16.77亿，资本补充需求比例假设行业平均30%",
+      "fcf": 0,
+      "maintenance_capex": 0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "金融行业禁止使用PE估值",
+        "银行财务报表结构与一般企业不同",
+        "负债率80-95%属于行业正常水平"
+      ],
+      "valuation_method": "PB-ROE估值 + 股息率",
+      "net_cash": 0,
+      "ev": 112.49,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 7.0,
+      "topdown_return_pct": 6.56,
+      "valuation_crosscheck": "不适用（金融行业）",
+      "dividend_yield_pct": 4.16,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 34.7,
+      "market_condition": "震荡市",
+      "buy_point": 4.2,
+      "sell_point": 7.78
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 14.85,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 95
+    },
+    "ch06_decision": {
+      "apple_normal_price": 7.39,
+      "apple_buy_price": 4.8,
+      "apple_sell_price": 5.91,
+      "buy_logic_statement": "我以'PB修复'逻辑买入该银行股，在PB=0.60倍时建仓，目标是PB从0.60倍修复到0.80倍，预计持有1-2年，修复完成即卖出，绝不恋战。证伪条件：若ROE持续低于8%或不良率大幅上升，则逻辑失败，立即止损。",
+      "repair_target": "保守目标6.22元（PB 0.80倍），中性目标7.00元（PB 0.90倍），乐观目标7.78元（PB 1.00倍）",
+      "repair_catalyst": "1.经济复苏带动信贷需求；2.银行业政策边际放松；3.ROE从6.77%向历史均值11-12%修复；4.股息率4.16%具吸引力",
+      "expected_repair_return_pct": 36.1,
+      "recommendation": "买入",
+      "position_type": "卫星",
+      "suggested_position_pct": 4,
+      "exit_conditions": [
+        "PB修复至0.80倍减仓50%",
+        "PB修复至0.90倍再减30%",
+        "PB修复至1.00倍清仓",
+        "ROE持续低于8%止损",
+        "不良率大幅上升止损",
+        "发现PB<0.5倍的更优银行股切换"
+      ],
+      "macro_event_impact": "无影响"
+    }
+  },
+  "synthesis": {
+    "流派判定": "纯硬收息",
+    "龟级评定": "铜龟",
+    "核心估值指标": "PB 0.60倍，安全边际34.7%",
+    "苹果买卖模型": "正常价7.39元，买入价4.80元，卖出价5.91元",
+    "一句话买入逻辑": "我以'高股息+PB修复'逻辑买入该银行股，在PB=0.60倍、股息率TTM 6.56%时建仓，目标是获取稳定股息收益和PB从0.60倍向0.80倍修复的估值修复收益。证伪条件：若ROE持续低于8%或不良率大幅上升，则逻辑失败，立即止损。",
+    "关键风险": [
+      "银行资产质量恶化风险",
+      "ROE持续下降趋势",
+      "经济下行周期估值压缩",
+      "缺少关键银行指标数据（资本充足率、不良率）",
+      "经营现金流波动较大"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "观望",
+    "综合评分": 68,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "002807.SZ",
+    "cutoff_date": "2025-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 564.1,
+    "chapters_completed": 6
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据缺失",
+        "主营业务地域分布数据缺失"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于广东，属于中国内地，区域地产行业主要业务集中在中国内地，无高风险区域敞口",
+      "geo_excluded": false,
+      "price_position_pct": 8.3,
+      "debt_ratio_pct": 82.55,
+      "consecutive_profit_years": 2,
+      "pass_screening": true,
+      "screening_notes": "通过快速筛选：1) 上市超16年；2) 价格接近52周低点；3) 有息负债率32.8%可控；4) 连续盈利；5) 现金/市值高达349.8%，FCF倍数4.07倍显示估值吸引力。地产行业负债率较高属行业特性，但现金充裕提供安全边际。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "民营",
+      "controlling_shareholder": "未知",
+      "investment_stream": "纯硬收息",
+      "stream_reasoning": "股息率5.64%>5%门槛，股息率TTM 6.44%，连续3年派息记录，经营现金流/净利润=634%远超100%标准，PB=0.95接近烟蒂股但收息特征更突出",
+      "interest_bearing_debt": 977.81,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "警惕",
+      "cycle_debt_tolerance": "需观察",
+      "is_cyclical": true,
+      "cycle_position": "下行",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "审计意见数据缺失",
+        "关联交易数据缺失",
+        "股东信息更新不及时（最新2018年）"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "持续增长",
+      "latest_cash_balance": 459.91,
+      "reported_profit": 17.55,
+      "non_cash_adjustments": 0.5,
+      "adjusted_profit": 17.55,
+      "owner_earnings": 17.05,
+      "owner_earnings_formula": "净利润17.55亿元 + 折旧摊销0.50亿元（估算） - 维持性CAPEX 1.00亿元（估算） = 17.05亿元",
+      "fcf": 18.52,
+      "maintenance_capex": 1.0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "自由现金流连续为负",
+        "PE低但FCF为负的矛盾"
+      ],
+      "valuation_method": "EV/FCF",
+      "net_cash": -517.9,
+      "ev": 649.38,
+      "ev_fcf_multiple": 4.09,
+      "turtle_rating": "优质级",
+      "fair_value_per_share": 6.52,
+      "topdown_return_pct": 9.44,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 5.64,
+      "dividend_sustainable": true,
+      "safety_margin_pct": -20.0,
+      "market_condition": "熊市",
+      "buy_point": 3.91,
+      "sell_point": 5.22
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 20.3,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 0
+    },
+    "ch06_decision": {
+      "apple_normal_price": 14.93,
+      "apple_buy_price": 6.63,
+      "apple_sell_price": 13.26,
+      "buy_logic_statement": "我以'修复型'逻辑买入该区域地产股，在PE=4.68倍时建仓，目标是PE从4.68倍修复到12倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若2021年归母净利润同比下降超过30%，或资产负债率上升至85%以上，则逻辑失败，立即止损。",
+      "repair_target": "保守目标8.84元（PE 8倍），中性目标11.05元（PE 10倍），乐观目标13.26元（PE 12倍）",
+      "repair_catalyst": "1.房地产调控政策边际放松；2.2021年业绩超预期增长；3.市场对地产板块风险偏好提升；4.维持高股息率吸引配置资金",
+      "expected_repair_return_pct": 77.94,
+      "recommendation": "观察",
+      "position_type": "卫星",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "达到保守目标价8.84元减仓30%",
+        "达到中性目标价11.05元再减仓30%",
+        "达到乐观目标价13.26元清仓",
+        "2021年归母净利润同比下降超30%止损",
+        "资产负债率上升至85%以上止损",
+        "持有超过3年未达修复目标重新评估"
+      ],
+      "macro_event_impact": "短期压制"
+    }
+  },
+  "synthesis": {
+    "流派判定": "纯硬收息",
+    "龟级评定": "铜龟",
+    "核心估值指标": "EV/FCF倍数4.09倍，安全边际不足（熊市标准仅2/5项达标）",
+    "苹果买卖模型": "正常价14.93元（PE 13.5倍），买入价6.63元（PE 6倍），卖出价13.26元（PE 12倍）",
+    "一句话买入逻辑（强制）": "我以'纯硬收息'逻辑买入该区域地产股，在股息率6.44%时建仓，目标是获取稳定股息收益并等待估值修复，预计持有2-3年。证伪条件：若连续两年股息下降超过20%，或净负债率上升至250%以上，则逻辑失败，立即止损。",
+    "关键风险": [
+      "高负债风险（净负债率246%）",
+      "房地产调控政策持续收紧",
+      "自由现金流连续为负",
+      "信息披露不完整（审计意见、关联交易缺失）",
+      "压力测试失败（极端情景下安全边际不足）"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "观望",
+    "综合评分": 55,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600325.SH",
+    "cutoff_date": "2020-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 509.3,
+    "chapters_completed": 6
+  }
+}

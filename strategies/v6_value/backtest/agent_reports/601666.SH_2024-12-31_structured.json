@@ -1,0 +1,130 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据不可获取，需人工核实"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "中国内地央国企背景，煤炭行业为国家战略资源行业，无海外高风险区域资产",
+      "geo_excluded": false,
+      "price_position_pct": 30.2,
+      "debt_ratio_pct": 58.59,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过所有快速筛选检查：1) 地缘政治风险极低；2) 价格位置处于相对低位（距52周高点跌幅33.4%）；3) 负债率58.59%在行业合理范围内；4) 连续盈利超过3年；5) 现金覆盖率45.9%提供良好安全边际；6) 股息率TTM 9.78%具有吸引力。需注意审计意见需人工核实。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "地方国企",
+      "controlling_shareholder": "河南省国资委（推断）",
+      "investment_stream": "关联方资源",
+      "stream_reasoning": "1) 控股股东为省级能源国企集团，存在资产注入预期；2) PE=8.52<10，估值偏低；3) 股息率TTM 9.78%具有吸引力；4) 煤炭行业处于周期底部区域；5) 地方国企背景提供政策安全边际。兼具关联方资源和价值发现特征。",
+      "interest_bearing_debt": 179.34,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "可接受",
+      "cycle_debt_tolerance": "可接受",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "下降",
+      "latest_cash_balance": 113.75,
+      "reported_profit": 20.45,
+      "non_cash_adjustments": 45.0,
+      "adjusted_profit": 65.45,
+      "owner_earnings": 20.45,
+      "owner_earnings_formula": "净利润20.45亿 + 折旧摊销45亿（估算） - 维持性CAPEX45亿（折旧近似法估算） = 20.45亿",
+      "fcf": 20.52,
+      "maintenance_capex": 45.0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业（煤炭开采）",
+        "自由现金流近2年不稳定",
+        "存货增速超收入增速",
+        "折旧摊销占比极高（220%）",
+        "净利润波动巨大"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": -65.59,
+      "ev": 313.6,
+      "ev_fcf_multiple": 20.93,
+      "turtle_rating": "高估",
+      "fair_value_per_share": 6.5,
+      "topdown_return_pct": 9.78,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 8.12,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -15.0,
+      "market_condition": "熊市",
+      "buy_point": 6.5,
+      "sell_point": 12.0
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 14.91,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 75
+    },
+    "ch06_decision": {
+      "apple_normal_price": 6.5,
+      "apple_buy_price": 4.23,
+      "apple_sell_price": 3.9,
+      "buy_logic_statement": "当前不适用买入逻辑。若未来价格下跌至4.23元以下（对应剔除净现金FCF倍数<5倍），可考虑以价值修复逻辑买入，目标FCF倍数修复至8倍，持有1-2年。证伪条件：煤炭价格持续下跌导致FCF连续2季度下滑>30%。",
+      "repair_target": "保守修复目标价3.98元（对应EV/FCF 8倍），中性修复目标价5.64元（对应EV/FCF 10倍）",
+      "repair_catalyst": "煤炭价格反弹、行业供给侧改革、公司降本增效、派息政策稳定",
+      "expected_repair_return_pct": -43.7,
+      "recommendation": "减仓",
+      "position_type": "观察",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "EV/FCF倍数修复至8倍以上（当前20.93倍）",
+        "价格下跌至买入区间4.23元以下",
+        "基本面恶化（FCF连续2季度下滑>30%）",
+        "发现更优标的（FCF倍数差>2倍）"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "关联方资源",
+    "龟级评定": "不达标",
+    "核心估值指标": {
+      "EV/FCF倍数": 20.93,
+      "安全边际": -15.0
+    },
+    "苹果买卖模型": {
+      "正常价": 6.5,
+      "买入价": 4.23,
+      "卖出价": 3.9
+    },
+    "一句话买入逻辑": "当前不适用买入逻辑。若未来价格下跌至4.23元以下（对应剔除净现金FCF倍数<5倍），可考虑以价值修复逻辑买入，目标FCF倍数修复至8倍，持有1-2年。证伪条件：煤炭价格持续下跌导致FCF连续2季度下滑>30%。",
+    "关键风险": [
+      "估值高估风险：EV/FCF倍数20.93倍远高于合理区间8-10倍",
+      "分红不可持续风险：压力测试显示在衰退情景下分红支付率164.7%",
+      "行业周期性风险：煤炭行业面临结构性下行压力",
+      "现金流不稳定风险：FCF波动较大，2024Q3自由现金流-54.54亿",
+      "安全边际不足：当前价格10.02元高于正常价6.5元，高估53.8%"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "回避",
+    "综合评分": 35,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "601666.SH",
+    "cutoff_date": "2024-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 606.3,
+    "chapters_completed": 6
+  }
+}

@@ -497,6 +497,11 @@ def step_eval(config: "StrategyConfig") -> Path:
     if buy_mean is not None and mkt_mean is not None:
         print(f"  Alpha (6m): Agent买入 vs 沪深300 = {(buy_mean-mkt_mean)*100:+.1f}pp")
 
+    # 6. 生成收益曲线图
+    chart_path = _generate_return_chart(slices, performance, config, bt_dir, ts)
+    if chart_path:
+        print(f"曲线图: {chart_path}")
+
     print(f"\n报告: {report_path}")
     print(f"数据: {summary_path}")
     return report_path
@@ -779,6 +784,166 @@ def _format_eval_report(
             lines.append(f"- **{label}**: 数据不足")
 
     return '\n'.join(lines)
+
+
+def _generate_return_chart(
+    slices: List[EvalSlice],
+    performance: Dict[str, dict],
+    config: "StrategyConfig",
+    bt_dir: Path,
+    timestamp: str,
+) -> Optional[Path]:
+    """生成各基准 6 个月前向收益的逐截面对比曲线图"""
+    try:
+        import matplotlib
+        matplotlib.use('Agg')
+        import matplotlib.pyplot as plt
+        import matplotlib.dates as mdates
+    except ImportError:
+        print("  警告: matplotlib 不可用，跳过曲线图生成")
+        return None
+
+    # 检测中文字体可用性
+    from matplotlib.font_manager import fontManager
+    _CN_FONT = False
+    available_fonts = {f.name for f in fontManager.ttflist}
+    for font_name in ['SimHei', 'WenQuanYi Micro Hei', 'Noto Sans CJK SC']:
+        if font_name in available_fonts:
+            plt.rcParams['font.sans-serif'] = [font_name, 'DejaVu Sans']
+            _CN_FONT = True
+            break
+    plt.rcParams['axes.unicode_minus'] = False
+
+    dates = [sl.cutoff_date for sl in slices]
+    x_dates = [datetime.strptime(d, '%Y-%m-%d') for d in dates]
+
+    baselines_to_plot = [
+        ('market', 'CSI300' if not _CN_FONT else '沪深300', '#888888', '--'),
+        ('screen_all', 'Screen All' if not _CN_FONT else '筛选池等权', '#2196F3', '-'),
+        ('screen_top', 'Screen Top' if not _CN_FONT else '筛选池 Top', '#4CAF50', '-'),
+        ('agent_buy', 'Agent Buy' if not _CN_FONT else 'Agent 买入', '#FF5722', '-'),
+        ('agent_top', 'Agent Top5', '#FF9800', '-'),
+    ]
+
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 10), gridspec_kw={'height_ratios': [3, 1]})
+
+    # === 上图: 累计收益曲线 ===
+    for key, label, color, style in baselines_to_plot:
+        bl = performance.get(key, {})
+        bl_slices = bl.get('slices', [])
+
+        if key == 'market':
+            # 沪深300 从 stats 里逐截面取
+            market_stats = bl.get('stats', {})
+            # 需要逐截面的 index return, 重新计算
+            per_date_returns = _get_market_per_date_returns(dates, config)
+        else:
+            # 从 slices 数据取每截面均收益
+            per_date_returns = {}
+            for s in bl_slices:
+                rets = s.get('returns_6m', [])
+                if rets:
+                    per_date_returns[s['cutoff_date']] = sum(rets) / len(rets)
+
+        # 构建累计收益序列
+        cum = 1.0
+        cum_values = []
+        for d in dates:
+            r = per_date_returns.get(d)
+            if r is not None:
+                cum *= (1 + r)
+            cum_values.append(cum)
+
+        if any(v != 1.0 for v in cum_values):
+            ax1.plot(x_dates, cum_values, label=label, color=color, linestyle=style,
+                     linewidth=2.5 if key == 'agent_buy' else 1.5,
+                     marker='o' if key == 'agent_buy' else None,
+                     markersize=4)
+
+    ax1.axhline(y=1.0, color='gray', linewidth=0.5, linestyle=':')
+    title1 = 'Cumulative Return (6M Forward, Per-Slice Compounding)' if not _CN_FONT else '累计收益曲线 (6个月前向, 逐截面复利)'
+    ax1.set_title(title1, fontsize=14, fontweight='bold')
+    ylabel1 = 'Cumulative Return (1.0 = Principal)' if not _CN_FONT else '累计收益 (1.0 = 本金)'
+    ax1.set_ylabel(ylabel1)
+    ax1.legend(loc='upper left', fontsize=10)
+    ax1.grid(True, alpha=0.3)
+    ax1.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
+    ax1.xaxis.set_major_locator(mdates.MonthLocator(interval=6))
+    fig.autofmt_xdate(rotation=45)
+
+    # === 下图: 逐截面 Agent 买入 vs 筛选池的超额收益柱状图 ===
+    agent_slices = performance.get('agent_buy', {}).get('slices', [])
+    screen_slices = performance.get('screen_all', {}).get('slices', [])
+
+    alphas = []
+    for d in dates:
+        agent_r = None
+        screen_r = None
+        for s in agent_slices:
+            if s['cutoff_date'] == d:
+                rets = s.get('returns_6m', [])
+                if rets:
+                    agent_r = sum(rets) / len(rets)
+        for s in screen_slices:
+            if s['cutoff_date'] == d:
+                rets = s.get('returns_6m', [])
+                if rets:
+                    screen_r = sum(rets) / len(rets)
+        if agent_r is not None and screen_r is not None:
+            alphas.append((agent_r - screen_r) * 100)
+        else:
+            alphas.append(0)
+
+    colors = ['#4CAF50' if a >= 0 else '#F44336' for a in alphas]
+    ax2.bar(x_dates, alphas, width=40, color=colors, alpha=0.8)
+    ax2.axhline(y=0, color='gray', linewidth=0.5)
+    title2 = 'Agent Buy vs Screen Pool: Per-Slice Alpha (pp)' if not _CN_FONT else 'Agent 买入 vs 筛选池 逐截面超额收益 (pp)'
+    ax2.set_title(title2, fontsize=12)
+    ax2.set_ylabel('Alpha (pp)')
+    ax2.grid(True, alpha=0.3)
+    ax2.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
+
+    plt.tight_layout()
+    chart_path = bt_dir / f"backtest_chart_{timestamp}.png"
+    fig.savefig(chart_path, dpi=150, bbox_inches='tight')
+    plt.close(fig)
+
+    print(f"  收益曲线已生成: {chart_path.name}")
+    return chart_path
+
+
+def _get_market_per_date_returns(dates: List[str], config: "StrategyConfig") -> dict:
+    """获取沪深300在各截面的 6m 收益"""
+    from src.data import api
+    from src.backtest.outcome_collector import _add_months
+
+    start = (datetime.strptime(min(dates), '%Y-%m-%d') - relativedelta(days=15)).strftime('%Y-%m-%d')
+    end = _add_months(max(dates), 7)
+    try:
+        idx_df = api.get_index_daily('000300.SH', start, end)
+    except Exception:
+        return {}
+
+    if idx_df.empty:
+        return {}
+
+    idx_df = idx_df.sort_values('trade_date')
+    prices = idx_df.set_index('trade_date')['close']
+
+    result = {}
+    for date in dates:
+        before = prices[prices.index <= date]
+        if before.empty:
+            continue
+        p0 = before.iloc[-1]
+        target = _add_months(date, 6)
+        after = prices[prices.index <= target]
+        if after.empty or after.index[-1] <= before.index[-1]:
+            continue
+        p1 = after.iloc[-1]
+        result[date] = (p1 - p0) / p0
+
+    return result
 
 
 def _save_eval_json(

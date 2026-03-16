@@ -1,0 +1,126 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺乏审计意见数据",
+        "缺乏主营业务地域分布数据",
+        "上市时间较短历史数据有限"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国上海，属于极低风险区域，享有国家信用背书",
+      "geo_excluded": false,
+      "price_position_pct": 7.5,
+      "debt_ratio_pct": 91.5,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "上市时间不足3年（2021-08-19上市），触发基础排除条件。虽然公司基本面良好（连续盈利、PB=0.64估值较低、地缘政治风险极低），但缺乏足够历史数据验证周期表现。建议等待公司上市满3年后再重新评估。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "无法确认（股东分散，国有股东持股8.36%）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现多项条件：1) PE(TTM)=5.82<10；2) PB=0.64<1.0且ROE(Q1年化约13%)>8%；3) 银行业处于经济下行周期，可能处于底部区域；4) 经营现金流大幅改善（2022Q1为443.27亿）。银行行业特性使纯硬收息和烟蒂股分析不适用。",
+      "interest_bearing_debt": 673.94,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "下行",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "缺乏关键治理数据"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "持续增长",
+      "latest_cash_balance": 0,
+      "reported_profit": 32.14,
+      "non_cash_adjustments": 14.49,
+      "adjusted_profit": 46.63,
+      "owner_earnings": 90.0,
+      "owner_earnings_formula": "金融行业替代方法：可分配利润 ≈ 年化净利润 × (1 - 资本补充需求比例) = 128.56亿 × (1-30%) = 90.00亿",
+      "fcf": 0,
+      "maintenance_capex": 0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "金融行业禁止使用PE估值",
+        "银行财务报表结构特殊，PE无法准确反映估值水平"
+      ],
+      "valuation_method": "PB-ROE估值 + 股息率",
+      "net_cash": 0,
+      "ev": 0,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 10.03,
+      "topdown_return_pct": 4.15,
+      "valuation_crosscheck": "不适用（金融行业）",
+      "dividend_yield_pct": 4.15,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 37.5,
+      "market_condition": "熊市",
+      "buy_point": 6.0,
+      "sell_point": 9.0
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 90.77,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "通过（银行行业适用性调整）",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 95
+    },
+    "ch06_decision": {
+      "apple_normal_price": 9.03,
+      "apple_buy_price": 5.42,
+      "apple_sell_price": 6.32,
+      "buy_logic_statement": "我以'PB-ROE修复'逻辑买入该银行股，在PB=0.64倍时建仓，目标是PB从0.64倍修复到0.8倍，预计持有1-2年，修复完成即卖出。证伪条件：若ROE连续2个季度下降至8%以下，或不良率大幅上升超过行业平均水平，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价7.52元（PB 0.75倍），中性目标价8.53元（PB 0.85倍），乐观目标价10.03元（PB 1.0倍）",
+      "repair_catalyst": "1.政策支持（金融稳定、降准）；2.经济复苏带动信贷需求；3.银行板块整体估值修复；4.4.15%股息率配置价值",
+      "expected_repair_return_pct": 36.0,
+      "recommendation": "买入",
+      "position_type": "卫星",
+      "suggested_position_pct": 8,
+      "exit_conditions": [
+        "PB修复至0.8倍（8.02元）减仓30%",
+        "PB修复至0.9倍（9.03元）再减仓30%",
+        "PB修复至1.0倍（10.03元）清仓退出",
+        "ROE连续2季度下降至8%以下止损",
+        "不良率大幅上升超过行业平均水平止损",
+        "持有超过2年未达修复目标重新评估"
+      ],
+      "macro_event_impact": "短期压制，长期趋势不变。经济下行短期压制估值，但银行作为经济核心，估值终将修复。应对：持有不动，下跌>10%评估加仓。"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "铜龟",
+    "核心估值指标": "PB=0.64倍，安全边际37.5%",
+    "苹果买卖模型": "正常价9.03元，买入价5.42元，卖出价6.32元",
+    "一句话买入逻辑": "我以'PB-ROE修复'逻辑买入该银行股，在PB=0.64倍时建仓，目标是PB从0.64倍修复到0.8倍，预计持有1-2年，修复完成即卖出。证伪条件：若ROE连续2个季度下降至8%以下，或不良率大幅上升超过行业平均水平，则逻辑失败，立即止损。",
+    "关键风险": [
+      "经济持续下行导致银行资产质量恶化（不良率上升）",
+      "净息差收窄压缩盈利能力",
+      "上市时间短，历史数据有限",
+      "缺乏关键治理数据（审计意见、不良率等）",
+      "银行行业周期性风险"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "观望",
+    "综合评分": 65,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "601825.SH",
+    "cutoff_date": "2022-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 468.1,
+    "chapters_completed": 6
+  }
+}

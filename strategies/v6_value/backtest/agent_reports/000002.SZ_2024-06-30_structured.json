@@ -1,0 +1,124 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据不可获取，需人工核实",
+        "主营业务地域分布数据不可获取"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于深圳，主要业务在中国境内，无高风险区域资产",
+      "geo_excluded": false,
+      "price_position_pct": 5.1,
+      "debt_ratio_pct": 72.71,
+      "consecutive_profit_years": 1,
+      "pass_screening": true,
+      "screening_notes": "通过快速筛选：1)上市超过30年；2)价格位置接近52周低点(5.1%)；3)有息负债率16.5%相对健康；4)现金覆盖率高(现金/市值=100.5%)；5)地缘政治风险极低。需注意2024Q1单季度亏损和经营现金流/净利润比率较低的问题。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "民营",
+      "controlling_shareholder": "法人股东（基于现有数据无法穿透至自然人）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型核心条件：1) PE=7.98<10；2) 房地产行业处于周期底部区域；3) PB=0.33深度破净。不符合纯硬收息（派息记录不足2年）、烟蒂股（清算价值为负）、关联方资源（非国企控股）。",
+      "interest_bearing_debt": 2417.94,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "良",
+      "cycle_debt_tolerance": "需观察",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "management_integrity": "存疑",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "持续下降",
+      "latest_cash_balance": 830.66,
+      "reported_profit": 204.56,
+      "non_cash_adjustments": 0,
+      "adjusted_profit": 61.37,
+      "owner_earnings": 204.56,
+      "owner_earnings_formula": "净利润204.56亿 + 折旧摊销(数据缺失) + 非现金减值(数据缺失) - 维持性CAPEX(数据缺失)。基于房地产行业特征，折旧摊销与维持性CAPEX大致抵消，所有者收益近似等于净利润。",
+      "fcf": -46.16,
+      "maintenance_capex": 45.0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "经营现金流/净利润仅19.1%",
+        "自由现金流连续为负",
+        "净利润波动剧烈"
+      ],
+      "valuation_method": "资产清算价值(PB法)",
+      "net_cash": -1587.28,
+      "ev": 2414.08,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "无法评级",
+      "fair_value_per_share": 11.56,
+      "topdown_return_pct": 9.74,
+      "valuation_crosscheck": "严重矛盾",
+      "dividend_yield_pct": 9.74,
+      "dividend_sustainable": false,
+      "safety_margin_pct": 40.1,
+      "market_condition": "熊市",
+      "buy_point": 8.1,
+      "sell_point": 13.9
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 149.12,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": -6295.41,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 15.0
+    },
+    "ch06_decision": {
+      "apple_normal_price": 11.56,
+      "apple_buy_price": 6.94,
+      "apple_sell_price": 9.25,
+      "buy_logic_statement": "我以'资产清算价值修复'逻辑买入该标的，在PB=0.33倍时建仓，目标是PB从0.33倍修复到0.6倍，预计持有2年，修复完成即卖出。证伪条件：若公司净负债率从当前72.7%进一步恶化至80%以上，或存货周转率连续2个季度下降超过20%，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价10.51元（PB修复至0.5倍，上行51.7%），中性目标价12.61元（PB修复至0.6倍，上行82.0%），乐观目标价14.71元（PB修复至0.7倍，上行112.3%）",
+      "repair_catalyst": "1.行业政策利好；2.公司去杠杆完成（净负债率<70%）；3.存货周转改善（存货<6000亿元）；4.纳入指数带来被动资金",
+      "expected_repair_return_pct": 82.0,
+      "recommendation": "买入",
+      "position_type": "卫星",
+      "suggested_position_pct": 8.0,
+      "exit_conditions": [
+        "PB修复至0.6倍（对应股价约12.61元）减仓50%",
+        "持仓盈利超过50%强制减仓50%",
+        "净负债率>80%即时止损",
+        "存货周转率连续2季度下降>20%止损",
+        "持有超过3年未达修复目标重新评估"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数无法计算（FCF为负），安全边际40.1%（基于资产清算价值）",
+    "苹果买卖模型": "正常价11.56元，买入价6.94元，卖出价9.25元",
+    "一句话买入逻辑（强制）": "我以'资产清算价值修复'逻辑买入该标的，在PB=0.33倍时建仓，目标是PB从0.33倍修复到0.6倍，预计持有2年，修复完成即卖出。证伪条件：若公司净负债率从当前72.7%进一步恶化至80%以上，或存货周转率连续2个季度下降超过20%，则逻辑失败，立即止损。",
+    "关键风险": [
+      "流动性风险：现金余额持续下降，现金覆盖仅2.4个月",
+      "经营现金流恶化：2024Q1经营现金流为负94.21亿",
+      "行业下行风险：房地产行业处于深度调整期",
+      "股息不可持续：FCF为负，高股息率缺乏现金流支撑",
+      "民营企业政策风险：房地产行业民营企业政策风险高"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "观望",
+    "综合评分": 48,
+    "信心水平": "低"
+  },
+  "metadata": {
+    "ts_code": "000002.SZ",
+    "cutoff_date": "2024-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 554.9,
+    "chapters_completed": 6
+  }
+}

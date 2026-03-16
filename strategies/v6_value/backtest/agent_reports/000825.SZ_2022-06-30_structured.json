@@ -1,0 +1,122 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据缺失",
+        "主营业务地域分布数据缺失"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于山西（中国内地），属于极低风险区域，无证据显示在高风险地区有重大资产或业务",
+      "geo_excluded": false,
+      "price_position_pct": 1.7,
+      "debt_ratio_pct": 47.64,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过所有快速筛选步骤：1)无ST标记且上市超20年；2)价格接近52周低点（跌幅59.3%）；3)负债率健康（47.64%），现金充裕（100.27亿）；4)连续盈利，经营现金流强劲，FCF倍数仅1.89倍。股息率13.47%极具吸引力。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "信息不足，待确认",
+      "investment_stream": "纯硬收息",
+      "stream_reasoning": "同时符合纯硬收息和价值发现流派：1)股息率13.47%>5%；2)连续派息记录；3)经营现金流/净利润252%>100%；4)派息率58.2%稳定；5)PE5.47<10；6)FCF收益率42.5%>10%；7)PB0.86<1且ROE18.56%>8%。以纯硬收息为主因确定性更高。",
+      "interest_bearing_debt": 86.49,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "下行",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动稳定",
+      "latest_cash_balance": 100.27,
+      "reported_profit": 63.1,
+      "non_cash_adjustments": 0,
+      "adjusted_profit": 63.1,
+      "owner_earnings": 132.66,
+      "owner_earnings_formula": "基于可获得数据，所有者收益近似等于自由现金流132.66亿元。因折旧摊销和维持性CAPEX数据不足，无法精确计算标准公式。但经营现金流157.67亿远高于净利润63.10亿，显示实际所有者收益显著高于报表利润。",
+      "fcf": 132.66,
+      "maintenance_capex": 0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业利润波动大，单年PE无参考意义",
+        "PE与FCF收益率存在明显矛盾（PE 5.47倍 vs FCF收益率44.2%）"
+      ],
+      "valuation_method": "EV/FCF",
+      "net_cash": 13.78,
+      "ev": 298.66,
+      "ev_fcf_multiple": 2.16,
+      "turtle_rating": "极品级",
+      "fair_value_per_share": 7.46,
+      "topdown_return_pct": 16.47,
+      "valuation_crosscheck": "Bottom-Up > Top-Down，可能低估资产增值空间",
+      "dividend_yield_pct": 13.47,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 36.9,
+      "market_condition": "熊市",
+      "buy_point": 5.45,
+      "sell_point": 7.46
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 46.0,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "基本安全",
+      "is_cigar_butt": false,
+      "liquidation_value": 80.12,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 95
+    },
+    "ch06_decision": {
+      "apple_normal_price": 18.31,
+      "apple_buy_price": 5.45,
+      "apple_sell_price": 18.78,
+      "buy_logic_statement": "我以'估值修复'类型买入此特种钢公司，在EV/FCF=2.16倍时建仓，目标是EV/FCF从2.16倍修复到8倍，预计持有1-2年，修复完成即卖出，绝不恋战。证伪条件：若公司自由现金流连续2个季度下滑超过30%，或股息率降至5%以下且无合理原因，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价18.78元（EV/FCF 8倍），中性目标价23.40元（EV/FCF 10倍），乐观目标价28.04元（EV/FCF 12倍）",
+      "repair_catalyst": "1.高股息吸引力（13.47%）；2.估值极度低估（EV/FCF仅2.16倍）；3.现金流强劲（2021年FCF 132.66亿元）；4.去杠杆完成；5.股价处于52周低点附近",
+      "expected_repair_return_pct": 244.6,
+      "recommendation": "买入",
+      "position_type": "核心",
+      "suggested_position_pct": 15,
+      "exit_conditions": [
+        "EV/FCF修复至8倍（18.78元）减仓30-50%",
+        "EV/FCF修复至10倍（23.40元）清仓退出",
+        "涨幅透支5年股息总和（当前股息率13.47%，5年股息约3.23元/股）",
+        "自由现金流连续2个季度下滑超过30%",
+        "股息率降至5%以下且无合理原因"
+      ],
+      "macro_event_impact": "短期压制但长期趋势不变，高股息提供下行保护，若下跌>10%可评估加仓"
+    }
+  },
+  "synthesis": {
+    "流派判定": "纯硬收息",
+    "龟级评定": "金龟",
+    "核心估值指标": "EV/FCF倍数=2.16倍，安全边际=36.9%",
+    "苹果买卖模型": "正常价=18.31元，买入价=5.45元，卖出价=18.78元",
+    "一句话买入逻辑": "我以'高股息+估值修复'类型买入此特种钢公司，在EV/FCF=2.16倍、股息率13.47%时建仓，目标是赚取高股息收益和估值修复双重收益。证伪条件：若公司自由现金流连续2个季度下滑超过30%，或股息率降至5%以下且无合理原因，则逻辑失败，立即止损。",
+    "关键风险": [
+      "特种钢行业周期性下行风险",
+      "毛利率从18.45%降至10.46%，盈利能力下降",
+      "经济下行压力影响需求",
+      "审计意见数据缺失",
+      "第一大股东性质不明"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "买入",
+    "综合评分": 85,
+    "信心水平": "高"
+  },
+  "metadata": {
+    "ts_code": "000825.SZ",
+    "cutoff_date": "2022-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 553.6,
+    "chapters_completed": 6
+  }
+}

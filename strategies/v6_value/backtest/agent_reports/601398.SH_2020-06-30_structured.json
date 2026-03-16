@@ -1,0 +1,124 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "审计意见数据缺失",
+        "主营业务地域分布数据缺失",
+        "银行专属指标（资本充足率、不良率等）缺失"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于北京（中国内地），前两大股东为国有/政府关联股东合计持股71.52%，属于极低风险区域且有国家信用背书",
+      "geo_excluded": false,
+      "price_position_pct": 4.5,
+      "debt_ratio_pct": 91.34,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "标的通过快速筛选：1)地缘政治风险极低；2)上市超过13年；3)股价接近52周低点，安全边际充足；4)银行行业负债率正常(91.34%)；5)连续盈利≥3年；6)估值较低(PB=0.70，PE=5.64)。需补充审计意见和银行专属指标进行深度分析。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "央企",
+      "controlling_shareholder": "国务院或中央汇金（基于银行行业特征推断）",
+      "investment_stream": "纯硬收息",
+      "stream_reasoning": "1)股息率5.03%>5%阈值；2)连续3年稳定派息记录；3)PE=5.64<10，PB=0.70<1.0且ROE>8%，兼具价值发现特征；4)银行行业特殊性使传统现金流标准不适用，但股息回报明确",
+      "interest_bearing_debt": 7360.28,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动稳定",
+      "latest_cash_balance": 0,
+      "reported_profit": 850.13,
+      "non_cash_adjustments": 0,
+      "adjusted_profit": 850.13,
+      "owner_earnings": 595.09,
+      "owner_earnings_formula": "金融行业替代方法：可分配利润 = 净利润 × (1 - 资本补充需求比例30%) = 850.13 × 0.7 = 595.09亿",
+      "fcf": 0,
+      "maintenance_capex": 0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "金融行业PE估值不适用",
+        "银行利润受会计处理影响大",
+        "应使用PB-ROE框架"
+      ],
+      "valuation_method": "PB-ROE估值 + 股息率",
+      "net_cash": 0,
+      "ev": 17749.03,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 7.18,
+      "topdown_return_pct": 7.44,
+      "valuation_crosscheck": "需调整（使用股息+ROE留存替代FCF）",
+      "dividend_yield_pct": 5.03,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 30,
+      "market_condition": "熊市",
+      "buy_point": 4.31,
+      "sell_point": 7.18
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 619.75,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "基本安全",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 85
+    },
+    "ch06_decision": {
+      "apple_normal_price": 6.46,
+      "apple_buy_price": 4.2,
+      "apple_sell_price": 5.74,
+      "buy_logic_statement": "我以'PB-ROE修复'逻辑买入该银行股，在PB=0.70倍时建仓，目标是PB从0.70倍修复到0.80-0.90倍，预计持有1-2年，修复完成即卖出。证伪条件：若ROE连续2个季度降至8%以下，或不良率大幅上升超过行业平均50%，则逻辑失败，立即止损。",
+      "repair_target": "保守目标5.39元(PB 0.75倍)，中性目标6.10元(PB 0.85倍)，乐观目标7.18元(PB 1.0倍)",
+      "repair_catalyst": "1)经济复苏预期改善银行资产质量；2)5.03%高股息率吸引配置资金；3)PB 0.70倍处于历史低位；4)政策支持银行信贷投放",
+      "expected_repair_return_pct": 22.49,
+      "recommendation": "分批买入",
+      "position_type": "卫星",
+      "suggested_position_pct": 5,
+      "exit_conditions": [
+        "PB修复至0.8倍(5.74元)减仓50%",
+        "PB修复至0.9倍(6.46元)清仓",
+        "涨幅超过5年股息总和(约1.25元)清仓",
+        "ROE连续2季度降至8%以下止损",
+        "不良率大幅上升超过行业平均50%止损"
+      ],
+      "macro_event_impact": "短期压制"
+    }
+  },
+  "synthesis": {
+    "流派判定": "纯硬收息",
+    "龟级评定": "银龟",
+    "核心估值指标": "PB=0.70倍，安全边际30%",
+    "苹果买卖模型": "正常价6.46元，买入价4.20元，卖出价5.74元",
+    "一句话买入逻辑（强制）": "我以'高股息+估值修复'逻辑买入该国有大行，在PB=0.70倍、股息率5.03%时建仓，目标是赚取稳定股息收入并期待PB修复至0.80-0.85倍。证伪条件：若连续2年股息率降至3%以下，或ROE持续降至8%以下，则逻辑失败。",
+    "关键风险": [
+      "宏观经济持续恶化导致银行资产质量大幅下降",
+      "利率下行压缩净息差，侵蚀盈利能力",
+      "监管政策变化影响银行经营环境",
+      "资本充足率压力可能限制分红能力",
+      "银行行业PE陷阱，需使用PB-ROE框架"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "买入",
+    "综合评分": 72,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "601398.SH",
+    "cutoff_date": "2020-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 532.2,
+    "chapters_completed": 6
+  }
+}

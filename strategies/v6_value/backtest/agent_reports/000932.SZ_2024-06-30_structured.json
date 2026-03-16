@@ -1,0 +1,127 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺少审计意见数据",
+        "缺少主营业务地域分布数据"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国湖南，主要资产和业务在中国内地，无高风险区域敞口",
+      "geo_excluded": false,
+      "price_position_pct": 5.7,
+      "debt_ratio_pct": 53.29,
+      "consecutive_profit_years": 2,
+      "pass_screening": true,
+      "screening_notes": "通过快速筛选：1)上市超20年无ST标记；2)价格距52周高点下跌31.1%，安全边际充足；3)有息负债率16.2%可控；4)连续盈利；5)FCF倍数8.96倍合理。需人工核实审计意见。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "民营",
+      "controlling_shareholder": "非国有资本（第一大股东为其他法人股东）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型2项以上核心条件：1)PE=6.40<10；2)普钢行业处于周期底部；3)经营现金流改善（2024Q1为1.84亿）。不满足纯硬收息（派息历史仅2年、有息负债存在）、烟蒂股（PB=0.59>0.3、净现金为负）、关联方资源（非央企控股）条件。",
+      "interest_bearing_debt": 225.11,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "可接受",
+      "cycle_debt_tolerance": "需观察",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "缺少审计意见数据",
+        "缺少关联交易数据",
+        "缺少股东行为数据"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "下降",
+      "latest_cash_balance": 58.49,
+      "reported_profit": 66.4,
+      "non_cash_adjustments": 35.0,
+      "adjusted_profit": 101.4,
+      "owner_earnings": 66.4,
+      "owner_earnings_formula": "净利润66.40亿 + 折旧摊销35.00亿 - 维持性CAPEX35.00亿 = 66.40亿",
+      "fcf": -94.75,
+      "maintenance_capex": 35.0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业利润波动大",
+        "经营现金流/净利润<80%",
+        "自由现金流连续为负",
+        "折旧摊销占净利润>50%"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": -166.62,
+      "ev": 472.67,
+      "ev_fcf_multiple": 26.66,
+      "turtle_rating": "高估",
+      "fair_value_per_share": 3.83,
+      "topdown_return_pct": 5.42,
+      "valuation_crosscheck": "一致",
+      "dividend_yield_pct": 5.42,
+      "dividend_sustainable": true,
+      "safety_margin_pct": -20.0,
+      "market_condition": "熊市",
+      "buy_point": 3.83,
+      "sell_point": 4.43
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 37.03,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": -261.13,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 15.0
+    },
+    "ch06_decision": {
+      "apple_normal_price": 3.83,
+      "apple_buy_price": 2.68,
+      "apple_sell_price": 2.3,
+      "buy_logic_statement": "当前不建议买入：价格4.43元高于合理估值3.83元，EV/FCF倍数26.66倍远高于合理区间8-10倍，自由现金流连续为负，缺乏安全边际和修复基础。",
+      "repair_target": "修复目标价7.35元（基于PE10倍、股息率4%、PB1.0倍综合计算），对应PE从6.40倍修复至10倍，PB从0.59倍修复至1.0倍。",
+      "repair_catalyst": "1) 钢铁行业周期反转；2) 自由现金流转正；3) 去杠杆完成；4) 政策刺激需求回升。",
+      "expected_repair_return_pct": -13.5,
+      "recommendation": "减仓",
+      "position_type": "观察",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "EV/FCF倍数修复至8倍以下",
+        "自由现金流持续为负",
+        "行业周期进一步恶化",
+        "价格跌破3.83元合理估值线"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数26.66倍，安全边际-20.0%",
+    "苹果买卖模型": "正常价3.83元，买入价2.68元，卖出价2.30元",
+    "一句话买入逻辑": "我以估值修复逻辑买入该标的，在钢铁行业周期反转、自由现金流转正时建仓，目标是PE从6.40倍修复至10倍，PB从0.59倍修复至1.0倍，预计持有2-3年。证伪条件：若自由现金流持续为负或行业周期进一步恶化，则逻辑失败。",
+    "关键风险": [
+      "自由现金流连续为负，现金流质量差",
+      "现金覆盖月数仅0.5个月，流动性紧张",
+      "钢铁行业周期进一步恶化风险",
+      "处于大规模扩张期，投资活动现金流大额流出",
+      "安全边际不足，当前价格高于合理估值"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "回避",
+    "综合评分": 45,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "000932.SZ",
+    "cutoff_date": "2024-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 554.1,
+    "chapters_completed": 6
+  }
+}

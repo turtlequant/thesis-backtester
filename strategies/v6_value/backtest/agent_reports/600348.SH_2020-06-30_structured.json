@@ -1,0 +1,133 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据缺失",
+        "主营业务构成数据缺失"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于山西，中国内地，属于极低风险区域，无地缘政治风险",
+      "geo_excluded": false,
+      "price_position_pct": 8.2,
+      "debt_ratio_pct": 51.31,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过快速筛选：1) 无ST标记，上市超3年；2) 价格位置接近安全边际（距52周高点跌幅29.9%）；3) 负债状况良好（有息负债率16.8%）；4) 现金充裕（现金/市值61.8%）；5) 连续盈利且经营现金流强劲。需注意价格位置略高于30%安全边际阈值。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "地方国企",
+      "controlling_shareholder": "无法确定（基于行业特征推断为国有资本）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "符合价值发现流派多项条件：1) PE(TTM)=6.55<10；2) PB=0.45<1.0且ROE接近8%；3) 煤炭行业处于周期底部；4) 经营现金流强劲（2020Q1为11.24亿）。同时具备纯硬收息特征（股息率6.64%），但派息历史不连续且存在有息负债。",
+      "interest_bearing_debt": 85.44,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "良",
+      "cycle_debt_tolerance": "需观察",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "审计意见数据缺失",
+        "关联交易信息缺失",
+        "分红历史不连续（2014-2016年无派息）"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动稳定",
+      "latest_cash_balance": 62.77,
+      "reported_profit": 4.15,
+      "non_cash_adjustments": 6.34,
+      "adjusted_profit": 10.49,
+      "owner_earnings": 4.15,
+      "owner_earnings_formula": "净利润4.15亿 + 折旧摊销6.34亿（按营业收入7.5%估算） - 维持性CAPEX6.34亿（折旧近似法） = 4.15亿",
+      "fcf": -16.74,
+      "maintenance_capex": 6.34
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "折旧摊销占比极高（152.8%）",
+        "PE与FCF矛盾"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": -22.67,
+      "ev": 124.16,
+      "ev_fcf_multiple": 4.32,
+      "turtle_rating": "优质级",
+      "fair_value_per_share": 2.49,
+      "topdown_return_pct": 9.64,
+      "valuation_crosscheck": "需调整（Bottom-Up远高于Top-Down）",
+      "dividend_yield_pct": 6.64,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 40.0,
+      "market_condition": "熊市",
+      "buy_point": 2.8,
+      "sell_point": 5.2
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 12.4,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "基本安全",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 95
+    },
+    "ch06_decision": {
+      "apple_normal_price": 8.62,
+      "apple_buy_price": 2.64,
+      "apple_sell_price": 6.23,
+      "buy_logic_statement": "我以'估值修复'类型买入该煤炭公司，在EV/FCF倍数=4.32倍时建仓，目标是EV/FCF倍数从4.32倍修复到8倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若煤炭价格持续下跌导致FCF连续2年下滑超过30%，或公司有息负债率超过60%，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价6.23元（EV/FCF 6倍），中性目标价8.62元（EV/FCF 8倍），乐观目标价11.01元（EV/FCF 10倍）",
+      "repair_catalyst": "1.煤炭行业周期触底；2.高股息吸引力（股息率6.64%）；3.估值极度低估（PB 0.45倍）；4.现金流改善（2019年自由现金流34.10亿元）",
+      "expected_repair_return_pct": 47.6,
+      "recommendation": "分批建仓",
+      "position_type": "卫星",
+      "suggested_position_pct": 5.0,
+      "exit_conditions": [
+        "EV/FCF修复至6倍时减仓30%",
+        "EV/FCF修复至8倍时再减仓30%",
+        "EV/FCF修复至10倍时清仓",
+        "煤炭价格涨至历史70%分位减仓50%",
+        "煤炭价格涨至历史90%分位清仓",
+        "FCF连续2季下滑>20%时减仓",
+        "有息负债率>60%时重新评估"
+      ],
+      "macro_event_impact": "短期压制但长期趋势不变，环保政策压制行业但能源需求刚性，若下跌>10%可评估加仓"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "银龟",
+    "核心估值指标": "EV/FCF倍数=4.32倍，安全边际=PB 0.45倍",
+    "苹果买卖模型": {
+      "正常价": 8.62,
+      "买入价": 2.64,
+      "卖出价": 6.23
+    },
+    "一句话买入逻辑": "我以'估值修复'类型买入该煤炭公司，在EV/FCF倍数=4.32倍时建仓，目标是EV/FCF倍数从4.32倍修复到8倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若煤炭价格持续下跌导致FCF连续2年下滑超过30%，或公司有息负债率超过60%，则逻辑失败，立即止损。",
+    "关键风险": [
+      "煤炭行业强周期性风险",
+      "管理层诚信存疑（审计意见数据缺失）",
+      "高资本支出持续消耗现金流",
+      "大存大贷现象（现金62.77亿，有息负债85.44亿）",
+      "环保政策对煤炭行业的长期压制"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "买入",
+    "综合评分": 77,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600348.SH",
+    "cutoff_date": "2020-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 592.1,
+    "chapters_completed": 6
+  }
+}

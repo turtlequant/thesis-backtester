@@ -1,0 +1,130 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺乏审计意见数据",
+        "股东数据较旧（2016年）",
+        "缺乏主营业务构成数据"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地河北，属于极低风险区域，无地缘政治风险暴露",
+      "geo_excluded": false,
+      "price_position_pct": 3.0,
+      "debt_ratio_pct": 82.06,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过快速筛选，但存在重大风险点：1)经营现金流持续为负（2019年-318亿，2020Q3-251亿）；2)净负债状态（净负债1134亿）；3)缺乏审计意见验证。需要进入深度分析阶段重点关注现金流质量和负债结构。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "无法判定",
+      "controlling_shareholder": "无法判定",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "PE=4.17<10倍，处于历史低位；股息率7.12%较高但经营现金流为负不符合纯硬收息标准；PB=1.04不符合烟蒂股标准；缺乏控股股东信息无法判断关联方资源",
+      "interest_bearing_debt": 1520.23,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "危险",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": false,
+      "cycle_position": "非周期",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "缺乏审计意见数据",
+        "缺乏关联交易数据",
+        "缺乏股权质押数据"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "下降",
+      "latest_cash_balance": 386.09,
+      "reported_profit": 72.8,
+      "non_cash_adjustments": 52.55,
+      "adjusted_profit": 125.35,
+      "owner_earnings": 110.14,
+      "owner_earnings_formula": "净利润72.80亿 + 折旧摊销42.55亿(估算) + 非现金减值10.00亿(估算) - 维持性CAPEX15.21亿 = 110.14亿",
+      "fcf": -265.94,
+      "maintenance_capex": 15.21
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "经营现金流/净利润=-311.5%<50%",
+        "自由现金流连续为负",
+        "折旧摊销占净利润52.9%>50%",
+        "PE低但现金流差形成价值陷阱"
+      ],
+      "valuation_method": "所有者收益估值法（FCF为负的特殊情况）",
+      "net_cash": -1134.62,
+      "ev": 1640.66,
+      "ev_fcf_multiple": 14.9,
+      "turtle_rating": "高估",
+      "fair_value_per_share": 25.75,
+      "topdown_return_pct": 7.12,
+      "valuation_crosscheck": "矛盾严重（股息率7.12% vs FCF收益率-52.6%）",
+      "dividend_yield_pct": 7.12,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -100,
+      "market_condition": "熊市",
+      "buy_point": 18.03,
+      "sell_point": 38.63
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 53.07,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 40
+    },
+    "ch06_decision": {
+      "apple_normal_price": 25.75,
+      "apple_buy_price": 15.45,
+      "apple_sell_price": 15.45,
+      "buy_logic_statement": "我以'价值陷阱修复'逻辑买入该标的，在PE=4.17倍、股息率=7.12%时建仓，目标是市场重新认识其现金流问题为周期性而非结构性，PE修复至8倍，预计持有2年，修复完成即卖出。证伪条件：若连续2年经营现金流净额仍为负且自由现金流未改善，或资产负债率上升至85%以上，则逻辑失败，立即止损。",
+      "repair_target": "保守目标19.83元（PE 8倍），中性目标24.79元（PE 10倍），乐观目标29.75元（PE 12倍）",
+      "repair_catalyst": "现金流改善、去杠杆完成、政策支持、市场情绪修复",
+      "expected_repair_return_pct": 53.4,
+      "recommendation": "买入",
+      "position_type": "卫星",
+      "suggested_position_pct": 8,
+      "exit_conditions": [
+        "PE修复至8倍减仓30%",
+        "PE修复至10倍再减仓30%",
+        "PE修复至12倍清仓",
+        "连续2年经营现金流为负止损",
+        "资产负债率上升至85%以上止损",
+        "发现PE<3倍且现金流为正的更优标的切换"
+      ],
+      "macro_event_impact": "短期压制"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/所有者收益14.9倍，安全边际-100%",
+    "苹果买卖模型": "正常价25.75元，买入价15.45元，卖出价15.45元",
+    "一句话买入逻辑（强制）": "不适用（触发一票否决，建议回避）",
+    "关键风险": [
+      "经营现金流持续为负（2019年-318亿，2020Q3-251亿）",
+      "净负债率高达205.3%，偿债压力巨大",
+      "自由现金流持续为负，股息支付不可持续",
+      "资产负债率82.06%，杠杆率过高",
+      "缺乏审计意见验证财务数据可信度"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "回避",
+    "综合评分": 25,
+    "信心水平": "高"
+  },
+  "metadata": {
+    "ts_code": "600340.SH",
+    "cutoff_date": "2020-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 499.7,
+    "chapters_completed": 6
+  }
+}

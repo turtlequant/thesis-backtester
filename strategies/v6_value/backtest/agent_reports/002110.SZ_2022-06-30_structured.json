@@ -1,0 +1,127 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "缺乏审计意见数据",
+        "缺乏主营业务地域分布数据"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地福建，无高风险区域资产敞口证据",
+      "geo_excluded": false,
+      "price_position_pct": 0.5,
+      "debt_ratio_pct": 47.94,
+      "consecutive_profit_years": 2,
+      "pass_screening": true,
+      "screening_notes": "通过初筛：1)地缘政治风险极低；2)上市超15年；3)价格接近52周低点，安全边际充足；4)负债率47.94%健康；5)连续盈利；6)现金覆盖率41.69%充足。需注意普钢行业周期性特性，FCF倍数17.22倍偏高但可能符合行业特征。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "民营",
+      "controlling_shareholder": "无法确定（第一大股东为法人股东）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "1)PE仅4.16倍<10倍标准；2)PB 0.69倍且ROE 18.28%满足PB<1.0且ROE>8%；3)兼具高股息特征（股息率13.34%），但派息历史仅3年且现金流覆盖不足，不满足纯硬收息全部条件",
+      "interest_bearing_debt": 81.85,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "良",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "下行",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "缺乏审计意见数据",
+        "缺乏关联交易透明度数据",
+        "缺乏股权质押和减持数据"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "下降",
+      "latest_cash_balance": 62.25,
+      "reported_profit": 39.98,
+      "non_cash_adjustments": 2.69,
+      "adjusted_profit": 42.67,
+      "owner_earnings": 40.0,
+      "owner_earnings_formula": "净利润39.98亿 + 折旧摊销估算17.5亿 + 非现金减值2.69亿 - 维持性CAPEX估算20亿 = 40.0亿（基于行业特征估算）",
+      "fcf": -29.65,
+      "maintenance_capex": 20.0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "经营现金流/净利润仅24.5%",
+        "自由现金流连续为负"
+      ],
+      "valuation_method": "FCF/所有者收益",
+      "net_cash": -19.6,
+      "ev": 168.9,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用（FCF为负）",
+      "fair_value_per_share": 4.09,
+      "topdown_return_pct": 13.34,
+      "valuation_crosscheck": "矛盾（高股息率与负FCF收益率矛盾）",
+      "dividend_yield_pct": 13.34,
+      "dividend_sustainable": false,
+      "safety_margin_pct": 25.0,
+      "market_condition": "熊市",
+      "buy_point": 3.27,
+      "sell_point": 4.09
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 29.14,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": -62.19,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 3.0
+    },
+    "ch06_decision": {
+      "apple_normal_price": 4.09,
+      "apple_buy_price": 3.27,
+      "apple_sell_price": 4.09,
+      "buy_logic_statement": "无法构建有效买入逻辑：当前价格6.09元高于合理估值4.09元，缺乏安全边际；自由现金流为负，EV/FCF倍数无法计算；股息在压力测试下不可持续；普钢行业处于周期下行阶段。",
+      "repair_target": "不适用修复目标，当前价格已高于合理估值4.09元，存在32.8%下行风险",
+      "repair_catalyst": "无明确修复催化剂：行业周期下行，需求疲软，自由现金流为负，股息不可持续",
+      "expected_repair_return_pct": -32.8,
+      "recommendation": "清仓",
+      "position_type": "无",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "价格高于合理估值4.09元（当前6.09元）",
+        "基本面恶化：2022Q1净利润环比下滑86.6%",
+        "自由现金流连续为负",
+        "股息在压力测试下不可持续",
+        "钢铁行业周期下行，需求疲软"
+      ],
+      "macro_event_impact": "止损：钢铁行业周期下行+经济放缓，短期压制明显，核心假设破坏"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/所有者收益4.22倍，安全边际-32.8%（当前价高于合理估值）",
+    "苹果买卖模型": "正常价4.09元，买入价3.27元，卖出价4.09元",
+    "一句话买入逻辑": "无法构建有效买入逻辑：当前价格6.09元高于合理估值4.09元，缺乏安全边际；自由现金流为负，EV/FCF倍数无法计算；股息在压力测试下不可持续；普钢行业处于周期下行阶段。",
+    "关键风险": [
+      "行业周期下行：普钢行业处于周期下行阶段，2022Q1业绩大幅下滑",
+      "现金流质量差：经营现金流/净利润仅24.5%，自由现金流连续为负",
+      "股息不可持续：压力测试显示高股息率无法维持",
+      "估值过高：当前价格6.09元高于合理估值4.09元，缺乏安全边际",
+      "管理层透明度低：缺乏审计意见、关联交易等关键诚信数据"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "回避",
+    "综合评分": 35,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "002110.SZ",
+    "cutoff_date": "2022-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 534.9,
+    "chapters_completed": 6
+  }
+}

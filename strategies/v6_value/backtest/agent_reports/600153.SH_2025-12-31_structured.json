@@ -1,0 +1,127 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺乏审计意见数据",
+        "缺乏主营业务地域分布数据",
+        "缺乏股东人数变化数据"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于福建（中国内地），属于极低风险区域，无高风险区域资产/收入占比信息",
+      "geo_excluded": false,
+      "price_position_pct": 3.1,
+      "debt_ratio_pct": 74.27,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "触发5分钟快速排除法两个条件：1) 距52周高点跌幅仅21.0%（要求>30%），安全边际不足；2) 资产负债率74.27%过高（>60%阈值）。虽然现金充裕（现金/市值389.6%）且FCF倍数较低（4.07倍），但负债水平过高且价格调整不充分。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "民营",
+      "controlling_shareholder": "未知（第一大股东为其他法人股东持股46.79%）",
+      "investment_stream": "无法归类",
+      "stream_reasoning": "不满足纯硬收息型（派息记录不足5年且有高有息负债）、烟蒂股型（PB=0.48>0.3且清算价值为负）、关联方资源型（非央企/国企背景）、价值发现型（仅满足PB<1.0一项条件）。股息率7.84%较高但负债结构问题严重。",
+      "interest_bearing_debt": 1656.74,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "危险",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": false,
+      "cycle_position": "非周期",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "大存大贷特征（高现金1045亿与高有息负债1656.74亿并存）"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动稳定",
+      "latest_cash_balance": 1045.0,
+      "reported_profit": 11.49,
+      "non_cash_adjustments": 5.04,
+      "adjusted_profit": 16.53,
+      "owner_earnings": 15.32,
+      "owner_earnings_formula": "净利润(年化15.32亿) + 折旧摊销(年化10.37亿) + 非现金减值(0亿) - 维持性CAPEX(年化10.37亿) = 15.32亿元",
+      "fcf": -4.56,
+      "maintenance_capex": 7.77
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "重资产行业折旧巨大",
+        "经营现金流/净利润<80%",
+        "自由现金流连续为负",
+        "应收账款增速超收入增速"
+      ],
+      "valuation_method": "EV/FCF",
+      "net_cash": -611.74,
+      "ev": 879.95,
+      "ev_fcf_multiple": 46.34,
+      "turtle_rating": "高估",
+      "fair_value_per_share": 11.53,
+      "topdown_return_pct": 7.84,
+      "valuation_crosscheck": "基本一致",
+      "dividend_yield_pct": 7.84,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -301.3,
+      "market_condition": "熊市",
+      "buy_point": 0,
+      "sell_point": 15.37
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 11.17,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 85
+    },
+    "ch06_decision": {
+      "apple_normal_price": 17.5,
+      "apple_buy_price": 10.5,
+      "apple_sell_price": 8.75,
+      "buy_logic_statement": "当前不适用买入逻辑。若未来价格跌至PB=0.3倍（对应5.76元），以修复型逻辑买入，目标PB修复至0.6倍，持有2年。证伪条件：资产负债率>80%或自由现金流连续3年为负。",
+      "repair_target": "保守目标价11.53元（PB 0.6倍），中性目标价15.37元（PB 0.8倍），乐观目标价19.21元（PB 1.0倍）",
+      "repair_catalyst": "1) 去杠杆完成，负债率降至70%以下；2) 自由现金流转正；3) 行业需求复苏；4) 资产处置改善现金流",
+      "expected_repair_return_pct": 24.6,
+      "recommendation": "清仓",
+      "position_type": "无",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "EV/FCF倍数>12倍（当前46.34倍）",
+        "自由现金流连续2年为负",
+        "资产负债率>75%",
+        "股息率<4%且不可持续",
+        "发现FCF倍数<5倍的更优标的"
+      ],
+      "macro_event_impact": "需警惕：经济下行压制仓储需求，加息环境加重财务负担，大宗商品价格波动影响存货价值"
+    }
+  },
+  "synthesis": {
+    "流派判定": "低估值蓝筹但基本面恶化",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数46.34倍，安全边际-301.3%",
+    "苹果买卖模型": "正常价17.5元，买入价10.5元，卖出价8.75元",
+    "一句话买入逻辑（强制）": "当前不适用买入逻辑。若未来价格跌至PB=0.3倍（对应5.76元），以修复型逻辑买入，目标PB修复至0.6倍，持有2年。证伪条件：资产负债率>80%或自由现金流连续3年为负。",
+    "关键风险": [
+      "自由现金流持续为负，现金创造能力差",
+      "资产负债率74.27%过高，净现金为负611.74亿元",
+      "股息率7.84%不可持续，FCF覆盖率仅75.4%",
+      "大存大贷特征（现金1045亿与有息负债1656.74亿并存）",
+      "经营现金流与净利润严重背离，利润质量差"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "回避",
+    "综合评分": 35,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600153.SH",
+    "cutoff_date": "2025-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 612.3,
+    "chapters_completed": 6
+  }
+}

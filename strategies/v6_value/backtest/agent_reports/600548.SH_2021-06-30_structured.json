@@ -1,0 +1,124 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据不可获取",
+        "主营业务构成数据不可获取"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于深圳（中国内地），路桥行业主要业务在国内，无高风险区域敞口",
+      "geo_excluded": false,
+      "price_position_pct": 25.5,
+      "debt_ratio_pct": 54.02,
+      "consecutive_profit_years": 2,
+      "pass_screening": false,
+      "screening_notes": "触发快速排除条件：FCF倍数24.76倍 > 10倍（净负债82.46亿元，经营现金流11.01亿元，市值190.16亿元）。虽然公司连续盈利、现金覆盖率29.11%良好、价格位置25.5%相对低位，但高FCF倍数显示估值偏高，自由现金流创造能力相对市值不足。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "民营",
+      "controlling_shareholder": "无法穿透识别（前三大法人股东合计持股82.35%）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型多项条件：1) PE=6.97<10；2) FCF收益率=15.7%>10%；3) PB=0.84<1.0且ROE=9.92%>8%；4) 股息率TTM高达10.89%但高负债限制纯硬收息归类；5) 不符合烟蒂股和关联方资源标准",
+      "interest_bearing_debt": 137.81,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "可接受",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": false,
+      "cycle_position": "非周期",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "大存大贷特征（高现金55.35亿+高有息负债137.81亿）",
+        "信息披露质量无法充分评估"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "增长",
+      "latest_cash_balance": 55.35,
+      "reported_profit": 22.36,
+      "non_cash_adjustments": 3.0,
+      "adjusted_profit": 22.86,
+      "owner_earnings": 22.86,
+      "owner_earnings_formula": "净利润22.36亿 + 折旧摊销2.50亿（估算） + 非现金减值0.50亿（估算） - 维持性CAPEX2.50亿（折旧近似法估算）",
+      "fcf": -9.27,
+      "maintenance_capex": 2.5
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "重资产行业（路桥）折旧扭曲利润",
+        "经营现金流/净利润仅49.2%严重背离"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": -82.46,
+      "ev": 272.62,
+      "ev_fcf_multiple": 32.03,
+      "turtle_rating": "高估",
+      "fair_value_per_share": 3.9,
+      "topdown_return_pct": 12.89,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 5.96,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -20.0,
+      "market_condition": "震荡市",
+      "buy_point": 3.5,
+      "sell_point": 8.72
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 16.3,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": -220.71,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 50.0
+    },
+    "ch06_decision": {
+      "apple_normal_price": 3.9,
+      "apple_buy_price": 2.34,
+      "apple_sell_price": 2.34,
+      "buy_logic_statement": "当前无合理买入逻辑：EV/FCF倍数32.03倍显著高于合理区间8-10倍，价格8.72元远高于合理估值3.9元，安全边际为负，股息可持续性不足。",
+      "repair_target": "无修复目标价：当前已高估，修复方向应为下跌而非上涨。合理估值对应股价3.9元（EV/FCF 8倍）。",
+      "repair_catalyst": "无修复催化剂：当前估值过高，需要基本面显著改善（如经营现金流大幅提升、负债大幅降低）才可能支撑当前估值。",
+      "expected_repair_return_pct": -55.3,
+      "recommendation": "减仓/清仓",
+      "position_type": "观察",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "EV/FCF倍数>8倍（当前32.03倍）",
+        "价格高于合理估值3.9元（当前8.72元）",
+        "经营现金流/净利润持续低于100%",
+        "股息可持续性被证伪"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数=32.03倍，安全边际=-20%",
+    "苹果买卖模型": "正常价=3.90元，买入价=2.34元，卖出价=2.34元",
+    "一句话买入逻辑（强制）": "当前无合理买入逻辑：EV/FCF倍数32.03倍显著高于合理区间8-10倍，价格8.72元远高于合理估值3.90元，安全边际为负，股息可持续性不足。",
+    "关键风险": [
+      "估值陷阱：表面PE便宜但EV/FCF高达32.03倍，严重高估",
+      "现金流质量差：经营现金流/净利润仅49.2%，利润未充分转化为现金",
+      "股息不可持续：FCF为负，股息支付依赖外部融资而非经营现金流",
+      "负债结构存疑：大存大贷特征（高现金+高借款），存在资金使用效率问题",
+      "压力测试不通过：极端情景下现金流压力极大，分红不可持续"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "回避",
+    "综合评分": 25,
+    "信心水平": "高"
+  },
+  "metadata": {
+    "ts_code": "600548.SH",
+    "cutoff_date": "2021-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 601.6,
+    "chapters_completed": 6
+  }
+}

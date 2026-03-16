@@ -1,0 +1,127 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据缺失，需人工复核",
+        "主营业务地域分布数据缺失"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地北京，属于极低风险区域，有国家信用背书和政策支持",
+      "geo_excluded": false,
+      "price_position_pct": 1.7,
+      "debt_ratio_pct": 91.17,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过快速筛选：1) 地缘政治风险极低；2) 上市超过16年；3) 价格处于52周低点附近（1.7%位置）；4) 作为银行股，91.17%资产负债率属行业正常水平；5) 连续多年盈利；6) PB仅0.45倍显著低估，TTM股息率6.91%有吸引力。需注意：审计意见数据缺失需人工复核。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "央企",
+      "controlling_shareholder": "无法穿透确认（股东信息不完整）",
+      "investment_stream": "纯硬收息",
+      "stream_reasoning": "TTM股息率6.91%>5%阈值，连续4年派息记录，PB仅0.45倍提供安全边际，作为银行股具有稳定派息特征",
+      "interest_bearing_debt": 0,
+      "zero_interest_debt": true,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "management_integrity": "可信",
+      "integrity_red_flags": [
+        "审计意见数据缺失需人工复核"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "持续增长",
+      "latest_cash_balance": 0,
+      "reported_profit": 49.22,
+      "non_cash_adjustments": 0.24,
+      "adjusted_profit": 49.46,
+      "owner_earnings": 34.45,
+      "owner_earnings_formula": "金融行业替代方法：可分配利润 = 净利润 × (1 - 资本补充需求比例30%) = 49.22亿 × 70% = 34.45亿",
+      "fcf": 0,
+      "maintenance_capex": 0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "金融行业PE无估值意义，应使用PB-ROE框架"
+      ],
+      "valuation_method": "PB-ROE估值 + 股息率",
+      "net_cash": 0,
+      "ev": 941.7,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 12.45,
+      "topdown_return_pct": 9.91,
+      "valuation_crosscheck": "一致（股息率6.91%+净资产增长3%≈ROE 9%）",
+      "dividend_yield_pct": 6.91,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 50.8,
+      "market_condition": "熊市",
+      "buy_point": 7.5,
+      "sell_point": 11.1
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 35.88,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 92.5
+    },
+    "ch06_decision": {
+      "apple_normal_price": 13.7,
+      "apple_buy_price": 8.22,
+      "apple_sell_price": 7.54,
+      "buy_logic_statement": "我以'估值修复'逻辑买入该银行股，在PB=0.45倍时建仓，目标是PB从0.45倍修复到0.7倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若不良率大幅上升（超过行业平均50%以上）或ROE持续低于6%超过3个季度，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价9.68元（PB=0.7倍），中性目标价12.45元（PB=0.9倍），乐观目标价14.94元（PB=1.08倍）",
+      "repair_catalyst": "1)经济复苏确认；2)不良率改善；3)利率上行周期；4)政策支持银行业",
+      "expected_repair_return_pct": 58.2,
+      "recommendation": "买入",
+      "position_type": "卫星",
+      "suggested_position_pct": 6,
+      "exit_conditions": [
+        "PB修复至0.7倍（9.68元）时减仓50%",
+        "持仓盈利超过50%时强制减仓50%",
+        "PB超过1.0倍时清仓",
+        "ROE连续2季低于6%时减仓",
+        "持有超过3年未达修复目标时重新评估"
+      ],
+      "macro_event_impact": "短期压制"
+    }
+  },
+  "synthesis": {
+    "流派判定": "纯硬收息",
+    "龟级评定": "银龟",
+    "核心估值指标": "PB=0.45倍，TTM股息率=6.91%，安全边际=50.8%",
+    "苹果买卖模型": {
+      "正常价": 13.7,
+      "买入价": 8.22,
+      "卖出价": 7.54
+    },
+    "一句话买入逻辑（强制）": "我以'高股息+估值修复'逻辑买入该银行股，在PB=0.45倍、股息率6.91%时建仓，目标是获取6.91%的股息收益和PB修复至0.7倍的资本利得，预计持有2-3年。证伪条件：若连续2年分红减少超过30%或不良率大幅上升超过行业平均50%以上，则逻辑失败，立即止损。",
+    "关键风险": [
+      "宏观经济持续恶化导致银行资产质量下降",
+      "监管要求提高资本充足率导致分红减少或暂停",
+      "银行股长期低估值可能持续，估值修复缓慢",
+      "审计意见等关键数据缺失，信息不完整",
+      "利率下行周期压缩银行净息差"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "买入",
+    "综合评分": 78,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600015.SH",
+    "cutoff_date": "2020-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 489.0,
+    "chapters_completed": 6
+  }
+}

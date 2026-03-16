@@ -1,0 +1,126 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据缺失",
+        "主营业务构成数据缺失"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司注册地在中国天津，属于极低风险区域，有国家信用背书，无证据显示在高风险区域有重大资产或收入",
+      "geo_excluded": false,
+      "price_position_pct": 1.6,
+      "debt_ratio_pct": 50.09,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过所有筛选：1)地缘政治风险极低；2)上市超过15年；3)价格接近52周低点，安全边际充足；4)有息负债率仅6.71%，财务稳健；5)连续多年盈利；6)现金覆盖率高达179.5%，净现金超过总市值，极具投资价值"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "无法确认（前两大股东为其他法人股东，合计持股57.95%）",
+      "investment_stream": "烟蒂股",
+      "stream_reasoning": "同时符合烟蒂股和纯硬收息特征：1)净现金2604.61亿 > 市值1656.14亿；2)清算价值估算>市值；3)股息率TTM 27.94%；4)有息负债率仅13.4%；5)PB 0.88显示深度低估。优先归类为烟蒂股因净现金远超市值的极端低估状态。",
+      "interest_bearing_debt": 368.77,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "顶部",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "审计意见数据缺失",
+        "关联交易数据缺失",
+        "股权质押数据缺失"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "持续增长",
+      "latest_cash_balance": 2973.38,
+      "reported_profit": 1152.4,
+      "non_cash_adjustments": 511.95,
+      "adjusted_profit": 1152.4,
+      "owner_earnings": 1646.0,
+      "owner_earnings_formula": "所有者收益 ≈ 经营现金流 - 维持性CAPEX = 1664.35亿 - 18.35亿 = 1646.00亿元（基于现金转化率144.4%和经营现金流远高于净利润的事实）",
+      "fcf": 1646.0,
+      "maintenance_capex": 18.35
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业顶部陷阱",
+        "PE 1.39倍被周期顶部高利润严重扭曲",
+        "PE与FCF收益率99.4%极端矛盾"
+      ],
+      "valuation_method": "FCF估值（强制）",
+      "net_cash": 2604.61,
+      "ev": -948.47,
+      "ev_fcf_multiple": -0.58,
+      "turtle_rating": "极品级",
+      "fair_value_per_share": 13.0,
+      "topdown_return_pct": 27.94,
+      "valuation_crosscheck": "需调整（FCF收益率99.4%远高于股息率27.94%）",
+      "dividend_yield_pct": 27.94,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 58.3,
+      "market_condition": "熊市",
+      "buy_point": 10.29,
+      "sell_point": 16.25
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 944.9,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 40.0
+    },
+    "ch06_decision": {
+      "apple_normal_price": 67.0,
+      "apple_buy_price": 10.29,
+      "apple_sell_price": 36.85,
+      "buy_logic_statement": "我以'高股息收息'逻辑，在股息率27.94%时买入，目标是股息率从27.94%修复至6%，预计持有2-3年，修复完成即卖出。证伪条件：若公司连续2年派息率低于50%或股息率降至6%以下时股价未上涨，则逻辑失败，立即止损。",
+      "repair_target": "保守目标20.1元（股息率10%），中性目标33.5元（股息率6%），乐观目标50.25元（股息率4%）",
+      "repair_catalyst": "提高派息比例、回购计划、行业政策利好、同行估值带动、纳入指数",
+      "expected_repair_return_pct": 225.6,
+      "recommendation": "买入",
+      "position_type": "核心",
+      "suggested_position_pct": 15,
+      "exit_conditions": [
+        "股息率降至6%减仓50%",
+        "股息率降至5%清仓退出",
+        "连续2年派息率低于50%止损退出",
+        "持有超过3年未达修复目标重新评估"
+      ],
+      "macro_event_impact": "短期压制"
+    }
+  },
+  "synthesis": {
+    "流派判定": "烟蒂股",
+    "龟级评定": "金龟",
+    "核心估值指标": "EV/FCF倍数: -0.58倍，安全边际: 58.3%",
+    "苹果买卖模型": "正常价: 67.0元，买入价: 10.29元，卖出价: 36.85元",
+    "一句话买入逻辑": "我以'烟蒂股+高股息'逻辑，在净现金2604.61亿超过市值1656.14亿、股息率27.94%时买入，目标是估值修复至净现金价值16.25元或股息率降至6%，预计持有2-3年，修复完成即卖出。证伪条件：若公司连续2年派息率低于50%或净现金/市值降至1.0以下，则逻辑失败，立即止损。",
+    "关键风险": [
+      "周期性行业顶部风险",
+      "管理层诚信数据缺失",
+      "分红历史较短",
+      "审计意见缺失",
+      "地缘政治影响航运"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "买入",
+    "综合评分": 85,
+    "信心水平": "高"
+  },
+  "metadata": {
+    "ts_code": "601919.SH",
+    "cutoff_date": "2022-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 580.4,
+    "chapters_completed": 6
+  }
+}

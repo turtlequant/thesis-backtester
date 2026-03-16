@@ -1,0 +1,123 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据缺失",
+        "主营业务构成数据缺失"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于上海，中国内地，资产主要集中在中国境内，无地缘政治风险",
+      "geo_excluded": false,
+      "price_position_pct": 15.1,
+      "debt_ratio_pct": 88.62,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过快速筛选：1) 无ST标记，上市超28年；2) 价格位置良好（距52周高点跌幅38.6%）；3) 有息负债率21.5%可控，连续盈利；4) 现金充足（现金/市值113.6%）。地产行业高负债率属正常特性。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "待确认（前三大股东合计持股75.5%）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型多项条件：1) PE(TTM) 4.74 < 10；2) PB 0.88 < 1.0且ROE 15.08% > 8%；3) 经营现金流从Q1的-79.91亿改善至Q3的50.04亿；4) 房地产行业可能处于政策底部区域。不满足纯硬收息（有息负债存在）、烟蒂股（PB>0.3）标准。",
+      "interest_bearing_debt": 2506.33,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "良",
+      "cycle_debt_tolerance": "需观察",
+      "is_cyclical": true,
+      "cycle_position": "下行",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动",
+      "latest_cash_balance": 805.72,
+      "reported_profit": 166.96,
+      "non_cash_adjustments": 0,
+      "adjusted_profit": 50.04,
+      "owner_earnings": 50.04,
+      "owner_earnings_formula": "基于房地产行业特点，所有者收益近似等于经营现金流净额（50.04亿元），因：1) 折旧摊销数据缺失；2) 非现金减值数据缺失；3) 维持性CAPEX无法精确计算；4) 经营现金流反映实际现金创造能力",
+      "fcf": -24.56,
+      "maintenance_capex": 74.6
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "经营现金流/净利润仅30%",
+        "自由现金流连续为负"
+      ],
+      "valuation_method": "FCF+股息综合",
+      "net_cash": -1700.61,
+      "ev": 2410.01,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 6.64,
+      "topdown_return_pct": 6.86,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 6.86,
+      "dividend_sustainable": false,
+      "safety_margin_pct": 12.2,
+      "market_condition": "熊市",
+      "buy_point": 3.98,
+      "sell_point": 7.97
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 117.04,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "安全边际不足",
+      "is_cigar_butt": false,
+      "liquidation_value": -6536.14,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 5
+    },
+    "ch06_decision": {
+      "apple_normal_price": 10.0,
+      "apple_buy_price": 6.0,
+      "apple_sell_price": 8.0,
+      "buy_logic_statement": "我以'修复型'逻辑买入此标的，在PB=0.88倍、股息率TTM=6.86%时建仓，目标是PB从0.88倍修复至1.0倍、股息率从6.86%降至4%，预计持有2年，修复完成即卖出。证伪条件：若2021年归母净利润同比下降超过30%，或资产负债率突破90%，则逻辑失败，立即止损。",
+      "repair_target": "中性目标价6.64元（PB修复至1.0倍），乐观目标价7.30元（PB修复至1.1倍）",
+      "repair_catalyst": "1)房地产调控政策边际放松；2)2021年一季度业绩超预期；3)行业整体估值修复；4)维持0.40元/股分红",
+      "expected_repair_return_pct": 13.9,
+      "recommendation": "买入",
+      "position_type": "卫星",
+      "suggested_position_pct": 3,
+      "exit_conditions": [
+        "PB修复至1.0倍（股价6.64元）减仓50%",
+        "涨幅超过5年股息总和（2.00元）即清仓",
+        "2021年归母净利润同比下降超过30%即时止损",
+        "资产负债率突破90%即时止损",
+        "持有2年未达修复目标重新评估"
+      ],
+      "macro_event_impact": "短期压制"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数：不适用（FCF为负），安全边际：12.2%",
+    "苹果买卖模型": "正常价：10.00元，买入价：6.00元，卖出价：8.00元",
+    "一句话买入逻辑": "我以'修复型'逻辑买入此标的，在PB=0.88倍、股息率TTM=6.86%时建仓，目标是PB从0.88倍修复至1.0倍、股息率从6.86%降至4%，预计持有2年，修复完成即卖出。证伪条件：若2021年归母净利润同比下降超过30%，或资产负债率突破90%，则逻辑失败，立即止损。",
+    "关键风险": [
+      "现金流恶化严重：经营现金流/净利润仅30%，自由现金流连续为负",
+      "高负债风险：资产负债率88.62%，净负债率210.5%，财务杠杆过高",
+      "行业政策风险：房地产调控政策持续收紧，销售和融资环境恶化",
+      "利润质量差：大量利润为应收账款等非现金项，实际现金创造能力弱",
+      "流动性风险：现金覆盖仅2.36个月，短期偿债压力大"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "回避",
+    "综合评分": 45,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600606.SH",
+    "cutoff_date": "2020-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 563.7,
+    "chapters_completed": 6
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "审计意见数据缺失",
+        "主营业务构成数据缺失",
+        "自由现金流数据不完整"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司注册地和主要运营地在中国内地北京，属于极低风险区域。建筑工程行业主要业务在国内，无显著地缘政治风险。",
+      "geo_excluded": false,
+      "price_position_pct": 34.9,
+      "debt_ratio_pct": 75.35,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "未通过5分钟快速排除法：1) 价格位置不佳，距52周高点跌幅仅27.6%（要求>30%），安全边际不足；2) 经营现金流/净利润比率41.2%低于50%阈值；3) FCF倍数45.5倍远高于10倍上限。建议放入观察列表，等待价格进一步调整。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "数据不足",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "符合价值发现型核心条件：1) PE(TTM)=6.37<10；2) FCF收益率=12.0%>10%；3) PB=0.50深度破净；4) 建筑工程行业处于下行周期底部区域。同时具有部分收息特征（股息率TTM=4.87%）。",
+      "interest_bearing_debt": 5797.58,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "警惕",
+      "cycle_debt_tolerance": "排除",
+      "is_cyclical": true,
+      "cycle_position": "下行",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "审计意见数据缺失",
+        "关键治理信息不足"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动",
+      "latest_cash_balance": 1561.53,
+      "reported_profit": 303.47,
+      "non_cash_adjustments": 215.17,
+      "adjusted_profit": 518.64,
+      "owner_earnings": 368.64,
+      "owner_earnings_formula": "净利润303.47亿 + 折旧摊销200亿 + 非现金减值15.17亿 - 维持性CAPEX150亿 = 368.64亿",
+      "fcf": -125.49,
+      "maintenance_capex": 150.0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业利润波动大",
+        "经营现金流/净利润仅41.2%",
+        "自由现金流连续为负",
+        "折旧摊销占净利润65.9%"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": -4236.05,
+      "ev": 5683.22,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用（FCF为负）",
+      "fair_value_per_share": 10.64,
+      "topdown_return_pct": 4.87,
+      "valuation_crosscheck": "矛盾（Top-Down 4.87% vs Bottom-Up -8.67%）",
+      "dividend_yield_pct": 4.87,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -20.0,
+      "market_condition": "震荡市",
+      "buy_point": 7.07,
+      "sell_point": 14.18
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 219.43,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 15
+    },
+    "ch06_decision": {
+      "apple_normal_price": 14.36,
+      "apple_buy_price": 9.33,
+      "apple_sell_price": 8.62,
+      "buy_logic_statement": "我以'高股息修复'逻辑买入该建筑工程公司，在股息率4.87%时建仓，目标是股息率从4.87%修复到3.5%，预计持有2年，修复完成即卖出。证伪条件：若公司连续2个季度经营现金流为负且自由现金流恶化超过30%，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价8.62元（股息率3.5%），中性目标价11.17元（PE 8倍），乐观目标价14.22元（PB 0.8倍）",
+      "repair_catalyst": "基建投资政策加码、公司现金流改善、提高派息比例、纳入相关指数",
+      "expected_repair_return_pct": 25.6,
+      "recommendation": "观察",
+      "position_type": "卫星",
+      "suggested_position_pct": 1.0,
+      "exit_conditions": [
+        "股价达到8.62元（股息率3.5%）减仓30%",
+        "股价达到11.17元（PE 8倍）再减仓30%",
+        "股价达到14.22元（PB 0.8倍）清仓",
+        "经营现金流连续2季度恶化立即止损",
+        "发现股息率>6%且现金流为正的更优标的时切换"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数：负值（FCF为负），安全边际：-20%",
+    "苹果买卖模型": "正常价：14.36元，买入价：9.33元，卖出价：8.62元",
+    "一句话买入逻辑": "我以'深度破净修复'逻辑买入该建筑工程公司，在PB=0.50倍时建仓，目标是PB修复至0.8倍，预计持有2-3年，修复完成即卖出。证伪条件：若公司连续2个季度经营现金流为负且净负债率上升超过10%，则逻辑失败，立即止损。",
+    "关键风险": [
+      "现金流恶化风险：经营现金流波动剧烈，2025Q1为-489.08亿",
+      "高负债风险：净负债率132.6%，资产负债率75.35%",
+      "行业下行风险：建筑工程行业处于下行周期",
+      "信息不足风险：审计意见缺失，管理人诚信评级存疑",
+      "股息不可持续风险：FCF为负，股息支付依赖借款"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "观望",
+    "综合评分": 45,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "601800.SH",
+    "cutoff_date": "2025-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 662.9,
+    "chapters_completed": 6
+  }
+}

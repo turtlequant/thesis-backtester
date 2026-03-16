@@ -1,0 +1,127 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺乏审计意见数据",
+        "缺乏主营业务构成数据",
+        "缺乏股东人数变化数据"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地江苏，属于极低风险区域，前十大股东包含国有/政府关联股东",
+      "geo_excluded": false,
+      "price_position_pct": 9.9,
+      "debt_ratio_pct": 49.62,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "排除原因：1) 经营现金流连续为负（2022年-18.69亿，2023年前三季度-14.53亿），盈利质量存疑；2) 现金覆盖率仅12.67%，低于20%安全标准；3) 公司处于净负债状态（净负债47.47亿）。虽然公司连续盈利、估值较低（PE 4.79倍，PB 0.59倍），但现金流问题严重，不符合快速筛选标准。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "无法确定（第一大股东为法人股东）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现流派2项核心条件：1) PE 4.79 < 10；2) PB 0.59 < 1.0且ROE 9.78% > 8%。但经营现金流连续为负，自由现金流为负，不符合纯硬收息和烟蒂股标准。",
+      "interest_bearing_debt": 60.71,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "警惕",
+      "cycle_debt_tolerance": "排除",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "经营现金流连续为负",
+        "缺乏关键治理数据"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动稳定",
+      "latest_cash_balance": 13.24,
+      "reported_profit": 16.7,
+      "non_cash_adjustments": 0.08,
+      "adjusted_profit": -14.53,
+      "owner_earnings": 12.93,
+      "owner_earnings_formula": "净利润16.70亿 + 折旧摊销0.08亿 - 维持性CAPEX 3.71亿 = 12.93亿（注：非现金减值数据缺失，此为保守估计）",
+      "fcf": -18.24,
+      "maintenance_capex": 3.71
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "经营现金流/净利润严重背离（-87%）",
+        "自由现金流连续为负",
+        "PE低但现金流差的价值陷阱"
+      ],
+      "valuation_method": "FCF估值（但FCF为负）",
+      "net_cash": -34.27,
+      "ev": 138.78,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 6.0,
+      "topdown_return_pct": 7.1,
+      "valuation_crosscheck": "严重矛盾（股息率7.1% vs FCF收益率-17.45%）",
+      "dividend_yield_pct": 7.1,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -20,
+      "market_condition": "熊市",
+      "buy_point": 4.8,
+      "sell_point": 6.5
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 12.18,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": -107.93,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 30
+    },
+    "ch06_decision": {
+      "apple_normal_price": 10.5,
+      "apple_buy_price": 6.3,
+      "apple_sell_price": 7.35,
+      "buy_logic_statement": "我以'价值修复'类型买入该园区开发公司，在PB=0.59倍、股息率=7.1%时建仓，目标是PB从0.59倍修复到0.8倍、股息率从7.1%降至4.5%，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若连续2年经营现金流净额为负且自由现金流持续为负，或股息率降至5%以下但PB未修复至0.7倍以上，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价7.66元（PB 0.8倍），中性目标价9.57元（PB 1.0倍），乐观目标价11.48元（PB 1.2倍）",
+      "repair_catalyst": "1) 经营现金流改善转正；2) 房地产政策边际放松；3) 公司提高派息比例或实施回购；4) 行业估值修复带动",
+      "expected_repair_return_pct": 26.8,
+      "recommendation": "观察",
+      "position_type": "卫星",
+      "suggested_position_pct": 2,
+      "exit_conditions": [
+        "PB修复至0.8倍（7.66元）减仓50%",
+        "PB修复至1.0倍（9.57元）清仓",
+        "经营现金流连续2年负增长>20%即时止损",
+        "股息率降至5%以下但PB未修复至0.7倍以上",
+        "涨幅透支5年股息总和（股价超过8.14元）"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数不适用（FCF为负），安全边际-20%",
+    "苹果买卖模型": "正常价10.5元/买入价6.3元/卖出价7.35元",
+    "一句话买入逻辑（强制）": "我以'价值修复'类型买入该园区开发公司，在PB=0.59倍、股息率=7.1%时建仓，目标是PB从0.59倍修复到0.8倍、股息率从7.1%降至4.5%，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若连续2年经营现金流净额为负且自由现金流持续为负，或股息率降至5%以下但PB未修复至0.7倍以上，则逻辑失败，立即止损。",
+    "关键风险": [
+      "经营现金流持续为负（2022年-18.69亿，2023年前三季度-14.53亿）",
+      "自由现金流连续为负，股息支付依赖外部融资",
+      "短期偿债压力大（短期借款47.45亿/现金13.24亿=3.58倍）",
+      "房地产政策收紧影响园区开发业务",
+      "高存货（117.01亿）在行业下行周期面临减值风险"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "观望",
+    "综合评分": 45,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600064.SH",
+    "cutoff_date": "2023-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 575.5,
+    "chapters_completed": 6
+  }
+}

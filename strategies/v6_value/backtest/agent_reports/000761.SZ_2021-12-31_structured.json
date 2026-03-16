@@ -1,0 +1,127 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "审计意见数据不可获取",
+        "主营业务地域分布数据不可获取",
+        "2020年经营现金流为负异常"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地辽宁，属于极低风险区域，享受国家信用背书和政策支持",
+      "geo_excluded": false,
+      "price_position_pct": 30.5,
+      "debt_ratio_pct": 63.78,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过快速筛选：1)无ST标记，上市超23年；2)价格位置30.5%，距52周高点跌幅43.85%；3)有息负债率25.84%合理，连续3年盈利；4)现金覆盖率58.42%高。需关注：2020年经营现金流为负，2021年FCF倍数11.92倍略高，但钢铁行业有周期性特征。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "地方国企",
+      "controlling_shareholder": "无法穿透识别（数据不足）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型3项核心条件：1)PE(TTM)4.45<10；2)PB0.81<1.0且ROE16.86%>8%；3)经营现金流从2020年-20.39亿改善至2021年Q3 15.44亿，大幅改善。同时股息率TTM 11.48%较高，但不符合纯硬收息全部条件。",
+      "interest_bearing_debt": 173.74,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "可接受",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "上行",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "关键诚信数据不可获取（审计意见、关联交易、股权质押等）"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "下降",
+      "latest_cash_balance": 100.8,
+      "reported_profit": 38.06,
+      "non_cash_adjustments": 18.78,
+      "adjusted_profit": 57.7,
+      "owner_earnings": 44.2,
+      "owner_earnings_formula": "净利润38.06亿 + 折旧摊销12.64亿(估算) + 非现金减值6.14亿(估算) - 维持性CAPEX12.64亿(折旧近似法估算)",
+      "fcf": -46.56,
+      "maintenance_capex": 12.64
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "经营现金流/净利润<50%",
+        "折旧摊销占比高",
+        "PE与现金流背离"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": -72.94,
+      "ev": 245.48,
+      "ev_fcf_multiple": 21.93,
+      "turtle_rating": "高估",
+      "fair_value_per_share": 2.73,
+      "topdown_return_pct": 11.48,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 11.48,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -53.8,
+      "market_condition": "震荡市",
+      "buy_point": 2.73,
+      "sell_point": 4.0
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 36.71,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 25
+    },
+    "ch06_decision": {
+      "apple_normal_price": 5.56,
+      "apple_buy_price": 3.34,
+      "apple_sell_price": 3.34,
+      "buy_logic_statement": "当前不适用买入逻辑。如果价格跌至PB=0.6倍（约3.34元），逻辑为：我以周期修复逻辑买入该普钢标的，在PB=0.6倍时建仓，目标是PB从0.6倍修复至0.8倍，预计持有1-2年，修复完成即卖出。证伪条件：若钢价持续下跌导致连续2季度亏损，则逻辑失败立即止损。",
+      "repair_target": "保守目标4.45元（PB 0.8倍），中性目标5.56元（PB 1.0倍），乐观目标6.67元（PB 1.2倍）",
+      "repair_catalyst": "钢价周期回升、行业产能出清、公司降本增效、股息政策稳定",
+      "expected_repair_return_pct": 5.95,
+      "recommendation": "观察",
+      "position_type": "观察",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "PB修复至0.8倍（4.45元）开始减仓",
+        "钢价涨至周期70%分位减仓50%",
+        "连续2季度亏损立即止损",
+        "发现PB<0.6倍且FCF为正的更优标的时切换",
+        "持有超过2年未达修复目标重新评估"
+      ],
+      "macro_event_impact": "短期压制"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数21.93倍，安全边际-53.8%",
+    "苹果买卖模型": "正常价5.56元，买入价3.34元，卖出价3.34元",
+    "一句话买入逻辑": "当前不适用买入逻辑。如果价格跌至PB=0.6倍（约3.34元），逻辑为：我以周期修复逻辑买入该普钢标的，在PB=0.6倍时建仓，目标是PB从0.6倍修复至0.8倍，预计持有1-2年，修复完成即卖出。证伪条件：若钢价持续下跌导致连续2季度亏损，则逻辑失败立即止损。",
+    "关键风险": [
+      "周期性行业下行风险：钢铁价格下跌将导致盈利能力大幅下滑",
+      "现金流质量差：经营现金流/净利润仅40.6%，FCF为负，股息可持续性存疑",
+      "高负债风险：资产负债率63.78%，净现金为负72.94亿，财务压力大",
+      "估值陷阱：周期性行业PE最低时往往是周期顶部，当前PE 4.45倍可能是陷阱",
+      "管理层诚信存疑：关键诚信数据不可获取，需额外安全边际补偿"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "回避",
+    "综合评分": 45,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "000761.SZ",
+    "cutoff_date": "2021-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 602.6,
+    "chapters_completed": 6
+  }
+}

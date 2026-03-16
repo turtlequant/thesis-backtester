@@ -1,0 +1,121 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据不可获取"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地上海，属于极低风险区域，普钢行业不涉及敏感技术出口管制",
+      "geo_excluded": false,
+      "price_position_pct": 21.2,
+      "debt_ratio_pct": 47.9,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过快速筛选：1)地缘政治风险极低；2)上市超过20年；3)价格位置处于安全区域（距52周高点跌幅40.7%）；4)有息负债率仅8.7%，财务风险低；5)连续3年盈利；6)FCF倍数5.7倍合理。现金覆盖率16.3%略低于20%要求，但作为重资产周期行业可适当放宽。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "其他法人股东（持股48.56%）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现流派4项条件：1)PE=6.04<10；2)PB=0.88<1.0且ROE=11.55%>8%；3)普钢行业处于周期底部区域；4)经营现金流大幅改善（295.05亿）。股息率8.95%较高但派息历史不足5年，不满足纯硬收息全部条件。",
+      "interest_bearing_debt": 349.8,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "底部上行",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "持续增长",
+      "latest_cash_balance": 260.37,
+      "reported_profit": 215.9,
+      "non_cash_adjustments": 105.0,
+      "adjusted_profit": 220.9,
+      "owner_earnings": 220.9,
+      "owner_earnings_formula": "净利润215.90亿 + 折旧摊销100.00亿（估算） + 非现金减值5.00亿（估算） - 维持性CAPEX 100.00亿（估算）",
+      "fcf": 16.37,
+      "maintenance_capex": 100.0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "净利润波动巨大（近3年波动率>50%）",
+        "PE与FCF收益率矛盾"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": -89.43,
+      "ev": 1683.85,
+      "ev_fcf_multiple": 8.63,
+      "turtle_rating": "合理区间",
+      "fair_value_per_share": 7.16,
+      "topdown_return_pct": 12.23,
+      "valuation_crosscheck": "一致",
+      "dividend_yield_pct": 3.91,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 0.0,
+      "market_condition": "震荡市",
+      "buy_point": 4.5,
+      "sell_point": 9.0
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 157.39,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": -488.58,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 70
+    },
+    "ch06_decision": {
+      "apple_normal_price": 4.64,
+      "apple_buy_price": 3.47,
+      "apple_sell_price": 4.64,
+      "buy_logic_statement": "当前不适用买入逻辑。若未来价格下跌至EV/FCF倍数<5倍，买入逻辑为：以周期修复逻辑买入，目标EV/FCF从<5倍修复到8倍，持有1-2年，修复完成即卖出。证伪条件：钢价持续下跌导致FCF连续2季度下滑>30%。",
+      "repair_target": "保守目标价4.08元（EV/FCF 8倍），中性目标价5.20元（EV/FCF 10倍），乐观目标价6.32元（EV/FCF 12倍）",
+      "repair_catalyst": "1) 钢价周期触底反弹；2) 行业产能出清；3) 公司去杠杆完成；4) 股息率提升至有吸引力水平",
+      "expected_repair_return_pct": -27.4,
+      "recommendation": "观察",
+      "position_type": "观察",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "EV/FCF倍数修复至8倍（对应股价4.08元）减仓",
+        "EV/FCF倍数修复至10倍（对应股价5.20元）清仓",
+        "钢价持续下跌导致FCF连续2季度下滑>30%止损",
+        "发现EV/FCF倍数差>2倍的更优标的切换"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "铜龟",
+    "核心估值指标": "EV/FCF倍数8.63倍，安全边际0%",
+    "苹果买卖模型": "正常价4.64元，买入价2.85-4.08元，卖出价4.08-5.20元",
+    "一句话买入逻辑（强制）": "当前不适用买入逻辑。若未来价格下跌至EV/FCF倍数<5倍，买入逻辑为：以周期修复逻辑买入该普钢标的，目标EV/FCF从<5倍修复到8倍，持有1-2年，修复完成即卖出。证伪条件：钢价持续下跌导致FCF连续2季度下滑>30%。",
+    "关键风险": [
+      "周期性行业下行风险：钢价处于相对高位，若行业周期下行，盈利和现金流将大幅下滑",
+      "安全边际不足：当前股价7.16元高于正常价4.64元，无安全边际",
+      "压力测试未通过：在连续三年衰退10%的情景下，利润和现金覆盖均不足",
+      "估值修复空间有限：EV/FCF倍数8.63倍已接近合理区间上限",
+      "股息支付能力有限：FCF覆盖率仅0.15倍，股息可持续性存疑"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "观望",
+    "综合评分": 65,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600019.SH",
+    "cutoff_date": "2021-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 577.2,
+    "chapters_completed": 6
+  }
+}

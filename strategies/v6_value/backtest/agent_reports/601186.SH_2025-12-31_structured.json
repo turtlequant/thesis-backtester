@@ -1,0 +1,129 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据不可获取",
+        "主营业务地域分布数据不可获取"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司注册地和主要运营地在中国北京，建筑工程行业主要服务于国内基础设施建设，无高风险区域敞口",
+      "geo_excluded": false,
+      "price_position_pct": 17.0,
+      "debt_ratio_pct": 79.14,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "未通过快速筛选：1) 距52周高点跌幅仅19.5%，未达30%安全边际要求；2) 经营现金流持续为负。但PB仅0.38倍深度破净，股息率4.56%有吸引力，建议放入观察列表等待更好价格或现金流改善信号。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "无法确定",
+      "controlling_shareholder": "无法确定",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "符合价值发现型核心条件：1) PE=4.88倍<10；2) 建筑工程行业处于下行周期底部区域；3) PB=0.38倍深度破净。但经营现金流持续为负，自由现金流为负，需谨慎评估。",
+      "interest_bearing_debt": 5828.1,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "差",
+      "cycle_debt_tolerance": "排除",
+      "is_cyclical": true,
+      "cycle_position": "下行",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "经营现金流持续为负且恶化",
+        "有息负债大幅增加",
+        "分红减少"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动",
+      "latest_cash_balance": 172.56,
+      "reported_profit": 148.11,
+      "non_cash_adjustments": 97.22,
+      "adjusted_profit": 243.64,
+      "owner_earnings": 170.33,
+      "owner_earnings_formula": "净利润148.11亿 + 折旧摊销75亿 + 非现金减值22.22亿 - 维持性资本支出75亿 = 170.33亿",
+      "fcf": -154.76,
+      "maintenance_capex": 75
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "经营现金流/净利润严重背离(-538.5%)",
+        "自由现金流连续为负",
+        "应收账款增速超收入增速",
+        "PE与FCF收益率矛盾"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": -4102.47,
+      "ev": 5144.02,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 0,
+      "topdown_return_pct": 4.56,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 4.56,
+      "dividend_sustainable": false,
+      "safety_margin_pct": 0,
+      "market_condition": "熊市",
+      "buy_point": 0,
+      "sell_point": 7.67
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 143.96,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 30
+    },
+    "ch06_decision": {
+      "apple_normal_price": 12.8,
+      "apple_buy_price": 7.68,
+      "apple_sell_price": 7.04,
+      "buy_logic_statement": "当前不适用买入逻辑。如必须构建：我以困境反转逻辑买入该建筑工程公司，在PB=0.38倍时建仓，目标是PB从0.38倍修复到0.6倍，预计持有2年，修复完成即卖出。证伪条件：若经营现金流连续4个季度为负且资产负债率突破80%，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价12.05元（PB修复至0.6倍），中性目标价16.07元（PB修复至0.8倍），乐观目标价20.09元（PB修复至1.0倍）",
+      "repair_catalyst": "经营现金流转正、资产负债率下降至75%以下、应收账款周转率改善、基建投资政策刺激、国企改革推进",
+      "expected_repair_return_pct": 57.1,
+      "recommendation": "观察",
+      "position_type": "观察",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "PB修复至0.6倍时减仓50%",
+        "PB修复至0.8倍时再减仓30%",
+        "PB修复至1.0倍时清仓",
+        "资产负债率>80%且经营现金流连续4季为负时止损",
+        "持有超过3年未达修复目标时重新评估"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数无意义（FCF为负），安全边际不足",
+    "苹果买卖模型": "正常价12.8元/买入价7.68元/卖出价7.04元",
+    "一句话买入逻辑（强制）": "我以困境反转逻辑买入该建筑工程公司，在PB=0.38倍时建仓，目标是PB从0.38倍修复到0.6倍，预计持有2年，修复完成即卖出。证伪条件：若经营现金流连续4个季度为负且资产负债率突破80%，则逻辑失败，立即止损。",
+    "关键风险": [
+      "经营现金流持续恶化（2025年Q3 -797.57亿）",
+      "资产负债率持续上升至79.14%",
+      "应收账款高达2461.64亿，占营收33.8%",
+      "有息负债高达5828.10亿，净现金-4102.47亿",
+      "建筑工程行业处于下行周期"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "回避",
+    "综合评分": 35,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "601186.SH",
+    "cutoff_date": "2025-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 617.3,
+    "chapters_completed": 6
+  }
+}

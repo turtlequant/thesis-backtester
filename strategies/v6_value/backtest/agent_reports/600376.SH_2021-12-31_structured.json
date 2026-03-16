@@ -1,0 +1,126 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "审计意见数据缺失",
+        "主营业务地域分布数据缺失",
+        "财务费用数据缺失"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于北京，属于中国内地，享受国家信用背书和政策支持，前十大股东中有国有/政府关联股东",
+      "geo_excluded": false,
+      "price_position_pct": 57.2,
+      "debt_ratio_pct": 79.66,
+      "consecutive_profit_years": 1,
+      "pass_screening": false,
+      "screening_notes": "价格位置不佳触发排除条件：距52周高点跌幅仅12.8%（<30%排除标准），安全边际不足。但其他指标良好：现金覆盖率高（207.3%），经营现金流健康（519.4%），FCF倍数9.27倍（<10倍），有息负债率32.6%（<60%）。建议放入观察列表，等待价格回调至安全区域。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "无法确认（第一大股东为其他法人股东）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型3项核心条件：1) PE 5.93 < 10；2) FCF收益率13.4% > 10%；3) 经营现金流同比大幅改善（94.90亿 vs 55.90亿）。不符合纯硬收息（派息仅2年记录、有息负债高、派息率190.5%异常高），不符合烟蒂股（PB 0.56 > 0.3、净负债733.71亿），关联方资源无法确认。",
+      "interest_bearing_debt": 1036.4,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "差",
+      "cycle_debt_tolerance": "需观察",
+      "is_cyclical": true,
+      "cycle_position": "下行",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "信息披露不完整（审计意见、关联交易缺失）",
+        "大存大贷特征（货币资金302.69亿，有息负债1036.40亿）"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动稳定",
+      "latest_cash_balance": 302.69,
+      "reported_profit": 6.99,
+      "non_cash_adjustments": 0.87,
+      "adjusted_profit": 7.86,
+      "owner_earnings": 6.99,
+      "owner_earnings_formula": "净利润6.99亿 + 折旧摊销1.10亿 - 维持性CAPEX1.10亿 = 6.99亿（非现金减值数据缺失）",
+      "fcf": 68.59,
+      "maintenance_capex": 1.1
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "净利润波动巨大（2020年31.40亿→2021年6.99亿）"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": -733.71,
+      "ev": 879.71,
+      "ev_fcf_multiple": 9.38,
+      "turtle_rating": "合理区间",
+      "fair_value_per_share": 11.32,
+      "topdown_return_pct": 9.07,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 7.07,
+      "dividend_sustainable": false,
+      "safety_margin_pct": 24.4,
+      "market_condition": "震荡市",
+      "buy_point": 5.66,
+      "sell_point": 7.0
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 5.09,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": -1332.4,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 20
+    },
+    "ch06_decision": {
+      "apple_normal_price": 4.34,
+      "apple_buy_price": 0.62,
+      "apple_sell_price": 0.99,
+      "buy_logic_statement": "当前不适用买入逻辑：股价5.66元已高于正常价4.34元，EV/FCF 9.38倍在合理区间上沿，净现金为负733.71亿元存在债务风险，股息可持续性差（压力测试不通过）",
+      "repair_target": "保守修复目标价0.99元（EV/FCF 8倍），中性修复目标价8.34元（EV/FCF 10倍），但当前9.38倍已接近合理区间上沿",
+      "repair_catalyst": "无明确催化剂：房地产调控政策收紧，高杠杆模式面临挑战，债务重组可能性低",
+      "expected_repair_return_pct": -82.5,
+      "recommendation": "清仓",
+      "position_type": "观察",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "EV/FCF 9.38倍已在合理区间上沿（8-10倍）",
+        "净利润从31.40亿大幅下滑至6.99亿，基本面恶化",
+        "净现金为负733.71亿元，债务风险高",
+        "股息可持续性压力测试不通过",
+        "房地产调控政策持续收紧"
+      ],
+      "macro_event_impact": "止损：房地产调控政策收紧对高杠杆地产公司构成核心假设破坏，应即时退出"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数9.38倍，安全边际不足（距52周低点涨幅24.4%）",
+    "苹果买卖模型": "正常价4.34元，买入价0.62元，卖出价0.99元",
+    "一句话买入逻辑（强制）": "我以困境反转逻辑买入该地产公司，在EV/FCF倍数从当前9.38倍降至3倍以下（对应股价0.37元）时建仓，目标是债务重组完成+行业政策放松推动EV/FCF修复至8倍（对应股价0.99元），预计持有2-3年。证伪条件：若净负债率继续上升或销售额连续2季度下滑>30%，则逻辑失败立即止损。",
+    "关键风险": [
+      "高杠杆风险：净负债733.71亿元，资产负债率79.66%",
+      "行业下行风险：房地产调控政策持续收紧，行业处于下行周期",
+      "利润恶化风险：归母净利润从31.40亿大幅下滑至6.99亿",
+      "股息不可持续：派息率190.5%异常高，压力测试不通过",
+      "数据缺失风险：审计意见、关联交易等关键数据缺失"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "回避",
+    "综合评分": 38,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600376.SH",
+    "cutoff_date": "2021-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 558.1,
+    "chapters_completed": 6
+  }
+}

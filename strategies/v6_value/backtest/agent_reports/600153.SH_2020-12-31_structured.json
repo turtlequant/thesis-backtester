@@ -1,0 +1,125 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺少审计意见数据",
+        "缺少主营业务地域分布数据"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司注册和运营在中国内地，仓储物流行业属于基础设施类，政策支持度高，无证据显示在高风险区域有资产或业务",
+      "geo_excluded": false,
+      "price_position_pct": 34.9,
+      "debt_ratio_pct": 82.76,
+      "consecutive_profit_years": 2,
+      "pass_screening": false,
+      "screening_notes": "排除原因：1.价格位置不佳（距52周高点跌幅仅21.7%，安全边际不足）；2.经营现金流恶化（2020年前三季度经营现金流-136.96亿，远低于净利润37.02亿，盈利质量存疑）"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "民营",
+      "controlling_shareholder": "无法确定（国有持股仅0.33%）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "PE=4.15极低，PB=0.72<1.0且ROE=8.89%>8%，满足价值发现流派两项核心条件。但经营现金流严重恶化（-136.96亿）和高负债（资产负债率82.76%）构成重大风险",
+      "interest_bearing_debt": 797.5,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "危险",
+      "cycle_debt_tolerance": "排除",
+      "is_cyclical": false,
+      "cycle_position": "非周期",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "大存大贷现象（货币资金403.73亿，有息负债797.50亿）"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "持续增长",
+      "latest_cash_balance": 403.73,
+      "reported_profit": 37.02,
+      "non_cash_adjustments": 0.0,
+      "adjusted_profit": 37.02,
+      "owner_earnings": 37.02,
+      "owner_earnings_formula": "净利润37.02亿 + 折旧摊销0.67亿 - 维持性CAPEX0.67亿 = 37.02亿（非现金减值未披露）",
+      "fcf": -231.6,
+      "maintenance_capex": 0.67
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "行业属于重资产行业，会计利润被系统性压低",
+        "经营现金流/净利润=-370%，严重背离",
+        "自由现金流连续为负",
+        "PE低但现金流差，属于价值陷阱"
+      ],
+      "valuation_method": "FCF估值（强制使用，但FCF为负需替代方法）",
+      "net_cash": -393.77,
+      "ev": 628.87,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用（FCF为负）",
+      "fair_value_per_share": 8.84,
+      "topdown_return_pct": 6.03,
+      "valuation_crosscheck": "严重矛盾（股息率6.03%但FCF为-58.5%）",
+      "dividend_yield_pct": 6.03,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -20.0,
+      "market_condition": "震荡市",
+      "buy_point": 6.25,
+      "sell_point": 9.5
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 27.35,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 80
+    },
+    "ch06_decision": {
+      "apple_normal_price": 15.84,
+      "apple_buy_price": 6.25,
+      "apple_sell_price": 9.5,
+      "buy_logic_statement": "不适用买入逻辑：当前股价8.21元已高于买入区间（4.75-6.34元），且公司存在严重现金流问题（FCF为负，股息不可持续），不符合苹果买卖模型的买入标准。",
+      "repair_target": "PB修复至1.0倍对应11.43元（当前PB 0.72倍，上行空间39.2%）",
+      "repair_catalyst": "行业政策支持、现金流改善、资产负债率下降、行业整合",
+      "expected_repair_return_pct": 39.2,
+      "recommendation": "观察",
+      "position_type": "观察",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "股价达到11.43元（PB 1.0倍）减仓50%",
+        "自由现金流连续2年仍为负止损退出",
+        "资产负债率超过85%止损退出",
+        "持有超过3年未达修复目标重新评估"
+      ],
+      "macro_event_impact": "需警惕（高负债对利率敏感，现金流问题严重）"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数无法计算（FCF为负），安全边际-20%",
+    "苹果买卖模型": "正常价15.84元/买入价6.25元/卖出价9.50元",
+    "一句话买入逻辑（强制）": "不适用买入逻辑：当前股价8.21元已高于买入区间（4.75-6.34元），且公司存在严重现金流问题（FCF为负，股息不可持续），不符合苹果买卖模型的买入标准。",
+    "关键风险": [
+      "经营现金流严重恶化（2020年前三季度-136.96亿）",
+      "高负债风险（资产负债率82.76%，净负债率121.5%）",
+      "大存大贷现象（货币资金403.73亿，有息负债797.50亿）",
+      "存货极高（2439亿，占总资产62.8%）存在减值风险",
+      "股息不可持续（FCF为负，股息支付依赖外部融资）"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "回避",
+    "综合评分": 35,
+    "信心水平": "高"
+  },
+  "metadata": {
+    "ts_code": "600153.SH",
+    "cutoff_date": "2020-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 563.3,
+    "chapters_completed": 6
+  }
+}

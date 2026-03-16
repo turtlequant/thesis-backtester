@@ -1,0 +1,116 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "缺少审计意见数据",
+        "缺少主营业务地域分布数据"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于广东（中国内地），属于极低风险地区，无证据表明有高风险区域资产或收入",
+      "geo_excluded": false,
+      "price_position_pct": 71.3,
+      "debt_ratio_pct": 73.21,
+      "consecutive_profit_years": 4,
+      "pass_screening": false,
+      "screening_notes": "未通过快速筛选：1) 价格位置不佳（距52周高点仅下跌11.5%，安全边际不足）；2) 财务费用过高（年约20.6亿元，侵蚀利润）。虽然现金充裕（现金/市值342%）且连续盈利，但价格位置和财务成本构成主要排除因素。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "民营",
+      "controlling_shareholder": "民营资本（第一大股东为其他法人股东持股24.20%）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型2项核心条件：1) PE=4.78<10；2) 房地产行业处于下行周期底部区域。不满足纯硬收息（有息负债高、派息历史短）、烟蒂股（PB=0.96>0.3）、关联方资源（无国资背景）条件",
+      "interest_bearing_debt": 974.66,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "差",
+      "cycle_debt_tolerance": "需观察",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "大存大贷现象（货币资金548.47亿，有息负债974.66亿）"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "持续增长",
+      "latest_cash_balance": 548.47,
+      "reported_profit": 46.77,
+      "non_cash_adjustments": 0,
+      "adjusted_profit": 46.77,
+      "owner_earnings": 46.77,
+      "owner_earnings_formula": "净利润46.77亿 + 折旧摊销(未披露) + 非现金减值(未披露) - 维持性CAPEX 5亿 = 46.77亿（保守估计）",
+      "fcf": 151.59,
+      "maintenance_capex": 5
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "PE与同行严重偏离"
+      ],
+      "valuation_method": "FCF",
+      "net_cash": -426.19,
+      "ev": 586.46,
+      "ev_fcf_multiple": 1.65,
+      "turtle_rating": "极品级",
+      "fair_value_per_share": 50.39,
+      "topdown_return_pct": 17.94,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 12.02,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 85.0,
+      "market_condition": "熊市",
+      "buy_point": 6.5,
+      "sell_point": 35.27
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 34.09,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "基本安全",
+      "is_cigar_butt": false,
+      "liquidation_value": -1001.87,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 0
+    },
+    "ch06_decision": {
+      "apple_normal_price": 50.39,
+      "apple_buy_price": 7.56,
+      "apple_sell_price": 27.71,
+      "buy_logic_statement": "我以'修复型'逻辑买入该区域地产公司，在EV/FCF倍数1.65倍时建仓，目标是EV/FCF倍数从1.65倍修复到8倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若公司自由现金流连续2个季度转为负值且降幅超过50%，或净负债率上升至80%以上，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价116.14元（EV/FCF 8倍），中性目标价150.21元（EV/FCF 10倍），乐观目标价184.28元（EV/FCF 12倍）",
+      "repair_catalyst": "1.房地产调控政策边际放松；2.公司去杠杆完成，净负债率下降；3.经营活动现金流维持高位；4.12.02%高股息率吸引价值资金",
+      "expected_repair_return_pct": 1434,
+      "recommendation": "观察",
+      "position_type": "卫星",
+      "suggested_position_pct": 0.8,
+      "exit_conditions": [
+        "EV/FCF修复至8倍时减仓50%",
+        "EV/FCF修复至10倍时清仓",
+        "自由现金流连续2个季度下滑>20%时止损",
+        "净负债率上升至80%以上时止损",
+        "持有超过3年未达修复目标时重新评估"
+      ],
+      "macro_event_impact": "短期压制"
+    }
+  },
+  "synthesis": {
+    "revenue_after_3y_decline": 34.09,
+    "still_profitable": true,
+    "dividend_sustainable_under_stress": true,
+    "stress_test_result": "基本安全",
+    "is_cigar_butt": false,
+    "liquidation_value": -1001.87,
+    "is_light_asset": false,
+    "recurring_revenue_pct": 0
+  },
+  "metadata": {
+    "ts_code": "600325.SH",
+    "cutoff_date": "2022-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 810.6,
+    "chapters_completed": 6
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据缺失，但基于公司规模和上市历史推断应为标准无保留意见"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地福建，属于极低风险区域，资产安全受国家信用背书",
+      "geo_excluded": false,
+      "price_position_pct": 11.0,
+      "debt_ratio_pct": 75.38,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过所有筛选条件：1)地缘政治风险极低；2)上市超过25年；3)价格位置11.0%，距52周高点跌幅36.6%；4)有息负债率仅14.8%；5)连续盈利至少3年；6)现金覆盖率332.6%；7)FCF倍数仅2.17倍。公司估值极低（PE 1.91倍，PB 0.52倍），股息率8.31%，现金充裕。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "民营",
+      "controlling_shareholder": "无法从现有数据确认最终控制人",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型多项条件：1)PE仅1.91倍<10；2)FCF收益率14.3%>10%；3)PB 0.52<1.0且ROE 19.69%>8%；4)经营现金流由负转正大幅改善。同时具备纯硬收息特征（股息率8.31%），但派息历史仅2年不满足连续5年要求。",
+      "interest_bearing_debt": 1377.79,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "良",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": false,
+      "cycle_position": "底部",
+      "management_integrity": "可信",
+      "integrity_red_flags": [
+        "存在大存大贷迹象（高现金962亿与高有息负债1378亿并存）"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "持续增长",
+      "latest_cash_balance": 962.07,
+      "reported_profit": 150.39,
+      "non_cash_adjustments": -98.84,
+      "adjusted_profit": 51.55,
+      "owner_earnings": 150.39,
+      "owner_earnings_formula": "净利润150.39亿元 + 折旧摊销3.40亿元 + 非现金减值0亿元 - 维持性CAPEX3.40亿元 = 150.39亿元",
+      "fcf": 94.93,
+      "maintenance_capex": 3.4
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "利润质量检查未通过（FCF历史波动、应收存货异常）",
+        "PE与同行严重偏离>100%",
+        "PE仅1.91倍但FCF收益率高达32.8%"
+      ],
+      "valuation_method": "强制FCF",
+      "net_cash": -415.72,
+      "ev": 705.01,
+      "ev_fcf_multiple": 7.43,
+      "turtle_rating": "显著低估",
+      "fair_value_per_share": 31.6,
+      "topdown_return_pct": 13.31,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 8.31,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 228.0,
+      "market_condition": "熊市",
+      "buy_point": 9.63,
+      "sell_point": 39.12
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 90.55,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "基本安全",
+      "is_cigar_butt": false,
+      "liquidation_value": -3170.5,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 85
+    },
+    "ch06_decision": {
+      "apple_normal_price": 17.74,
+      "apple_buy_price": 11.53,
+      "apple_sell_price": 11.42,
+      "buy_logic_statement": "我以'价值修复'类型买入该标的，在EV/FCF倍数=7.43倍时建仓，目标是EV/FCF倍数从7.43倍修复到8倍，预计持有1-2年，修复完成即卖出，绝不恋战。证伪条件：若经营活动现金流连续2个季度为负且FCF收益率降至5%以下，则逻辑失败，立即止损。",
+      "repair_target": "保守目标11.42元（EV/FCF 8倍），中性目标17.74元（EV/FCF 10倍），乐观目标24.05元（EV/FCF 12倍）",
+      "repair_catalyst": "行业政策利好、纳入指数或分析师覆盖增加、提高派息比例、同行估值带动、经营现金流改善",
+      "expected_repair_return_pct": 18.6,
+      "recommendation": "分批建仓",
+      "position_type": "卫星",
+      "suggested_position_pct": 5,
+      "exit_conditions": [
+        "达到保守目标11.42元减仓30%",
+        "达到中性目标17.74元再减仓30%",
+        "达到乐观目标24.05元清仓",
+        "EV/FCF倍数超过12倍",
+        "涨幅透支5年股息总和",
+        "经营活动现金流连续2个季度为负",
+        "发现FCF倍数差>2倍的更优标的"
+      ],
+      "macro_event_impact": "短期压制但长期趋势不变，下跌>10%且基本面未变时评估加仓"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "银龟",
+    "核心估值指标": "EV/FCF倍数7.43倍，安全边际228%",
+    "苹果买卖模型": "正常价17.74元，买入价11.53元，卖出价11.42元",
+    "一句话买入逻辑": "我以'价值修复'类型买入该标的，在EV/FCF倍数=7.43倍时建仓，目标是EV/FCF倍数从7.43倍修复到8倍，预计持有1-2年，修复完成即卖出，绝不恋战。证伪条件：若经营活动现金流连续2个季度为负且FCF收益率降至5%以下，则逻辑失败，立即止损。",
+    "关键风险": [
+      "大存大贷现象（现金962亿与有息负债1378亿并存，资金效率存疑）",
+      "高存货风险（存货4518亿占资产48.5%，存在减值风险）",
+      "分红历史短（仅2年分红记录，政策稳定性待观察）",
+      "净负债状态（净现金为负415.72亿）",
+      "应收账款增速快于收入增速（需关注回款质量）"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "买入",
+    "综合评分": 75,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600153.SH",
+    "cutoff_date": "2023-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 590.9,
+    "chapters_completed": 6
+  }
+}

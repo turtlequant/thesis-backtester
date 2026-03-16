@@ -1,0 +1,121 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺乏主营业务地域分布数据",
+        "缺乏银行行业专项指标（不良率、拨备覆盖率等）",
+        "审计意见数据不可获取"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地福建，属于极低风险区域；银行行业主要业务在中国境内；国有股东背景提供安全保障",
+      "geo_excluded": false,
+      "price_position_pct": 50.0,
+      "debt_ratio_pct": 91.99,
+      "consecutive_profit_years": 5,
+      "pass_screening": true,
+      "screening_notes": "通过快速筛选。银行行业特性：1)负债率91.99%属正常范围；2)PB 0.48倍显示深度折价；3)股息率6.38%提供良好回报；4)连续多年盈利。价格位置50%不在理想安全区域，但考虑到银行股特性和深度估值折价，值得深入分析。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "国有股东与机构投资者共同持股",
+      "investment_stream": "纯硬收息",
+      "stream_reasoning": "1)股息率6.38%>5%门槛；2)连续4年稳定派息（2019-2022）；3)派息率稳定27-28%；4)兼具价值发现特征：PB 0.48倍深度折价，ROE 8.49%>8%，PE 3.98<10",
+      "interest_bearing_debt": 10971.63,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "可接受",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动稳定",
+      "latest_cash_balance": 0,
+      "reported_profit": 649.65,
+      "non_cash_adjustments": 0,
+      "adjusted_profit": 649.65,
+      "owner_earnings": 519.72,
+      "owner_earnings_formula": "金融行业替代方法：可分配利润 = 净利润 × (1 - 资本补充需求比例20%) = 649.65 × 0.8 = 519.72亿",
+      "fcf": 0,
+      "maintenance_capex": 0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "金融行业禁止使用PE作为主要估值依据"
+      ],
+      "valuation_method": "PB-ROE估值 + 股息率",
+      "net_cash": -3137.1,
+      "ev": 6508.61,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 20.15,
+      "topdown_return_pct": 14.5,
+      "valuation_crosscheck": "不适用（金融行业）",
+      "dividend_yield_pct": 6.38,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 33.0,
+      "market_condition": "震荡市",
+      "buy_point": 13.43,
+      "sell_point": 26.86
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 631.5,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "安全边际不足",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 95
+    },
+    "ch06_decision": {
+      "apple_normal_price": 21.83,
+      "apple_buy_price": 14.19,
+      "apple_sell_price": 20.15,
+      "buy_logic_statement": "我以'PB-ROE修复'类型买入该银行股，在PB=0.48倍时建仓，目标是PB从0.48倍修复到0.6倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若ROE连续2年下降至8%以下，或不良率大幅上升导致拨备覆盖率下降至150%以下，则逻辑失败，立即止损。",
+      "repair_target": "中性修复目标价20.15元（对应PB 0.6倍），乐观修复21.83元（PB 0.65倍）",
+      "repair_catalyst": "经济复苏带动资产质量改善、利率环境稳定净息差企稳、福建地区经济增速优势、高股息吸引力提升",
+      "expected_repair_return_pct": 24.3,
+      "recommendation": "观察",
+      "position_type": "卫星",
+      "suggested_position_pct": 8,
+      "exit_conditions": [
+        "PB修复至0.6倍减仓50%",
+        "PB修复至0.65倍清仓",
+        "ROE连续2年下降至8%以下止损",
+        "涨幅透支5年股息总和清仓"
+      ],
+      "macro_event_impact": "短期压制，长期趋势不变"
+    }
+  },
+  "synthesis": {
+    "流派判定": "纯硬收息",
+    "龟级评定": "铜龟",
+    "核心估值指标": "PB 0.48倍，股息率6.38%，安全边际约33%",
+    "苹果买卖模型": "正常价21.83元，买入价14.19元，卖出价20.15元",
+    "一句话买入逻辑": "我以'高股息+PB修复'逻辑买入该银行股，在PB=0.48倍时建仓，目标是赚取6.38%股息收益和PB从0.48倍修复到0.6倍的估值修复收益，预计持有2-3年。证伪条件：若ROE连续2年下降至8%以下，或不良率大幅上升导致拨备覆盖率下降至150%以下，则逻辑失败，立即止损。",
+    "关键风险": [
+      "宏观经济下行导致银行资产质量恶化",
+      "缺乏关键银行风险指标（不良率、拨备覆盖率、资本充足率）",
+      "净息差持续收窄侵蚀盈利能力",
+      "房地产风险敞口对区域性银行的影响",
+      "估值修复催化剂不明确，PB可能长期低位徘徊"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "观望",
+    "综合评分": 65,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "601166.SH",
+    "cutoff_date": "2023-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 480.0,
+    "chapters_completed": 6
+  }
+}

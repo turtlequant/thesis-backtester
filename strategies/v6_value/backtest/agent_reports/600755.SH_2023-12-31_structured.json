@@ -1,0 +1,129 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺少主营业务地域分布数据",
+        "缺少审计意见数据",
+        "经营现金流与净利润严重背离需核实"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地福建，属于极低风险区域，无地缘政治风险",
+      "geo_excluded": false,
+      "price_position_pct": 9.1,
+      "debt_ratio_pct": 70.75,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "未通过快速筛选：1) 价格位置安全边际不足（距52周高点跌幅29.2%<30%阈值）；2) 经营现金流异常（2023年前三季度经营现金流净额-45.03亿，与净利润20.21亿严重背离）。虽然现金覆盖率高达94.5%且连续盈利，但现金流质量存疑，需进一步分析现金流异常原因。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "无法识别（第一大股东为其他法人股东）",
+      "investment_stream": "无法归类",
+      "stream_reasoning": "同时具有高股息率（9.40%）和低PE（4.88）特征，但现金流严重恶化（经营现金流-45.03亿），有息负债高（247.08亿），不符合任何流派的完整标准：1)纯硬收息：虽有高股息但现金流为负且派息历史短；2)烟蒂股：PB=0.72>0.3，净负债101.87亿；3)关联方资源：无明确母公司背景；4)价值发现：仅PE<10满足，FCF为负，ROE仅5.91%",
+      "interest_bearing_debt": 247.08,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "差",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": false,
+      "cycle_position": "非周期",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "经营现金流与净利润严重背离（-45.03亿 vs 20.21亿）",
+        "大存大贷迹象（货币资金145.21亿，有息负债247.08亿）"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动但依赖筹资",
+      "latest_cash_balance": 145.21,
+      "reported_profit": 20.21,
+      "non_cash_adjustments": -3.09,
+      "adjusted_profit": 17.12,
+      "owner_earnings": -36.36,
+      "owner_earnings_formula": "净利润20.21亿 + 折旧摊销2.24亿 - 维持性资本支出58.81亿 = -36.36亿",
+      "fcf": -141.78,
+      "maintenance_capex": 58.81
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "行业属于重资产仓储物流，PE失真",
+        "经营现金流/净利润严重背离(-223%)",
+        "自由现金流连续为负",
+        "应收账款和存货增速超收入增速",
+        "PE低但现金流差，属于价值陷阱"
+      ],
+      "valuation_method": "PB估值（FCF为负无法使用）",
+      "net_cash": -101.87,
+      "ev": 255.5,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "无法评级（FCF为负）",
+      "fair_value_per_share": 5.78,
+      "topdown_return_pct": 9.4,
+      "valuation_crosscheck": "严重矛盾（股息率9.40%但FCF为负，股息不可持续）",
+      "dividend_yield_pct": 9.4,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -20.6,
+      "market_condition": "熊市",
+      "buy_point": 5.78,
+      "sell_point": 7.71
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 18.14,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 70
+    },
+    "ch06_decision": {
+      "apple_normal_price": 8.68,
+      "apple_buy_price": 5.21,
+      "apple_sell_price": 7.71,
+      "buy_logic_statement": "我以'价值修复'类型买入该仓储物流标的，在PB=0.72倍时建仓，目标是PB从0.72倍修复到0.85倍，预计持有1-2年，修复完成即卖出，绝不恋战。证伪条件：若经营活动现金流连续4个季度为负且自由现金流恶化超过50%，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价7.71元（PB 0.8倍），中性目标价8.19元（PB 0.85倍），乐观目标价8.68元（PB 0.9倍）",
+      "repair_catalyst": "经营活动现金流改善、存货周转率提升、行业政策支持、公司治理改善",
+      "expected_repair_return_pct": 17.5,
+      "recommendation": "观察",
+      "position_type": "卫星",
+      "suggested_position_pct": 2,
+      "exit_conditions": [
+        "PB修复至0.85倍减仓50%",
+        "PB修复至0.9倍清仓",
+        "持仓盈利超过20%强制减仓30%",
+        "FCF连续2季下滑>30%即时止损",
+        "持有超过2年未达修复目标重新评估"
+      ],
+      "macro_event_impact": "无影响"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值修复型",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数无法计算（FCF为负），安全边际-20.6%",
+    "苹果买卖模型": "正常价8.68元，买入价5.21元，卖出价7.71元",
+    "一句话买入逻辑": "我以'价值修复'类型买入该仓储物流标的，在PB=0.72倍时建仓，目标是PB从0.72倍修复到0.85倍，预计持有1-2年，修复完成即卖出，绝不恋战。证伪条件：若经营活动现金流连续4个季度为负且自由现金流恶化超过50%，则逻辑失败，立即止损。",
+    "关键风险": [
+      "经营现金流严重恶化（-45.03亿）且与净利润严重背离",
+      "自由现金流连续为负且恶化（-141.78亿），股息不可持续",
+      "大存大贷迹象（货币资金145.21亿，有息负债247.08亿）",
+      "资产负债率70.75%偏高，短期偿债压力大",
+      "管理人诚信存疑，存在资金使用效率问题"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "回避",
+    "综合评分": 38,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600755.SH",
+    "cutoff_date": "2023-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 548.8,
+    "chapters_completed": 6
+  }
+}

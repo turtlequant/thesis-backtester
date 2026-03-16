@@ -1,0 +1,126 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据不可获取，需人工核实"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国广东，有国有股东背景，无高风险区域资产",
+      "geo_excluded": false,
+      "price_position_pct": 42.2,
+      "debt_ratio_pct": 78.98,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "价格位置不佳，距52周高点跌幅仅16.9%，安全边际不足。虽然基本面良好（现金充裕、盈利连续、负债率可控），但不符合快速筛选的价格位置要求（需距52周高点跌幅>30%）。建议放入观察列表，等待价格回调。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "无法穿透确定（股权分散，第一大股东为其他法人股东）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型3项核心条件：1) PE=3.98<10；2) PB=0.81<1.0且ROE=9.61%>8%；3) 经营现金流同比大幅改善66.9%。不满足纯硬收息（派息记录不足5年）、烟蒂股（PB>0.3且净现金为负）、关联方资源（非央企控股平台）条件。",
+      "interest_bearing_debt": 1080.57,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "警惕",
+      "cycle_debt_tolerance": "需观察",
+      "is_cyclical": true,
+      "cycle_position": "下行",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "审计意见数据不可获取",
+        "关联交易数据不可获取",
+        "股权行为数据不完整"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "持续增长",
+      "latest_cash_balance": 500.77,
+      "reported_profit": 20.53,
+      "non_cash_adjustments": 246.0,
+      "adjusted_profit": 266.53,
+      "owner_earnings": 266.52,
+      "owner_earnings_formula": "所有者收益 ≈ 经营现金流 - 维持性CAPEX ≈ 266.52亿元（地产行业维持性CAPEX很小，主要为扩张性土地购置）",
+      "fcf": 140.89,
+      "maintenance_capex": 0.01
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "PE与同行严重偏离"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": -579.8,
+      "ev": 707.25,
+      "ev_fcf_multiple": 2.65,
+      "turtle_rating": "极品级",
+      "fair_value_per_share": 76.62,
+      "topdown_return_pct": 12.48,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 6.64,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 92.1,
+      "market_condition": "熊市",
+      "buy_point": 6.02,
+      "sell_point": 85.4
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 19.95,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "勉强通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 0
+    },
+    "ch06_decision": {
+      "apple_normal_price": 73.33,
+      "apple_buy_price": 6.02,
+      "apple_sell_price": 73.33,
+      "buy_logic_statement": "我以'苹果买卖'逻辑，在剔除净现金FCF倍数2.65倍时买入这家区域地产公司，目标是FCF倍数从2.65倍修复到8倍，预计持有2-3年，修复完成即卖出。证伪条件：若经营活动现金流连续2个季度下滑超过30%，或净负债率从当前78.98%上升至85%以上，则买入逻辑失败，立即止损。",
+      "repair_target": "保守目标价106.77元（对应FCF倍数8倍），中性目标价140.30元（对应FCF倍数10倍），乐观目标价173.84元（对应FCF倍数12倍）",
+      "repair_catalyst": "1.房地产调控政策边际放松；2.强劲现金流持续验证（2021年1-9月经营现金流266.52亿元）；3.估值极度低估（PE 3.98倍，PB 0.81倍）；4.市场情绪修复带来的均值回归",
+      "expected_repair_return_pct": 1673,
+      "recommendation": "买入",
+      "position_type": "核心",
+      "suggested_position_pct": 15,
+      "exit_conditions": [
+        "FCF倍数修复至8倍（106.77元）减仓30%",
+        "FCF倍数修复至10倍（140.30元）再减仓30%",
+        "FCF倍数修复至12倍（173.84元）清仓",
+        "经营活动现金流连续2季度下滑>20%止损",
+        "净负债率上升至85%以上止损",
+        "持有超过3年未达修复目标重新评估"
+      ],
+      "macro_event_impact": "短期压制但已充分反映，当前估值已包含悲观预期，下行风险有限"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "金龟",
+    "核心估值指标": "EV/FCF倍数=2.65倍，安全边际=92.1%",
+    "苹果买卖模型": "正常价=73.33元，买入价=6.02元，卖出价=73.33元",
+    "一句话买入逻辑": "我以'苹果买卖'逻辑，在剔除净现金FCF倍数2.65倍时买入这家区域地产公司，目标是FCF倍数从2.65倍修复到8倍，预计持有2-3年，修复完成即卖出。证伪条件：若经营活动现金流连续2个季度下滑超过30%，或净负债率从当前78.98%上升至85%以上，则买入逻辑失败，立即止损。",
+    "关键风险": [
+      "房地产行业政策持续收紧导致销售大幅下滑",
+      "高杠杆（净负债率266.2%）在行业下行期引发流动性危机",
+      "'大存大贷'现象（货币资金500.77亿+有息负债1080.57亿）可能隐藏资金使用效率问题",
+      "管理诚信数据不完整，存在不确定性",
+      "房地产行业处于下行周期，基本面可能进一步恶化"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "买入",
+    "综合评分": 75,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600325.SH",
+    "cutoff_date": "2021-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 600.5,
+    "chapters_completed": 6
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "无审计意见数据",
+        "无主营业务构成数据",
+        "无股东人数数据"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于福建，中国内地，属于极低风险区域；仓储物流行业不涉及敏感技术；未发现制裁风险",
+      "geo_excluded": false,
+      "price_position_pct": 79.7,
+      "debt_ratio_pct": 73.52,
+      "consecutive_profit_years": 2,
+      "pass_screening": false,
+      "screening_notes": "价格位置不佳：距52周高点跌幅仅7.66%，未达到30%的安全边际要求。但公司基本面良好：现金充裕（现金/市值384%），负债率可控（有息负债率17.97%），盈利连续（至少2年），经营现金流健康（192.7%）。建议放入观察列表，等待价格回调至安全区域。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "民营",
+      "controlling_shareholder": "法人股东（第一大股东持股46.03%）",
+      "investment_stream": "无法归类",
+      "stream_reasoning": "股息率6.99%符合纯硬收息标准，但有息负债过高（1539.15亿）且派息历史不足5年；PB=0.55>0.3不符合烟蒂股；PE=10.28>10且ROE=4.16%<8%不符合价值发现；无央企背景不符合关联方资源",
+      "interest_bearing_debt": 1539.15,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "警惕",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": false,
+      "cycle_position": "非周期",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "信息披露不完整",
+        "部分大存大贷特征"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动增长",
+      "latest_cash_balance": 1154.59,
+      "reported_profit": 58.2,
+      "non_cash_adjustments": 40.0,
+      "adjusted_profit": 52.31,
+      "owner_earnings": 63.2,
+      "owner_earnings_formula": "净利润58.20亿 + 折旧摊销35.00亿(估算) + 非现金减值5.00亿(估算) - 维持性CAPEX35.00亿(估算) = 63.20亿",
+      "fcf": -271.32,
+      "maintenance_capex": 35.0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "重资产高杠杆行业",
+        "自由现金流连续为负",
+        "净利润波动巨大",
+        "PE与FCF收益率矛盾"
+      ],
+      "valuation_method": "EV/FCF",
+      "net_cash": -384.56,
+      "ev": 685.24,
+      "ev_fcf_multiple": 8.89,
+      "turtle_rating": "合理区间",
+      "fair_value_per_share": 15.23,
+      "topdown_return_pct": 8.99,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 6.99,
+      "dividend_sustainable": true,
+      "safety_margin_pct": -31.9,
+      "market_condition": "震荡市",
+      "buy_point": 9.52,
+      "sell_point": 15.23
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 42.43,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "安全边际不足",
+      "is_cigar_butt": false,
+      "liquidation_value": -2714.82,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 95
+    },
+    "ch06_decision": {
+      "apple_normal_price": 15.23,
+      "apple_buy_price": 8.56,
+      "apple_sell_price": 9.14,
+      "buy_logic_statement": "当前EV/FCF 8.89倍处于合理区间，不符合苹果买卖买入条件。若股价下跌至EV/FCF<5倍（对应股价<8.56元），可考虑高股息收息逻辑：在股息率>7%时建仓，目标股息率维持稳定，持有2年，若股息率降至4%以下或FCF倍数修复至8倍以上即卖出。证伪条件：自由现金流连续2季为负且股息削减>30%。",
+      "repair_target": "保守目标价8.01元（EV/FCF 8倍），中性目标价10.37元（维持当前8.89倍），乐观目标价13.33元（EV/FCF 10倍）",
+      "repair_catalyst": "1) 经济复苏带动物流需求增长；2) 去杠杆降低财务成本；3) 自由现金流转正改善估值；4) 稳定高股息吸引收息资金",
+      "expected_repair_return_pct": 0.0,
+      "recommendation": "减仓",
+      "position_type": "观察",
+      "suggested_position_pct": 2.0,
+      "exit_conditions": [
+        "EV/FCF修复至10倍以上（对应股价>11.45元）减仓50%",
+        "涨幅透支5年股息总和（约3.5元涨幅）清仓",
+        "自由现金流连续2季度下滑>20%止损",
+        "发现EV/FCF倍数差>2倍的更优标的切换资金",
+        "股息率降至4%以下退出"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "纯硬收息",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数8.89倍，安全边际-31.9%",
+    "苹果买卖模型": "正常价15.23元，买入价8.56元，卖出价9.14元",
+    "一句话买入逻辑": "我以高股息收息逻辑，在EV/FCF倍数<5倍（对应股价<8.56元）时建仓，目标是股息率从当前6.99%维持稳定，预计持有2年，若股息率降至4%以下或FCF倍数修复至8倍以上即卖出。证伪条件：自由现金流连续2季为负且股息削减超过30%。",
+    "关键风险": [
+      "高杠杆风险（资产负债率73.52%）",
+      "自由现金流持续为负",
+      "盈利波动剧烈（2025Q1净利润仅1.91亿）",
+      "民营企业背景政治安全边际低",
+      "价格位置不佳（距52周低点上涨48.1%）"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "回避",
+    "综合评分": 45,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600153.SH",
+    "cutoff_date": "2025-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 637.1,
+    "chapters_completed": 6
+  }
+}

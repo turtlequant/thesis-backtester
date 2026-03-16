@@ -1,0 +1,124 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据不可获取",
+        "主营业务地域分布数据不可获取"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地河南，国资背景较强（国有/政府关联股东合计持股约15.41%），无高风险区域资产或收入敞口",
+      "geo_excluded": false,
+      "price_position_pct": 31.6,
+      "debt_ratio_pct": 51.73,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过快速筛选，但需注意：1)价格位置距52周高点跌幅28.29%略低于30%阈值；2)现金覆盖率18.88%略低于20%阈值；3)FCF倍数7.66倍在正常范围内；4)连续多年盈利，财务稳健"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "国资参股（合计15.41%）无单一控股股东",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "PE仅6.00倍显著低于10倍阈值，经营现金流持续为正且改善（23.54亿），ROE达14.44%，但FCF收益率1.5%偏低，不满足纯硬收息（有息负债存在）和烟蒂股（PB=1.05>0.3）条件",
+      "interest_bearing_debt": 52.34,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "可接受",
+      "is_cyclical": true,
+      "cycle_position": "中下部",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动",
+      "latest_cash_balance": 43.76,
+      "reported_profit": 30.59,
+      "non_cash_adjustments": 0,
+      "adjusted_profit": 30.59,
+      "owner_earnings": 30.59,
+      "owner_earnings_formula": "净利润30.59亿 + 折旧摊销3.10亿（估算） + 非现金减值0亿 - 维持性CAPEX3.10亿（估算）= 30.59亿",
+      "fcf": 3.48,
+      "maintenance_capex": 3.1
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业利润波动",
+        "经营现金流/净利润76.9%<80%",
+        "PE与FCF收益率矛盾（PE6倍但FCF收益率仅1.5%）"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": -8.58,
+      "ev": 240.32,
+      "ev_fcf_multiple": 11.76,
+      "turtle_rating": "高估",
+      "fair_value_per_share": 11.44,
+      "topdown_return_pct": 8.47,
+      "valuation_crosscheck": "一致",
+      "dividend_yield_pct": 6.47,
+      "dividend_sustainable": true,
+      "safety_margin_pct": -20.9,
+      "market_condition": "震荡市",
+      "buy_point": 4.1,
+      "sell_point": 8.68
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 29.74,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": -52.12,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 25
+    },
+    "ch06_decision": {
+      "apple_normal_price": 22.0,
+      "apple_buy_price": 13.2,
+      "apple_sell_price": 13.2,
+      "buy_logic_statement": "我以'修复型'逻辑买入该专用机械公司，在剔除净现金FCF倍数5.8倍时试探建仓，目标是FCF倍数从5.8倍修复到8倍（对应股价18.30元），预计持有1-2年，修复完成即卖出。证伪条件：若2025年经营现金流净额同比下降超过30%，或应收账款周转天数持续恶化超过120天，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价18.30元（EV/FCF 8倍），中性目标价23.00元（EV/FCF 10倍），乐观目标价27.70元（EV/FCF 12倍）",
+      "repair_catalyst": "行业周期触底、现金流改善（2024Q3自由现金流转正）、股息维持（股息率6.47%）、估值修复（PE仅6倍）",
+      "expected_repair_return_pct": 41.0,
+      "recommendation": "观察",
+      "position_type": "卫星",
+      "suggested_position_pct": 0.8,
+      "exit_conditions": [
+        "达到保守目标价18.30元减仓50%",
+        "达到中性目标价23.00元再减仓30%",
+        "达到乐观目标价27.70元清仓",
+        "持有超过2年未达修复目标重新评估",
+        "FCF连续2季下滑>20%即时止损",
+        "应收账款周转天数持续恶化超过120天止损"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "铜龟",
+    "核心估值指标": "EV/FCF倍数11.76倍，安全边际-20.9%",
+    "苹果买卖模型": "正常价22.00元，买入价13.20元，卖出价13.20元",
+    "一句话买入逻辑": "我以'修复型'逻辑买入该专用机械公司，在剔除净现金FCF倍数5.8倍时试探建仓，目标是FCF倍数从5.8倍修复到8倍（对应股价18.30元），预计持有1-2年，修复完成即卖出。证伪条件：若2025年经营现金流净额同比下降超过30%，或应收账款周转天数持续恶化超过120天，则逻辑失败，立即止损。",
+    "关键风险": [
+      "现金流质量差：FCF连续3年为负，现金覆盖月数仅1.73个月",
+      "周期性风险：专用机械行业受宏观经济和固定资产投资周期影响大",
+      "经营现金流/净利润仅76.9%，利润质量一般",
+      "应收账款高达95.69亿元，存在坏账风险",
+      "压力测试不通过：极端情景下分红不可持续"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "观望",
+    "综合评分": 60,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "601717.SH",
+    "cutoff_date": "2024-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 623.1,
+    "chapters_completed": 6
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据缺失",
+        "主营业务构成数据缺失"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地福建，属于国家信用背书的极低风险区域",
+      "geo_excluded": false,
+      "price_position_pct": 77.2,
+      "debt_ratio_pct": 73.96,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "价格位置偏高（77.2%），距52周高点仅下跌9%，安全边际不足。现金覆盖率极高（294.7%）和低FCF倍数（2.73倍）是优势，但价格因素导致暂不进入深度分析，建议放入观察列表等待更好价格。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "民营",
+      "controlling_shareholder": "无法确定（第一大股东为其他法人股东，持股46.03%）",
+      "investment_stream": "无法归类",
+      "stream_reasoning": "1) 纯硬收息：股息率7.75%>5%但经营现金流为负，派息可持续性存疑；2) 烟蒂股：PB=0.56>0.3，净现金为负；3) 关联方资源：无大型央企背景；4) 价值发现：PE=11.31>10，FCF收益率为负，ROE=2.95%<8%，经营现金流恶化",
+      "interest_bearing_debt": 1405.29,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "警惕",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": false,
+      "cycle_position": "非周期",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "审计意见数据缺失",
+        "关联交易数据缺失",
+        "股权质押数据缺失"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动下降",
+      "latest_cash_balance": 913.71,
+      "reported_profit": 26.79,
+      "non_cash_adjustments": 4.9,
+      "adjusted_profit": 31.69,
+      "owner_earnings": 26.79,
+      "owner_earnings_formula": "净利润26.79亿元 + 折旧摊销5.00亿元 + 非现金减值0.00亿元 - 维持性CAPEX5.00亿元 = 26.79亿元（基于估算数据）",
+      "fcf": -291.78,
+      "maintenance_capex": 5.0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "经营现金流/净利润极低（<50%）",
+        "自由现金流连续为负",
+        "PE与FCF收益率矛盾"
+      ],
+      "valuation_method": "FCF（强制使用）",
+      "net_cash": -491.58,
+      "ev": 801.61,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用（FCF为负）",
+      "fair_value_per_share": 0,
+      "topdown_return_pct": 7.75,
+      "valuation_crosscheck": "严重矛盾（Top-Down 7.75% vs Bottom-Up -188.5%）",
+      "dividend_yield_pct": 7.75,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -50,
+      "market_condition": "牛市",
+      "buy_point": 7.48,
+      "sell_point": 14.97
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 19.53,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": -1822.38,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 85
+    },
+    "ch06_decision": {
+      "apple_normal_price": 14.47,
+      "apple_buy_price": 8.68,
+      "apple_sell_price": 8.68,
+      "buy_logic_statement": "当前不适用买入逻辑。如果必须构建：我以高股息收息逻辑买入，在股息率8%时建仓，目标是股息率从8%修复到5%，预计持有2年，修复完成即卖出。证伪条件：若连续2个季度经营现金流为负且股息率下降，则逻辑失败，立即止损。",
+      "repair_target": "14.00元（对应股息率5%）",
+      "repair_catalyst": "经营现金流改善、行业周期触底、去杠杆完成",
+      "expected_repair_return_pct": 33.08,
+      "recommendation": "观察",
+      "position_type": "观察",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "股价达到14.00元（股息率修复至5%）",
+        "连续2个季度经营现金流为负",
+        "股息率下降至6%以下",
+        "行业周期继续下行"
+      ],
+      "macro_event_impact": "短期压制"
+    }
+  },
+  "synthesis": {
+    "流派判定": "无法归类（勉强可视为纯硬收息但存在严重瑕疵）",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数：无意义（FCF为负），安全边际：-50%",
+    "苹果买卖模型": "正常价：14.47元，买入价：8.68元，卖出价：8.68元",
+    "一句话买入逻辑（强制）": "不适用买入逻辑。如果必须构建：我以高股息收息逻辑买入，在股息率8%时建仓，目标是股息率从8%修复到5%，预计持有2年，修复完成即卖出。证伪条件：若连续2个季度经营现金流为负且股息率下降，则逻辑失败，立即止损。",
+    "关键风险": [
+      "经营现金流持续恶化（2024年连续三个季度为负）",
+      "自由现金流连续为负，股息支付不可持续",
+      "净现金为负（-491.58亿元），高杠杆风险",
+      "资产负债率高达74%，有息负债1405亿元",
+      "价格位置偏高（77.2%），无安全边际"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "回避",
+    "综合评分": 25,
+    "信心水平": "高"
+  },
+  "metadata": {
+    "ts_code": "600153.SH",
+    "cutoff_date": "2024-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 617.6,
+    "chapters_completed": 6
+  }
+}

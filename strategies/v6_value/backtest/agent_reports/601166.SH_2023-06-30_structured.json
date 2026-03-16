@@ -1,0 +1,127 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺少银行核心指标：净息差、不良率、拨备覆盖率、资本充足率",
+        "货币资金等关键银行指标数据缺失",
+        "审计意见数据不可获取"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地福建，属于极低风险区域；银行业务主要在中国境内开展；前十大股东包含国有/政府关联股东",
+      "geo_excluded": false,
+      "price_position_pct": 14.5,
+      "debt_ratio_pct": 92.03,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过快速筛选：1)地缘政治风险极低；2)上市时间超过16年；3)价格位置接近52周低点(14.5%)；4)银行行业负债率92.03%属正常范围；5)连续至少8个季度盈利；6)估值极低(PB=0.49, PE=3.66)；7)股息率6.61%提供良好收益保障。但需注意银行核心指标数据缺失，需在后续分析中补充。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "无法明确穿透（股权分散，国有股东持股3.84%）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "1)极低估值：PE=3.66(<10)，PB=0.49(<1.0)；2)高盈利能力：ROE=12.78%(>8%)；3)高股息率：6.61%提供安全边际；4)银行行业特殊性导致传统现金流指标不适用，但估值极度低估；5)经济复苏期与银行股估值底部背离提供机会",
+      "interest_bearing_debt": 11912.62,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "估值底部/经济上行",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "审计意见数据不可获取",
+        "关联交易数据缺失",
+        "股权质押数据缺失"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动稳定",
+      "latest_cash_balance": 0,
+      "reported_profit": 924.14,
+      "non_cash_adjustments": 0,
+      "adjusted_profit": 924.14,
+      "owner_earnings": 462.07,
+      "owner_earnings_formula": "金融行业替代方法：可分配利润 = 净利润 × (1 - 资本补充需求比例) = 924.14亿 × 50% = 462.07亿",
+      "fcf": 0,
+      "maintenance_capex": 0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "银行行业禁止使用PE估值，应使用PB-ROE估值"
+      ],
+      "valuation_method": "PB-ROE估值 + 股息率",
+      "net_cash": 0,
+      "ev": 3251.17,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 29.42,
+      "topdown_return_pct": 6.61,
+      "valuation_crosscheck": "不适用（金融行业）",
+      "dividend_yield_pct": 6.61,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 46.8,
+      "market_condition": "熊市",
+      "buy_point": 15.65,
+      "sell_point": 29.42
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 673.7,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "安全边际不足",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 80
+    },
+    "ch06_decision": {
+      "apple_normal_price": 29.6,
+      "apple_buy_price": 14.8,
+      "apple_sell_price": 24.67,
+      "buy_logic_statement": "我以'高股息修复'类型买入该银行股，在PB=0.49倍、股息率6.61%时建仓，目标是PB从0.49倍修复到0.75倍，股息率从6.61%降至4.5%，预计持有2年，修复完成即卖出。证伪条件：若ROE连续2个季度降至8%以下，或不良率大幅上升导致拨备覆盖率下降20%以上，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价23.02元（PB=0.7倍），中性目标价26.31元（PB=0.8倍），乐观目标价32.89元（PB=1.0倍）",
+      "repair_catalyst": "1)经济复苏改善银行资产质量；2)利率环境稳定支撑净息差；3)房地产风险出清；4)高股息吸引配置资金",
+      "expected_repair_return_pct": 47.1,
+      "recommendation": "买入",
+      "position_type": "卫星",
+      "suggested_position_pct": 6,
+      "exit_conditions": [
+        "PB修复至0.7倍减仓30%",
+        "PB修复至0.8倍再减仓30%",
+        "PB修复至1.0倍清仓",
+        "股息率降至4.0%以下减仓",
+        "ROE连续2季度<10%重新评估",
+        "持有3年未达修复目标重新评估"
+      ],
+      "macro_event_impact": "无影响"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "铜龟",
+    "核心估值指标": "PB=0.49倍，安全边际46.8%",
+    "苹果买卖模型": "正常价29.60元/买入价14.80元/卖出价24.67元",
+    "一句话买入逻辑": "我以'高股息修复'类型买入该银行股，在PB=0.49倍、股息率6.61%时建仓，目标是PB从0.49倍修复到0.75倍，股息率从6.61%降至4.5%，预计持有2年，修复完成即卖出。证伪条件：若ROE连续2个季度降至8%以下，或不良率大幅上升导致拨备覆盖率下降20%以上，则逻辑失败，立即止损。",
+    "关键风险": [
+      "银行核心风险指标数据缺失（不良率、拨备覆盖率、资本充足率）",
+      "管理层诚信数据不足（审计意见、关联交易等关键信息缺失）",
+      "银行行业面临净息差收窄压力",
+      "房地产风险可能影响银行资产质量",
+      "经济复苏不及预期导致信贷需求疲软"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "观望",
+    "综合评分": 40,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "601166.SH",
+    "cutoff_date": "2023-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 505.6,
+    "chapters_completed": 6
+  }
+}

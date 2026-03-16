@@ -1,0 +1,908 @@
+{
+  "strategy": "V6 价值投资分析",
+  "version": "6.0",
+  "dates": [
+    "2020-06-30",
+    "2020-12-31",
+    "2021-06-30",
+    "2021-12-31",
+    "2022-06-30",
+    "2022-12-31",
+    "2023-06-30",
+    "2023-12-31",
+    "2024-06-30",
+    "2024-12-31",
+    "2025-06-30",
+    "2025-12-31"
+  ],
+  "interval": "6m",
+  "generated_at": "2026-03-16T14:48:26.799712",
+  "slices": [
+    {
+      "cutoff_date": "2020-06-30",
+      "screen_count": 50,
+      "agent_count": 10,
+      "agent_scores": {
+        "601003.SH": {
+          "score": 78,
+          "recommendation": "买入",
+          "stream": "价值发现"
+        },
+        "601398.SH": {
+          "score": 72,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        },
+        "600015.SH": {
+          "score": 78,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        },
+        "600376.SH": {
+          "score": 35,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "600282.SH": {
+          "score": 45,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "600348.SH": {
+          "score": 77,
+          "recommendation": "买入",
+          "stream": "价值发现"
+        },
+        "601800.SH": {
+          "score": 25,
+          "recommendation": "回避",
+          "stream": "价值发现"
+        },
+        "600188.SH": {
+          "score": 75,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        },
+        "600919.SH": {
+          "score": 65,
+          "recommendation": "观望",
+          "stream": "纯硬收息为主，兼具价值发现特征"
+        },
+        "002128.SZ": {
+          "score": 45,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        }
+      }
+    },
+    {
+      "cutoff_date": "2020-12-31",
+      "screen_count": 50,
+      "agent_count": 10,
+      "agent_scores": {
+        "600153.SH": {
+          "score": 35,
+          "recommendation": "回避",
+          "stream": "价值发现"
+        },
+        "601003.SH": {
+          "score": 60,
+          "recommendation": "观望",
+          "stream": "纯硬收息"
+        },
+        "600376.SH": {
+          "score": 55,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "600325.SH": {
+          "score": 55,
+          "recommendation": "观望",
+          "stream": "纯硬收息"
+        },
+        "600340.SH": {
+          "score": 25,
+          "recommendation": "回避",
+          "stream": "价值发现"
+        },
+        "002146.SZ": {
+          "score": 28,
+          "recommendation": "回避",
+          "stream": "价值发现"
+        },
+        "601328.SH": {
+          "score": 75,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        },
+        "600016.SH": {
+          "score": 75,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        },
+        "600606.SH": {
+          "score": 45,
+          "recommendation": "回避",
+          "stream": "价值发现"
+        },
+        "601169.SH": {
+          "score": 72,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        }
+      }
+    },
+    {
+      "cutoff_date": "2021-06-30",
+      "screen_count": 50,
+      "agent_count": 10,
+      "agent_scores": {
+        "600548.SH": {
+          "score": 25,
+          "recommendation": "回避",
+          "stream": "价值发现"
+        },
+        "601288.SH": {
+          "score": 65,
+          "recommendation": "观望",
+          "stream": "纯硬收息"
+        },
+        "600170.SH": {
+          "score": 35,
+          "recommendation": "回避",
+          "stream": "价值发现"
+        },
+        "000778.SZ": {
+          "score": 50,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "600376.SH": {
+          "score": 45,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "600016.SH": {
+          "score": 72,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        },
+        "600064.SH": {
+          "score": 35,
+          "recommendation": "回避",
+          "stream": "价值陷阱修复"
+        },
+        "600606.SH": {
+          "score": 70,
+          "recommendation": "买入",
+          "stream": "价值发现"
+        },
+        "002146.SZ": {
+          "score": 45,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "601988.SH": {
+          "score": 70,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        }
+      }
+    },
+    {
+      "cutoff_date": "2021-12-31",
+      "screen_count": 50,
+      "agent_count": 10,
+      "agent_scores": {
+        "600019.SH": {
+          "score": 65,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "600376.SH": {
+          "score": 38,
+          "recommendation": "回避",
+          "stream": "价值发现"
+        },
+        "601000.SH": {
+          "score": 55,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "600390.SH": {
+          "score": 62,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "601169.SH": {
+          "score": 72,
+          "recommendation": "买入",
+          "stream": "纯硬收息+价值发现"
+        },
+        "600325.SH": {
+          "score": 75,
+          "recommendation": "买入",
+          "stream": "价值发现"
+        },
+        "000761.SZ": {
+          "score": 45,
+          "recommendation": "回避",
+          "stream": "价值发现"
+        },
+        "002146.SZ": {
+          "score": 70,
+          "recommendation": "买入",
+          "stream": "价值发现"
+        },
+        "601328.SH": {
+          "score": 75,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        },
+        "601988.SH": {
+          "score": 70,
+          "recommendation": "买入",
+          "stream": "关联方资源"
+        }
+      }
+    },
+    {
+      "cutoff_date": "2022-06-30",
+      "screen_count": 50,
+      "agent_count": 10,
+      "agent_scores": {
+        "600325.SH": {
+          "score": null,
+          "recommendation": null,
+          "stream": null
+        },
+        "000825.SZ": {
+          "score": 85,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        },
+        "600028.SH": {
+          "score": 35,
+          "recommendation": "回避",
+          "stream": "纯硬收息"
+        },
+        "002110.SZ": {
+          "score": 35,
+          "recommendation": "回避",
+          "stream": "价值发现"
+        },
+        "601818.SH": {
+          "score": 85,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        },
+        "600015.SH": {
+          "score": 85,
+          "recommendation": "买入",
+          "stream": "纯硬收息为主，兼具价值发现特征"
+        },
+        "600019.SH": {
+          "score": 75,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        },
+        "601825.SH": {
+          "score": 65,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "600755.SH": {
+          "score": 55,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "600782.SH": {
+          "score": 50,
+          "recommendation": "观望",
+          "stream": "纯硬收息"
+        }
+      }
+    },
+    {
+      "cutoff_date": "2022-12-31",
+      "screen_count": 50,
+      "agent_count": 10,
+      "agent_scores": {
+        "601328.SH": {
+          "score": 75,
+          "recommendation": "买入",
+          "stream": "纯硬收息 + 价值发现"
+        },
+        "601919.SH": {
+          "score": 85,
+          "recommendation": "买入",
+          "stream": "烟蒂股"
+        },
+        "600028.SH": {
+          "score": 75,
+          "recommendation": "买入",
+          "stream": "关联方资源"
+        },
+        "600585.SH": {
+          "score": 80,
+          "recommendation": "买入",
+          "stream": "价值发现"
+        },
+        "600282.SH": {
+          "score": 65,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "601077.SH": {
+          "score": 68,
+          "recommendation": "观望",
+          "stream": "纯硬收息 + 价值发现修复"
+        },
+        "600177.SH": {
+          "score": 25,
+          "recommendation": "回避",
+          "stream": "价值发现"
+        },
+        "600782.SH": {
+          "score": 65,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "601155.SH": {
+          "score": 65,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "601288.SH": {
+          "score": 75,
+          "recommendation": "买入",
+          "stream": "纯硬收息为主，价值发现为辅"
+        }
+      }
+    },
+    {
+      "cutoff_date": "2023-06-30",
+      "screen_count": 50,
+      "agent_count": 10,
+      "agent_scores": {
+        "601229.SH": {
+          "score": 80,
+          "recommendation": "买入",
+          "stream": "纯硬收息 + 价值发现"
+        },
+        "601919.SH": {
+          "score": 80,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        },
+        "600985.SH": {
+          "score": 78,
+          "recommendation": "买入",
+          "stream": "价值发现"
+        },
+        "600123.SH": {
+          "score": 70,
+          "recommendation": "买入",
+          "stream": "价值发现"
+        },
+        "601666.SH": {
+          "score": 85,
+          "recommendation": "买入",
+          "stream": "价值发现"
+        },
+        "600177.SH": {
+          "score": 45,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "600755.SH": {
+          "score": 45,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "600383.SH": {
+          "score": 72,
+          "recommendation": "买入",
+          "stream": "价值发现"
+        },
+        "601166.SH": {
+          "score": 40,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "601077.SH": {
+          "score": 72,
+          "recommendation": "买入",
+          "stream": "纯硬收息为主，兼具价值发现特征"
+        }
+      }
+    },
+    {
+      "cutoff_date": "2023-12-31",
+      "screen_count": 50,
+      "agent_count": 10,
+      "agent_scores": {
+        "000002.SZ": {
+          "score": 35,
+          "recommendation": "回避",
+          "stream": "价值发现"
+        },
+        "600064.SH": {
+          "score": 45,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "601169.SH": {
+          "score": 58,
+          "recommendation": "观望",
+          "stream": "纯硬收息"
+        },
+        "600820.SH": {
+          "score": 55,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "600971.SH": {
+          "score": 55,
+          "recommendation": "观望",
+          "stream": "纯硬收息"
+        },
+        "601919.SH": {
+          "score": 70,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        },
+        "600755.SH": {
+          "score": 38,
+          "recommendation": "回避",
+          "stream": "价值修复型"
+        },
+        "601166.SH": {
+          "score": 65,
+          "recommendation": "观望",
+          "stream": "纯硬收息"
+        },
+        "600153.SH": {
+          "score": 75,
+          "recommendation": "买入",
+          "stream": "价值发现"
+        },
+        "601009.SH": {
+          "score": 75,
+          "recommendation": "买入",
+          "stream": "价值发现"
+        }
+      }
+    },
+    {
+      "cutoff_date": "2024-06-30",
+      "screen_count": 50,
+      "agent_count": 10,
+      "agent_scores": {
+        "000719.SZ": {
+          "score": 95,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        },
+        "000932.SZ": {
+          "score": 45,
+          "recommendation": "回避",
+          "stream": "价值发现"
+        },
+        "600123.SH": {
+          "score": 55,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "600919.SH": {
+          "score": 68,
+          "recommendation": "观望",
+          "stream": "纯硬收息 + 价值发现"
+        },
+        "000002.SZ": {
+          "score": 48,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "600064.SH": {
+          "score": 35,
+          "recommendation": "回避",
+          "stream": "价值陷阱型"
+        },
+        "601668.SH": {
+          "score": 55,
+          "recommendation": "观望",
+          "stream": "关联方资源"
+        },
+        "600153.SH": {
+          "score": 65,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "601077.SH": {
+          "score": 75,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        },
+        "601288.SH": {
+          "score": 68,
+          "recommendation": "观望",
+          "stream": "纯硬收息 + 价值发现"
+        }
+      }
+    },
+    {
+      "cutoff_date": "2024-12-31",
+      "screen_count": 50,
+      "agent_count": 10,
+      "agent_scores": {
+        "600985.SH": {
+          "score": 67,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "600971.SH": {
+          "score": 55,
+          "recommendation": "观望",
+          "stream": "纯硬收息"
+        },
+        "601717.SH": {
+          "score": 60,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "601229.SH": {
+          "score": 55,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "600016.SH": {
+          "score": 68,
+          "recommendation": "观望",
+          "stream": "纯硬收息 + 价值发现混合型"
+        },
+        "601668.SH": {
+          "score": 25,
+          "recommendation": "回避",
+          "stream": "价值发现"
+        },
+        "601186.SH": {
+          "score": 35,
+          "recommendation": "回避",
+          "stream": "价值陷阱型（无法归类到标准流派）"
+        },
+        "000001.SZ": {
+          "score": 72,
+          "recommendation": "买入",
+          "stream": "价值发现"
+        },
+        "600153.SH": {
+          "score": 25,
+          "recommendation": "回避",
+          "stream": "无法归类（勉强可视为纯硬收息但存在严重瑕疵）"
+        },
+        "601666.SH": {
+          "score": 35,
+          "recommendation": "回避",
+          "stream": "关联方资源"
+        }
+      }
+    },
+    {
+      "cutoff_date": "2025-06-30",
+      "screen_count": 50,
+      "agent_count": 10,
+      "agent_scores": {
+        "600016.SH": {
+          "score": 65,
+          "recommendation": "观望",
+          "stream": "纯硬收息"
+        },
+        "601898.SH": {
+          "score": 78,
+          "recommendation": "买入",
+          "stream": "混合型（纯硬收息为主，兼具价值发现特征）"
+        },
+        "601169.SH": {
+          "score": 70,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        },
+        "601818.SH": {
+          "score": 65,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "601668.SH": {
+          "score": 38,
+          "recommendation": "回避",
+          "stream": "价值发现"
+        },
+        "601919.SH": {
+          "score": 75,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        },
+        "600985.SH": {
+          "score": 70,
+          "recommendation": "买入",
+          "stream": "纯硬收息"
+        },
+        "600153.SH": {
+          "score": 45,
+          "recommendation": "回避",
+          "stream": "纯硬收息"
+        },
+        "600248.SH": {
+          "score": 20,
+          "recommendation": "回避",
+          "stream": "价值陷阱（无法归类到任一投资流派）"
+        },
+        "601800.SH": {
+          "score": 45,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        }
+      }
+    },
+    {
+      "cutoff_date": "2025-12-31",
+      "screen_count": 50,
+      "agent_count": 10,
+      "agent_scores": {
+        "601668.SH": {
+          "score": 45,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "601186.SH": {
+          "score": 35,
+          "recommendation": "回避",
+          "stream": "价值发现"
+        },
+        "601390.SH": {
+          "score": 55,
+          "recommendation": "观望",
+          "stream": "关联方资源"
+        },
+        "601919.SH": {
+          "score": 70,
+          "recommendation": "买入",
+          "stream": "纯硬收息为主，兼具价值发现特征"
+        },
+        "600023.SH": {
+          "score": 50,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "601577.SH": {
+          "score": 60,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "600153.SH": {
+          "score": 35,
+          "recommendation": "回避",
+          "stream": "低估值蓝筹但基本面恶化"
+        },
+        "002839.SZ": {
+          "score": 55,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        },
+        "002807.SZ": {
+          "score": 68,
+          "recommendation": "观望",
+          "stream": "纯硬收息"
+        },
+        "000651.SZ": {
+          "score": 52,
+          "recommendation": "观望",
+          "stream": "价值发现"
+        }
+      }
+    }
+  ],
+  "performance": {
+    "market": {
+      "label": "沪深300",
+      "desc": "沪深300指数收益 (全市场基准)",
+      "stats": {
+        "1个月": {
+          "count": 12,
+          "mean": 0.0003604719546391932,
+          "median": 0.01650142512661341,
+          "win_rate": 0.5,
+          "best": 0.11820153475401327,
+          "worst": -0.07903297466463226
+        },
+        "3个月": {
+          "count": 12,
+          "mean": -0.00232132104476337,
+          "median": 0.008466741304071018,
+          "win_rate": 0.5,
+          "best": 0.15598507662104666,
+          "worst": -0.1463320890999861
+        },
+        "6个月": {
+          "count": 12,
+          "mean": 0.00942225060190407,
+          "median": -0.003342667809835286,
+          "win_rate": 0.4166666666666667,
+          "best": 0.21086879311652024,
+          "worst": -0.1331450082572823
+        },
+        "12个月": {
+          "count": 12,
+          "mean": 0.010918320053420022,
+          "median": 0.008466741304071018,
+          "win_rate": 0.5,
+          "best": 0.25840876086407755,
+          "worst": -0.22202463931217511
+        },
+        "total_stocks": 12,
+        "total_slices": 12
+      }
+    },
+    "screen_all": {
+      "label": "筛选池等权",
+      "desc": "所有通过量化筛选的候选",
+      "stats": {
+        "1个月": {
+          "count": 600,
+          "mean": 0.012506571111339636,
+          "median": 0.006261180679785356,
+          "win_rate": 0.5333333333333333,
+          "best": 1.6732283464566928,
+          "worst": -0.39909090909090905
+        },
+        "3个月": {
+          "count": 600,
+          "mean": 0.05095420047743603,
+          "median": 0.030476190476190504,
+          "win_rate": 0.6116666666666667,
+          "best": 1.889763779527559,
+          "worst": -0.51430781129157
+        },
+        "6个月": {
+          "count": 600,
+          "mean": 0.039696602669093035,
+          "median": 0.008752735229759306,
+          "win_rate": 0.5283333333333333,
+          "best": 1.3644314868804663,
+          "worst": -0.5877803557617942
+        },
+        "12个月": {
+          "count": 600,
+          "mean": 0.07510070392892809,
+          "median": 0.024193548387096874,
+          "win_rate": 0.5616666666666666,
+          "best": 3.1977671451355665,
+          "worst": -0.769028871391076
+        },
+        "total_stocks": 600,
+        "total_slices": 12
+      }
+    },
+    "screen_top": {
+      "label": "筛选池 Top (金龟)",
+      "desc": "量化筛选最高评级",
+      "stats": {
+        "1个月": {
+          "count": 56,
+          "mean": 0.010886193590855792,
+          "median": 0.016997167138810214,
+          "win_rate": 0.5892857142857143,
+          "best": 0.17337031900138708,
+          "worst": -0.2073394495412844
+        },
+        "3个月": {
+          "count": 56,
+          "mean": 0.04002050026963343,
+          "median": 0.05039193729003372,
+          "win_rate": 0.6071428571428571,
+          "best": 0.43115942028985527,
+          "worst": -0.22619047619047622
+        },
+        "6个月": {
+          "count": 56,
+          "mean": 0.04014010788965617,
+          "median": 0.028124999999999956,
+          "win_rate": 0.5714285714285714,
+          "best": 0.616910229645094,
+          "worst": -0.4174757281553398
+        },
+        "12个月": {
+          "count": 56,
+          "mean": 0.051329130173640505,
+          "median": 0.0502008032128514,
+          "win_rate": 0.5892857142857143,
+          "best": 0.675355450236967,
+          "worst": -0.5270457697642164
+        },
+        "total_stocks": 56,
+        "total_slices": 12
+      }
+    },
+    "agent_buy": {
+      "label": "Agent 买入",
+      "desc": "Agent 建议\"买入\" (≥70分)",
+      "stats": {
+        "1个月": {
+          "count": 43,
+          "mean": 0.025692350437359866,
+          "median": 0.029535864978902884,
+          "win_rate": 0.6511627906976745,
+          "best": 0.17337031900138708,
+          "worst": -0.2073394495412844
+        },
+        "3个月": {
+          "count": 43,
+          "mean": 0.04900438647135828,
+          "median": 0.04936014625228528,
+          "win_rate": 0.6744186046511628,
+          "best": 0.36737400530503983,
+          "worst": -0.18008784773060035
+        },
+        "6个月": {
+          "count": 43,
+          "mean": 0.08072519360722603,
+          "median": 0.03952569169960472,
+          "win_rate": 0.6511627906976745,
+          "best": 0.616910229645094,
+          "worst": -0.4174757281553398
+        },
+        "12个月": {
+          "count": 43,
+          "mean": 0.13895345521967525,
+          "median": 0.0502008032128514,
+          "win_rate": 0.6976744186046512,
+          "best": 0.8333333333333333,
+          "worst": -0.5270457697642164
+        },
+        "total_stocks": 43,
+        "total_slices": 12
+      }
+    },
+    "agent_top": {
+      "label": "Agent Top5",
+      "desc": "Agent 评分最高的5只",
+      "stats": {
+        "1个月": {
+          "count": 60,
+          "mean": 0.01938638277652565,
+          "median": 0.0154083204930662,
+          "win_rate": 0.6166666666666667,
+          "best": 0.17337031900138708,
+          "worst": -0.2073394495412844
+        },
+        "3个月": {
+          "count": 60,
+          "mean": 0.040308604878882194,
+          "median": 0.03952569169960472,
+          "win_rate": 0.6333333333333333,
+          "best": 0.36737400530503983,
+          "worst": -0.18008784773060035
+        },
+        "6个月": {
+          "count": 60,
+          "mean": 0.06673403832604956,
+          "median": 0.03952569169960472,
+          "win_rate": 0.65,
+          "best": 0.616910229645094,
+          "worst": -0.4174757281553398
+        },
+        "12个月": {
+          "count": 60,
+          "mean": 0.12781713827238705,
+          "median": 0.03952569169960472,
+          "win_rate": 0.6666666666666666,
+          "best": 0.892141756548536,
+          "worst": -0.5270457697642164
+        },
+        "total_stocks": 60,
+        "total_slices": 12
+      }
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "审计意见数据缺失",
+        "主营业务地域分布数据缺失"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "中国内地央企背景，国家战略行业，极低地缘政治风险",
+      "geo_excluded": false,
+      "price_position_pct": 15.5,
+      "debt_ratio_pct": 53.54,
+      "consecutive_profit_years": 4,
+      "pass_screening": true,
+      "screening_notes": "价格位置虽未完全满足30%跌幅要求（实际17.6%），但处于低位区域（15.5%）。财务基本面优秀：资产负债率53.54%可控，有息负债率仅8.0%，现金覆盖率37.9%，FCF倍数仅2.08倍。连续多年盈利，经营现金流强劲。建议进入深度分析，但需人工核实审计意见。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "央企",
+      "controlling_shareholder": "国务院国资委（推断）",
+      "investment_stream": "纯硬收息",
+      "stream_reasoning": "同时符合纯硬收息和价值发现型，但以纯硬收息为主：1)股息率7.11%（TTM 11.52%）>5%；2)连续派息记录；3)有息负债率仅8.0%；4)经营现金流/净利润=264.8%>100%；5)派息率79.7%>40%；6)PE=6.51<10；7)FCF收益率23.8%>10%；8)PB=0.65<1.0且ROE=9.38%>8%",
+      "interest_bearing_debt": 1618.8,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "顶部",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动稳定",
+      "latest_cash_balance": 187.32,
+      "reported_profit": 85.03,
+      "non_cash_adjustments": 140.14,
+      "adjusted_profit": 225.17,
+      "owner_earnings": 212.08,
+      "owner_earnings_formula": "所有者收益 ≈ 经营现金流225.17亿 - 维持性CAPEX 13.09亿 = 212.08亿（基于2021年数据估算）",
+      "fcf": 212.08,
+      "maintenance_capex": 13.09
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "非现金项目大幅扭曲利润",
+        "FCF收益率与PE存在矛盾"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": 254.4,
+      "ev": 4685.31,
+      "ev_fcf_multiple": 22.09,
+      "turtle_rating": "高估",
+      "fair_value_per_share": 1.75,
+      "topdown_return_pct": 7.11,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 7.11,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -133.0,
+      "market_condition": "震荡市",
+      "buy_point": 0.91,
+      "sell_point": 1.61
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 620.87,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 85
+    },
+    "ch06_decision": {
+      "apple_normal_price": 1.75,
+      "apple_buy_price": 0.91,
+      "apple_sell_price": 1.61,
+      "buy_logic_statement": "我以'估值修复'类型买入此石油加工公司，在EV/FCF倍数22.09倍时建仓，目标是EV/FCF倍数从22.09倍修复到8倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若公司自由现金流连续2个季度为负且累计下降超过50%，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价1.61元（EV/FCF 8倍），中性目标价1.96元（EV/FCF 10倍），乐观目标价2.31元（EV/FCF 12倍）",
+      "repair_catalyst": "1)石油价格持续高位改善现金流；2)公司削减资本开支提升FCF；3)市场重新评估周期性行业估值；4)股息政策调整提升股东回报",
+      "expected_repair_return_pct": -60.5,
+      "recommendation": "观察",
+      "position_type": "观察",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "价格达到1.61元（EV/FCF修复至8倍）减仓50%",
+        "价格达到1.96元（EV/FCF修复至10倍）再减仓30%",
+        "价格达到2.31元（EV/FCF修复至12倍）清仓",
+        "自由现金流连续2季度为负且累计下降超50%立即止损",
+        "发现FCF倍数差>2倍的更优标的时切换资金"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "纯硬收息",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数=22.09倍，安全边际=-133%",
+    "苹果买卖模型": "正常价=1.75元，买入价=0.91元，卖出价=1.61元",
+    "一句话买入逻辑": "我以'纯硬收息'类型买入此石油加工公司，在股息率7.11%时建仓，目标是获取稳定股息收入，预计持有3-5年，若股息连续2年下降超过20%或FCF覆盖率低于50%则逻辑失败，立即止损。",
+    "关键风险": [
+      "股息不可持续风险：FCF覆盖率仅60.4%，派息率79.7%接近极限",
+      "估值过高风险：EV/FCF倍数22.09倍，安全边际-133%",
+      "现金流恶化风险：2022Q1经营现金流-467.81亿元，现金转化率-176.7%",
+      "周期性下行风险：石油加工行业处于顶部，库存增长39.7%",
+      "压力测试失败：三项安全测试均未通过"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "回避",
+    "综合评分": 35,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600028.SH",
+    "cutoff_date": "2022-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 529.6,
+    "chapters_completed": 6
+  }
+}

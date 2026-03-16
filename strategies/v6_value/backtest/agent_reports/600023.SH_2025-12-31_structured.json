@@ -1,0 +1,124 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺少主营业务地域分布数据",
+        "缺少审计意见数据"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地浙江，火力发电行业主要服务于本地电网，地缘政治风险极低",
+      "geo_excluded": false,
+      "price_position_pct": 3.8,
+      "debt_ratio_pct": 43.93,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "触发快速排除条件：价格位置距52周高点仅下跌16.9%，未达到30%的安全边际要求。其他财务指标良好：资产负债率43.93%，连续盈利3年以上，现金覆盖率30.4%，经营现金流质量高（156%），FCF倍数7.66倍。建议等待价格回调至安全边际区域后再考虑。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "无法确定（基于现有数据）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型多个核心条件：1) PE=9.11<10；2) PB=0.89<1.0且ROE=8.40%>8%；3) 行业处于周期底部区域（煤价低位）；4) 经营现金流持续为正且改善（2025Q3为109.59亿，同比增长11.2%）；5) FCF收益率8.64%接近10%阈值。同时具备纯硬收息特征（股息率5.05%，派息率稳定50%），但未完全满足所有条件。",
+      "interest_bearing_debt": 376.68,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "可接受",
+      "cycle_debt_tolerance": "可接受",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "缺乏审计意见数据",
+        "缺乏关联交易透明度数据"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动稳定",
+      "latest_cash_balance": 201.49,
+      "reported_profit": 83.0,
+      "non_cash_adjustments": 35.0,
+      "adjusted_profit": 118.0,
+      "owner_earnings": 83.0,
+      "owner_earnings_formula": "净利润83.00亿 + 折旧摊销35.00亿 - 维持性CAPEX35.00亿 = 83.00亿（采用折旧近似法估算维持性CAPEX）",
+      "fcf": 114.0,
+      "maintenance_capex": 35.0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "公用事业行业（火力发电）折旧占利润比例极高，利润严重失真",
+        "净利润随周期剧烈波动，单年PE无参考意义"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": -175.19,
+      "ev": 838.92,
+      "ev_fcf_multiple": 7.55,
+      "turtle_rating": "显著低估",
+      "fair_value_per_share": 8.29,
+      "topdown_return_pct": 8.05,
+      "valuation_crosscheck": "Bottom-Up > Top-Down，可能低估了资产增值或分红提升空间",
+      "dividend_yield_pct": 5.05,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 14.7,
+      "market_condition": "震荡市",
+      "buy_point": 5.8,
+      "sell_point": 8.29
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 56.52,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": -121.79,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 95
+    },
+    "ch06_decision": {
+      "apple_normal_price": 8.29,
+      "apple_buy_price": 5.39,
+      "apple_sell_price": 4.97,
+      "buy_logic_statement": "我以'修复型'逻辑买入该火力发电公司，在剔除净现金FCF倍数7.55倍时建仓，目标是FCF倍数从7.55倍修复到8倍（对应股价8.29元），预计持有1-2年，修复完成即卖出。证伪条件：若公司自由现金流连续2个季度下滑超过20%，或资产负债率上升至50%以上，则逻辑失败，立即止损。",
+      "repair_target": "保守修复目标价2.11元（EV/FCF 8倍），中性修复2.97元（EV/FCF 10倍），乐观修复3.82元（EV/FCF 12倍）",
+      "repair_catalyst": "火电容量电价政策落地、行业整合产能出清、分红比例提升、煤价回落改善盈利",
+      "expected_repair_return_pct": -57.4,
+      "recommendation": "观察",
+      "position_type": "观察",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "股价达到4.97元（修复完成）",
+        "自由现金流连续2季度下滑>20%",
+        "资产负债率>50%",
+        "发现FCF倍数<5倍的更优标的"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "铜龟",
+    "核心估值指标": "EV/FCF倍数7.55倍，安全边际14.7%",
+    "苹果买卖模型": "正常价8.29元，买入价5.39元，卖出价4.97元",
+    "一句话买入逻辑": "我以'修复型'逻辑买入该火力发电公司，在剔除净现金FCF倍数7.55倍时建仓，目标是FCF倍数从7.55倍修复到8倍（对应股价8.29元），预计持有1-2年，修复完成即卖出。证伪条件：若公司自由现金流连续2个季度下滑超过20%，或资产负债率上升至50%以上，则逻辑失败，立即止损。",
+    "关键风险": [
+      "火力发电行业面临能源转型结构性衰退风险",
+      "公司净负债175.19亿元，财务杠杆较高",
+      "估值修复空间有限（当前价4.95元已高于FCF修复目标价2.11-3.82元）",
+      "价格位置不佳（距52周高点仅下跌16.9%，未达30%安全边际）",
+      "管理层诚信透明度不足（缺乏审计意见和关联交易数据）"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "观望",
+    "综合评分": 50,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600023.SH",
+    "cutoff_date": "2025-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 649.6,
+    "chapters_completed": 6
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据缺失",
+        "主营业务构成数据缺失"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于深圳，主要业务在中国内地，无高风险区域敞口",
+      "geo_excluded": false,
+      "price_position_pct": 3.9,
+      "debt_ratio_pct": 75.28,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过快速筛选，但需注意：1)经营现金流/净利润比率低(7.3%)触发排除条件，但地产行业特性需特殊考量；2)审计意见数据缺失需人工复核；3)价格位置极低(距高点下跌46.9%)，安全边际充足；4)现金充裕(1036.80亿)，现金/市值比83.1%"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "无法确认（前两大股东为法人股东，合计持股45.67%）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "勉强符合价值发现型：1)PE 6.50<10；2)PB 0.49<1.0；但FCF收益率为负(-12.8%)，ROE 5.50%<8%，经营现金流恶化。不符合纯硬收息（经营现金流/净利润仅1.12%）、烟蒂股（PB 0.49>0.3，净现金为负）、关联方资源（信息不足）。",
+      "interest_bearing_debt": 2789.31,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "警惕",
+      "cycle_debt_tolerance": "排除",
+      "is_cyclical": true,
+      "cycle_position": "底部/下行",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "审计意见数据缺失",
+        "关联交易数据缺失",
+        "股东行为数据缺失"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "下降",
+      "latest_cash_balance": 1036.8,
+      "reported_profit": 210.27,
+      "non_cash_adjustments": 101.07,
+      "adjusted_profit": 311.34,
+      "owner_earnings": 302.63,
+      "owner_earnings_formula": "净利润210.27亿 + 折旧摊销8.71亿 + 非现金减值92.36亿 - 维持性CAPEX8.71亿 = 302.63亿",
+      "fcf": -51.08,
+      "maintenance_capex": 8.71
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业",
+        "经营现金流/净利润仅1.12%",
+        "自由现金流连续为负",
+        "资产减值占净利润44%",
+        "PE低但现金流差的价值陷阱"
+      ],
+      "valuation_method": "FCF估值（强制使用）",
+      "net_cash": -1752.51,
+      "ev": 3000.46,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 9.65,
+      "topdown_return_pct": 6.45,
+      "valuation_crosscheck": "矛盾（股息率6.45%但FCF为负-4.09%）",
+      "dividend_yield_pct": 6.45,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -26.0,
+      "market_condition": "熊市",
+      "buy_point": 7.72,
+      "sell_point": 11.58
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 132.39,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 15
+    },
+    "ch06_decision": {
+      "apple_normal_price": 9.65,
+      "apple_buy_price": 7.72,
+      "apple_sell_price": 11.58,
+      "buy_logic_statement": "无法构建可证伪的买入逻辑：FCF为负-4.09%，股息不可持续，安全边际-26%，股价10.46元高于合理估值9.65元，存在PE低但现金流差的价值陷阱风险。",
+      "repair_target": "无有效修复目标价：FCF为负无法使用EV/FCF修复框架；PB修复至0.8倍对应16.96元但净资产质量存疑；股息率修复至4%对应17.00元但股息不可持续。",
+      "repair_catalyst": "无明确催化剂：地产行业下行周期，现金流压力持续，去杠杆过程漫长，无短期修复动力。",
+      "expected_repair_return_pct": -26.0,
+      "recommendation": "清仓",
+      "position_type": "不应持有",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "FCF连续为负，股息不可持续",
+        "股价10.46元高于合理估值9.65元",
+        "地产行业下行周期，现金流压力持续",
+        "存在PE低但现金流差的价值陷阱",
+        "净负债1752.51亿元，财务杠杆高"
+      ],
+      "macro_event_impact": "止损：地产行业下行周期压制估值，销售下滑，现金流压力持续，核心假设（现金流改善）已破坏，应即时止损退出。"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数无法计算（FCF为负），安全边际-26%",
+    "苹果买卖模型": "正常价9.65元/买入价7.72元/卖出价11.58元",
+    "一句话买入逻辑（强制）": "在PB 0.49倍（较行业平均0.8倍折价39%）买入，赌地产周期反转带来PB修复至0.8倍（对应股价16.96元，上涨62.1%），且公司现金1036.80亿提供安全垫。",
+    "关键风险": [
+      "现金流恶化：经营现金流/净利润仅1.12%，自由现金流连续为负",
+      "股息不可持续：FCF为负，股息可能来自借款或资产出售",
+      "负债压力：净负债率69.2%偏高，地产行业下行周期中风险加剧",
+      "价值陷阱：PE低但现金流差，存在PE陷阱风险",
+      "治理风险：国资持股仅3.51%，信息透明度不足，诚信评估存疑"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "回避",
+    "综合评分": 35,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "000002.SZ",
+    "cutoff_date": "2023-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 558.6,
+    "chapters_completed": 6
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺乏审计意见数据",
+        "缺乏主营业务地域分布数据",
+        "无法验证审计意见类型"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "中国内地企业，仓储物流行业，无证据显示在高风险地区有业务",
+      "geo_excluded": false,
+      "price_position_pct": 42.2,
+      "debt_ratio_pct": 73.33,
+      "consecutive_profit_years": 4,
+      "pass_screening": false,
+      "screening_notes": "价格位置不佳：距52周高点跌幅仅21.4%，未达到30%安全边际要求。公司为净负债状态（净负债205.93亿），资产负债率73.33%偏高，但现金覆盖率85.0%较高。连续盈利4年以上，基本面无硬伤但估值安全边际不足。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "无法确定",
+      "controlling_shareholder": "信息不足",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型2项核心条件：1) PE=4.74<10；2) PB=0.85<1.0且2022年ROE=12.10%>8%。不满足纯硬收息条件（有息负债高、经营现金流/净利润比异常），不符合烟蒂股条件（PB>0.3、清算价值为负），关联方资源信息不足。",
+      "interest_bearing_debt": 352.04,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "警惕",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": false,
+      "cycle_position": "非周期",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "信息不足无法全面评估",
+        "存在大存大贷迹象"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "增长",
+      "latest_cash_balance": 178.52,
+      "reported_profit": 45.15,
+      "non_cash_adjustments": -2.03,
+      "adjusted_profit": 43.12,
+      "owner_earnings": 45.15,
+      "owner_earnings_formula": "净利润45.15亿 + 折旧摊销78.29亿（估算）- 维持性资本支出78.29亿（折旧近似法估算）= 45.15亿",
+      "fcf": -55.29,
+      "maintenance_capex": 78.29
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "经营现金流/净利润极低（7.8%）",
+        "自由现金流为负",
+        "折旧摊销占比高（173%）",
+        "PE低但现金流差（价值陷阱）"
+      ],
+      "valuation_method": "FCF（但FCF为负，估值困难）",
+      "net_cash": 18.42,
+      "ev": 153.54,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用（FCF为负）",
+      "fair_value_per_share": 6.5,
+      "topdown_return_pct": 8.4,
+      "valuation_crosscheck": "严重矛盾（股息率8.4% vs FCF收益率-43.5%）",
+      "dividend_yield_pct": 8.4,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -20.0,
+      "market_condition": "震荡市",
+      "buy_point": 5.5,
+      "sell_point": 8.5
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 32.91,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": -547.9,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 90
+    },
+    "ch06_decision": {
+      "apple_normal_price": 21.0,
+      "apple_buy_price": 12.6,
+      "apple_sell_price": 12.6,
+      "buy_logic_statement": "我以'价值陷阱修复'逻辑买入该标的，在PE=4.74倍、股息率=8.4%时建仓，目标是PE从4.74倍修复到7.2倍，预计持有1-2年，修复完成即卖出。证伪条件：若连续2个季度经营现金流净额为负且自由现金流恶化超过50%，或股息率降至5%以下而PE未修复，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价9.8元（PE 7倍），中性目标价12.6元（PE 9倍），乐观目标价16.8元（PE 12倍）",
+      "repair_catalyst": "1) 经营现金流改善；2) 行业政策利好；3) 经济复苏带动仓储需求；4) 股息维持稳定",
+      "expected_repair_return_pct": 62.8,
+      "recommendation": "观察",
+      "position_type": "卫星",
+      "suggested_position_pct": 3,
+      "exit_conditions": [
+        "PE修复至7.2倍减仓50%",
+        "连续2季度经营现金流恶化止损",
+        "股息率降至5%以下而PE未修复止损",
+        "发现PE差>3倍的更优标的切换"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数：无法计算（FCF为负），安全边际：-20%",
+    "苹果买卖模型": "正常价：21.0元，买入价：12.6元，卖出价：12.6元",
+    "一句话买入逻辑（强制）": "我以'价值陷阱修复'逻辑买入该标的，在PE=4.74倍、股息率=8.4%时建仓，目标是PE从4.74倍修复到7.2倍，预计持有1-2年，修复完成即卖出。证伪条件：若连续2个季度经营现金流净额为负且自由现金流恶化超过50%，或股息率降至5%以下而PE未修复，则逻辑失败，立即止损。",
+    "关键风险": [
+      "现金流质量极差：经营现金流/净利润仅7.8%，自由现金流持续为负",
+      "财务风险高：资产负债率73.33%，短期偿债压力大，存在'大存大贷'现象",
+      "利润与现金严重背离：存在价值陷阱特征，高股息率建立在负现金流基础上",
+      "分红可持续性存疑：自由现金流为负，股息支付依赖外部融资",
+      "价格位置不佳：距52周高点仅下跌21.4%，安全边际不足"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "观望",
+    "综合评分": 45,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600755.SH",
+    "cutoff_date": "2023-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 576.1,
+    "chapters_completed": 6
+  }
+}

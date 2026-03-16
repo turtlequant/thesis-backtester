@@ -1,0 +1,120 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国内地山西，属于极低风险区域，有国家信用背书和政策支持",
+      "geo_excluded": false,
+      "price_position_pct": 1.7,
+      "debt_ratio_pct": 48.78,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过所有筛选条件：1)无ST标记，上市超24年；2)价格距52周高点跌幅54.7%，安全边际充足；3)有息负债率23.9%可控，连续盈利；4)现金覆盖率51.5%高，FCF倍数仅1.09倍。估值极具吸引力（PE 3.89倍，PB 0.80倍，股息率9.40%）"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "地方国企",
+      "controlling_shareholder": "需进一步穿透确认（第一大股东为其他法人股东，持股45.11%）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现型多项核心条件：1)PE 3.89倍<10；2)FCF收益率44.5%>10%；3)PB 0.80<1.0且ROE 22.57%>8%；4)经营现金流持续为正且规模大（56.99亿）。兼具纯硬收息特征（股息率9.40%），但不完全符合无有息负债条件。",
+      "interest_bearing_debt": 75.51,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "良",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "顶部/下行",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "持续增长",
+      "latest_cash_balance": 62.52,
+      "reported_profit": 32.96,
+      "non_cash_adjustments": 11.54,
+      "adjusted_profit": 44.5,
+      "owner_earnings": 40.14,
+      "owner_earnings_formula": "净利润32.96亿 + 折旧摊销11.54亿（估算为净利润35%） - 维持性CAPEX 4.36亿（采用2022年全部资本支出）",
+      "fcf": 52.63,
+      "maintenance_capex": 4.36
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业利润波动大",
+        "PE与FCF收益率严重背离（PE 3.89倍 vs FCF收益率43.3%）"
+      ],
+      "valuation_method": "EV/FCF",
+      "net_cash": -75.51,
+      "ev": 197.0,
+      "ev_fcf_multiple": 3.74,
+      "turtle_rating": "优质级",
+      "fair_value_per_share": 13.95,
+      "topdown_return_pct": 14.4,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 9.4,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 41.4,
+      "market_condition": "熊市",
+      "buy_point": 10.58,
+      "sell_point": 17.5
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 24.03,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "勉强通过",
+      "is_cigar_butt": false,
+      "liquidation_value": -24.39,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 100.0
+    },
+    "ch06_decision": {
+      "apple_normal_price": 26.05,
+      "apple_buy_price": 8.18,
+      "apple_sell_price": 24.03,
+      "buy_logic_statement": "我以'周期修复+高股息'类型买入该煤炭公司，在EV/FCF=3.74倍、股息率9.4%时建仓，目标是EV/FCF从3.74倍修复到8倍，股息率从9.4%降至4%，预计持有1-2年，修复完成即卖出，绝不恋战。证伪条件：若煤炭价格持续下跌导致2023年FCF下降超过30%，或公司大幅增加资本开支导致自由现金流恶化，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价24.03元（EV/FCF 8倍），中性目标价31.31元（EV/FCF 10倍），乐观目标价38.58元（EV/FCF 12倍）",
+      "repair_catalyst": "1)高股息吸引资金流入；2)煤炭价格企稳回升；3)行业政策支持；4)市场对周期性行业重新定价",
+      "expected_repair_return_pct": 193.8,
+      "recommendation": "买入",
+      "position_type": "核心",
+      "suggested_position_pct": 12,
+      "exit_conditions": [
+        "达到涨幅透支5年股息总和（13.18元）减仓30%",
+        "达到保守修复目标价（24.03元）再减仓30%",
+        "达到中性修复目标价（31.31元）再减仓30%",
+        "FCF连续2季下滑>20%即时止损",
+        "煤炭价格涨至历史90%分位清仓退出",
+        "持有超过3年未达修复目标重新评估"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "银龟",
+    "核心估值指标": "EV/FCF倍数=3.74倍，安全边际=41.4%",
+    "苹果买卖模型": "正常价=26.05元，买入价=8.18元，卖出价=24.03元",
+    "一句话买入逻辑": "我以'周期修复+高股息'类型买入该煤炭公司，在EV/FCF=3.74倍、股息率9.4%时建仓，目标是EV/FCF从3.74倍修复到8倍，股息率从9.4%降至4%，预计持有1-2年，修复完成即卖出，绝不恋战。证伪条件：若煤炭价格持续下跌导致2023年FCF下降超过30%，或公司大幅增加资本开支导致自由现金流恶化，则逻辑失败，立即止损。",
+    "关键风险": [
+      "煤炭价格大幅下跌导致盈利恶化（周期性风险）",
+      "有息负债较高（净现金为负75.51亿）",
+      "控股股东性质不明（第一大股东为'其他法人股东'）",
+      "行业政策风险（煤炭行业政策变化）",
+      "经济下行周期影响需求"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "买入",
+    "综合评分": 70,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600123.SH",
+    "cutoff_date": "2023-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 638.5,
+    "chapters_completed": 6
+  }
+}

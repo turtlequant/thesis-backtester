@@ -1,0 +1,121 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺乏审计意见数据",
+        "缺乏业务地域分布数据"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "北京注册的建筑工程央国企，国有股东持股61.45%，国家信用背书，政策支持度高",
+      "geo_excluded": false,
+      "price_position_pct": 45.0,
+      "debt_ratio_pct": 74.76,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "不通过快速筛选：1) 价格位置不佳（距52周高点仅下跌15.04%，安全边际不足）；2) FCF倍数过高（57.7倍>10倍）；3) 建筑工程行业现金流季节性波动大，2024Q1经营现金流为-965.95亿元。建议放入观察列表，等待价格回调至距52周高点下跌30%以上（约4.38元以下）再考虑。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "央企",
+      "controlling_shareholder": "国务院国资委",
+      "investment_stream": "关联方资源",
+      "stream_reasoning": "同时符合关联方资源和价值发现特征：1)控股股东为大型央企集团，存在资产整合预期；2)PB仅0.52，显著折价；3)PE=4.06<10，ROE=13.37%>8%；4)建筑工程央企通常有大量未上市优质资产。以关联方资源逻辑为主，价值发现为辅。",
+      "interest_bearing_debt": 7541.01,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "可接受",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": false,
+      "cycle_position": "非周期",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动稳定",
+      "latest_cash_balance": 3391.61,
+      "reported_profit": 735.4,
+      "non_cash_adjustments": 28.0,
+      "adjusted_profit": 735.4,
+      "owner_earnings": 735.4,
+      "owner_earnings_formula": "净利润735.40亿 + 折旧摊销估算28.00亿 - 维持性CAPEX估算28.00亿 = 735.40亿",
+      "fcf": 31.33,
+      "maintenance_capex": 28.0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "经营现金流/净利润比率仅15%，远低于80%标准"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": -4149.4,
+      "ev": 6359.42,
+      "ev_fcf_multiple": 77.3,
+      "turtle_rating": "高估",
+      "fair_value_per_share": 6.25,
+      "topdown_return_pct": 4.79,
+      "valuation_crosscheck": "需调整（FCF收益率偏低）",
+      "dividend_yield_pct": 4.79,
+      "dividend_sustainable": true,
+      "safety_margin_pct": -20.0,
+      "market_condition": "震荡市",
+      "buy_point": 4.5,
+      "sell_point": 6.5
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 536.1,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 75.0
+    },
+    "ch06_decision": {
+      "apple_normal_price": 6.25,
+      "apple_buy_price": 3.75,
+      "apple_sell_price": 3.75,
+      "buy_logic_statement": "我以'修复型'逻辑买入该建筑工程公司，在PE(TTM)=4.06倍、股息率=4.79%时建仓，目标是PE从4.06倍修复至8倍，股息率从4.79%降至3%，预计持有2年，修复完成即卖出。证伪条件：若经营现金流/净利润比率持续低于30%或净负债率超过80%，则逻辑失败，立即止损。",
+      "repair_target": "目标价9.05元，对应PE 8倍、PB 0.8倍、股息率3%",
+      "repair_catalyst": "1)基建投资政策加码；2)经营现金流/净利润比率从15%提升至50%以上；3)净负债率从74.76%降至70%以下；4)派息比例从20%提升至30%",
+      "expected_repair_return_pct": 70.4,
+      "recommendation": "观察",
+      "position_type": "观察",
+      "suggested_position_pct": 2,
+      "exit_conditions": [
+        "PE修复至10倍",
+        "股息率降至2.5%",
+        "经营现金流连续2年为负",
+        "净负债率超过80%",
+        "持有超过3年未达修复目标"
+      ],
+      "macro_event_impact": "短期压制（受房地产下行周期和地方政府债务问题影响），需基建政策催化"
+    }
+  },
+  "synthesis": {
+    "流派判定": "关联方资源",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数77.3倍，安全边际-20%",
+    "苹果买卖模型": "正常价6.25元，买入价4.50元，卖出价6.50元",
+    "一句话买入逻辑": "我以'估值修复'逻辑买入该建筑工程央企，在PE=4.06倍、PB=0.52倍、股息率=4.79%时建仓，目标是PE修复至8倍、PB修复至0.8倍、股息率降至3%，预计持有2-3年。证伪条件：若经营现金流/净利润比率持续低于30%或净负债率超过80%，则逻辑失败，立即止损。",
+    "关键风险": [
+      "现金流与利润严重背离（经营现金流/净利润仅15%）",
+      "高负债风险（资产负债率74.76%，有息负债7541亿元）",
+      "建筑工程行业下行周期压力",
+      "地方政府债务问题影响项目回款",
+      "估值陷阱风险（EV/FCF倍数77.3倍）"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "观望",
+    "综合评分": 55,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "601668.SH",
+    "cutoff_date": "2024-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 534.7,
+    "chapters_completed": 6
+  }
+}

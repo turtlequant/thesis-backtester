@@ -1,0 +1,127 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺乏审计意见数据",
+        "缺乏主营业务地域分布数据",
+        "缺乏主营业务构成数据"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国湖南，属于极低风险区域，中国内地市场具有国家信用背书和政策支持",
+      "geo_excluded": false,
+      "price_position_pct": 15.4,
+      "debt_ratio_pct": 60.94,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过初筛。公司为多元金融企业，负债率在行业正常范围内，连续多年盈利，现金充足，价格接近52周低点。需注意金融行业特殊性，传统财务指标需用行业专属指标替代评估。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "无法确定",
+      "controlling_shareholder": "无法确定",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "PE(TTM)6.27<10，FCF收益率51.8%>10%，PB0.60<1.0且ROE7.01%接近8%，经营现金流从2020年-95.94亿大幅改善至2021年75.46亿，满足价值发现型多项条件",
+      "interest_bearing_debt": 454.66,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "警惕",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": false,
+      "cycle_position": "非周期",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "缺乏审计意见数据",
+        "缺乏关联交易数据",
+        "缺乏股权质押数据"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "持续增长",
+      "latest_cash_balance": 162.88,
+      "reported_profit": 32.7,
+      "non_cash_adjustments": -22.7,
+      "adjusted_profit": -5.75,
+      "owner_earnings": 10.0,
+      "owner_earnings_formula": "金融行业替代方法：调整后净利润 = 报表净利润 × 可持续收益比例（30%估算）",
+      "fcf": -19.23,
+      "maintenance_capex": 0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "金融行业PE禁用",
+        "利息支出大幅侵蚀会计利润"
+      ],
+      "valuation_method": "PB-ROE-股息率（金融行业）",
+      "net_cash": -287.23,
+      "ev": 526.53,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 7.05,
+      "topdown_return_pct": 10.5,
+      "valuation_crosscheck": "不适用（金融行业）",
+      "dividend_yield_pct": 6.62,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 24.5,
+      "market_condition": "熊市",
+      "buy_point": 5.3,
+      "sell_point": 8.5
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 23.84,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 60
+    },
+    "ch06_decision": {
+      "apple_normal_price": 6.63,
+      "apple_buy_price": 4.31,
+      "apple_sell_price": 6.2,
+      "buy_logic_statement": "我以'金融股估值修复'类型买入该标的，在PB=0.60倍时建仓，目标是PB从0.60倍修复到0.80倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若ROE持续低于8%或不良率大幅上升导致PB无法修复，则逻辑失败，立即止损。",
+      "repair_target": "中性目标价7.05元（对应PB=0.80倍），保守目标价6.17元（对应PB=0.70倍），乐观目标价7.93元（对应PB=0.90倍）",
+      "repair_catalyst": "ROE从7.01%修复至8-9%、6.62%股息率吸引力、价格处于52周低点附近（15.4%分位）、金融股在熊市后期通常率先修复",
+      "expected_repair_return_pct": 32.5,
+      "recommendation": "持有",
+      "position_type": "卫星",
+      "suggested_position_pct": 5,
+      "exit_conditions": [
+        "PB修复至0.75倍减仓（对应6.61元）",
+        "PB修复至0.85倍清仓（对应7.49元）",
+        "ROE持续低于6%止损",
+        "不良率大幅上升止损",
+        "涨幅透支5年股息清仓"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "PB=0.60倍，安全边际24.5%（基于合理估值7.05元）",
+    "苹果买卖模型": "正常价6.63元，买入价4.31元，卖出价6.20元",
+    "一句话买入逻辑": "我以'金融股估值修复'类型买入该标的，在PB=0.60倍时建仓，目标是PB从0.60倍修复到0.80倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若ROE持续低于8%或不良率大幅上升导致PB无法修复，则逻辑失败，立即止损。",
+    "关键风险": [
+      "高杠杆经营（净现金为负287.23亿元）",
+      "缺乏审计意见等关键治理数据",
+      "分红历史仅2年，稳定性待验证",
+      "自由现金流持续为负",
+      "金融行业对宏观经济敏感，经济下行期风险暴露大"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "观望",
+    "综合评分": 62,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600390.SH",
+    "cutoff_date": "2021-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 546.6,
+    "chapters_completed": 6
+  }
+}

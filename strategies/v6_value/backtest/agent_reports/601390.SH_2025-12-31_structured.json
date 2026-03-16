@@ -1,0 +1,123 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺少审计意见数据",
+        "缺少主营业务地域分布数据",
+        "缺少更早年份完整年报数据"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司注册地在北京，中国内地，属于极低风险区域，有国家信用背书和政策支持",
+      "geo_excluded": false,
+      "price_position_pct": 17.9,
+      "debt_ratio_pct": 77.88,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "未通过5分钟快速排除法：1) 价格位置不佳（距52周高点仅下跌17.5%，未达30%安全边际要求）；2) FCF倍数17.4倍>10倍，估值偏高；3) 公司净现金为负（-3544.52亿），虽有充足现金但负债更高"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "央企",
+      "controlling_shareholder": "国务院国资委（推断）",
+      "investment_stream": "关联方资源",
+      "stream_reasoning": "1) 判定为建筑工程行业央企，符合关联方资源型特征；2) PB仅0.43，显著低于净资产，存在估值修复空间；3) PE(TTM)5.38<10，同时符合价值发现型特征；4) 股息率3.89%<5%，不符合纯硬收息型；5) PB>0.3且净现金为负，不符合烟蒂股型",
+      "interest_bearing_debt": 5459.93,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "可接受",
+      "cycle_debt_tolerance": "需观察",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "下降",
+      "latest_cash_balance": 1915.41,
+      "reported_profit": 192.18,
+      "non_cash_adjustments": 52.0,
+      "adjusted_profit": 103.0,
+      "owner_earnings": 207.18,
+      "owner_earnings_formula": "净利润192.18亿 + 折旧摊销37亿 + 非现金减值15亿 - 维持性CAPEX37亿 = 207.18亿",
+      "fcf": -905.84,
+      "maintenance_capex": 37.0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业利润波动大",
+        "经营现金流与净利润严重背离",
+        "FCF持续为负"
+      ],
+      "valuation_method": "PB估值为主（FCF为负无法估值）",
+      "net_cash": -3544.52,
+      "ev": 4879.05,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "无法评级（FCF为负）",
+      "fair_value_per_share": 7.66,
+      "topdown_return_pct": 4.81,
+      "valuation_crosscheck": "需调整（FCF为负但股息率尚可）",
+      "dividend_yield_pct": 3.89,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -41.5,
+      "market_condition": "熊市",
+      "buy_point": 5.16,
+      "sell_point": 10.21
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 186.8,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 25.0
+    },
+    "ch06_decision": {
+      "apple_normal_price": 10.66,
+      "apple_buy_price": 6.93,
+      "apple_sell_price": 5.86,
+      "buy_logic_statement": "我以'价值修复'类型买入该建筑工程公司，在PB=0.43倍时建仓，目标是PB从0.43倍修复到0.8倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若公司连续2年经营现金流净额为负且资产负债率超过80%，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价8.93元（PB 0.7倍），中性目标价12.76元（PB 1.0倍），乐观目标价15.31元（PB 1.2倍）",
+      "repair_catalyst": "1)基建投资政策利好；2)经营现金流改善；3)行业估值修复；4)国企改革推进",
+      "expected_repair_return_pct": 65.1,
+      "recommendation": "买入",
+      "position_type": "卫星",
+      "suggested_position_pct": 4.0,
+      "exit_conditions": [
+        "PB修复至0.8倍（对应10.21元）减仓50%",
+        "涨幅超过5年股息总和（约19.5%）清仓",
+        "经营现金流连续2年负且资产负债率>80%止损",
+        "发现PB<0.3倍且基本面更优标的切换"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "关联方资源",
+    "龟级评定": "铜龟",
+    "核心估值指标": "PB=0.43倍，安全边际-41.5%（基于苹果模型）",
+    "苹果买卖模型": "正常价10.66元，买入价6.93元，卖出价5.86元",
+    "一句话买入逻辑": "我以'价值修复'类型买入该建筑工程公司，在PB=0.43倍时建仓，目标是PB从0.43倍修复到0.8倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若公司连续2年经营现金流净额为负且资产负债率超过80%，则逻辑失败，立即止损。",
+    "关键风险": [
+      "经营现金流持续恶化（2025年前三季度-728.83亿）",
+      "自由现金流大幅为负（-905.84亿）",
+      "资产负债率高达77.88%，净负债率95.5%",
+      "应收账款高企（2957亿占营收38.2%），回款风险",
+      "股息不可持续（FCF为负，股息依赖外部融资）"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "观望",
+    "综合评分": 55,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "601390.SH",
+    "cutoff_date": "2025-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 691.7,
+    "chapters_completed": 6
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺少银行行业关键风险指标（不良率、拨备覆盖率、资本充足率）",
+        "缺少主营业务地域分布数据",
+        "审计意见数据缺失"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司注册地和主要经营地在北京，中国内地，属于极低风险区域，有国有股东背景",
+      "geo_excluded": false,
+      "price_position_pct": 5.6,
+      "debt_ratio_pct": 92.14,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过快速筛选：1) 上市超过20年；2) 价格接近52周低点；3) 银行行业资产负债率92.14%属正常；4) 连续多年盈利；5) 估值较低（PB 0.49，PE 4.99），股息率较高（6.63%）。但缺少银行关键风险指标数据。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "央企",
+      "controlling_shareholder": "国务院或相关中央部委",
+      "investment_stream": "纯硬收息",
+      "stream_reasoning": "1) 股息率6.63%超过5%门槛；2) 连续多年派息记录；3) PB 0.49提供安全边际；4) 国有银行背景确保派息可持续性；5) 银行行业特性适合收息策略",
+      "interest_bearing_debt": 8599.03,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动稳定",
+      "latest_cash_balance": 0,
+      "reported_profit": 378.93,
+      "non_cash_adjustments": 0,
+      "adjusted_profit": 378.93,
+      "owner_earnings": 189.47,
+      "owner_earnings_formula": "金融行业替代方法：可分配利润 = 净利润 × (1 - 资本补充需求比例) = 378.93亿 × 50% = 189.47亿",
+      "fcf": 0,
+      "maintenance_capex": 0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "银行行业禁止使用PE估值",
+        "金融企业负债结构特殊，净利润被利息支出大幅影响"
+      ],
+      "valuation_method": "PB-ROE估值 + 股息率",
+      "net_cash": 0,
+      "ev": 0,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 8.46,
+      "topdown_return_pct": 8.5,
+      "valuation_crosscheck": "不适用（金融行业）",
+      "dividend_yield_pct": 6.63,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 38.0,
+      "market_condition": "熊市",
+      "buy_point": 6.0,
+      "sell_point": 10.0
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 276.24,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "安全边际不足",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 100
+    },
+    "ch06_decision": {
+      "apple_normal_price": 8.46,
+      "apple_buy_price": 5.5,
+      "apple_sell_price": 6.65,
+      "buy_logic_statement": "我以'PB修复+高股息'逻辑买入该银行股，在PB=0.49倍、股息率=6.63%时建仓，目标是PB从0.49倍修复到0.8倍，股息率从6.63%降至4%，预计持有2年，修复完成即卖出。证伪条件：若不良率大幅上升（超过行业平均50%）、ROE持续低于8%、或股息率降至3%以下，则逻辑失败，立即止损。",
+      "repair_target": "保守目标7.40元（PB 0.7倍，上行42.3%），中性目标8.46元（PB 0.8倍，上行62.7%），乐观目标10.57元（PB 1.0倍，上行103.3%）",
+      "repair_catalyst": "经济复苏带动银行业绩改善、不良率企稳或下降、货币政策边际宽松、银行板块整体估值修复、高股息吸引力提升",
+      "expected_repair_return_pct": 62.7,
+      "recommendation": "买入",
+      "position_type": "卫星",
+      "suggested_position_pct": 8,
+      "exit_conditions": [
+        "PB修复至0.8倍（股价8.46元）时减仓50%",
+        "持仓盈利超过50%时强制减仓50%",
+        "ROE连续2季度低于8%时减仓",
+        "股息率降至3%以下时清仓",
+        "发现PB差>0.2倍的更优银行股时切换资金"
+      ],
+      "macro_event_impact": "短期压制（疫情影响经济，银行资产质量承压），长期趋势不变，持有不动，若下跌>10%评估加仓"
+    }
+  },
+  "synthesis": {
+    "流派判定": "纯硬收息",
+    "龟级评定": "银龟",
+    "核心估值指标": "PB=0.49倍，股息率=6.63%，安全边际=38%",
+    "苹果买卖模型": "正常价=8.46元，买入价=5.50元，卖出价=6.65元",
+    "一句话买入逻辑": "我以'PB修复+高股息'逻辑买入该国有银行股，在PB=0.49倍、股息率=6.63%时建仓，目标是PB从0.49倍修复到0.7-0.8倍，同时获取6.63%的股息收益，预计持有2-3年。证伪条件：若不良率大幅上升（超过行业平均50%）、ROE持续低于7%、或股息率降至3%以下，则逻辑失败，立即止损。",
+    "关键风险": [
+      "缺少银行关键风险指标数据（不良率、拨备覆盖率、资本充足率）",
+      "宏观经济下行导致银行资产质量恶化",
+      "利率下行导致净息差收窄",
+      "银行行业周期性特征，估值可能长期低迷",
+      "经营现金流波动大，不适用传统现金流分析框架"
+    ],
+    "管理人诚信评估": "可信",
+    "最终建议": "买入",
+    "综合评分": 75,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600016.SH",
+    "cutoff_date": "2020-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 467.6,
+    "chapters_completed": 6
+  }
+}

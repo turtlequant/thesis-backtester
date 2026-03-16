@@ -1,0 +1,127 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺少审计意见数据",
+        "缺少主营业务构成数据",
+        "银行行业数据特殊性需注意",
+        "现金流量表数据需行业视角解读"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于江苏，中国内地，属于极低风险区域，前十大股东包含国有/政府关联股东",
+      "geo_excluded": false,
+      "price_position_pct": 64.0,
+      "debt_ratio_pct": 90.72,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "价格位置触发排除条件：距52周高点仅下跌7.3%（<30%阈值），安全边际不足。银行行业基本面稳健（连续盈利、ROE 7-10%、PB 0.62倍），但当前价格偏高，建议放入观察列表等待回调。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "无法确定（国有/政府关联股东合计持股10.30%）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "PE=5.69<10，股息率TTM=6.56%>5%，兼具收息特征但派息历史不足5年；银行行业特殊性，传统流派标准需调整",
+      "interest_bearing_debt": 76.17,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "可接受",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": false,
+      "cycle_position": "非周期",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "审计意见数据缺失",
+        "关联交易数据缺失",
+        "股权质押数据缺失"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "无法判断",
+      "latest_cash_balance": 0,
+      "reported_profit": 18.75,
+      "non_cash_adjustments": 0,
+      "adjusted_profit": 18.75,
+      "owner_earnings": 13.13,
+      "owner_earnings_formula": "金融行业替代方法：可分配利润 = 净利润 × (1 - 资本补充需求比例)，基于2024年净利润18.75亿，假设资本补充需求30%，计算得13.13亿",
+      "fcf": 0,
+      "maintenance_capex": 0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "银行行业禁止使用PE作为主要估值依据"
+      ],
+      "valuation_method": "PB-ROE估值",
+      "net_cash": 0,
+      "ev": 111.71,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 5.26,
+      "topdown_return_pct": 6.56,
+      "valuation_crosscheck": "不适用（金融行业）",
+      "dividend_yield_pct": 3.88,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 13.1,
+      "market_condition": "震荡市",
+      "buy_point": 4.2,
+      "sell_point": 6.0
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 13.67,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 95
+    },
+    "ch06_decision": {
+      "apple_normal_price": 5.26,
+      "apple_buy_price": 3.42,
+      "apple_sell_price": 4.47,
+      "buy_logic_statement": "我以'估值修复'逻辑买入这家江苏银行，在PB=0.62倍时建仓，目标是PB从0.62倍修复到0.7倍，预计持有1-2年，修复完成即卖出。证伪条件：若ROE连续2个季度下降至7%以下，或不良率大幅上升，则逻辑失败，立即止损。",
+      "repair_target": "保守目标4.88元(PB 0.65倍)，中性目标5.26元(PB 0.70倍)，乐观目标5.63元(PB 0.75倍)",
+      "repair_catalyst": "1)宏观经济企稳改善银行资产质量预期；2)江苏区域经济优势体现；3)稳定分红政策吸引长期资金",
+      "expected_repair_return_pct": 15.1,
+      "recommendation": "观察",
+      "position_type": "卫星",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "达到保守目标4.88元减仓30%",
+        "达到中性目标5.26元再减仓30%",
+        "达到乐观目标5.63元清仓退出",
+        "ROE连续2季度低于7%立即止损",
+        "持有超过2年未达目标重新评估"
+      ],
+      "macro_event_impact": "无影响"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "铜龟",
+    "核心估值指标": "PB=0.62倍，安全边际=13.1%",
+    "苹果买卖模型": "正常价=5.26元，买入价=4.20元，卖出价=4.47元",
+    "一句话买入逻辑": "我以'估值修复'逻辑买入这家江苏银行，在PB=0.62倍时建仓，目标是PB从0.62倍修复到0.7倍，预计持有1-2年，修复完成即卖出。证伪条件：若ROE连续2个季度下降至7%以下，或不良率大幅上升，则逻辑失败，立即止损。",
+    "关键风险": [
+      "银行资产质量恶化（不良率上升、拨备计提增加）",
+      "宏观经济下行压力加大银行经营风险",
+      "2025年股息减半显示分红政策不稳定",
+      "价格位置64%偏高，安全边际不足",
+      "缺少审计意见、资本充足率等关键监管指标数据"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "观望",
+    "综合评分": 55,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "002839.SZ",
+    "cutoff_date": "2025-12-31",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 537.0,
+    "chapters_completed": 6
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据缺失",
+        "主营业务构成数据缺失"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国天津，属于极低风险区域；央企背景提供额外安全保障；水运行业虽涉及国际航线，但公司主体在中国受法律保护",
+      "geo_excluded": false,
+      "price_position_pct": 1.7,
+      "debt_ratio_pct": 48.09,
+      "consecutive_profit_years": 3,
+      "pass_screening": true,
+      "screening_notes": "通过所有筛选步骤：1) 无ST标记，上市超15年；2) 距52周高点跌幅38.7%，安全边际充足；3) 有息负债率仅7.35%，财务稳健；4) 现金覆盖率147%，净现金/市值123%，现金极其充裕；5) 连续盈利至少3年"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "无法确定（需穿透股权链）",
+      "investment_stream": "纯硬收息",
+      "stream_reasoning": "满足纯硬收息所有核心条件：1)股息率35.96%远高于5%标准；2)有息负债率仅7.35%，财务极其稳健；3)经营现金流/净利润149.8%>100%；4)派息率49.8%在40%-80%可持续区间。同时具备价值发现特征：PE仅1.71，FCF收益率118.2%，PB0.85且ROE高达65.73%",
+      "interest_bearing_debt": 368.0,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": true,
+      "cycle_position": "下行",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "审计意见数据缺失",
+        "关联交易信息缺失",
+        "股权质押信息缺失"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动增长",
+      "latest_cash_balance": 2368.77,
+      "reported_profit": 1313.38,
+      "non_cash_adjustments": 781.62,
+      "adjusted_profit": 2095.0,
+      "owner_earnings": 1313.38,
+      "owner_earnings_formula": "净利润1313.38亿 + 折旧摊销51.02亿 + 非现金减值0亿 - 维持性CAPEX51.02亿 = 1313.38亿",
+      "fcf": 1704.95,
+      "maintenance_capex": 51.02
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业利润波动巨大",
+        "PE与FCF收益率严重矛盾",
+        "单年PE无参考意义"
+      ],
+      "valuation_method": "FCF估值",
+      "net_cash": 2003.37,
+      "ev": -483.37,
+      "ev_fcf_multiple": -0.25,
+      "turtle_rating": "极品级",
+      "fair_value_per_share": 14.94,
+      "topdown_return_pct": 35.96,
+      "valuation_crosscheck": "需调整（Bottom-Up远高于Top-Down，可能低估资产增值）",
+      "dividend_yield_pct": 35.96,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 40.0,
+      "market_condition": "熊市",
+      "buy_point": 7.47,
+      "sell_point": 14.94
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 957.45,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "通过",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 90
+    },
+    "ch06_decision": {
+      "apple_normal_price": 14.94,
+      "apple_buy_price": 7.47,
+      "apple_sell_price": 14.94,
+      "buy_logic_statement": "我以'极端低估修复型'逻辑买入该标的，在剔除净现金后EV/FCF倍数为负值（-0.25倍）时建仓，目标是市场重新认识其净现金价值和稳定盈利能力，预计持有1-2年，修复至正常估值（14.94元）即卖出。证伪条件：若净现金大幅减少（下降>30%）或FCF连续2个季度转负，则逻辑失败，立即止损。",
+      "repair_target": "14.94元（对应PB 1.16倍，股息率降至7.5%）",
+      "repair_catalyst": "1.高股息率（35.96%）持续吸引投资者；2.净现金充裕（2003亿元）提供安全边际；3.行业周期可能触底；4.市场重新评估资产价值",
+      "expected_repair_return_pct": 58.94,
+      "recommendation": "买入",
+      "position_type": "核心",
+      "suggested_position_pct": 10,
+      "exit_conditions": [
+        "达到14.94元目标价减仓50%",
+        "达到15.41元（PB 1.2倍）再减仓30%",
+        "超过16元清仓退出",
+        "净现金下降>30%立即止损",
+        "FCF连续2季度转负立即止损",
+        "发现FCF倍数差>2倍的更优标的切换"
+      ],
+      "macro_event_impact": "短期压制（行业周期性），但长期趋势不变，下跌>10%可加仓"
+    }
+  },
+  "synthesis": {
+    "流派判定": "纯硬收息",
+    "龟级评定": "金龟",
+    "核心估值指标": "EV/FCF倍数: -0.25倍，安全边际: 40%",
+    "苹果买卖模型": "正常价: 14.94元，买入价: 7.47元，卖出价: 14.94元",
+    "一句话买入逻辑": "我以'极端低估修复型'逻辑买入该标的，在剔除净现金后EV/FCF倍数为负值（-0.25倍）时建仓，目标是市场重新认识其净现金价值和稳定盈利能力，预计持有1-2年，修复至正常估值（14.94元）即卖出。证伪条件：若净现金大幅减少（下降>30%）或FCF连续2个季度转负，则逻辑失败，立即止损。",
+    "关键风险": [
+      "水运行业周期性下行风险",
+      "管理层诚信信息缺失（审计意见、关联交易）",
+      "分红历史较短（仅连续2年）",
+      "全球经济放缓影响航运需求",
+      "2023Q1盈利大幅下滑显示周期顶部回落"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "买入",
+    "综合评分": 80,
+    "信心水平": "高"
+  },
+  "metadata": {
+    "ts_code": "601919.SH",
+    "cutoff_date": "2023-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 523.1,
+    "chapters_completed": 6
+  }
+}

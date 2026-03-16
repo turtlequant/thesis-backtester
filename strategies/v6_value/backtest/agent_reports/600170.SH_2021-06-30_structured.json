@@ -1,0 +1,125 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "审计意见数据缺失",
+        "主营业务构成数据缺失",
+        "经营现金流质量差需核实"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "中国内地建筑工程企业，无海外高风险区域业务，有国有股东背景",
+      "geo_excluded": false,
+      "price_position_pct": 0.0,
+      "debt_ratio_pct": 85.39,
+      "consecutive_profit_years": 3,
+      "pass_screening": false,
+      "screening_notes": "触发快速排除条件：1) 经营现金流/净利润连续低于50%（2020年仅9.8%，2021Q1为负值）；2) FCF倍数达98.0倍，估值过高；3) 净负债63.81亿元。虽然PB仅0.66倍、股息率TTM达10.30%、股价处于52周最低点，但现金流质量差是硬伤。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "民营",
+      "controlling_shareholder": "无法从现有数据明确识别",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现流派2项核心条件：1) PE 7.30 < 10；2) PB 0.66 < 1.0 且 ROE 9.61% > 8%。虽然股息率TTM达10.30%，但经营现金流/净利润仅9.8%，派息可持续性存疑，不符合纯硬收息标准。PB 0.66 > 0.3，净负债63.81亿元，不符合烟蒂股标准。控股股东非大型央企，不符合关联方资源标准。",
+      "interest_bearing_debt": 709.51,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "可接受",
+      "cycle_debt_tolerance": "排除",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "management_integrity": "存疑",
+      "integrity_red_flags": []
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动",
+      "latest_cash_balance": 645.7,
+      "reported_profit": 32.22,
+      "non_cash_adjustments": -29.06,
+      "adjusted_profit": 3.16,
+      "owner_earnings": 3.16,
+      "owner_earnings_formula": "所有者收益 ≈ 经营现金流净额（因数据限制，无法获取折旧摊销和减值明细，基于现金转化率仅9.8%，所有者收益接近经营现金流）",
+      "fcf": -196.01,
+      "maintenance_capex": 29.49
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "周期性行业利润波动大",
+        "经营现金流/净利润仅9.8%",
+        "自由现金流连续为负",
+        "非现金项目占净利润90.2%"
+      ],
+      "valuation_method": "FCF估值（但FCF为负，无法直接估值）",
+      "net_cash": -63.81,
+      "ev": 309.57,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用（FCF为负）",
+      "fair_value_per_share": 2.52,
+      "topdown_return_pct": 10.3,
+      "valuation_crosscheck": "严重矛盾（股息率10.30%但FCF为负）",
+      "dividend_yield_pct": 5.06,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -9.52,
+      "market_condition": "熊市",
+      "buy_point": 1.89,
+      "sell_point": 2.52
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 23.49,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": -1266.51,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 25.0
+    },
+    "ch06_decision": {
+      "apple_normal_price": 3.56,
+      "apple_buy_price": 2.31,
+      "apple_sell_price": 2.67,
+      "buy_logic_statement": "我以'价值修复'类型买入此建筑工程公司，在PB=0.66倍时建仓，目标是PB从0.66倍修复到0.8倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若公司连续2年自由现金流为负且资产负债率超过90%，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价2.52元（PB 0.8倍），中性目标价3.15元（PB 1.0倍），乐观目标价3.78元（PB 1.2倍）",
+      "repair_catalyst": "1. 基建投资政策利好；2. 公司自由现金流改善；3. 行业估值修复；4. 股息政策稳定",
+      "expected_repair_return_pct": 14.1,
+      "recommendation": "观察",
+      "position_type": "观察",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "达到保守目标价2.52元减仓30%",
+        "达到中性目标价3.15元再减仓30%",
+        "达到乐观目标价3.78元清仓",
+        "FCF连续2年为负且资产负债率>90%止损",
+        "持有超过3年未达修复目标重新评估"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数无法计算（FCF为负），安全边际-9.52%",
+    "苹果买卖模型": "正常价3.56元，买入价2.31元，卖出价2.67元",
+    "一句话买入逻辑（强制）": "我以'价值修复'类型买入此建筑工程公司，在PB=0.66倍时建仓，目标是PB从0.66倍修复到0.8倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若公司连续2年自由现金流为负且资产负债率超过90%，则逻辑失败，立即止损。",
+    "关键风险": [
+      "现金流质量极差：经营现金流/净利润仅9.8%，2021Q1为-195.58亿元",
+      "自由现金流持续为负：FCF收益率-79.76%，股息不可持续",
+      "高负债风险：资产负债率85.39%，净负债63.81亿元",
+      "PE陷阱：PE 7.30倍看似便宜但基于负FCF无意义",
+      "安全边际不足：当前价2.76元 > 合理价值2.52元"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "回避",
+    "综合评分": 35,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600170.SH",
+    "cutoff_date": "2021-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 550.5,
+    "chapters_completed": 6
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺少主营业务地域分布数据",
+        "缺少审计意见数据",
+        "经营现金流持续为负需关注"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "公司位于中国江苏，属于政策支持区域，地缘政治风险极低",
+      "geo_excluded": false,
+      "price_position_pct": 1.5,
+      "debt_ratio_pct": 53.46,
+      "consecutive_profit_years": 2,
+      "pass_screening": false,
+      "screening_notes": "触发快速排除条件：1) 现金覆盖率仅7.6% < 20%安全标准；2) 经营现金流持续为负，2020年-21.78亿，2021Q1 -5.09亿；3) 净现金为负值(-28.20亿)。虽然价格位置接近52周低点(1.5%)、资产负债率53.46%可控、连续盈利2年，但现金流问题严重，建议排除。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "民营",
+      "controlling_shareholder": "自然人或其他民营资本（第一大股东为其他法人股东持股34.74%）",
+      "investment_stream": "无法归类",
+      "stream_reasoning": "1) 纯硬收息：股息率TTM 10.23%高但经营现金流为负，派息不可持续；2) 烟蒂股：PB 0.87>0.3，净现金-28.20亿<市值；3) 关联方资源：无央企/国企背景；4) 价值发现：仅PE 5.80<10满足，其他条件不满足。现金流问题严重，不符合任何流派核心买入标准。",
+      "interest_bearing_debt": 36.94,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "警惕",
+      "cycle_debt_tolerance": "不适用",
+      "is_cyclical": false,
+      "cycle_position": "非周期",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "经营现金流持续为负仍高分红"
+      ]
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "下降",
+      "latest_cash_balance": 8.74,
+      "reported_profit": 21.05,
+      "non_cash_adjustments": -37.83,
+      "adjusted_profit": -16.78,
+      "owner_earnings": 16.35,
+      "owner_earnings_formula": "净利润21.05亿 + 折旧摊销0.3亿 - 维持性CAPEX5亿 = 16.35亿（但经营现金流-21.78亿显示严重失真）",
+      "fcf": -37.55,
+      "maintenance_capex": 5.0
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "经营现金流/净利润严重背离（-103.5%）",
+        "自由现金流连续为负",
+        "低PE但现金流极差（价值陷阱）"
+      ],
+      "valuation_method": "FCF",
+      "net_cash": -28.2,
+      "ev": 143.02,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 6.7,
+      "topdown_return_pct": 0.23,
+      "valuation_crosscheck": "需调整",
+      "dividend_yield_pct": 4.84,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -100,
+      "market_condition": "熊市",
+      "buy_point": 3.35,
+      "sell_point": 16.3
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 15.35,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": false,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": false,
+      "liquidation_value": -96.42,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 40.0
+    },
+    "ch06_decision": {
+      "apple_normal_price": 12.0,
+      "apple_buy_price": 7.2,
+      "apple_sell_price": 7.2,
+      "buy_logic_statement": "我以'价值陷阱修复'逻辑买入该标的，在PB=0.87倍时建仓，目标是经营现金流从负转正，PB修复至1.2倍，预计持有2年，修复完成即卖出。证伪条件：若连续3个季度经营现金流仍为负且存货周转率持续恶化，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价11.16元（PB 1.0倍），中性目标价13.39元（PB 1.2倍），乐观目标价16.74元（PB 1.5倍）",
+      "repair_catalyst": "经营现金流改善（从负转正）、存货周转率提升、园区开发业务模式优化、政策支持",
+      "expected_repair_return_pct": 20.1,
+      "recommendation": "观察",
+      "position_type": "观察",
+      "suggested_position_pct": 2.0,
+      "exit_conditions": [
+        "PB修复至1.2倍时清仓退出",
+        "经营现金流连续2季度恶化即时止损",
+        "涨幅超过30%减仓50%",
+        "持有超过2年强制退出"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值陷阱修复",
+    "龟级评定": "不达标",
+    "核心估值指标": "EV/FCF倍数=0（FCF为负），安全边际=-84.0%（清算价值/市值）",
+    "苹果买卖模型": "正常价12.0元，买入价7.2元，卖出价7.2元",
+    "一句话买入逻辑（强制）": "我以'价值陷阱修复'逻辑买入该标的，在PB=0.87倍时建仓，目标是经营现金流从负转正，PB修复至1.2倍，预计持有2年，修复完成即卖出。证伪条件：若连续3个季度经营现金流仍为负且存货周转率持续恶化，则逻辑失败，立即止损。",
+    "关键风险": [
+      "经营现金流持续为负（2020年-21.78亿，2021Q1 -5.09亿）",
+      "自由现金流连续为负，现金质量极差",
+      "现金储备不足（8.74亿）vs 短期借款高（36.94亿）",
+      "高股息不可持续（FCF覆盖率为负433%）",
+      "毛利率大幅下滑（从40%降至25.83%）"
+    ],
+    "管理人诚信评估": "存疑",
+    "最终建议": "回避",
+    "综合评分": 35,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "600064.SH",
+    "cutoff_date": "2021-06-30",
+    "blind_mode": true,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 508.8,
+    "chapters_completed": 6
+  }
+}
