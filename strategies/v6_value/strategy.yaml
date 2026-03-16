@@ -262,7 +262,7 @@ backtest:
   end_date: '2025-12-31'                # 回测结束截面
   cross_section_interval: 6m            # 截面间隔 (支持: 1m, 3m, 6m, 1y, 2w)
   top_n: 50                             # 每截面筛选候选数
-  agent_concurrency: 3                  # Agent 并发数 (受 LLM API 限流影响)
+  agent_concurrency: 10                  # Agent 并发数 (DeepSeek 不限并发)
   forward_periods:                      # 前向收益评估窗口
   - {months: 1, label: 1个月}
   - {months: 3, label: 3个月}

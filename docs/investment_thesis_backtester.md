@@ -216,14 +216,15 @@
 | 分析追踪 | SQLite 生命周期管理 | `src/engine/tracker.py` |
 | 策略调参 | Streamlit 4-tab 界面 | `src/web/app.py` |
 
-### 5.2 待实现
+### 5.2 已实现 & 待实现
 
-| 组件 | 说明 | 优先级 |
-|------|------|--------|
-| blind_batch.py | 批量盲测协调器（连通 Agent + 回测评分） | P0 |
-| Tracker 集成 | runtime.py 完成分析后写入 SQLite | P1 |
-| 多框架对比 | 同一样本池用不同策略回测 | P2 |
-| 多市场支持 | 港股/美股数据源接入 | P3 |
+| 组件 | 说明 | 状态 |
+|------|------|------|
+| pipeline.py 三步回测 | backtest-screen → backtest-agent → backtest-eval | ✅ 已实现 |
+| 五基准绩效评估 | 沪深300 + 筛选池 + Agent 多层 alpha | ✅ 已实现 |
+| Agent 稳定性 | LLM 重试/超时 + 增量/进度 | ✅ 已实现 |
+| 多框架对比 | 同一样本池用不同策略回测 | 待开发 |
+| 多市场支持 | 港股/美股数据源接入 | 待开发 |
 
 ## 六、风险与限制
 

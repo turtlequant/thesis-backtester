@@ -202,7 +202,7 @@ def step_agent(config: "StrategyConfig", max_retry: int = 1, dry_run: bool = Fal
         config.get_cross_section_interval(),
     )
     concurrency = config.get_agent_concurrency()
-    avg_minutes_per_stock = 6  # 经验值，用于估算耗时
+    avg_minutes_per_stock = 5  # 经验值，用于估算耗时
 
     # 收集所有待分析任务
     tasks = []  # [(ts_code, cutoff_date)]

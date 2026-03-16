@@ -81,7 +81,7 @@ class LLMClient:
         messages: List[Dict[str, Any]],
         tools: Optional[List[Dict[str, Any]]] = None,
         max_retries: int = 3,
-        timeout: float = 300,
+        timeout: float = 600,
     ) -> Any:
         """
         发送聊天请求（带重试和超时）
