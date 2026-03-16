@@ -46,45 +46,24 @@ Agent 买入      +8.1%    ← 端到端 alpha: +7.1pp
 
 ## 架构总览
 
-```mermaid
-graph TB
-    subgraph Strategy["策略实例 (strategy.yaml)"]
-        SC[筛选条件<br/>PE&lt;15, PB&gt;0, 股息率&gt;0]
-        CH[分析章节 × 6<br/>算子组合 + DAG 依赖]
-        SY[综合研判<br/>思考步骤 + 评分锚点 + 决策边界]
-        BT[回测参数<br/>截面间隔 + 前向周期]
-        LLM[LLM 配置<br/>模型 + 温度 + Token]
-    end
-
-    subgraph Engine["引擎层 (src/engine/)"]
-        CFG[StrategyConfig]
-        LAUNCH[Launcher CLI]
-        OPREG[OperatorRegistry<br/>21 个 .md 算子]
-        FREG[FactorRegistry<br/>截面 + 时序因子]
-    end
-
-    subgraph Core["核心模块"]
-        direction LR
-        SCREEN[Screener<br/>声明式量化筛选]
-        AGENT[Agent<br/>LLM 盲测分析]
-        PIPE[Backtest Pipeline<br/>screen → agent → eval]
-    end
-
-    subgraph Data["数据层 (src/data/)"]
-        PROV[Provider 抽象<br/>Tushare 实现]
-        STORE[Parquet 存储<br/>月分区 / zstd]
-        SNAP[时点快照<br/>并行 I/O + 时间边界]
-        API[查询 API<br/>只读接口]
-    end
-
-    Strategy --> CFG
-    CFG --> LAUNCH
-    OPREG --> AGENT
-    FREG --> SCREEN
-    LAUNCH --> SCREEN & AGENT & PIPE
-    SCREEN & AGENT & PIPE --> API
-    API --> SNAP & STORE
-    STORE --> PROV
+```
+strategy.yaml                    一站式配置：筛选 + 分析框架 + 评分体系 + LLM
+       │
+       ▼
+┌─── Engine ──────────────────────────────────────────────────────┐
+│  StrategyConfig · Launcher · OperatorRegistry · FactorRegistry  │
+└──────┬──────────────┬───────────────────┬───────────────────────┘
+       │              │                   │
+  ┌────▼────┐   ┌─────▼──────┐   ┌───────▼────────┐
+  │Screener │   │   Agent    │   │   Backtest      │
+  │量化筛选  │   │ 6章盲测分析 │   │  Pipeline       │
+  │         │   │ 21算子DAG  │   │ screen → agent  │
+  │ 因子评分 │   │ 三层评分   │   │   → eval        │
+  └────┬────┘   └─────┬──────┘   └───────┬────────┘
+       │              │                   │
+┌──────▼──────────────▼───────────────────▼───────────────────────┐
+│  Data Layer: Provider抽象 · Parquet存储 · 时点快照 · 查询API     │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
 ## Agent 分析流程
