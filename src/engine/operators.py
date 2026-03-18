@@ -127,12 +127,12 @@ class OperatorRegistry:
         """加载全局算子
 
         Args:
-            operators_dir: 指定算子目录（如 'operators/v1'），None 则使用默认 'operators/'
+            operators_dir: 指定算子目录（如 'operators/v1'），None 则使用默认 'operators/v2'
         """
         if operators_dir:
             global_dir = PROJECT_ROOT / operators_dir
         else:
-            global_dir = PROJECT_ROOT / "operators"
+            global_dir = PROJECT_ROOT / "operators" / "v2"
         self._load_dir(global_dir)
 
     def _load_strategy(self, strategy_dir: Path):

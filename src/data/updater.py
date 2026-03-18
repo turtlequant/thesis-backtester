@@ -452,16 +452,29 @@ class DataUpdater:
                 logger.warning(f"  {sub} 失败: {e}")
 
     def update_disclosure_date(self, end_date: Optional[str] = None) -> bool:
-        """更新财报披露日期 (全市场)"""
+        """更新财报披露日期 (全市场)，从 DATA_START_DATE 起所有季度"""
         if end_date:
             periods = [end_date]
         else:
+            # 生成从 DATA_START_DATE 年份到当前年份的所有季度
+            start_year = int(DATA_START_DATE[:4])
             now = datetime.now()
             periods = []
-            for year in [now.year, now.year - 1]:
-                for month in ['12-31', '09-30', '06-30', '03-31']:
-                    periods.append(f"{year}-{month}")
+            for year in range(start_year, now.year + 1):
+                for month in ['03-31', '06-30', '09-30', '12-31']:
+                    p = f"{year}-{month}"
+                    if p <= now.strftime('%Y-%m-%d'):
+                        periods.append(p)
             periods.sort()
+            # 跳过已有文件
+            from .settings import FINANCIAL_DATA_DIR
+            disc_dir = FINANCIAL_DATA_DIR / 'disclosure_date'
+            existing = {f.stem for f in disc_dir.glob('*.parquet')} if disc_dir.exists() else set()
+            periods = [p for p in periods if p.replace('-', '') not in existing]
+            if not periods:
+                print("  披露日期: 已全部获取")
+                return True
+            print(f"  需获取 {len(periods)} 个季度的披露日期")
 
         for period in periods:
             print(f"  披露日期 {period}...", end=' ')
