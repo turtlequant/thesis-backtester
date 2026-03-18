@@ -30,7 +30,7 @@
     │   - 线性归一化到 0-100
     │   - 加权求和得到 tier_score
     │
-    ▼ Step 5: 龟级分级 (_compute_tiers)
+    ▼ Step 5: 评级分级 (_compute_tiers)
     │   - 多条件 AND 匹配（如 PE≤8 且 PB≤0.8 且 DV≥7.0）
     │   - 从高到低匹配，首次命中即确定等级
     │
@@ -82,7 +82,8 @@ screening:
       full: 8.0
       zero: 2.0
 
-    # 4. 分级条件（从高到低依次匹配）
+    # 4. 分级条件（从高到低依次匹配，名称由策略自定义）
+    # 示例为 v6_value 策略，v6_enhanced 使用 S级/A级/B级
     tiers:
     - name: 金龟
       conditions:
