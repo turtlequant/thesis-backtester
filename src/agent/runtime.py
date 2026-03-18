@@ -412,6 +412,8 @@ async def run_blind_analysis(
     config: StrategyConfig,
     blind_mode: bool = True,
     output_dir: Optional[Path] = None,
+    on_progress: Optional[callable] = None,
+    snapshot: Optional["StockSnapshot"] = None,
 ) -> Dict[str, Any]:
     """
     执行完整的 Agent 盲测分析
@@ -422,6 +424,9 @@ async def run_blind_analysis(
         config: 策略配置
         blind_mode: 盲测模式
         output_dir: 输出目录（可选）
+        on_progress: 进度回调（可选），签名: (event, ch_id, data) -> None
+            event: "snapshot_done" | "chapter_start" | "chapter_done" | "synthesis_start" | "synthesis_done"
+        snapshot: 外部创建的 Snapshot（可选，live-analyze 传入，跳过内部创建）
 
     Returns:
         {
@@ -433,9 +438,20 @@ async def run_blind_analysis(
     """
     start_time = time.time()
 
-    # 1. 创建数据快照
-    logger.info(f"Creating snapshot: {ts_code} @ {cutoff_date}")
-    snapshot = create_snapshot(ts_code, cutoff_date)
+    def _progress(event, ch_id=None, data=None):
+        if on_progress:
+            try:
+                on_progress(event, ch_id, data)
+            except Exception:
+                pass  # 回调异常不影响主流程
+
+    # 1. 创建数据快照（或使用外部传入的）
+    if snapshot is None:
+        logger.info(f"Creating snapshot: {ts_code} @ {cutoff_date}")
+        snapshot = create_snapshot(ts_code, cutoff_date)
+    else:
+        logger.info(f"Using provided snapshot: {ts_code} @ {cutoff_date}")
+    _progress("snapshot_done", data={"data_sources": snapshot.data_sources})
 
     # 2. 创建沙箱和客户端
     sandbox = ToolSandbox(snapshot, blind_mode=blind_mode)
@@ -509,6 +525,8 @@ async def run_blind_analysis(
 
         # 并行执行同一批的章节
         async def _run_chapter(ch_id, sys_prompt, prior_ctx):
+            ch_def = chapter_def_map.get(ch_id, {})
+            _progress("chapter_start", ch_id, {"title": ch_def.get("title", ch_id)})
             logger.info(f"  Running chapter: {ch_id}")
             text, structured = await run_agent_loop(
                 client, sys_prompt, sandbox, prior_ctx
@@ -522,9 +540,11 @@ async def run_blind_analysis(
         for ch_id, text, structured in results:
             chapter_texts[ch_id] = text
             chapter_outputs[ch_id] = structured or {}
+            _progress("chapter_done", ch_id, structured or {})
             logger.info(f"  Completed: {ch_id} ({'structured' if structured else 'text only'})")
 
     # 5. 综合研判（传入完整分析文本，让 synthesis 看到推理过程和数据引用）
+    _progress("synthesis_start")
     logger.info("Running synthesis...")
     synthesis_prompt = build_synthesis_prompt(
         config, snapshot, chapter_outputs, blind_mode,
@@ -534,6 +554,7 @@ async def run_blind_analysis(
         client, synthesis_prompt, sandbox
     )
     chapter_texts["synthesis"] = synthesis_text
+    _progress("synthesis_done", data=synthesis_output or {})
 
     # 6. 保存结果
     elapsed = time.time() - start_time

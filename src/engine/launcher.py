@@ -331,8 +331,23 @@ def _cmd_live_analyze(config: StrategyConfig, args: list):
 
     # 2. Agent 分析
     print(f"\n[2/3] Agent 分析 ({'盲测' if blind_mode else '非盲测'})...")
+
+    def on_progress(event, ch_id=None, data=None):
+        if event == "chapter_start":
+            title = data.get("title", ch_id) if data else ch_id
+            print(f"  ▶ {ch_id}: {title}...")
+        elif event == "chapter_done":
+            print(f"  ✓ {ch_id} 完成")
+        elif event == "synthesis_start":
+            print(f"  ▶ 综合研判...")
+        elif event == "synthesis_done":
+            print(f"  ✓ 综合研判完成")
+
     result = asyncio.run(
-        run_blind_analysis(ts_code, cutoff_date, config, blind_mode, live_dir)
+        run_blind_analysis(
+            ts_code, cutoff_date, config, blind_mode, live_dir,
+            on_progress=on_progress, snapshot=snapshot,
+        )
     )
 
     # 3. 输出结果
