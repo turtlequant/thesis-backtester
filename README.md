@@ -1,150 +1,37 @@
 # Thesis Backtester — AI 驱动的投资分析框架
 
-> 策略配置 → 量化筛选 → LLM 多章深度分析 → 多基准回测验证
+> 用 Markdown 写分析方法论，引擎按 DAG 严格执行，LLM 逐步推理。
 
-**Thesis Backtester** 是一个开源引擎，用 LLM 驱动的盲测分析来回测*定性*投资思路。传统量化回测只能验证数值化规则（"PE<10 就买入"），而本工具验证的是真实投资者的判断：
+把投资分析方法论编码为可执行算子，按依赖关系编排成 DAG，LLM 逐章执行——后一步建立在前一步的结论之上。不是让 AI 自由发挥，是让 AI **按你的方法严格分析**。
 
-- "这个高股息能持续吗，还是在透支未来？"
-- "低 PE 是真便宜还是价值陷阱？"
-- "管理层是在创造价值还是做资本运作？"
-- "这个商业模式能撑过下行周期吗？"
+## 回测结果：+7.1pp Alpha
 
-## 回测结果：5 年 120 只股票盲测
+120 只股票 × 12 个半年截面 × 5 年（2020-2025），五基准对比：
 
-用价值投资策略（低PE + 低PB + 高股息 + AI 深度分析）在 **2020-2025 年 12 个半年截面、600 只候选中精选 120 只**做了完整验证。
-
-### 五基准绩效对比 (6 个月前向收益)
-
-| 基准 | 样本 | 平均收益 | 胜率 | vs 沪深300 |
-|------|------|---------|------|-----------|
+| 基准 | 样本 | 6m 收益 | 胜率 | vs 沪深300 |
+|------|------|--------|------|-----------|
 | 沪深300 | 12 | +0.9% | 42% | — |
 | 筛选池等权 | 600 | +4.0% | 53% | +3.0pp |
-| 筛选池 Top (金龟) | 56 | +4.0% | 57% | +3.0pp |
 | **Agent 买入** | **43** | **+8.1%** | **65%** | **+7.1pp** |
-| Agent Top5 | 60 | +6.7% | 65% | +5.7pp |
 
-### 累计收益曲线
-
-![Cumulative Return Chart](strategies/v6_value/backtest/backtest_chart_20260316_1448.png)
-
-### Alpha 分层
+![累计收益曲线](strategies/v6_value/backtest/backtest_chart_20260316_1448.png)
 
 ```
-沪深300        +0.9%    ← 全市场基准
-                 │ +3.0pp  ← 量化筛选 alpha
+沪深300        +0.9%
+                 │ +3.0pp  量化筛选 alpha
 筛选池等权      +4.0%
-                 │ +4.1pp  ← Agent 增量 alpha
-Agent 买入      +8.1%    ← 端到端 alpha: +7.1pp
+                 │ +4.1pp  Agent 增量 alpha
+Agent 买入      +8.1%    端到端 alpha: +7.1pp
 ```
 
-- **量化筛选有效**：低估值+高股息组合跑赢沪深300 3.0pp，胜率 53%
-- **Agent 有增量价值**：在筛选基础上再加 4.1pp，胜率从 53% 提升到 65%
-- **12 个月 alpha 更强**：Agent 买入 12m 均收益 +13.9%（vs 沪深300 +1.1%，alpha +12.8pp）
-- **回避信号有效**：Agent 回避的股票 73% 后续下跌
+**回避信号更强**：Agent 回避的股票 73% 后续下跌，排雷 alpha（-14.8pp）是选股 alpha（+6.4pp）的 2.3 倍。
 
-> 完整报告：[backtest_report](strategies/v6_value/backtest/backtest_report_20260316_1448.md) | 结构化数据：[backtest_summary](strategies/v6_value/backtest/backtest_summary_20260316_1448.json)
-
-## 架构总览
-
-```
-strategy.yaml                    一站式配置：筛选 + 分析框架 + 评分体系 + LLM
-       │
-       ▼
-┌─── Engine ──────────────────────────────────────────────────────┐
-│  StrategyConfig · Launcher · OperatorRegistry · FactorRegistry  │
-└──────┬──────────────┬───────────────────┬───────────────────────┘
-       │              │                   │
-  ┌────▼────┐   ┌─────▼──────┐   ┌───────▼────────┐
-  │Screener │   │   Agent    │   │   Backtest      │
-  │量化筛选  │   │ 6章盲测分析 │   │  Pipeline       │
-  │         │   │ 26算子DAG  │   │ screen → agent  │
-  │ 因子评分 │   │ 三层评分   │   │   → eval        │
-  └────┬────┘   └─────┬──────┘   └───────┬────────┘
-       │              │                   │
-┌──────▼──────────────▼───────────────────▼───────────────────────┐
-│  Data Layer: Provider抽象 · Parquet存储 · 时点快照 · 查询API     │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-## Agent 分析流程
-
-每只股票经过六章结构化分析，章节间有 DAG 依赖关系：
-
-```mermaid
-graph LR
-    CH1[Ch1 数据核查<br/>数据可信吗？]
-    CH2[Ch2 基本面<br/>什么类型的公司？]
-    CH3[Ch3 现金流<br/>利润是真金白银吗？]
-    CH4[Ch4 估值<br/>当前价格低估吗？]
-    CH5[Ch5 压力测试<br/>最坏情况如何？]
-    CH6[Ch6 投资决策<br/>怎么买卖？]
-    SYN[综合研判<br/>四步思考 → 评分 → 建议]
-
-    CH1 --> CH2 & CH3
-    CH2 --> CH3 & CH4
-    CH3 --> CH4 & CH5
-    CH4 --> CH5 & CH6
-    CH5 --> CH6
-    CH6 --> SYN
-
-    style SYN fill:#ff6b35,color:#fff
-    style CH1 fill:#4a90d9,color:#fff
-    style CH2 fill:#4a90d9,color:#fff
-    style CH3 fill:#4a90d9,color:#fff
-    style CH4 fill:#4a90d9,color:#fff
-    style CH5 fill:#4a90d9,color:#fff
-    style CH6 fill:#4a90d9,color:#fff
-```
-
-**盲测协议**：隐藏公司名称 → 消除 AI 品牌偏见和记忆污染
-
-**时间边界**：三层防护（数据层按公告日硬过滤 + Prompt 注入截止日期 + Agent 工具沙盒限制查询范围）
-
-**三层评分**：
-
-```mermaid
-graph LR
-    A[算子层 - 26 个算子<br/>解决 看什么] --> B[章节层 - 6 章 DAG<br/>解决 看的顺序]
-    B --> C[综合层<br/>思考步骤 + 评分锚点<br/>解决 怎么判断]
-    C --> D{评分 0-100}
-    D -->|≥ 70| BUY[买入]
-    D -->|30 - 69| WATCH[观望]
-    D -->|≤ 29| AVOID[回避]
-
-    style BUY fill:#4CAF50,color:#fff
-    style WATCH fill:#FF9800,color:#fff
-    style AVOID fill:#F44336,color:#fff
-```
-
-## 回测 Pipeline
-
-```
- Step 1: backtest-screen (秒级)        Step 2: backtest-agent (小时级)       Step 3: backtest-eval (分钟级)
-┌──────────────────────────┐      ┌──────────────────────────┐      ┌──────────────────────────┐
-│ strategy.yaml            │      │ 读取筛选 CSV             │      │ 读取 CSV + Agent 报告     │
-│   ↓                      │      │   ↓                      │      │   ↓                      │
-│ 生成截面日期 (月末对齐)    │ CSV  │ 并发 Agent 分析 (10路)   │ JSON │ 采集前向收益 (带缓存)     │
-│   ↓                      │ ───→ │   ↓                      │ ───→ │   ↓                      │
-│ 逐截面筛选 (50只/截面)    │      │ 进度 / 重试 / 增量跳过   │      │ 五基准绩效评估            │
-│   ↓                      │      │   ↓                      │      │   ↓                      │
-│ 保存 screen_*.csv        │      │ 保存 report.md + .json   │      │ 输出报告 + 收益曲线图     │
-└──────────────────────────┘      └──────────────────────────┘      └──────────────────────────┘
-```
-
-每步独立运行，可随时中断/续跑。Agent 自动跳过已完成的分析。
-
-```bash
-python -m src.engine.launcher strategies/v6_value/strategy.yaml backtest-screen   # 秒级
-python -m src.engine.launcher strategies/v6_value/strategy.yaml backtest-agent    # 小时级
-python -m src.engine.launcher strategies/v6_value/strategy.yaml backtest-eval     # 分钟级
-```
+> [完整报告](strategies/v6_value/backtest/backtest_report_20260316_1448.md) · [结构化数据](strategies/v6_value/backtest/backtest_summary_20260316_1448.json) · [120 份分析报告](strategies/v6_value/backtest/agent_reports/)
 
 ## 实时分析工作台
 
-支持单股实时深度分析（免费数据，无需 Tushare）：
-
 ```bash
-# CLI
+# 单股实时分析（免费数据，无需 Tushare）
 python -m src.engine.launcher strategies/v6_enhanced/strategy.yaml live-analyze 601288.SH
 
 # Web 工作台
@@ -163,117 +50,159 @@ streamlit run src/web/app.py
 
 </details>
 
-4 个预设分析框架：
+4 个预设框架：
 
 | 框架 | 章节 | 定位 |
 |------|------|------|
 | V6 价值投资 | 6 章 | 回测验证版（+7.1pp alpha） |
-| V6 增强分析 | 8 章 | 深度分析 + 前瞻风险 + 一致性裁决 |
+| **V6 增强分析** | **8 章** | **深度分析 + 前瞻风险 + 一致性裁决** |
 | 快速评估 | 3 章 | 10-15 分钟快速判断 |
 | 收息型分析 | 5 章 | 高股息可持续性专用 |
 
-## 关键设计
+## 核心设计
 
-| 设计 | 做法 | 为什么 |
-|------|------|--------|
-| **算子驱动** | 26 个 `.md` 算子，策略通过 YAML 组合 | 分析逻辑可复用、可组合、可独立演进 |
-| **盲测** | 隐藏公司名称和代码 | 消除 AI 品牌偏见和训练记忆污染 |
-| **时间边界** | 数据层按公告日过滤 + Prompt 注入 + 工具沙盒 | 三层防护杜绝前视偏差 |
-| **三层评分** | 思考步骤 → 评分锚点 → 决策边界 | 引导推理而非套公式，保留 LLM 判断力 |
-| **五基准对比** | 沪深300 + 筛选池 + 金龟 + Agent 买入 + Top5 | 分离量化 alpha 和 Agent 增量 alpha |
-| **策略即配置** | `strategy.yaml` 一站式定义 | 新投资理念无需写代码 |
-| **Provider 抽象** | 数据源通过 Protocol 解耦 | 换数据源只需实现接口 |
+**算子 DAG 编排 > 单次 Prompt**：每步结论传递给下一步，链式推理产出更好的结果。
+
+```
+strategy.yaml                    一站式配置：筛选 + 分析框架 + 评分体系 + LLM
+       │
+       ▼
+┌─── Engine ──────────────────────────────────────────────────────┐
+│  StrategyConfig · Launcher · OperatorRegistry · FactorRegistry  │
+└──────┬──────────────┬───────────────────┬───────────────────────┘
+       │              │                   │
+  ┌────▼────┐   ┌─────▼──────┐   ┌───────▼────────┐
+  │Screener │   │   Agent    │   │   Backtest      │
+  │量化筛选  │   │ 26算子DAG  │   │  Pipeline       │
+  │ 因子评分 │   │ 三层评分   │   │ screen → agent  │
+  └────┬────┘   └─────┬──────┘   │   → eval        │
+       │              │          └───────┬────────┘
+┌──────▼──────────────▼─────────────────▼───────────────────────┐
+│  Data Layer: Provider抽象 · Parquet存储 · 时点快照 · 查询API   │
+└───────────────────────────────────────────────────────────────┘
+```
+
+| 设计 | 做法 |
+|------|------|
+| **算子驱动** | 26 个 `.md` 算子，策略通过 YAML 组合，无需写代码 |
+| **盲测** | 隐藏公司名称，消除 AI 品牌偏见和记忆污染 |
+| **时间边界** | 数据层按公告日过滤 + Prompt 注入 + 工具沙盒，三层防护 |
+| **三层评分** | 思考步骤引导推理 → 评分锚点校准 → 决策边界强制一致 |
+| **五基准对比** | 沪深300 / 筛选池 / Top 评级 / Agent 买入 / Agent Top5 |
+
+<details>
+<summary>Agent 分析流程（DAG 依赖图）</summary>
+
+```mermaid
+graph LR
+    CH1[Ch1 数据核查<br/>数据可信吗？]
+    CH2[Ch2 基本面<br/>什么类型的公司？]
+    CH3[Ch3 现金流<br/>利润是真金白银吗？]
+    CH4[Ch4 估值<br/>当前价格低估吗？]
+    CH5[Ch5 压力测试<br/>最坏情况如何？]
+    CH6[Ch6 投资决策<br/>怎么买卖？]
+    SYN[综合研判<br/>思考步骤 → 评分 → 建议]
+
+    CH1 --> CH2 & CH3
+    CH2 --> CH3 & CH4
+    CH3 --> CH4 & CH5
+    CH4 --> CH5 & CH6
+    CH5 --> CH6
+    CH6 --> SYN
+
+    style SYN fill:#ff6b35,color:#fff
+    style CH1 fill:#4a90d9,color:#fff
+    style CH2 fill:#4a90d9,color:#fff
+    style CH3 fill:#4a90d9,color:#fff
+    style CH4 fill:#4a90d9,color:#fff
+    style CH5 fill:#4a90d9,color:#fff
+    style CH6 fill:#4a90d9,color:#fff
+```
+
+</details>
+
+<details>
+<summary>回测 Pipeline（三步独立）</summary>
+
+```bash
+python -m src.engine.launcher strategies/v6_value/strategy.yaml backtest-screen   # ① 筛选（秒级）
+python -m src.engine.launcher strategies/v6_value/strategy.yaml backtest-agent    # ② Agent（小时级）
+python -m src.engine.launcher strategies/v6_value/strategy.yaml backtest-eval     # ③ 评估（分钟级）
+```
+
+每步独立，可中断/续跑。Agent 自动跳过已完成的分析。
+
+</details>
 
 ## 快速开始
 
-### 环境
-
 ```bash
 pip install -e .
-export TUSHARE_TOKEN="your_token_here"  # Tushare Pro 账号
-export LLM_API_KEY="your_key_here"      # OpenAI 兼容 API
-export LLM_BASE_URL="https://api.deepseek.com"  # 推荐 DeepSeek
+export LLM_API_KEY="your_key"
+export LLM_BASE_URL="https://api.deepseek.com"
+
+# 实时分析（免费数据，无需 Tushare）
+python -m src.engine.launcher strategies/v6_enhanced/strategy.yaml live-analyze 601288.SH
+
+# 或启动 Web 工作台
+streamlit run src/web/app.py
 ```
 
-### 数据初始化
+<details>
+<summary>回测模式（需要 Tushare）</summary>
 
 ```bash
-python -m src.engine.launcher data init-basic              # 股票列表 + 交易日历
-python -m src.engine.launcher data init-market 2020-01-01  # 日线行情 + 指标 + 因子
-python -m src.engine.launcher data daily-update            # 日常增量更新
-```
+export TUSHARE_TOKEN="your_token"
 
-### 单次分析
+# 数据初始化
+python -m src.engine.launcher data init-basic
+python -m src.engine.launcher data init-market 2020-01-01
 
-```bash
 # 量化筛选
 python -m src.engine.launcher strategies/v6_value/strategy.yaml screen 2024-06-30
 
-# 单股 Agent 盲测分析
-python -m src.engine.launcher strategies/v6_value/strategy.yaml agent-analyze 601288.SH 2024-06-30
+# 回测 Pipeline
+python -m src.engine.launcher strategies/v6_value/strategy.yaml backtest-screen
+python -m src.engine.launcher strategies/v6_value/strategy.yaml backtest-agent
+python -m src.engine.launcher strategies/v6_value/strategy.yaml backtest-eval
 ```
 
-### 创建自己的策略
+</details>
+
+<details>
+<summary>创建自己的策略</summary>
 
 1. 创建 `strategies/<name>/strategy.yaml`（参考 [v6_value](strategies/v6_value/strategy.yaml) 的完整注释版）
-2. 在 `screening` 部分定义量化筛选条件
-3. 在 `framework.chapters` 部分组合已有算子（或在 `operators/` 创建新算子）
+2. 定义量化筛选条件（`screening`）
+3. 组合算子为章节（`framework.chapters`）
 4. 运行 `backtest-screen` → `backtest-agent` → `backtest-eval`
 
 无需编写代码，输出 Schema 从算子 `outputs` 字段自动生成。
 
-## 目录结构
+</details>
+
+<details>
+<summary>目录结构</summary>
 
 ```
 src/
 ├── engine/        # 引擎层：配置 + 启动器 + 注册表
-├── data/          # 数据层：Provider + Parquet + 快照
-│   └── tushare/   #   Tushare Provider 实现
-├── agent/         # Agent层：LLM盲测（DAG调度 + tool_use）
+├── data/          # 数据层：Provider + Parquet + 快照 + 免费爬虫
+├── agent/         # Agent层：LLM 分析（DAG调度 + tool_use）
 ├── screener/      # 筛选层：声明式量化筛选
 ├── backtest/      # 回测层：三步 Pipeline + 五基准评估
-└── web/           # Web层：Streamlit 工作台
+└── web/           # Web层：Streamlit 分析工作台
 
-factors/           # 量化因子定义（.py, 截面+时序）
-operators/         # 定性分析算子（.md, 26个）
-strategies/        # 策略实例
-└── v6_value/      #   V6 价值投资（含完整回测数据）
-    ├── strategy.yaml       # 配置（带完整注释）
-    └── backtest/           # 回测结果
-        ├── agent_reports/  #   120份 Agent 分析报告
-        ├── screen_results/ #   12个截面筛选 CSV
-        └── backtest_chart_*.png  # 收益曲线图
+operators/v1/      # 算子库 v1（21 个，冻结，绑定回测结果）
+operators/v2/      # 算子库 v2（26 个，含前瞻风险算子）
+strategies/        # 策略实例（4 个预设框架）
 ```
+
+</details>
 
 ## 文档
 
-- [整体架构](docs/design/architecture.md) — 系统分层与模块职责
-- [Agent 运行时](docs/design/agent.md) — DAG 调度、Prompt 组装、工具沙盒
-- [数据层](docs/design/data_layer.md) — Provider 抽象、Parquet 存储、时点快照
-- [算子与因子](docs/design/operators.md) — 26 个算子清单、自动 Schema、行业门控
-- [筛选层](docs/design/screener.md) — 声明式量化筛选引擎
-- [回测层](docs/design/backtest.md) — 三步 Pipeline、五基准评估
-- [评分设计](docs/design/scoring.md) — 三层评分哲学
-- [扩展计划](docs/scaling_plan.md) — 从 120 到 600+ 样本的路线图
-
-## 技术栈
-
-| 组件 | 技术选型 |
-|------|---------|
-| 语言 | Python 3.9+ |
-| 数据存储 | Parquet (zstd 压缩, 月/股票分区) |
-| LLM 接口 | OpenAI 兼容 API (async, tool_use) |
-| 数据源 | Tushare Pro API (Provider 抽象) |
-| Web | Streamlit |
-
-## 贡献
-
-项目早期阶段，欢迎参与：
-
-- **新策略实例** — 带上你自己的投资理念，创建 `strategy.yaml` 组合算子
-- **新分析算子** — 在 `operators/` 添加 `.md` 文件即可
-- **数据源适配** — 实现 `DataProvider` Protocol 接入港股/美股
-- **多模型对比** — DeepSeek/GPT/Gemini 横评
+- [架构](docs/design/architecture.md) · [Agent](docs/design/agent.md) · [数据层](docs/design/data_layer.md) · [算子](docs/design/operators.md) · [筛选](docs/design/screener.md) · [回测](docs/design/backtest.md) · [评分](docs/design/scoring.md) · [实时分析](docs/design/live_analysis.md)
 
 ## 许可证
 
@@ -281,7 +210,7 @@ Apache License 2.0
 
 ## 免责声明
 
-本工具仅用于**投资方法论研究与验证**，不构成投资建议。历史回测结果不代表未来表现。投资有风险，决策需谨慎。
+本工具仅用于**投资方法论研究与验证**，不构成投资建议。历史回测结果不代表未来表现。
 
 ---
 
