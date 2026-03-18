@@ -155,7 +155,7 @@ src/
 └── web/           # Web: Streamlit workbench
 
 factors/           # Quantitative factor definitions (.py)
-operators/         # Qualitative analysis operators (.md, 21 total)
+operators/         # Qualitative analysis operators (.md, 26 total)
 strategies/        # Strategy instances
 └── v6_value/      #   V6 Value Investing (with full backtest data)
     ├── strategy.yaml       # Config (fully annotated)
