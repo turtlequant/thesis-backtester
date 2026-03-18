@@ -141,6 +141,40 @@ def create_live_snapshot(
         if not df.empty:
             snapshot.data_sources.append(attr)
 
+    # ==================== 实时增强数据（回测没有的）====================
+
+    # 新闻
+    try:
+        snapshot.news = provider.fetch_news(ts_code, limit=15)
+        if not snapshot.news.empty:
+            snapshot.data_sources.append('news')
+    except Exception:
+        snapshot.news = pd.DataFrame()
+
+    # 主力资金流
+    try:
+        snapshot.fund_flow = provider.fetch_fund_flow(ts_code, days=30)
+        if not snapshot.fund_flow.empty:
+            snapshot.data_sources.append('fund_flow')
+    except Exception:
+        snapshot.fund_flow = pd.DataFrame()
+
+    # 大盘指数
+    try:
+        snapshot.index_daily = provider.fetch_index_daily('sh000300', days=60)
+        if not snapshot.index_daily.empty:
+            snapshot.data_sources.append('index_daily')
+    except Exception:
+        snapshot.index_daily = pd.DataFrame()
+
+    # 行业板块汇总
+    try:
+        snapshot.industry_summary = provider.fetch_industry_summary()
+        if not snapshot.industry_summary.empty:
+            snapshot.data_sources.append('industry_summary')
+    except Exception:
+        snapshot.industry_summary = pd.DataFrame()
+
     # ==================== 元数据 ====================
     if not snapshot.balancesheet.empty and 'end_date' in snapshot.balancesheet.columns:
         snapshot.latest_report_period = snapshot.balancesheet['end_date'].max()

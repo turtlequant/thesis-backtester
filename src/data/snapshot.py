@@ -66,6 +66,12 @@ class StockSnapshot:
     share_float: pd.DataFrame = field(default_factory=pd.DataFrame)
     repurchase: pd.DataFrame = field(default_factory=pd.DataFrame)
 
+    # 实时增强数据（live-analyze 专用，回测时为空）
+    news: pd.DataFrame = field(default_factory=pd.DataFrame)            # 最新新闻
+    fund_flow: pd.DataFrame = field(default_factory=pd.DataFrame)       # 主力资金流
+    index_daily: pd.DataFrame = field(default_factory=pd.DataFrame)     # 大盘指数行情
+    industry_summary: pd.DataFrame = field(default_factory=pd.DataFrame)# 行业板块汇总
+
     # 元数据
     latest_report_period: str = ''
     data_sources: List[str] = field(default_factory=list)
@@ -655,6 +661,70 @@ def _format_financial_table(
         lines.append(f"| {label} | " + " | ".join(row_vals) + " |")
 
     lines.append("")
+
+    # ==================== 实时增强数据（仅 live-analyze 时有）====================
+
+    # 最新新闻
+    if not snapshot.news.empty:
+        lines.append("## 最新新闻")
+        for _, row in snapshot.news.iterrows():
+            title = row.get('title', '')
+            dt = row.get('datetime', '')
+            source = row.get('source', '')
+            content = str(row.get('content', ''))[:200]
+            lines.append(f"- **{title}** ({source}, {dt})")
+            if content:
+                lines.append(f"  {content}")
+        lines.append("")
+
+    # 主力资金流向
+    if not snapshot.fund_flow.empty:
+        lines.append("## 近期主力资金流向")
+        lines.append("| 日期 | 收盘价 | 涨跌幅 | 主力净流入 | 主力净流入占比 |")
+        lines.append("|------|--------|--------|-----------|-------------|")
+        for _, row in snapshot.fund_flow.tail(10).iterrows():
+            date = row.get('trade_date', '')
+            close = row.get('close', 0)
+            pct = row.get('pct_chg', 0)
+            main_net = row.get('main_net_inflow', 0)
+            main_pct = row.get('main_net_inflow_pct', 0)
+            main_str = f"{main_net/1e8:.2f}亿" if abs(main_net) >= 1e4 else f"{main_net:.0f}"
+            lines.append(f"| {date} | {close} | {pct}% | {main_str} | {main_pct}% |")
+        lines.append("")
+
+    # 大盘走势
+    if not snapshot.index_daily.empty:
+        lines.append("## 大盘走势（沪深300）")
+        recent = snapshot.index_daily.tail(5)
+        lines.append("| 日期 | 收盘 | 涨跌幅 |")
+        lines.append("|------|------|--------|")
+        for _, row in recent.iterrows():
+            date = row.get('trade_date', '')
+            close = row.get('close', 0)
+            # 计算涨跌幅
+            lines.append(f"| {date} | {close:.2f} | |")
+        if len(snapshot.index_daily) >= 20:
+            d20 = snapshot.index_daily.iloc[-20]['close']
+            d_now = snapshot.index_daily.iloc[-1]['close']
+            chg_20d = (d_now - d20) / d20 * 100
+            lines.append(f"\n近20日涨跌: {chg_20d:+.1f}%")
+        lines.append("")
+
+    # 行业板块
+    if not snapshot.industry_summary.empty and snapshot.industry:
+        ind_name = snapshot.industry.replace('Ⅱ', '').replace('Ⅲ', '').strip()
+        matched = snapshot.industry_summary[
+            snapshot.industry_summary['industry'].str.contains(ind_name, na=False)
+        ]
+        if not matched.empty:
+            row = matched.iloc[0]
+            lines.append("## 所属行业板块今日表现")
+            lines.append(f"- 行业: {row.get('industry', '')}")
+            lines.append(f"- 涨跌幅: {row.get('pct_chg', '')}%")
+            lines.append(f"- 净流入: {row.get('net_inflow', '')}亿")
+            lines.append(f"- 上涨/下跌: {row.get('up_count', '')}/{row.get('down_count', '')}")
+            lines.append("")
+
     return "\n".join(lines)
 
 

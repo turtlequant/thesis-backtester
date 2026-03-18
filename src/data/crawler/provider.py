@@ -381,6 +381,115 @@ class CrawlerProvider:
             return pd.DataFrame()
         return df
 
+    # ==================== 实时增强数据（回测没有的）====================
+
+    def fetch_news(self, ts_code: str, limit: int = 20) -> pd.DataFrame:
+        """个股最新新闻（东方财富）"""
+        code = _ts_code_to_code(ts_code)
+        time.sleep(_CRAWL_SLEEP)
+        try:
+            df = self._ak.stock_news_em(symbol=code)
+            if df is None or df.empty:
+                return pd.DataFrame()
+            df = df.rename(columns={
+                '新闻标题': 'title',
+                '新闻内容': 'content',
+                '发布时间': 'datetime',
+                '文章来源': 'source',
+                '新闻链接': 'url',
+            })
+            return df.head(limit)
+        except Exception as e:
+            logger.debug(f"获取新闻失败 {ts_code}: {e}")
+            return pd.DataFrame()
+
+    def fetch_fund_flow(self, ts_code: str, days: int = 30) -> pd.DataFrame:
+        """主力资金流向（近 N 日）"""
+        code = _ts_code_to_code(ts_code)
+        market = 'sh' if ts_code.endswith('.SH') else 'sz'
+        time.sleep(_CRAWL_SLEEP)
+        try:
+            df = self._ak.stock_individual_fund_flow(stock=code, market=market)
+            if df is None or df.empty:
+                return pd.DataFrame()
+            df = df.rename(columns={
+                '日期': 'trade_date',
+                '收盘价': 'close',
+                '涨跌幅': 'pct_chg',
+                '主力净流入-净额': 'main_net_inflow',
+                '主力净流入-净占比': 'main_net_inflow_pct',
+                '超大单净流入-净额': 'xl_net_inflow',
+                '大单净流入-净额': 'lg_net_inflow',
+                '中单净流入-净额': 'md_net_inflow',
+                '小单净流入-净额': 'sm_net_inflow',
+            })
+            df['trade_date'] = pd.to_datetime(df['trade_date']).dt.strftime('%Y-%m-%d')
+            return df.tail(days)
+        except Exception as e:
+            logger.debug(f"获取资金流失败 {ts_code}: {e}")
+            return pd.DataFrame()
+
+    def fetch_index_daily(self, index_code: str = 'sh000300', days: int = 60) -> pd.DataFrame:
+        """大盘指数日线（新浪源，默认沪深300）"""
+        time.sleep(_CRAWL_SLEEP)
+        try:
+            df = self._ak.stock_zh_index_daily(symbol=index_code)
+            if df is None or df.empty:
+                return pd.DataFrame()
+            df = df.rename(columns={'date': 'trade_date'})
+            df['trade_date'] = pd.to_datetime(df['trade_date']).dt.strftime('%Y-%m-%d')
+            return df.tail(days)
+        except Exception as e:
+            logger.debug(f"获取指数行情失败 {index_code}: {e}")
+            return pd.DataFrame()
+
+    def fetch_industry_summary(self) -> pd.DataFrame:
+        """行业板块汇总（同花顺，含涨跌幅/资金流向）"""
+        time.sleep(_CRAWL_SLEEP)
+        try:
+            df = self._ak.stock_board_industry_summary_ths()
+            if df is None or df.empty:
+                return pd.DataFrame()
+            df = df.rename(columns={
+                '板块': 'industry',
+                '涨跌幅': 'pct_chg',
+                '总成交额': 'amount',
+                '净流入': 'net_inflow',
+                '上涨家数': 'up_count',
+                '下跌家数': 'down_count',
+            })
+            return df
+        except Exception as e:
+            logger.debug(f"获取行业汇总失败: {e}")
+            return pd.DataFrame()
+
+    def fetch_financial_summary_ths(self, ts_code: str) -> pd.DataFrame:
+        """同花顺财务摘要（ROE/净利润增长率等，适合行业横向对比）"""
+        code = _ts_code_to_code(ts_code)
+        time.sleep(_CRAWL_SLEEP)
+        try:
+            df = self._ak.stock_financial_abstract_ths(symbol=code, indicator='按报告期')
+            if df is None or df.empty:
+                return pd.DataFrame()
+            df = df.rename(columns={
+                '报告期': 'end_date',
+                '净利润': 'net_profit',
+                '净利润同比增长率': 'net_profit_yoy',
+                '营业总收入': 'revenue',
+                '营业总收入同比增长率': 'revenue_yoy',
+                '基本每股收益': 'eps',
+                '每股净资产': 'bps',
+                '每股经营现金流': 'cfps',
+                '净资产收益率': 'roe',
+                '资产负债率': 'debt_ratio',
+            })
+            df = _format_date_col(df, 'end_date')
+            df['ts_code'] = ts_code
+            return df
+        except Exception as e:
+            logger.debug(f"获取同花顺财务摘要失败 {ts_code}: {e}")
+            return pd.DataFrame()
+
     # ==================== 降级处理：返回空 DataFrame ====================
 
     def fetch_top10_floatholders(self, ts_code: str) -> pd.DataFrame:

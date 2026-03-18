@@ -309,7 +309,8 @@ def _cmd_live_analyze(config: StrategyConfig, args: list):
     raw_dir = live_dir / "raw_data"
     raw_dir.mkdir(exist_ok=True)
     for attr in ['price_history', 'balancesheet', 'income', 'cashflow',
-                 'fina_indicator', 'dividend', 'top10_holders']:
+                 'fina_indicator', 'dividend', 'top10_holders',
+                 'news', 'fund_flow', 'index_daily', 'industry_summary']:
         df = getattr(snapshot, attr, None)
         if df is not None and not df.empty:
             df.to_csv(raw_dir / f"{attr}.csv", index=False, encoding='utf-8-sig')
