@@ -20,14 +20,88 @@
 
 <!-- ======== Tab Bar ======== -->
 <nav class="tab-bar">
-  <button class="tab-btn active" data-tab="tab-operators">算子库</button>
+  <button class="tab-btn active" data-tab="tab-intro">介绍</button>
+  <button class="tab-btn" data-tab="tab-operators">算子库</button>
   <button class="tab-btn" data-tab="tab-strategies">分析框架</button>
   <button class="tab-btn" data-tab="tab-backtest">回测成果</button>
   <button class="tab-btn" data-tab="tab-contribute">参与贡献</button>
 </nav>
 
+<!-- ======== Tab: 介绍 ======== -->
+<section id="tab-intro" class="tab-panel active">
+
+  <div class="intro-hero">
+    <h2>把定性投资判断变成可回测对象</h2>
+    <p class="intro-subtitle">不是让 AI 推荐股票，而是让 AI 按专业研究框架逐步分析——然后用历史数据验证这套方法论是否有效。</p>
+  </div>
+
+  <div class="intro-grid">
+
+    <div class="intro-card">
+      <h3>🧩 什么是算子</h3>
+      <p>算子是分析的<strong>最小单元</strong>——每个算子定义一个分析视角，用 Markdown 编写，告诉 AI 看什么、怎么看、输出什么。</p>
+      <div class="intro-example">
+        <div class="intro-example-title">示例算子</div>
+        <div class="intro-example-items">
+          <span class="intro-tag">负债结构拆解</span>
+          <span class="intro-tag">PE 陷阱检测</span>
+          <span class="intro-tag">管理层诚信评估</span>
+          <span class="intro-tag">AI 冲击风险</span>
+        </div>
+      </div>
+      <p class="intro-link">→ 查看 <a href="#" onclick="switchTab('tab-operators');return false;">全部 37 个算子</a></p>
+    </div>
+
+    <div class="intro-card">
+      <h3>🔗 什么是分析框架</h3>
+      <p>框架把多个算子<strong>编排成有依赖关系的章节</strong>（DAG），后一步建立在前一步结论之上——不是一次性回答，是链式推理。</p>
+      <div class="intro-flow">
+        <span class="flow-node">数据核查</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-node">基本面</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-node">现金流</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-node">估值</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-node">压力测试</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-node highlight">综合研判</span>
+      </div>
+      <p class="intro-link">→ 查看 <a href="#" onclick="switchTab('tab-strategies');return false;">5 个预设框架</a></p>
+    </div>
+
+    <div class="intro-card">
+      <h3>🏭 行业适配</h3>
+      <p>不同行业用不同的分析方法——银行不看 FCF，制造业看产能周期，消费看品牌护城河。系统<strong>自动识别行业并路由到专用算子</strong>。</p>
+      <div class="intro-example">
+        <div class="intro-example-title">行业专用算子</div>
+        <div class="intro-example-items">
+          <span class="intro-tag bank">🏦 银行 × 4</span>
+          <span class="intro-tag mfg">🏭 制造 × 3</span>
+          <span class="intro-tag consumer">🍔 消费 × 2</span>
+          <span class="intro-tag tech">💻 科技 × 2</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="intro-card">
+      <h3>✅ 验证闭环</h3>
+      <p>不只是分析，还能<strong>回测验证</strong>——用历史数据证明分析方法论是否有效。这是和"直接问 AI"的根本区别。</p>
+      <div class="intro-stats">
+        <div><strong>+7.1pp</strong><br><span>Alpha vs 沪深300</span></div>
+        <div><strong>65%</strong><br><span>买入信号胜率</span></div>
+        <div><strong>73%</strong><br><span>回避信号准确率</span></div>
+      </div>
+      <p class="intro-link">→ 查看 <a href="#" onclick="switchTab('tab-backtest');return false;">完整回测结果</a></p>
+    </div>
+
+  </div>
+
+</section>
+
 <!-- ======== Tab: 算子库 ======== -->
-<section id="tab-operators" class="tab-panel active">
+<section id="tab-operators" class="tab-panel">
   <p style="padding:2rem;color:var(--text-muted);">Loading...</p>
 </section>
 

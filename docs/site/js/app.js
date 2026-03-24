@@ -35,16 +35,19 @@
   function initTabs() {
     const btns = document.querySelectorAll(".tab-btn");
     btns.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const target = btn.dataset.tab;
-        btns.forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-        document.querySelectorAll(".tab-panel").forEach((p) => {
-          p.classList.toggle("active", p.id === target);
-        });
-      });
+      btn.addEventListener("click", () => switchTab(btn.dataset.tab));
     });
   }
+
+  // Global tab switch (also called from intro page links)
+  window.switchTab = function(tabId) {
+    document.querySelectorAll(".tab-btn").forEach((b) => {
+      b.classList.toggle("active", b.dataset.tab === tabId);
+    });
+    document.querySelectorAll(".tab-panel").forEach((p) => {
+      p.classList.toggle("active", p.id === tabId);
+    });
+  };
 
   // ---- Load JSON data ----
   function loadData() {
@@ -173,11 +176,14 @@
     }
 
     // Gate
-    if (op.gate) {
-      const gateText = op.gate.only_industry
-        ? "仅限: " + op.gate.only_industry.join(", ")
-        : JSON.stringify(op.gate);
-      html += `<div class="gate-badge">${esc(gateText)}</div>`;
+    if (op.gate && Object.keys(op.gate).length) {
+      let gateText = "";
+      if (op.gate.only_industry) {
+        gateText = "仅限: " + op.gate.only_industry.join(", ");
+      } else if (op.gate.exclude_industry) {
+        gateText = "排除: " + op.gate.exclude_industry.join(", ");
+      }
+      if (gateText) html += `<div class="gate-badge">${esc(gateText)}</div>`;
     }
 
     // Expandable details
