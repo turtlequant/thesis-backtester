@@ -3,7 +3,7 @@ id: management_integrity
 name: 管理人诚信评估
 category: fundamental
 tags: [governance, risk, management]
-data_needed: [basic_info, balancesheet, income, cashflow, top10_holders, dividend, fina_indicator, fina_audit, pledge_stat, stk_holdertrade]
+data_needed: [balancesheet, income, cashflow, top10_holders, dividend, fina_indicator, fina_audit, pledge_stat, stk_holdertrade]
 outputs:
   - field: management_integrity
     type: str

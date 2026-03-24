@@ -4,6 +4,8 @@ name: 5年现金趋势分析
 category: fundamental
 tags: [fundamental, cashflow, trend]
 data_needed: [cashflow, balancesheet, income]
+gate:
+  exclude_industry: [银行, 保险, 证券, 多元金融]
 outputs:
   - field: cash_trend_5y
     type: str

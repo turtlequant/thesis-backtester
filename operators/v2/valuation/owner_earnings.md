@@ -2,26 +2,37 @@
 id: owner_earnings
 name: 巴菲特所有者收益计算
 category: valuation
-tags: [valuation, fcf, owner_earnings, buffett]
-data_needed: [income, cashflow, balancesheet]
+tags:
+- valuation
+- fcf
+- owner_earnings
+- buffett
+data_needed:
+- income
+- cashflow
+- balancesheet
 gate:
-  exclude_industry: [银行, 保险, 证券, 多元金融]
+  exclude_industry:
+  - 银行
+  - 保险
+  - 证券
+  - 多元金融
 outputs:
-  - field: owner_earnings
-    type: float
-    desc: 所有者收益(亿元)
-  - field: owner_earnings_formula
-    type: str
-    desc: 所有者收益计算公式明细
-  - field: fcf
-    type: float
-    desc: 自由现金流(亿元)
-  - field: maintenance_capex
-    type: float
-    desc: 维持性资本支出(亿元)
-  - field: owner_earnings_valid
-    type: bool
-    desc: 所有者收益计算是否有效(负值时为false)
+- field: owner_earnings
+  type: float
+  desc: 所有者收益(亿元)
+- field: owner_earnings_formula
+  type: str
+  desc: 所有者收益计算公式明细
+- field: fcf
+  type: float
+  desc: 自由现金流(亿元)
+- field: maintenance_capex
+  type: float
+  desc: 维持性资本支出(亿元)
+- field: owner_earnings_valid
+  type: bool
+  desc: 所有者收益计算是否有效(负值时为false)
 ---
 
 ## 巴菲特所有者收益(Owner Earnings)计算

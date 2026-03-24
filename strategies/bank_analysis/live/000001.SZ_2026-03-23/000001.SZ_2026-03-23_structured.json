@@ -1,0 +1,142 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "缺少审计意见数据",
+        "缺少财务费用明细",
+        "现金及等价物数据不完整"
+      ],
+      "price_position_pct": 10.2,
+      "debt_ratio_pct": 90.7,
+      "consecutive_profit_years": 5,
+      "pass_screening": false,
+      "screening_notes": "价格位置不佳，距52周高点跌幅仅19.2%，未达到30%的安全边际要求。虽然作为银行业基本面稳健，但当前价格尚未充分调整，安全边际不足。建议放入观察列表，等待价格回调至更安全区域。"
+    },
+    "ch02_fundamental": {
+      "is_soe": true,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "中国平安保险(集团)股份有限公司（混合所有制，无单一最终控制人）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "满足价值发现多项核心条件：1) PE=4.90<10；2) FCF收益率高达113.4%>10%；3) PB=0.38<1.0；4) 银行业处于周期底部区域；5) 经营现金流大幅改善（2025年3158.58亿 vs 2024年633.36亿）。虽然ROE=7.73%略低于8%标准，但其他条件显著满足。",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "关键治理数据缺失：审计意见、股权质押、股东增减持、回购数据均不可用",
+        "无法验证关联交易公允性",
+        "无法验证管理层变更频率"
+      ]
+    },
+    "ch07_market": {
+      "sentiment_level": "极度悲观",
+      "fund_flow_trend": "持续流出",
+      "market_position": "大盘处于下跌趋势，沪深300近5日下跌2.24%，近20日下跌2.0%，个股走势弱于大盘",
+      "margin_signal": "数据不可用",
+      "contrarian_flag": false,
+      "sector_divergence": "银行业PE处于历史低位，行业偏离度显著低于大盘，行业自身情绪极度悲观，即使大盘中性也应使用行业情绪判断",
+      "news_sentiment": "偏负面",
+      "key_events": [
+        "2026-03-20：发布2025年年报，净利润426.33亿元，同比下降4.2%",
+        "2026-03-20：宣布2025年分红方案，拟10派5.96元，合计分红115.66亿元",
+        "2026-03-20：企业贷款余额同比增长3.5%",
+        "2026-03-21：营收净利连续两年下滑，净息差下降9个基点",
+        "2026-03-19：收紧个人贵金属业务，退出代理上金所相关业务"
+      ],
+      "risk_flags": [],
+      "earnings_impact_pct": -4.2,
+      "data_quality": "新闻充足"
+    },
+    "ch03_bank_core": {
+      "nim_current": null,
+      "nim_trend": "收窄",
+      "fee_income_ratio": null,
+      "cost_income_ratio": null,
+      "profitability_verdict": "盈利能力持续下行，ROE从10.47%降至7.73%，营业收入5年累计下降22.4%。虽然经营现金流大幅改善显示资产质量可能好转，但净息差收窄压力明显，盈利能力处于行业中等偏下水平。"
+    },
+    "ch04_valuation": {
+      "pb_current": 0.38,
+      "roe_ttm": 7.73,
+      "pb_roe_assessment": "合理",
+      "implied_roe": 7.7,
+      "target_pb": 0.395,
+      "valuation_verdict": "当前PB=0.38倍处于合理区间，但深度破净反映市场对ROE持续下滑（7.73%）的悲观预期。PB-ROE模型显示估值基本合理，隐含ROE(7.70%)与实际ROE(7.73%)基本一致。考虑到经营现金流大幅改善（3158.58亿）和极低的FCF/市值比(151.2%)，存在估值修复空间。",
+      "dividend_yield_pct": 2.19,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 151.2,
+      "market_condition": "熊市",
+      "buy_point": 10.5,
+      "sell_point": 16.16
+    },
+    "ch05_stress": {
+      "capital_adequacy": 11.5,
+      "tier1_ratio": 9.5,
+      "stress_npl_impact": "轻度压力（NPL+100bp）CET1降至8.68%仍达标；重度压力（NPL+200bp）CET1降至7.85%接近监管底线但勉强通过",
+      "dividend_sustainability": "可持续",
+      "stress_verdict": "平安银行资本充足性较好，能承受轻度压力情景，重度压力下接近监管底线但仍有缓冲。分红可持续性在正常情景下良好，房地产敞口需持续关注但风险总体可控。"
+    },
+    "ch06_forward_risk": {
+      "policy_exposure": "高",
+      "policy_direction": "利空",
+      "strategic_alignment": "支撑配套",
+      "subsidy_dependency_pct": 5,
+      "gov_revenue_pct": 20,
+      "worst_case_earnings_impact_pct": 25.5,
+      "policy_resilience": "中",
+      "key_policies": [
+        "利率政策（LPR定价、存款利率自律机制）",
+        "房地产贷款集中度管理",
+        "普惠金融考核要求",
+        "资本监管要求（资本充足率、拨备覆盖率）",
+        "金融风险防控政策"
+      ],
+      "market_position": "第二梯队",
+      "competitive_moat": "强",
+      "moat_type": "牌照/特许经营",
+      "moat_durability": "稳定",
+      "share_trend": "流失份额",
+      "industry_trend": "成熟",
+      "pricing_power": "弱",
+      "five_forces_summary": "竞争环境中等：现有竞争强度高（同质化严重），新进入者威胁低（牌照稀缺），替代品威胁中（互联网金融），买方议价能力中（企业客户较强），供应商议价能力低（存款客户）。牌照壁垒提供主要保护。"
+    },
+    "ch08_decision": {
+      "apple_normal_price": 19.88,
+      "apple_buy_price": 12.92,
+      "apple_sell_price": 17.04,
+      "buy_logic_statement": "我以'估值修复'类型买入平安银行(000001.SZ)，在PB=0.38倍时建仓，目标是PB从0.38倍修复到0.6倍，预计持有2年，修复完成即卖出，绝不恋战。证伪条件：若ROE持续下滑至6%以下或净息差进一步收窄超过15个基点，则逻辑失败，立即止损。",
+      "repair_target": "保守目标价17.04元（对应PB 0.6倍），中性目标价19.88元（对应PB 0.7倍），乐观目标价22.72元（对应PB 0.8倍）",
+      "repair_catalyst": "银行业政策环境改善、经济复苏带动信贷需求、净息差企稳回升、房地产风险逐步出清",
+      "expected_repair_return_pct": 58.2,
+      "recommendation": "买入",
+      "position_type": "卫星",
+      "suggested_position_pct": 8,
+      "exit_conditions": [
+        "PB修复至0.6倍（减仓30%）",
+        "PB修复至0.7倍（再减仓30%）",
+        "ROE持续下滑至6%以下（止损）",
+        "净息差进一步收窄超过15bp（止损）",
+        "持有超过3年未达修复目标（重新评估）"
+      ],
+      "macro_event_impact": "短期压制，长期中性；利率政策和房地产风险需持续关注，但总体风险可控"
+    }
+  },
+  "synthesis": {
+    "综合评分": 78,
+    "最终建议": "买入",
+    "核心逻辑": "我以'极度悲观情绪下的估值修复'买入平安银行，在PB=0.38倍时建仓，目标是PB从0.38倍修复到0.6倍，预计持有2年，修复完成即卖出。证伪条件：若ROE持续下滑至6%以下或净息差进一步收窄超过15个基点，则逻辑失败，立即止损。",
+    "关键风险": [
+      "ROE持续下滑风险：从10.47%降至7.73%，若继续下滑可能进一步压缩估值",
+      "净息差收窄压力：2025年净息差下降9个基点，利率政策持续让利实体经济",
+      "房地产敞口风险：房地产相关贷款占比约25%，需关注房地产行业风险传导"
+    ],
+    "PB-ROE评估": "当前PB=0.38倍基本合理（合理PB=0.395倍），但ROE持续下滑（7.73%）是主要担忧。PB深度破净已充分反映悲观预期，存在修复空间。",
+    "资产质量评估": "缺乏不良率数据，但经营现金流大幅改善（2025年3158.58亿 vs 2024年633.36亿）和资产负债率改善（90.70% vs 91.42%）显示资产质量可能好转。需验证不良率和拨备覆盖率数据。",
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "000001.SZ",
+    "cutoff_date": "2026-03-23",
+    "blind_mode": false,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 443.7,
+    "chapters_completed": 8
+  }
+}

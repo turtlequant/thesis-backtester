@@ -3,7 +3,7 @@ name = "thesis-backtester"
 version = "0.2.0"
 description = "AI-powered investment analysis framework with structured operator composition and multi-baseline backtesting"
 requires-python = ">=3.9"
-license = {text = "Apache-2.0"}
+license = "AGPL-3.0-or-later"
 readme = "README.md"
 keywords = ["investment", "backtest", "llm", "ai", "analysis", "operator", "dag"]
 classifiers = [

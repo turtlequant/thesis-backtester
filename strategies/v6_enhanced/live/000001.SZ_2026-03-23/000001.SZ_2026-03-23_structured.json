@@ -1,0 +1,175 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "审计意见数据缺失，但基于大型银行特性推断为标准无保留"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "中国内地注册商业银行，主要资产和业务集中在中国内地，无海外高风险区域敞口",
+      "geo_excluded": false,
+      "price_position_pct": 10.2,
+      "debt_ratio_pct": 90.7,
+      "consecutive_profit_years": 5,
+      "pass_screening": false,
+      "screening_notes": "价格位置不佳，距52周高点跌幅仅19.2%，未达到30%的安全边际要求。虽然基本面稳健且地缘政治风险极低，但当前价格安全边际不足，建议放入观察列表等待更好价格。"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "混合所有制",
+      "controlling_shareholder": "中国平安保险（集团）股份有限公司",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "PE仅4.90倍，PB仅0.38倍，处于历史极低估值水平；银行业处于利率下行周期底部；经营现金流大幅改善；ROE虽略低于8%但考虑到银行业特性仍属合理，满足价值发现流派的多项核心条件。",
+      "interest_bearing_debt": 5445.34,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "可接受",
+      "is_cyclical": true,
+      "cycle_position": "底部",
+      "cycle_debt_tolerance": "高",
+      "reversal_signal": "可能见底",
+      "cycle_reasoning": "银行业处于利率下行和经济放缓周期底部，营收连续三年下降反映周期压力，但经营现金流大幅改善、应付债券减少显示主动去杠杆，满足周期底部容忍高负债的4项条件。",
+      "management_integrity": "可信",
+      "integrity_red_flags": []
+    },
+    "ch07_market": {
+      "sentiment_level": "极度悲观",
+      "fund_flow_trend": "流出转流入",
+      "market_position": "大盘处于下跌趋势，沪深300近5日跌2.24%，近20日跌2.0%，个股与大盘同步下跌",
+      "margin_signal": "数据不可用",
+      "contrarian_flag": true,
+      "sector_divergence": "银行行业整体被低估，PE百分位约20-30%，显著低于大盘估值水平，存在行业α机会，应使用行业自身百分位判定情绪",
+      "news_sentiment": "中性",
+      "key_events": [
+        "2026-03-20: 发布2025年年报，营收1314.42亿元（-10.4%），净利润426.33亿元（-4.2%）",
+        "2026-03-20: 宣布高分红方案，10派5.96元，合计分红115.66亿元，分红比例28.83%",
+        "2026-03-19: 平安银行收紧个人贵金属业务，退出代理上金所个人贵金属业务"
+      ],
+      "risk_flags": [],
+      "earnings_impact_pct": -4.2,
+      "data_quality": "新闻充足"
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动稳定",
+      "latest_cash_balance": 0,
+      "fcf_trend": "正且增长",
+      "cash_to_profit_ratio": 7.41,
+      "cash_trend_signal": "拐点",
+      "reported_profit": 426.33,
+      "non_cash_adjustments": 0,
+      "adjusted_profit": 426.33,
+      "owner_earnings": 255.8,
+      "owner_earnings_formula": "金融行业替代方法：净利润426.33亿元 × 可分配比例60% = 255.80亿元",
+      "fcf": 0,
+      "maintenance_capex": 0,
+      "owner_earnings_valid": true
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "银行行业PE估值无效，净利润被利息支出、拨备计提等严重扭曲"
+      ],
+      "valuation_method": "PB-ROE估值 + 股息率",
+      "net_cash": 0,
+      "ev": 2090,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 19.88,
+      "topdown_return_pct": 2.19,
+      "valuation_crosscheck": "不适用（金融行业）",
+      "dividend_yield_pct": 2.19,
+      "dividend_sustainable": true,
+      "safety_margin_pct": 46,
+      "market_condition": "熊市",
+      "buy_point": 12.0,
+      "sell_point": 20.0
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 310.79,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "安全边际不足",
+      "is_cigar_butt": false,
+      "liquidation_value": 0,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 85
+    },
+    "ch06_forward_risk": {
+      "policy_exposure": "高",
+      "policy_direction": "利空",
+      "strategic_alignment": "支撑配套",
+      "subsidy_dependency_pct": 0.5,
+      "gov_revenue_pct": 20,
+      "worst_case_earnings_impact_pct": 45,
+      "policy_resilience": "中",
+      "key_policies": [
+        "利率政策",
+        "资本充足率监管",
+        "房地产信贷政策",
+        "普惠金融要求",
+        "金融让利实体经济政策"
+      ],
+      "disruption_level": "低",
+      "revenue_at_risk_pct": 18,
+      "disruption_timeline": "1-2年内",
+      "transfer_capability": "AI增强产品已部署",
+      "ai_opportunity": "AI可提升风控效率、降低运营成本、开发智能投顾产品",
+      "second_order_risk": "客户企业被AI冲击可能减少融资需求，但AI发展也可能创造新的金融需求",
+      "market_position": "第二梯队",
+      "competitive_moat": "强",
+      "moat_type": "牌照护城河+规模护城河",
+      "moat_durability": "稳定",
+      "share_trend": "稳定",
+      "industry_trend": "成熟",
+      "pricing_power": "弱",
+      "five_forces_summary": "现有竞争强度中高、新进入者威胁低、替代品威胁中、买方议价能力中、供应商议价能力低；综合竞争环境中等，牌照保护性强但同业竞争激烈"
+    },
+    "ch08_decision": {
+      "apple_normal_price": 19.88,
+      "apple_buy_price": 11.92,
+      "apple_sell_price": 17.04,
+      "buy_logic_statement": "我以'PB-ROE修复'逻辑买入平安银行，在PB=0.38倍（股价10.77元）时建仓，目标是PB从0.38倍修复到0.6倍（对应股价17.04元），预计持有1-2年，修复完成即卖出，绝不恋战。证伪条件：若ROE持续下降至5%以下或不良贷款率大幅上升超过2%，则逻辑失败，立即止损。",
+      "repair_target": "保守目标14.20元（PB 0.5倍，上行31.8%），中性目标17.04元（PB 0.6倍，上行58.2%），乐观目标22.72元（PB 0.8倍，上行110.9%）",
+      "repair_catalyst": "1) 利率政策边际放松；2) 房地产风险出清；3) 经济复苏带动信贷需求；4) 高分红吸引价值投资者；5) 行业估值修复轮动",
+      "expected_repair_return_pct": 58.2,
+      "recommendation": "买入",
+      "position_type": "卫星",
+      "suggested_position_pct": 5.0,
+      "exit_conditions": [
+        "PB修复至0.6倍（17.04元）减仓50%",
+        "PB修复至0.8倍（22.72元）再减仓30%",
+        "涨幅透支5年股息（累计涨幅>11%）清仓退出",
+        "ROE持续下降至5%以下止损退出",
+        "不良贷款率大幅上升超过2%止损退出"
+      ],
+      "macro_event_impact": "短期压制但长期趋势不变，当前下跌提供加仓机会"
+    }
+  },
+  "synthesis": {
+    "流派判定": "价值发现",
+    "筛选评级": "B级",
+    "核心估值指标": "PB=0.38倍，安全边际46%",
+    "苹果买卖模型": "正常价19.88元，买入价11.92元，卖出价17.04元",
+    "一句话买入逻辑": "我以'PB-ROE修复'逻辑在PB=0.38倍（股价10.45元）时买入平安银行，目标是PB从0.38倍修复到0.6倍（对应股价17.04元），预计持有1-2年，修复完成即卖出。证伪条件：若ROE持续下降至5%以下或不良贷款率大幅上升超过2%，则逻辑失败，立即止损。",
+    "关键风险": [
+      "政策风险高：银行业'降息让利'政策持续压制，净息差持续收窄",
+      "业绩下滑：营收连续三年下降（2023-2025年：1646.99亿→1466.95亿→1314.42亿），净利润同比下降4.2%",
+      "经济下行风险：若经济持续低迷，资产质量可能恶化，不良贷款率可能上升",
+      "周期不确定性：银行业周期底部持续时间不确定，估值修复催化剂不明确",
+      "价值发现流派胜率低：历史回测显示12个月胜率仅47%"
+    ],
+    "前瞻风险评估": "政策风险高（降息让利政策持续压制），AI冲击风险低（监管壁垒高），行业趋势成熟期（营收增速放缓，竞争格局稳定）",
+    "一致性检查": "存在矛盾（Ch01排除与Ch08买入建议矛盾，但价格位置已改善可部分调和）",
+    "管理人诚信评估": "可信",
+    "最终建议": "观望",
+    "综合评分": 68,
+    "信心水平": "中"
+  },
+  "metadata": {
+    "ts_code": "000001.SZ",
+    "cutoff_date": "2026-03-23",
+    "blind_mode": false,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 482.0,
+    "chapters_completed": 8
+  }
+}

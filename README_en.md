@@ -50,23 +50,24 @@ Risk avoidance alpha (-14.8pp) vs stock selection alpha (+6.4pp)
 # ① Analyze a single stock (free public data)
 python -m src.engine.launcher strategies/v6_enhanced/strategy.yaml live-analyze 601288.SH
 
-# ② Or launch the web workbench
-streamlit run src/web/app.py
+# ② Or launch the desktop analysis workbench
+python src/desktop/main.py
 ```
 
-![Analysis Workbench](docs/app_image/01_home.png)
+![Analysis Workbench](docs/app_image/分析界面.png)
 
 <details>
-<summary>View analysis process screenshots</summary>
+<summary>View more screenshots</summary>
 
-![Data Fetching](docs/app_image/02_data_fetching.png)
-![Chapter Progress](docs/app_image/03_chapter_progress.png)
-![Analysis Running](docs/app_image/04_analysis_running.png)
-![Results](docs/app_image/05_result.png)
+![Reports](docs/app_image/报告.png)
+![Operators](docs/app_image/算子.png)
+![Frameworks](docs/app_image/编排.png)
+![Data Sources](docs/app_image/数据.png)
+![Settings](docs/app_image/设置.png)
 
 </details>
 
-4 preset frameworks:
+5 preset frameworks:
 
 | Framework | Chapters | Focus |
 |-----------|----------|-------|
@@ -74,6 +75,7 @@ streamlit run src/web/app.py
 | **V6 Enhanced** | **8** | **Deep analysis + forward risk + consistency ruling** |
 | Quick Scan | 3 | 10-15 min fast assessment |
 | Income Focus | 5 | Dividend sustainability |
+| Bank Analysis | 6 | Bank-specific operators + industry metrics |
 
 ## Why This Is Not Just Another AI Stock Analyzer
 
@@ -93,7 +95,7 @@ strategy.yaml                    All-in-one config: screening + framework + scor
        │              │                   │
   ┌────▼────┐   ┌─────▼──────┐   ┌───────▼────────┐
   │Screener │   │   Agent    │   │   Backtest      │
-  │         │   │ 26 ops DAG │   │  Pipeline       │
+  │         │   │ 37 ops DAG │   │  Pipeline       │
   │         │   │ 3-layer    │   │ screen → agent  │
   └────┬────┘   │ scoring    │   │   → eval        │
        │        └─────┬──────┘   └───────┬────────┘
@@ -104,7 +106,7 @@ strategy.yaml                    All-in-one config: screening + framework + scor
 
 | Design | Approach |
 |--------|----------|
-| **Operator-driven** | 26 `.md` operators, strategies compose via YAML, no code needed |
+| **Operator-driven** | 37 `.md` operators, strategies compose via YAML, no code needed |
 | **Blind testing** | Company names hidden to eliminate AI brand bias |
 | **Time boundary** | Data layer filtering + prompt injection + tool sandbox |
 | **3-layer scoring** | Thinking steps → scoring rubric → decision thresholds |
@@ -199,11 +201,11 @@ src/
 ├── agent/         # Agent: LLM analysis (DAG scheduling + tool_use)
 ├── screener/      # Screener: declarative quantitative filtering
 ├── backtest/      # Backtest: 3-step pipeline + 5-baseline eval
-└── web/           # Web: Streamlit analysis workbench
+└── desktop/       # Desktop: FastAPI + Vue 3 analysis workbench
 
 operators/v1/      # Operator library v1 (21, frozen, tied to backtest results)
-operators/v2/      # Operator library v2 (26, including forward risk operators)
-strategies/        # Strategy instances (4 presets)
+operators/v2/      # Operator library v2 (37, including forward risk + industry-specific operators)
+strategies/        # Strategy instances (5 presets + custom)
 ```
 
 </details>
@@ -241,7 +243,7 @@ The most thoroughly validated case is V6 Value Investing; other preset framework
 
 ## License
 
-Apache License 2.0
+AGPL-3.0 License
 
 ## Disclaimer
 

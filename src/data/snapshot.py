@@ -357,10 +357,62 @@ def snapshot_to_markdown(snapshot: StockSnapshot, blind_mode: bool = False) -> s
                 else:
                     lines.append(f"- {label}: {val:.2f}")
         lines.append("")
+    elif not snapshot.price_history.empty and not snapshot.fina_indicator.empty:
+        # 降级：从最新价和财务指标推算基础估值
+        lines.append("## 估值指标（推算值）")
+        try:
+            latest_price = snapshot.price_history.iloc[-1]
+            price = float(latest_price.get('收盘', latest_price.get('close', 0)))
+
+            # 取最新一期财务指标（按日期降序排）
+            fi_sorted = snapshot.fina_indicator.copy()
+            date_col = 'end_date' if 'end_date' in fi_sorted.columns else fi_sorted.columns[0]
+            fi_sorted = fi_sorted.sort_values(date_col, ascending=False)
+            fi = fi_sorted.iloc[0]
+
+            # 取年报 EPS（TTM 近似）—— 优先找年报，否则用最新期
+            annual = fi_sorted[fi_sorted[date_col].astype(str).str.endswith(('12-31', '1231'))]
+            if not annual.empty:
+                fi_annual = annual.iloc[0]
+                eps = float(fi_annual.get('eps', fi_annual.get('摊薄每股收益(元)', 0)) or 0)
+            else:
+                eps = float(fi.get('eps', fi.get('摊薄每股收益(元)', 0)) or 0)
+
+            bps = float(fi.get('bps', fi.get('每股净资产_调整前(元)', 0)) or 0)
+            roe = fi.get('roe', fi.get('净资产收益率(%)', None))
+
+            if price > 0 and eps > 0:
+                lines.append(f"- PE(推算,基于年报EPS): {price/eps:.2f}")
+            if price > 0 and bps > 0:
+                lines.append(f"- PB(推算): {price/bps:.2f}")
+            if roe is not None and pd.notna(roe):
+                lines.append(f"- ROE(最新期): {float(roe):.2f}%")
+
+            # 股息率：从分红数据推算
+            # cash_div_tax 是"每10股派息(元)"，需要除以10
+            if not snapshot.dividend.empty and price > 0:
+                cash_col = 'cash_div' if 'cash_div' in snapshot.dividend.columns else 'cash_div_tax'
+                if cash_col in snapshot.dividend.columns:
+                    # 取最近一个已实施的分红
+                    div_df = snapshot.dividend.copy()
+                    if 'div_proc' in div_df.columns:
+                        impl = div_df[div_df['div_proc'].astype(str).str.contains('实施')]
+                        if not impl.empty:
+                            div_df = impl
+                    latest_div_raw = float(div_df.iloc[0].get(cash_col, 0) or 0)
+                    # cash_div 是每股，cash_div_tax 是每10股
+                    per_share = latest_div_raw / 10 if cash_col == 'cash_div_tax' else latest_div_raw
+                    if per_share > 0:
+                        lines.append(f"- 最近每股派息: {per_share:.4f} 元")
+                        lines.append(f"- 股息率(推算): {per_share/price*100:.2f}%")
+            lines.append("_注：以上为基于最新财报和收盘价的推算值，非实时行情指标_")
+        except Exception:
+            pass
+        lines.append("")
 
     # 财报数据
     if not snapshot.balancesheet.empty:
-        lines.append("## 资产负债表（最近报告期）")
+        lines.append("## 资产负债表")
         lines.append(_format_financial_table(
             snapshot.balancesheet,
             key_cols=[
@@ -371,11 +423,10 @@ def snapshot_to_markdown(snapshot: StockSnapshot, blind_mode: bool = False) -> s
                 ('lt_borr', '长期借款'), ('st_borr', '短期借款'),
                 ('bond_payable', '应付债券'),
             ],
-            n_periods=4,
         ))
 
     if not snapshot.income.empty:
-        lines.append("## 利润表（最近报告期）")
+        lines.append("## 利润表")
         lines.append(_format_financial_table(
             snapshot.income,
             key_cols=[
@@ -385,11 +436,10 @@ def snapshot_to_markdown(snapshot: StockSnapshot, blind_mode: bool = False) -> s
                 ('basic_eps', '基本每股收益'),
                 ('finance_exp', '财务费用'), ('impair_ttl_am', '资产减值损失'),
             ],
-            n_periods=4,
         ))
 
     if not snapshot.cashflow.empty:
-        lines.append("## 现金流量表（最近报告期）")
+        lines.append("## 现金流量表")
         lines.append(_format_financial_table(
             snapshot.cashflow,
             key_cols=[
@@ -399,7 +449,6 @@ def snapshot_to_markdown(snapshot: StockSnapshot, blind_mode: bool = False) -> s
                 ('c_pay_acq_const_fixa', '购建固定资产支出(CAPEX)'),
                 ('free_cashflow', '自由现金流'),
             ],
-            n_periods=4,
         ))
 
     # 财务指标
@@ -417,21 +466,25 @@ def snapshot_to_markdown(snapshot: StockSnapshot, blind_mode: bool = False) -> s
                 ('ocfps', '每股经营现金流'),
                 ('bps', '每股净资产'),
             ],
-            n_periods=4,
         ))
 
     # 分红
     if not snapshot.dividend.empty:
         lines.append("## 分红历史")
-        div = snapshot.dividend.tail(10)  # 最近10次
+        div = snapshot.dividend.head(10)  # 最近10次（按日期降序，head=最新）
         lines.append("| 年度 | 每股派息(元) | 公告日 | 除权日 |")
         lines.append("|------|-------------|--------|--------|")
         for _, row in div.iterrows():
-            cash_div = row.get('cash_div', 0)
-            if pd.notna(cash_div) and cash_div > 0:
+            # 兼容 Tushare (cash_div) 和 Crawler (cash_div_tax) 列名
+            cash_div_raw = row.get('cash_div', row.get('cash_div_tax', 0))
+            if pd.notna(cash_div_raw) and float(cash_div_raw) > 0:
+                # cash_div 是每股，cash_div_tax 是每10股
+                is_per10 = 'cash_div_tax' in row.index and 'cash_div' not in row.index
+                per_share = float(cash_div_raw) / 10 if is_per10 else float(cash_div_raw)
+                year = str(row.get('end_date', row.get('ann_date', 'N/A')))[:4]
                 lines.append(
-                    f"| {row.get('end_date', 'N/A')[:4]} "
-                    f"| {cash_div:.4f} "
+                    f"| {year} "
+                    f"| {per_share:.4f} "
                     f"| {row.get('ann_date', 'N/A')} "
                     f"| {row.get('ex_date', 'N/A')} |"
                 )
@@ -605,6 +658,22 @@ def snapshot_to_markdown(snapshot: StockSnapshot, blind_mode: bool = False) -> s
             lines.append(f"| {row.get('ann_date', 'N/A')} | {vol_str} | {amt_str} | {price_range} | {proc} |")
         lines.append("")
 
+    # 增强数据摘要（通过工具 query_market_context 查询详情）
+    enhanced = []
+    if not snapshot.news.empty:
+        enhanced.append(f"近期新闻 {len(snapshot.news)} 条")
+    if not snapshot.fund_flow.empty:
+        enhanced.append(f"资金流向 {len(snapshot.fund_flow)} 天")
+    if not snapshot.index_daily.empty:
+        enhanced.append(f"大盘指数 {len(snapshot.index_daily)} 天")
+    if not snapshot.industry_summary.empty:
+        enhanced.append(f"行业概况 {len(snapshot.industry_summary)} 个行业")
+    if enhanced:
+        lines.append("## 增强数据（可通过工具查询详情）")
+        lines.append("- " + " · ".join(enhanced))
+        lines.append("_提示：使用 query_market_context 工具查询新闻、资金流、大盘指数等详细信息_")
+        lines.append("")
+
     # 时间边界声明
     lines.append("---")
     lines.append(f"> **严格时间边界**: 以上所有数据截止于 **{snapshot.cutoff_date}**。")
@@ -619,20 +688,45 @@ def snapshot_to_markdown(snapshot: StockSnapshot, blind_mode: bool = False) -> s
 def _format_financial_table(
     df: pd.DataFrame,
     key_cols: list,
-    n_periods: int = 4,
+    n_periods: int = 5,
+    annual_only: bool = True,
 ) -> str:
-    """格式化财报数据为 Markdown 表格"""
+    """格式化财报数据为 Markdown 表格
+
+    Args:
+        annual_only: True=只取年报(12-31)，展示更长趋势；False=取所有季报
+    """
     if df.empty:
         return "（无数据）\n"
 
-    # 只保留年报和半年报，去重取最新
-    df = df.copy()
-    if 'end_date' in df.columns:
-        df = df.drop_duplicates(subset=['end_date'], keep='last')
-        df = df.sort_values('end_date', ascending=False).head(n_periods)
-        df = df.sort_values('end_date')
+    df_all = df.copy()
+    if 'end_date' not in df_all.columns:
+        return "（无数据）\n"
 
-    periods = df['end_date'].tolist() if 'end_date' in df.columns else []
+    df_all = df_all.drop_duplicates(subset=['end_date'], keep='last')
+
+    # 找最新一期（可能是季报）
+    latest_date = df_all.sort_values('end_date', ascending=False).iloc[0]['end_date']
+    latest_is_annual = str(latest_date).endswith('-12-31')
+
+    if annual_only:
+        annual = df_all[df_all['end_date'].astype(str).str.endswith('-12-31')]
+        if len(annual) >= 3:
+            df_show = annual.sort_values('end_date', ascending=False).head(n_periods)
+            df_show = df_show.sort_values('end_date')
+            # 如果最新季报不是年报，追加到末尾
+            if not latest_is_annual:
+                latest_row = df_all[df_all['end_date'] == latest_date]
+                df_show = pd.concat([df_show, latest_row], ignore_index=True)
+        else:
+            df_show = df_all.sort_values('end_date', ascending=False).head(n_periods)
+            df_show = df_show.sort_values('end_date')
+    else:
+        df_show = df_all.sort_values('end_date', ascending=False).head(n_periods)
+        df_show = df_show.sort_values('end_date')
+
+    periods = df_show['end_date'].tolist()
+    df = df_show
 
     if not periods:
         return "（无数据）\n"

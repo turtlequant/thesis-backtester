@@ -38,6 +38,7 @@ class Operator:
     """一个分析算子 (非结构化/定性)"""
     id: str
     name: str
+    category: str = ""
     tags: List[str] = field(default_factory=list)
     data_needed: List[str] = field(default_factory=list)
     outputs: List[OperatorOutput] = field(default_factory=list)
@@ -78,6 +79,7 @@ class Operator:
         return cls(
             id=op_id,
             name=meta.get('name', op_id),
+            category=meta.get('category', ''),
             tags=meta.get('tags', []),
             data_needed=meta.get('data_needed', []),
             outputs=outputs,
@@ -157,15 +159,76 @@ class OperatorRegistry:
         """按 ID 获取算子"""
         return self._operators.get(op_id)
 
-    def resolve(self, op_ids: List[str]) -> List[Operator]:
-        """按 ID 列表解析算子, 保持顺序, 跳过找不到的"""
+    # 行业别名映射：gate 里的标准名 → 实际数据中可能出现的行业名
+    INDUSTRY_ALIASES = {
+        '银行': ['银行'],
+        '保险': ['保险'],
+        '证券': ['证券'],
+        '多元金融': ['多元金融'],
+        '房地产': ['全国地产', '区域地产', '房产服务', '园区开发'],
+        '煤炭': ['煤炭开采', '焦炭加工'],
+        '钢铁': ['普钢', '特种钢', '钢加工'],
+        '石油': ['石油开采', '石油加工', '石油贸易'],
+        '化工': ['化工原料', '化纤', '染料涂料', '日用化工'],
+        '公用事业': ['水力发电', '火力发电', '新型电力', '供气供热', '水务'],
+        '食品饮料': ['白酒', '红黄酒', '啤酒', '软饮料', '食品', '乳制品'],
+        '家电': ['家用电器', '家居用品'],
+        '医药': ['化学制药', '中成药', '生物制药', '医药商业', '医疗保健'],
+        '汽车': ['汽车整车', '汽车配件', '汽车服务'],
+        '科技': ['软件服务', '半导体', 'IT设备', '通信设备', '互联网', '元器件'],
+    }
+
+    def _match_industry(self, gate_industry: str, actual_industry: str) -> bool:
+        """检查 gate 中的行业名是否匹配实际行业。
+
+        支持：精确匹配、子串包含、别名映射。
+        """
+        if not actual_industry:
+            return False
+        # 精确匹配
+        if gate_industry == actual_industry:
+            return True
+        # 子串包含（如 gate 写"银行"，实际是"银行"）
+        if gate_industry in actual_industry or actual_industry in gate_industry:
+            return True
+        # 别名映射
+        aliases = self.INDUSTRY_ALIASES.get(gate_industry, [])
+        return actual_industry in aliases
+
+    def resolve(self, op_ids: List[str], industry: str = None) -> List[Operator]:
+        """按 ID 列表解析算子, 保持顺序, 跳过找不到的。
+
+        如果传入 industry，自动执行行业路由：
+        1. 跳过 gate.exclude_industry 含该行业的算子
+        2. 从算子库中补充 gate.only_industry 含该行业的替代算子
+        """
         result = []
+        skipped = []
+
         for op_id in op_ids:
             op = self.get(op_id)
-            if op:
-                result.append(op)
-            else:
+            if not op:
                 logger.warning(f"算子未找到: {op_id}")
+                continue
+
+            # 行业门控检查
+            if industry and op.gate:
+                exclude = op.gate.get('exclude_industry', [])
+                if any(self._match_industry(ind, industry) for ind in exclude):
+                    skipped.append(op_id)
+                    logger.info(f"行业路由: 跳过 {op_id}（不适用于 {industry}）")
+                    continue
+
+            result.append(op)
+
+        # 注意：行业专用算子不自动补充到章节中。
+        # 自动路由只负责"跳过不适用的算子"。
+        # 行业专用算子（如银行 PB-ROE 估值）应在策略编排中显式配置。
+        # 这样避免跨章节误注入的问题。
+
+        if skipped:
+            logger.info(f"行业路由: 已跳过 {skipped}，最终 {len(result)} 个算子")
+
         return result
 
     def list_all(self) -> List[Operator]:
@@ -183,9 +246,9 @@ class OperatorRegistry:
             tags.update(op.tags)
         return sorted(tags)
 
-    def compose_content(self, op_ids: List[str]) -> str:
+    def compose_content(self, op_ids: List[str], industry: str = None) -> str:
         """将多个算子的内容合并为一段分析指令"""
-        ops = self.resolve(op_ids)
+        ops = self.resolve(op_ids, industry=industry)
         if not ops:
             return ""
         parts = []
@@ -193,18 +256,18 @@ class OperatorRegistry:
             parts.append(f"### {op.name}\n\n{op.content}")
         return "\n\n---\n\n".join(parts)
 
-    def compose_data_needed(self, op_ids: List[str]) -> List[str]:
+    def compose_data_needed(self, op_ids: List[str], industry: str = None) -> List[str]:
         """合并多个算子的 data_needed (去重)"""
         seen = set()
         result = []
-        for op in self.resolve(op_ids):
+        for op in self.resolve(op_ids, industry=industry):
             for d in op.data_needed:
                 if d not in seen:
                     seen.add(d)
                     result.append(d)
         return result
 
-    def compose_schema_text(self, op_ids: List[str]) -> str:
+    def compose_schema_text(self, op_ids: List[str], industry: str = None) -> str:
         """
         从算子 outputs 定义自动生成章节 schema 描述文本
 
@@ -221,7 +284,7 @@ class OperatorRegistry:
             'bool': 'boolean',
             'list': 'array of strings',
         }
-        ops = self.resolve(op_ids)
+        ops = self.resolve(op_ids, industry=industry)
         lines = []
         seen_fields = set()
         for op in ops:

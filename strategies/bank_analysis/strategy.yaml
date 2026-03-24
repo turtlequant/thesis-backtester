@@ -1,0 +1,168 @@
+# ============================================================
+# 银行业专用分析策略
+# ============================================================
+# 基于 V6 增强框架，针对银行业特性做算子替换：
+# - 禁用：FCF 估值、现金流质量、通用压力测试、产业周期
+# - 启用：PB-ROE 估值、净息差、资产质量、银行压力测试
+# ============================================================
+
+name: 银行业深度分析
+version: "1.0"
+
+# ---- 分析框架 ----
+framework:
+  operators_dir: operators/v2
+  analyst_role: 银行业投资分析师
+  version_string: 银行业深度分析 v1.0
+
+  chapters:
+    # ---- 第1章：数据核查（通用） ----
+    - id: ch01_screening
+      chapter: 1
+      title: 数据核查与快速筛选
+      operators:
+        - data_source_grading
+        - quick_screen_5min
+      dependencies: []
+
+    # ---- 第2章：基本面（银行适配） ----
+    - id: ch02_fundamental
+      chapter: 2
+      title: 基本面与治理结构
+      operators:
+        - soe_identification
+        - stream_classification
+        - management_integrity
+      dependencies: [ch01_screening]
+
+    # ---- 第3章：盈利能力与资产质量（银行核心） ----
+    - id: ch03_bank_core
+      chapter: 3
+      title: 盈利能力与资产质量
+      operators:
+        - bank_nim
+        - asset_quality
+      dependencies: [ch01_screening, ch02_fundamental]
+
+    # ---- 第4章：估值（银行专用 PB-ROE） ----
+    - id: ch04_valuation
+      chapter: 4
+      title: 估值与安全边际
+      operators:
+        - pb_roe_valuation
+        - valuation_dividend
+        - safety_margin
+      dependencies: [ch02_fundamental, ch03_bank_core]
+
+    # ---- 第5章：压力测试（银行专用） ----
+    - id: ch05_stress
+      chapter: 5
+      title: 银行压力测试
+      operators:
+        - bank_stress_test
+      dependencies: [ch03_bank_core, ch04_valuation]
+
+    # ---- 第6章：前瞻风险（通用） ----
+    - id: ch06_forward_risk
+      chapter: 6
+      title: 前瞻风险评估
+      operators:
+        - policy_risk
+        - industry_position
+      dependencies: [ch02_fundamental, ch04_valuation]
+
+    # ---- 第7章：市场环境（通用） ----
+    - id: ch07_market
+      chapter: 7
+      title: 市场环境与资金面
+      operators:
+        - market_sentiment
+        - news_signal
+      dependencies: [ch01_screening]
+
+    # ---- 第8章：投资决策（通用） ----
+    - id: ch08_decision
+      chapter: 8
+      title: 投资决策与持仓管理
+      operators:
+        - apple_trading_model
+        - valuation_repair
+        - position_management
+      dependencies: [ch04_valuation, ch05_stress, ch06_forward_risk, ch07_market]
+
+  # ---- 综合研判 ----
+  synthesis:
+    thinking_steps:
+      - step: 一票否决检查
+        instruction: |
+          检查是否存在一票否决条件：
+          1. 数据不可信（Ch1 判定数据质量低）
+          2. 管理层诚信严重存疑
+          3. 资本充足率低于监管红线
+          4. 不良率快速恶化且拨备不足
+          如有任何一项触发，直接给出回避建议，不再进行后续分析。
+
+      - step: 银行核心指标交叉验证
+        instruction: |
+          对照 Ch3（盈利与资产质量）和 Ch4（估值）的结论：
+          - 净息差趋势 vs PB 估值：息差收窄但 PB 极低是否合理？
+          - 不良率趋势 vs 拨备覆盖率：资产质量恶化是否有足够缓冲？
+          - ROE 水平 vs PB：当前 PB 是否反映了合理的 ROE 预期？
+          识别核心矛盾点。
+
+      - step: 风险与机会权衡
+        instruction: |
+          综合 Ch5（压力测试）、Ch6（前瞻风险）、Ch7（市场环境）：
+          - 极端情景下的资本安全性
+          - 政策方向对银行业的影响（利率、房地产、监管）
+          - 市场情绪是否过度悲观/乐观
+          给出风险收益比判断。
+
+      - step: 评分与决策
+        instruction: |
+          信号分层权重（严格遵守）：
+          - 核心信号（最高权重）：盈利能力与资产质量（Ch3）、PB-ROE 估值（Ch4）—— 决定"买不买"
+          - 修正信号（调节权重）：市场情绪（Ch7）、前瞻风险（Ch6）—— 调节"仓位和时机"
+          - 参考信号（最低权重）：筛选规则（Ch1）—— 仅作风险提示
+
+          基于以上分析给出 0-100 分评分。
+          参考评分锚点，确保评分与最终建议一致。
+
+    scoring_rubric:
+      - range: "85-100"
+        description: "PB<0.5×且ROE>10%，资产质量优良（NPL<1.2%，拨备>250%），息差稳定或改善，政策顺风"
+      - range: "70-84"
+        description: "PB<0.8×且ROE>8%，资产质量可控（NPL<1.8%，拨备>180%），息差有压力但可承受"
+      - range: "50-69"
+        description: "估值合理但无明显低估，或资产质量存在隐忧，或息差持续收窄"
+      - range: "30-49"
+        description: "资产质量恶化明显（NPL上升+拨备下降），或资本充足率接近监管红线"
+      - range: "0-29"
+        description: "存在系统性风险：资本不足、不良率失控、流动性危机信号"
+
+    decision_thresholds:
+      buy: 75
+      avoid: 29
+
+  synthesis_fields:
+    - field: 综合评分
+      type: int
+      desc: "0-100分"
+    - field: 最终建议
+      type: str
+      desc: "买入 / 观望 / 回避"
+    - field: 核心逻辑
+      type: str
+      desc: "一句话投资逻辑（可证伪）"
+    - field: 关键风险
+      type: list
+      desc: "前三大风险"
+    - field: PB-ROE评估
+      type: str
+      desc: "当前PB与ROE的匹配度判断"
+    - field: 资产质量评估
+      type: str
+      desc: "不良率+拨备覆盖的综合判断"
+    - field: 信心水平
+      type: str
+      desc: "高 / 中 / 低"

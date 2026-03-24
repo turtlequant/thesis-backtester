@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>投研分析工具</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <div id="app"></div>
+
+    <!-- Vue 3 CDN -->
+    <script src="https://unpkg.com/vue@3.4.21/dist/vue.global.prod.js"></script>
+    <!-- Markdown 渲染 -->
+    <script src="https://unpkg.com/marked@12.0.1/marked.min.js"></script>
+
+    <!-- API Utilities -->
+    <script src="/js/utils/api.js"></script>
+
+    <!-- Page Components (must load before app.js) -->
+    <script src="/js/pages/analysis.js"></script>
+    <script src="/js/pages/reports.js"></script>
+    <script src="/js/pages/operators.js"></script>
+    <script src="/js/pages/frameworks.js"></script>
+    <script src="/js/pages/datasources.js"></script>
+    <script src="/js/pages/settings.js"></script>
+    <script src="/js/pages/chat.js"></script>
+
+    <!-- Main App -->
+    <script src="/js/app.js"></script>
+</body>
+</html>

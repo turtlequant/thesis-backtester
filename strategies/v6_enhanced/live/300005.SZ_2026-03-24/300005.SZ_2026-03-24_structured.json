@@ -1,0 +1,199 @@
+{
+  "chapter_outputs": {
+    "ch01_screening": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "财务费用数据缺失",
+        "毛利率数据缺失",
+        "审计意见未获取",
+        "资本支出数据缺失"
+      ],
+      "geo_risk_level": "极低",
+      "geo_risk_reason": "中国内地上市公司，主营业务为户外用品，不涉及地缘政治敏感领域",
+      "geo_excluded": false,
+      "price_position_pct": 51.7,
+      "debt_ratio_pct": 26.79,
+      "consecutive_profit_years": 4,
+      "pass_screening": true,
+      "screening_notes": "通过初筛，但存在以下风险：1)股价安全边际不足（距52周高点跌幅仅24.42%）；2)2025年前三季度经营现金流为负；3)PE推算值137.59倍估值偏高；4)需核实审计意见和关联交易占比"
+    },
+    "ch02_fundamental": {
+      "is_soe": false,
+      "soe_type": "民营",
+      "controlling_shareholder": "盛发强、王静（自然人）",
+      "investment_stream": "无法归类",
+      "stream_reasoning": "不符合任何投资流派：1)股息率仅0.10%不符合纯硬收息；2)PE 137.59倍、PB 5.32倍估值过高不符合价值发现；3)ROE仅1.67%不符合质量成长；4)清算价值5.86亿远低于市值103亿不符合烟蒂股；5)无国资背景不符合关联方资源",
+      "interest_bearing_debt": 1.1,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康",
+      "is_cyclical": false,
+      "cycle_position": "下行",
+      "cycle_debt_tolerance": "不适用",
+      "reversal_signal": "可能见顶或下行中",
+      "cycle_reasoning": "基于财报替代指标：1)净利率处于历史较低水平；2)存货大幅增长43.8%至5.02亿；3)经营现金流由正转负至-1.47亿；4)应收账款增长41.5%至3.07亿；综合判断为被动累库阶段，行业下行",
+      "management_integrity": "存疑",
+      "integrity_red_flags": [
+        "分红不稳定且递减（2020年0.05元→2024年0.024元→2025年0.012元）",
+        "经营现金流与净利润严重背离（2025年前三季度净利润0.18亿 vs 经营现金流-1.47亿）",
+        "应收账款大幅增长41.5%需关注收入质量"
+      ]
+    },
+    "ch07_market": {
+      "sentiment_level": "极度悲观",
+      "fund_flow_trend": "持续流出",
+      "market_position": "大盘处于下跌趋势（沪深300近20日跌6.15%），个股表现弱于大盘，3月23日暴跌10.74%显示特定风险",
+      "margin_signal": "数据不可用",
+      "contrarian_flag": false,
+      "sector_divergence": "纺织服饰板块跌幅靠前，个股表现弱于大盘，行业情绪偏负面，但无具体行业PE百分位数据",
+      "news_sentiment": "偏负面",
+      "key_events": [
+        "2026-03-23: 股价暴跌10.74%，纺织服饰板块跌幅靠前",
+        "2026-03-18: 完成673万股激励计划登记，授予价7.08元/股",
+        "2026-03-13: 副总裁孙国亮辞职，持有12万股",
+        "2026-03-11: 控股股东通域众合质押36.37%持股（2.13%总股本）"
+      ],
+      "risk_flags": [
+        "控股股东质押率36.37%需关注",
+        "核心高管辞职可能暗示内部问题",
+        "连续5日主力资金净流出，3月23日单日流出1.03亿元",
+        "股价距52周高点跌幅仅24.42%，安全边际不足"
+      ],
+      "earnings_impact_pct": null,
+      "data_quality": "新闻充足"
+    },
+    "ch03_cashflow": {
+      "cash_trend_5y": "波动增长",
+      "latest_cash_balance": 7.48,
+      "fcf_trend": "转负",
+      "cash_to_profit_ratio": -7.98,
+      "cash_trend_signal": "恶化",
+      "reported_profit": 0.75,
+      "non_cash_adjustments": 0.11,
+      "adjusted_profit": 0.86,
+      "owner_earnings": 0.75,
+      "owner_earnings_formula": "净利润0.75亿 + 折旧摊销0.11亿(估算) + 非现金减值0亿 - 维持性CAPEX0.11亿(折旧近似法)",
+      "fcf": 2.14,
+      "maintenance_capex": 0.11,
+      "owner_earnings_valid": true
+    },
+    "ch04_valuation": {
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "制造业属于PE禁用行业，重资产折旧扭曲利润",
+        "经营现金流/净利润 = -7.98倍，严重背离",
+        "应收账款增速41.5% vs 收入增速-40.2%，收入质量存疑",
+        "存货增速43.8% vs 收入增速-40.2%，被动累库",
+        "PE 137.59倍极高但FCF/市值仅2.08%，严重矛盾"
+      ],
+      "valuation_method": "FCF",
+      "net_cash": 6.54,
+      "ev": 96.26,
+      "ev_fcf_multiple": 34.5,
+      "turtle_rating": "偏贵",
+      "fair_value_per_share": 3.26,
+      "topdown_return_pct": 2.81,
+      "valuation_crosscheck": "一致但回报率不足",
+      "dividend_yield_pct": 0.1,
+      "dividend_sustainable": false,
+      "safety_margin_pct": -257,
+      "market_condition": "熊市",
+      "buy_point": 3.26,
+      "sell_point": 11.64
+    },
+    "ch05_stress": {
+      "revenue_after_3y_decline": 0.384,
+      "still_profitable": true,
+      "dividend_sustainable_under_stress": true,
+      "stress_test_result": "不通过",
+      "is_cigar_butt": true,
+      "liquidation_value": 5.759,
+      "is_light_asset": false,
+      "recurring_revenue_pct": 90
+    },
+    "ch06_forward_risk": {
+      "policy_exposure": "低",
+      "policy_direction": "中性",
+      "strategic_alignment": "中性",
+      "subsidy_dependency_pct": 5,
+      "gov_revenue_pct": 5,
+      "worst_case_earnings_impact_pct": 6,
+      "policy_resilience": "弱",
+      "key_policies": [
+        "消费刺激政策",
+        "出口退税政策",
+        "环保政策"
+      ],
+      "disruption_level": "低",
+      "revenue_at_risk_pct": 16,
+      "disruption_timeline": "3-5年内",
+      "transfer_capability": "内部AI研发",
+      "ai_opportunity": "AI可应用于个性化产品推荐、智能库存管理、供应链优化、芯片设计辅助",
+      "second_order_risk": "下游户外运动服务行业若被AI替代，可能减少户外装备采购，但传导链条较弱",
+      "market_position": "第二梯队",
+      "competitive_moat": "弱",
+      "moat_type": "品牌",
+      "moat_durability": "侵蚀中",
+      "share_trend": "流失份额",
+      "industry_trend": "成熟",
+      "pricing_power": "弱",
+      "five_forces_summary": "竞争环境中等：现有竞争者对抗强度中高、新进入者威胁中、替代品威胁中、买方议价能力中、供应商议价能力中，无明显护城河"
+    },
+    "ch08_decision": {
+      "apple_normal_price": 0.85,
+      "apple_buy_price": 0.39,
+      "apple_sell_price": 0.65,
+      "buy_logic_statement": "我以'清算价值'类型买入探路者，在PB<0.3倍（对应股价约0.65元）时建仓，目标是PB从0.3倍修复到0.6倍，预计持有2-3年，修复完成即卖出。证伪条件：若公司持续亏损导致净资产进一步缩水，或行业需求持续恶化，则逻辑失败，立即止损。",
+      "repair_target": "清算价值0.65元（PB 0.3倍），中性修复2.19元（PB 1.0倍），乐观修复3.29元（PB 1.5倍）",
+      "repair_catalyst": "行业整合加速、公司战略调整、控股股东质押风险解除、管理层稳定经营改善",
+      "expected_repair_return_pct": -94.4,
+      "recommendation": "清仓/观察",
+      "position_type": "观察",
+      "suggested_position_pct": 0,
+      "exit_conditions": [
+        "股价上涨至清算价值以上减仓50%",
+        "基本面持续恶化（连续2年亏损）止损退出",
+        "持有超过3年未达修复目标重新评估"
+      ],
+      "macro_event_impact": "需警惕"
+    }
+  },
+  "synthesis": {
+    "流派判定": "无法归类",
+    "筛选评级": "未达标",
+    "核心估值指标": {
+      "EV/FCF倍数": 34.5,
+      "安全边际": -257
+    },
+    "苹果买卖模型": {
+      "正常价": 0.85,
+      "买入价": 0.39,
+      "卖出价": 0.65
+    },
+    "一句话买入逻辑": "无买入逻辑。当前股价11.64元严重高估，清算价值仅0.65元，下行空间94.4%，基本面恶化（经营现金流为负、存货应收双增），行业竞争激烈，不符合任何投资流派。",
+    "关键风险": [
+      "估值严重高估：PE 137.6倍，PB 5.32倍，清算价值仅5.76亿 vs 市值102.8亿",
+      "现金流恶化：2025年前三季度经营现金流-1.47亿，现金转化率-7.98倍",
+      "基本面质量差：ROE仅1.67%，净利率1.94%，无法归类任何投资流派",
+      "存货应收双增：存货增长43.8%至5.02亿，应收账款增长41.5%至3.07亿",
+      "市场情绪极度悲观：连续5日主力资金净流出，3月23日暴跌10.74%"
+    ],
+    "前瞻风险评估": {
+      "政策风险": "低",
+      "AI冲击风险": "低",
+      "行业趋势": "成熟期，竞争激烈，探路者处于第二梯队且市场份额流失中"
+    },
+    "一致性检查": "通过",
+    "管理人诚信评估": "存疑",
+    "最终建议": "回避",
+    "综合评分": 48,
+    "信心水平": "高"
+  },
+  "metadata": {
+    "ts_code": "300005.SZ",
+    "cutoff_date": "2026-03-24",
+    "blind_mode": false,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 620.0,
+    "chapters_completed": 8
+  }
+}

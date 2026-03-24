@@ -3,7 +3,7 @@ id: apple_trading_model
 name: 苹果买卖估值修复模型
 category: decision
 tags: [decision, valuation, trading]
-data_needed: [daily_indicators, price_summary, cashflow, income]
+data_needed: [daily_indicators, price_history, cashflow, income]
 outputs:
   - field: apple_normal_price
     type: float

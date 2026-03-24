@@ -127,6 +127,10 @@ class ForwardOutcome:
 
 在多截面运行量化筛选，评估筛选策略本身的历史表现。不涉及 Agent，可独立使用。
 
+### batch_live.py — 模拟盘批量分析
+
+`src/desktop/batch_live.py` — 对多只股票进行实时批量分析，生成组合级汇总。用于模拟盘场景：选定一组候选股票后，批量运行 live-analyze 并汇总为组合视图。与回测模块独立，使用免费公开数据（CrawlerProvider）。
+
 ### crosssection.py — 跨截面对比
 
 三种模式：plan（规划）、prepare（准备快照）、compare（纵向对比分析结论变化）。

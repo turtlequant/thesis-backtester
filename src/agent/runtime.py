@@ -124,8 +124,8 @@ def build_system_prompt(
 {output_schema_text}
 """
 
-    # 分析框架内容（算子驱动）
-    framework_content = _build_framework_content(chapter, config)
+    # 分析框架内容（算子驱动，含行业路由）
+    framework_content = _build_framework_content(chapter, config, industry=snapshot.industry)
 
     return f"""你是一位{analyst_role}，正在使用「{version_string}」框架进行深度分析。
 
@@ -165,14 +165,20 @@ def build_system_prompt(
 def _build_framework_content(
     chapter: dict,
     config: StrategyConfig,
+    industry: str = None,
 ) -> str:
-    """从章节定义中的算子组合构建分析框架内容"""
+    """从章节定义中的算子组合构建分析框架内容
+
+    如果传入 industry，自动执行行业路由：
+    - 跳过 gate.exclude_industry 匹配的算子
+    - 补充 gate.only_industry 匹配的行业专用算子
+    """
     operators = chapter.get('operators', [])
     if not operators:
         return "（无分析框架内容）"
 
     registry = config.get_operator_registry()
-    ops = registry.resolve(operators)
+    ops = registry.resolve(operators, industry=industry)
     if not ops:
         return "（无分析框架内容）"
 

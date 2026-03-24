@@ -1,0 +1,81 @@
+{
+  "chapter_outputs": {
+    "ch01_overview": {
+      "data_confidence": "高",
+      "data_warnings": [
+        "银行行业特殊性，传统负债分析框架需调整",
+        "财务费用明细数据缺失",
+        "最新派息数据需验证"
+      ],
+      "price_position_pct": 50.0,
+      "debt_ratio_pct": 92.06,
+      "consecutive_profit_years": 10,
+      "pass_screening": false,
+      "screening_notes": "价格位置排除：距52周高点跌幅仅10.71%，未达到30%安全边际要求。基本面优秀，央企背景，但当前价格位置不佳。",
+      "is_soe": true,
+      "soe_type": "央企",
+      "controlling_shareholder": "国务院（通过财政部和中央汇金）",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "PE 7.28<10，PB 0.64<1.0，深度破净，央企背景提供安全边际。股息率1.89%未达纯硬收息标准，ROE 6.48%未达质量成长标准。",
+      "interest_bearing_debt": 23545.08,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "健康（银行行业标准）"
+    },
+    "ch02_quality": {
+      "cash_trend_5y": "波动稳定",
+      "latest_cash_balance": 0,
+      "fcf_trend": "不适用",
+      "cash_to_profit_ratio": 0,
+      "cash_trend_signal": "稳定",
+      "owner_earnings": 2561.04,
+      "owner_earnings_formula": "金融行业替代方法：可分配利润 ≈ 净利润 × (1 - 资本补充需求比例)，假设资本补充需求30%",
+      "fcf": 0,
+      "maintenance_capex": 0,
+      "owner_earnings_valid": true,
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "银行行业PE估值失真",
+        "拨备计提可调节利润",
+        "利率周期影响利润稳定性"
+      ],
+      "valuation_method": "PB估值为主，结合ROE、不良率等银行指标"
+    },
+    "ch03_valuation": {
+      "safety_margin_pct": 2.0,
+      "market_condition": "震荡市",
+      "buy_point": 6.5,
+      "sell_point": 9.0,
+      "dividend_yield_pct": 1.89,
+      "dividend_sustainable": true,
+      "net_cash": -23545.08,
+      "ev": 0,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "合理偏低",
+      "fair_value_per_share": 7.65,
+      "topdown_return_pct": 7.07,
+      "valuation_crosscheck": "一致"
+    }
+  },
+  "synthesis": {
+    "投资类型": "价值发现",
+    "一句话买入逻辑": "工商银行PB 0.64倍深度破净，若ROE能回升至10%以上且股息率提升至4%以上，将具备显著投资价值。",
+    "关键风险": [
+      "利率下行周期压制净息差",
+      "经济放缓导致不良率上升",
+      "ROE持续低于行业平均水平"
+    ],
+    "一致性快检": "通过",
+    "最终建议": "观望",
+    "综合评分": 55,
+    "信心水平": "中",
+    "是否建议完整分析": "否"
+  },
+  "metadata": {
+    "ts_code": "601398.SH",
+    "cutoff_date": "2026-03-23",
+    "blind_mode": false,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 252.9,
+    "chapters_completed": 3
+  }
+}

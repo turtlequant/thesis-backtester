@@ -31,7 +31,9 @@ src/backtest/      # Backtest: pipeline + outcome + scoring + multi-baseline per
   batch_backtest.py#   Legacy batch screening backtest
   outcome_collector.py # Forward return collection
   quality_scorer.py#   5-dimension analysis quality scoring
-src/web/           # Web: Streamlit strategy workbench
+src/desktop/       # Desktop: 投研分析工具 (FastAPI + Vue 3, 6 pages + chat assistant)
+  main.py          #   Entry point (uvicorn launcher)
+  batch_live.py    #   Mock portfolio batch analysis
 
 factors/           # Quantitative factor definitions (.py files, 截面+时序)
 operators/         # Qualitative analysis operators (.md files, with YAML frontmatter)
@@ -40,6 +42,10 @@ operators/         # Qualitative analysis operators (.md files, with YAML frontm
   valuation/       #   FCF, dividend, PE trap, safety margin, owner earnings, repair
   decision/        #   Apple model, position management, stress test
   special/         #   Cigar butt, light asset model
+  bank/            #   Bank-specific operators (4: NIM, asset quality, capital adequacy, PPOP)
+  manufacturing/   #   Manufacturing-specific operators (3: capacity cycle, cost structure, order book)
+  consumer/        #   Consumer-specific operators (2: brand moat, channel analysis)
+  tech/            #   Tech-specific operators (2: R&D efficiency, platform lock-in)
 strategies/        # Strategy instances (one directory per investment thesis)
   v6_value/        # V6 Value Investing (operator-driven)
     strategy.yaml  # Strategy config (filters, scoring, LLM, backtest)
@@ -88,10 +94,10 @@ python -m src.screener.quick_filter 2024-06-30
 python -m src.agent.runtime strategies/v6_value/strategy.yaml 601288.SH 2024-06-30
 ```
 
-### Web Dashboard (strategy tuning)
+### Desktop App (analysis workbench)
 
 ```bash
-streamlit run src/web/app.py
+python src/desktop/main.py
 ```
 
 ### Data Management (via Launcher)
@@ -158,6 +164,8 @@ python -m src.backtest.outcome_collector 601288.SH 2024-06-30
 - **agent/**: LLM agent runtime (client, tools sandbox, DAG scheduler, schemas)
 - **screener/quick_filter.py**: Quantitative screening (reads pre-computed factors)
 - **backtest/**: Batch backtest, cross-section, outcome, quality scoring
+- **desktop/main.py**: Desktop app entry point (FastAPI + Vue 3, 6 pages: Analysis, Reports, Operators, Frameworks, Data, Settings + floating chat assistant)
+- **desktop/batch_live.py**: Mock portfolio batch analysis (multi-stock live analysis with portfolio-level summary)
 
 ## Creating a New Strategy Instance
 

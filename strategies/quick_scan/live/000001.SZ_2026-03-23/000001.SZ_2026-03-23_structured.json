@@ -1,0 +1,79 @@
+{
+  "chapter_outputs": {
+    "ch01_overview": {
+      "data_confidence": "中",
+      "data_warnings": [
+        "财务费用明细数据缺失",
+        "短期借款数据缺失",
+        "利息支出数据缺失"
+      ],
+      "price_position_pct": 10.2,
+      "debt_ratio_pct": 90.7,
+      "consecutive_profit_years": 5,
+      "pass_screening": false,
+      "screening_notes": "价格位置不佳，距52周高点仅下跌19.2%，安全边际不足。银行股在周期底部需要更大的价格调整（通常需要30%以上跌幅）才能提供足够的安全边际。",
+      "is_soe": false,
+      "soe_type": "民营",
+      "controlling_shareholder": "中国平安保险（集团）股份有限公司",
+      "investment_stream": "价值发现",
+      "stream_reasoning": "PE仅4.90倍（<10），PB仅0.38倍（深度破净），银行业处于经济周期底部，经营现金流大幅改善（2025年3158.58亿 vs 2024年633.36亿）。虽然ROE 7.73%略低于8%标准，但其他三项核心条件满足价值发现流派特征。",
+      "interest_bearing_debt": 5445.34,
+      "zero_interest_debt": false,
+      "debt_structure_assessment": "可接受"
+    },
+    "ch02_quality": {
+      "cash_trend_5y": "无法分析",
+      "latest_cash_balance": 0,
+      "fcf_trend": "无法分析",
+      "cash_to_profit_ratio": 741.1,
+      "cash_trend_signal": "改善",
+      "owner_earnings": 426.33,
+      "owner_earnings_formula": "金融行业替代方法：银行所有者收益≈净利润",
+      "fcf": 0,
+      "maintenance_capex": 0,
+      "owner_earnings_valid": true,
+      "pe_trap_warning": true,
+      "pe_trap_reasons": [
+        "银行业PE禁用行业"
+      ],
+      "valuation_method": "所有者收益/FCF"
+    },
+    "ch03_valuation": {
+      "safety_margin_pct": 16.7,
+      "market_condition": "震荡市",
+      "buy_point": 9.5,
+      "sell_point": 13.0,
+      "dividend_yield_pct": 5.55,
+      "dividend_sustainable": true,
+      "net_cash": 0,
+      "ev": 2094.5,
+      "ev_fcf_multiple": 0,
+      "turtle_rating": "不适用",
+      "fair_value_per_share": 11.8,
+      "topdown_return_pct": 11.17,
+      "valuation_crosscheck": "需调整"
+    }
+  },
+  "synthesis": {
+    "投资类型": "价值发现",
+    "一句话买入逻辑": "平安银行当前PB 0.38倍深度破净，股息率5.55%，较合理估值低估16.7%，在经济周期底部提供有吸引力的风险回报。",
+    "关键风险": [
+      "经济下行周期对银行资产质量的压力",
+      "银行业PE不可信需用替代估值方法",
+      "股价距52周高点仅下跌19.2%安全边际不足"
+    ],
+    "一致性快检": "通过",
+    "最终建议": "值得深入",
+    "综合评分": 65,
+    "信心水平": "中",
+    "是否建议完整分析": "是(用v6_enhanced)"
+  },
+  "metadata": {
+    "ts_code": "000001.SZ",
+    "cutoff_date": "2026-03-23",
+    "blind_mode": false,
+    "model": "deepseek-chat",
+    "elapsed_seconds": 299.9,
+    "chapters_completed": 3
+  }
+}

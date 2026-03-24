@@ -3,7 +3,7 @@ id: geopolitical_exclusion
 name: 地缘政治风险排除
 category: screening
 tags: [screening, risk, geopolitical]
-data_needed: [basic_info, revenue_by_region, asset_distribution]
+data_needed: [fina_mainbz, balancesheet]
 outputs:
   - field: geo_risk_level
     type: str

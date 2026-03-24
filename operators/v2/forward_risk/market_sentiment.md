@@ -2,7 +2,7 @@
 id: market_sentiment
 name: 市场情绪与资金面分析
 tags: [risk, market]
-data_needed: [daily_quote, daily_indicator, adj_factor]
+data_needed: [price_history, fina_indicator]
 outputs:
   - field: sentiment_level
     type: enum [极度乐观, 偏乐观, 中性, 偏悲观, 极度悲观]

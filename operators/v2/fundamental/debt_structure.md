@@ -4,6 +4,8 @@ name: 负债结构拆解
 category: fundamental
 tags: [fundamental, debt, balance_sheet]
 data_needed: [balancesheet, income]
+gate:
+  exclude_industry: [银行, 保险, 证券, 多元金融]
 outputs:
   - field: interest_bearing_debt
     type: float

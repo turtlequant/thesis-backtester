@@ -3,7 +3,7 @@ id: stream_classification
 name: 投资流派分类
 category: fundamental
 tags: [classification, strategy, valuation]
-data_needed: [daily_indicators, basic_info, cashflow, balancesheet, income]
+data_needed: [daily_indicators, cashflow, balancesheet, income]
 outputs:
   - field: investment_stream
     type: str

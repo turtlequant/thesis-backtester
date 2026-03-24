@@ -197,7 +197,9 @@ framework:
 3. 通过 `compose_schema_text()` 生成合并后的输出 JSON schema
 4. 通过 `compose_data_needed()` 合并数据需求（用于 Agent 工具调用）
 
-### 现有算子清单（21 个）
+### 现有算子清单（37 个）
+
+> v2 算子库包含 26 个通用算子 + 11 个行业专项算子（4 银行 + 3 制造 + 2 消费 + 2 科技）。
 
 #### 筛选与排除类 (`operators/screening/`)
 
@@ -244,6 +246,37 @@ framework:
 |---------|------|---------|---------|
 | `cigar_butt` | 烟蒂股深度价值 | is_cigar_butt, liquidation_value | 盈利企业/金融/大市值央国企排除 |
 | `light_asset_model` | 轻资产模式 | is_light_asset, asset_lightness_score | 金融/地产/高负债排除 |
+
+#### 银行专项类 (`operators/bank/`)
+
+| 算子 ID | 名称 | 输出字段 |
+|---------|------|---------|
+| `nim_analysis` | 净息差分析 | nim_trend, nim_sustainability |
+| `asset_quality` | 资产质量 | npl_ratio_trend, provision_coverage |
+| `capital_adequacy` | 资本充足性 | car_level, capital_buffer |
+| `ppop_valuation` | PPOP 估值 | ppop_multiple, ppop_trend |
+
+#### 制造业专项类 (`operators/manufacturing/`)
+
+| 算子 ID | 名称 | 输出字段 |
+|---------|------|---------|
+| `capacity_cycle` | 产能周期 | capacity_utilization, cycle_phase |
+| `cost_structure` | 成本结构 | cost_breakdown, cost_advantage |
+| `order_book` | 订单簿分析 | order_visibility, backlog_months |
+
+#### 消费专项类 (`operators/consumer/`)
+
+| 算子 ID | 名称 | 输出字段 |
+|---------|------|---------|
+| `brand_moat` | 品牌护城河 | brand_strength, pricing_power |
+| `channel_analysis` | 渠道分析 | channel_mix, channel_efficiency |
+
+#### 科技专项类 (`operators/tech/`)
+
+| 算子 ID | 名称 | 输出字段 |
+|---------|------|---------|
+| `rd_efficiency` | 研发效率 | rd_roi, capitalization_ratio |
+| `platform_lockin` | 平台锁定 | switching_cost, network_effect |
 
 ### v6 章节分配
 
@@ -314,7 +347,7 @@ Ch06 投资决策      ← apple_trading_model, valuation_repair, position_manag
 |------|--------|-----|
 | 章节定义 | `chapters.yaml` 独立文件 | `strategy.yaml` 内联 `framework.chapters` |
 | 输出 Schema | `output_schema.py` 手写 dataclass | 算子 frontmatter `outputs` 自动生成 |
-| 算子总数 | 14 个 | 21 个 |
+| 算子总数 | 14 个 | 37 个（含 11 个行业专项） |
 | 章节数 | 10 章 | 6 章（更紧凑） |
 | 行业门控 | 无 | 4 个算子含前置门控 |
 | 算子 frontmatter | id, name, tags, data_needed | 新增 category, outputs |

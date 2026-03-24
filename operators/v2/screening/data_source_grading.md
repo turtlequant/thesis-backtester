@@ -3,7 +3,7 @@ id: data_source_grading
 name: 数据源分级与可信度体系
 category: screening
 tags: [screening, data_quality, verification]
-data_needed: [basic_info]
+data_needed: [price_history, balancesheet, income, cashflow, fina_indicator, dividend]
 outputs:
   - field: data_confidence
     type: str

@@ -3,7 +3,7 @@ id: quick_screen_5min
 name: 5分钟快速排除法
 category: screening
 tags: [screening, initial_filter]
-data_needed: [basic_info, price_summary, financial_summary, cash_flow]
+data_needed: [price_history, fina_indicator, cashflow]
 outputs:
   - field: price_position_pct
     type: float
@@ -66,11 +66,11 @@ outputs:
 
 | 检查项 | 排除标准 | 原因 | 处置 |
 |--------|---------|------|------|
-| 距52周高点跌幅 | 距52周高点 < 30% | 尚未充分调整，安全边际不足 | 排除 |
-| 距52周低点距离 | 距52周低点 > 50% | 已大幅反弹，可能错过最佳买点 | 标记观察 |
+| 距52周高点跌幅 | 距52周高点 < 30% | 尚未充分调整，安全边际不足 | 提示风险（不排除） |
+| 距52周低点距离 | 距52周低点 > 50% | 已大幅反弹，可能错过最佳买点 | 提示风险（不排除） |
 | 长期趋势 | 股价3年内持续下跌无企稳迹象 | 可能存在基本面持续恶化 | 需额外核查 |
 
-**决策**：价格位置不在安全区域 -> 放入观察列表，不进入深度分析。
+**决策**：价格位置检查仅作为风险提示，记录到 screening_notes 中。不作为排除依据——最终买卖判断由估值和基本面章节决定。
 
 #### 第三步：负债快速扫描（1.5分钟）
 

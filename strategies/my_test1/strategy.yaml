@@ -1,0 +1,36 @@
+meta:
+  name: 测试1
+  version: '1.0'
+framework:
+  operators_dir: operators/v2
+  analyst_role: 投资分析师
+  chapters:
+  - id: ch01_new
+    chapter: 1
+    title: 数据验证与背景识别
+    operators:
+    - data_source_grading
+    - geopolitical_exclusion
+    - soe_identification
+    dependencies:
+    - ch02_new
+  - id: ch02_new
+    chapter: 2
+    title: 业绩确认
+    operators:
+    - cash_trend_5y
+    - debt_structure
+    - industry_position
+    dependencies:
+    - ch01_new
+  synthesis:
+    thinking_steps:
+    - step: 自己评估
+      instruction: 好的买，差的卖
+    scoring_rubric: []
+    decision_thresholds:
+      buy: 70
+      avoid: 29
+      watch:
+      - 30
+      - 69

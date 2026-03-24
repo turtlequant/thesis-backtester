@@ -214,7 +214,7 @@
 | 前瞻收益 | 多周期收益 + 回撤采集 | `src/backtest/outcome_collector.py` |
 | 质量评分 | 5维加权评分 | `src/backtest/quality_scorer.py` |
 | 分析追踪 | SQLite 生命周期管理 | `src/engine/tracker.py` |
-| 策略调参 | Streamlit 4-tab 界面 | `src/web/app.py` |
+| 投研工具 | FastAPI + Vue 3 桌面端（6 页面 + 聊天助手） | `src/desktop/main.py` |
 
 ### 5.2 已实现 & 待实现
 

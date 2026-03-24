@@ -7,12 +7,13 @@ dist/
 build/
 .eggs/
 
-# Data (contains API-fetched market data, too large for git)
+# Data (API-fetched market data, too large for git)
 data/tushare/
 data/financial/
 data/snapshots/
 data/analysis_results/
 data/private/
+data/live_cache/
 
 # IDE
 .vscode/
@@ -26,21 +27,25 @@ data/private/
 .env.*
 !.env.example
 .conda/
-.venv
+.venv/
 
 # OS
 .DS_Store
 Thumbs.db
 
-# Claude Code local settings
-.claude/settings.local.json
+# Claude Code
+.claude/
+.agents/
 
-# investTemplate (separate repo, see strategies/v556_value/README.md)
-investTemplate/
+# Desktop app runtime files
+src/desktop/config.json
+src/desktop/chat_history.json
 
-# Generated backtest artifacts (keep samples.json and validation_report.md)
+# Generated backtest artifacts
 strategies/*/backtest/prompts/
 strategies/*/backtest/reports/
 strategies/*/backtest/logs/
 strategies/*/backtest/screen_backtest_*
-.agents/skills/pua/
+
+# Live analysis raw data (runtime generated, too large for git)
+strategies/*/live/*/raw_data/

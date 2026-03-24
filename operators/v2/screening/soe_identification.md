@@ -3,7 +3,7 @@ id: soe_identification
 name: 央国企背景识别与分类
 category: screening
 tags: [screening, governance, soe]
-data_needed: [top10_holders, basic_info, shareholder_structure]
+data_needed: [top10_holders]
 outputs:
   - field: is_soe
     type: bool

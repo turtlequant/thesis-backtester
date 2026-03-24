@@ -1,53 +1,29 @@
-# ============================================================
-# 收息专用策略：聚焦股息可持续性
-# ============================================================
-# 核心问题：这个股息能持续吗？
-# 适合高股息收息型投资者
-#
-# 5 章分析，侧重：
-#   1. 基础筛查 + 国企识别（国企分红更可预测）
-#   2. 现金流覆盖 + 负债安全
-#   3. 股息可持续性深度分析 + 压力测试
-#   4. 前瞻风险（政策对分红的影响）
-#   5. 估值与收息决策
-#
-# 回测洞察：纯硬收息流派 12m 均收益 +7.4%，胜率 58%；
-#            混合流派（纯硬收息+价值发现）12m +38.4%，胜率 100%
-#
-# 命令：
-#   python -m src.engine.launcher strategies/income_focus/strategy.yaml agent-analyze 601288.SH 2024-06-30
-
 meta:
   name: 收息型分析
-  version: "2.0"
-
-# ============================================================
-# 量化筛选（收息专用：更高股息门槛）
-# ============================================================
+  version: '2.0'
 screening:
   exclude:
   - field: name
-    contains: [ST, 退]
-
+    contains:
+    - ST
+    - 退
   industry_cap: 3
   agent_batch:
     ratio: 0.2
     max: 15
-
   filters:
   - field: pe_ttm
     min: 0.01
-    max: 12.0                              # 更严格：收息股通常低 PE
+    max: 12.0
   - field: pb
     min: 0.01
   - field: total_mv
-    min: 1000000.0                         # ≥ 100亿
+    min: 1000000.0
   - field: dv
-    min: 4.0                               # 股息率 ≥ 4%（核心门槛）
-
+    min: 4.0
   scoring:
     factors:
-    - field: dv                            # 股息率是最高权重
+    - field: dv
       weight: 0.5
       lower_better: false
       full: 8.0
@@ -62,127 +38,156 @@ screening:
       lower_better: true
       full: 0.5
       zero: 1.2
-
     tiers:
-    - name: 高安全收息                       # 极高息 + 极低估
+    - name: 高安全收息
       conditions:
-      - {field: dv, min: 7.0}
-      - {field: pe_ttm, max: 8.0}
-      - {field: pb, max: 0.8}
-    - name: 稳健收息                         # 高息 + 低估
+      - field: dv
+        min: 7.0
+      - field: pe_ttm
+        max: 8.0
+      - field: pb
+        max: 0.8
+    - name: 稳健收息
       conditions:
-      - {field: dv, min: 5.5}
-      - {field: pe_ttm, max: 10.0}
-    - name: 基础收息                         # 中高息
+      - field: dv
+        min: 5.5
+      - field: pe_ttm
+        max: 10.0
+    - name: 基础收息
       conditions:
-      - {field: dv, min: 4.0}
-      - {field: pe_ttm, max: 12.0}
+      - field: dv
+        min: 4.0
+      - field: pe_ttm
+        max: 12.0
     default_tier: 未达标
-
-# ============================================================
-# Agent 分析框架（5 章 + 一致性裁决）
-# ============================================================
 framework:
   operators_dir: operators/v2
   analyst_role: 专注高股息收息策略的投资分析师，核心职责是判断股息是否可持续
-
   chapters:
-  # ---- 第一章: 基础筛查 ----
   - id: ch01_screening
     chapter: 1
     title: 数据核查与收息资格
-    operators: [data_source_grading, quick_screen_5min, soe_identification]
+    operators:
+    - data_source_grading
+    - quick_screen_5min
+    - soe_identification
     dependencies: []
-
-  # ---- 第二章: 盈利与现金流（核心）----
   - id: ch02_cashflow
     chapter: 2
     title: 盈利质量与现金流分析
-    operators: [cash_trend_5y, owner_earnings, performance_restoration, debt_structure]
-    dependencies: [ch01_screening]
-
-  # ---- 第三章: 股息可持续性（核心）----
+    operators:
+    - cash_trend_5y
+    - owner_earnings
+    - performance_restoration
+    - debt_structure
+    dependencies:
+    - ch01_screening
   - id: ch03_dividend
     chapter: 3
     title: 股息可持续性深度分析
-    operators: [valuation_dividend, stress_test]
-    dependencies: [ch02_cashflow]
-
-  # ---- 第四章: 前瞻风险 ----
-  # 政策风险对高息股至关重要：银行让利、公用事业降价、国企分红政策变化
+    operators:
+    - valuation_dividend
+    - stress_test
+    dependencies:
+    - ch02_cashflow
   - id: ch04_risk
     chapter: 4
     title: 前瞻风险与政策影响
-    operators: [policy_risk, industry_position, news_signal]
-    dependencies: [ch01_screening, ch02_cashflow]
-
-  # ---- 第五章: 估值与买入决策 ----
+    operators:
+    - policy_risk
+    - industry_position
+    - news_signal
+    dependencies:
+    - ch01_screening
+    - ch02_cashflow
   - id: ch05_decision
     chapter: 5
     title: 估值与收息决策
-    operators: [safety_margin, apple_trading_model, position_management]
-    dependencies: [ch02_cashflow, ch03_dividend, ch04_risk]
-
-  # ---- 综合研判（收息专用 5 步）----
+    operators:
+    - safety_margin
+    - apple_trading_model
+    - position_management
+    dependencies:
+    - ch02_cashflow
+    - ch03_dividend
+    - ch04_risk
   synthesis:
     thinking_steps:
-      - step: 股息安全一票否决
-        instruction: |
-          以下任一条件触发则直接回避（评分 ≤ 25）：
-          - 经营现金流连续 2 年为负（无法支撑分红）
-          - 派息率 > 100%（分红超过利润，不可持续）
-          - 近 3 年分红中断过（除非有合理解释如重大收购）
-          - 管理层诚信"不可信"
-          - 审计意见非标
-          - 有息负债率 > 70% 且利息覆盖倍数 < 1.5x
+    - step: 股息安全一票否决
+      instruction: '以下任一条件触发则直接回避（评分 ≤ 25）：
 
-      - step: 股息可持续性评估
-        instruction: |
-          核心问题：这个股息能持续吗？逐项检查：
-          1. 经营现金流覆盖倍数（覆盖率 > 1.5x 为安全，> 2x 为优秀）
-          2. 派息率合理性（< 60% 优秀，60-70% 合理，> 70% 需警惕）
-          3. 分红历史稳定性（连续 5 年稳定或增长为最佳信号）
-          4. 压力测试：收入下滑场景下能否维持分红？
-          5. 国企 vs 民企：国企分红政策更稳定（政策驱动），但需关注"让利"风险
-          6. 前瞻风险：Ch04 的政策/行业判断是否威胁分红基础？
+        - 经营现金流连续 2 年为负（无法支撑分红）
 
-      - step: 一致性裁决
-        instruction: |
-          检查内部矛盾：
-          1. 现金流判定"恶化" vs 股息"可持续"→ 矛盾
-          2. 压力测试失败 vs 建仓建议 → 矛盾
-          3. 政策风险"高" vs 股息"安全" → 需解释
-          存在未调和矛盾时，评分上限 65，不得进入买入区间。
+        - 派息率 > 100%（分红超过利润，不可持续）
 
-      - step: 收息收益估算与评分
-        instruction: |
-          基于可持续性判断，估算总回报：
-          - 预期年化股息收益率 = 当前股息率 × 可持续性折扣
-          - 估值修复潜力（如有）
-          - 总预期年化回报 = 股息率 + 估值修复率
-          参照评分锚点给出综合评分。
-          收息策略宁可错过高息陷阱，不可买入不可持续的高息股。
+        - 近 3 年分红中断过（除非有合理解释如重大收购）
 
-    # 评分锚点（收息专用）
+        - 管理层诚信"不可信"
+
+        - 审计意见非标
+
+        - 有息负债率 > 70% 且利息覆盖倍数 < 1.5x
+
+        '
+    - step: 股息可持续性评估
+      instruction: '核心问题：这个股息能持续吗？逐项检查：
+
+        1. 经营现金流覆盖倍数（覆盖率 > 1.5x 为安全，> 2x 为优秀）
+
+        2. 派息率合理性（< 60% 优秀，60-70% 合理，> 70% 需警惕）
+
+        3. 分红历史稳定性（连续 5 年稳定或增长为最佳信号）
+
+        4. 压力测试：收入下滑场景下能否维持分红？
+
+        5. 国企 vs 民企：国企分红政策更稳定（政策驱动），但需关注"让利"风险
+
+        6. 前瞻风险：Ch04 的政策/行业判断是否威胁分红基础？
+
+        '
+    - step: 一致性裁决
+      instruction: '检查内部矛盾：
+
+        1. 现金流判定"恶化" vs 股息"可持续"→ 矛盾
+
+        2. 压力测试失败 vs 建仓建议 → 矛盾
+
+        3. 政策风险"高" vs 股息"安全" → 需解释
+
+        存在未调和矛盾时，评分上限 65，不得进入买入区间。
+
+        '
+    - step: 收息收益估算与评分
+      instruction: '基于可持续性判断，估算总回报：
+
+        - 预期年化股息收益率 = 当前股息率 × 可持续性折扣
+
+        - 估值修复潜力（如有）
+
+        - 总预期年化回报 = 股息率 + 估值修复率
+
+        参照评分锚点给出综合评分。
+
+        收息策略宁可错过高息陷阱，不可买入不可持续的高息股。
+
+        '
     scoring_rubric:
-      - range: "85-100"
-        description: "股息率 > 5% + 覆盖率 > 2x + 连续 5 年稳定/增长 + 安全边际 > 30% + 政策风险低"
-      - range: "75-84"
-        description: "股息率 > 4% + 覆盖率 > 1.5x + 基本面健康 + 前瞻风险可控 → 可建仓收息"
-      - range: "50-74"
-        description: "股息看似诱人但可持续性存疑（覆盖率不足/政策风险/分红历史不稳）→ 观望"
-      - range: "30-49"
-        description: "股息不可持续或前瞻风险较高 → 回避"
-      - range: "0-29"
-        description: "高息陷阱或一票否决 → 明确回避"
-
-    # 决策边界（收息策略同样使用 75 分阈值）
+    - range: 85-100
+      description: 股息率 > 5% + 覆盖率 > 2x + 连续 5 年稳定/增长 + 安全边际 > 30% + 政策风险低
+    - range: 75-84
+      description: 股息率 > 4% + 覆盖率 > 1.5x + 基本面健康 + 前瞻风险可控 → 可建仓收息
+    - range: 50-74
+      description: 股息看似诱人但可持续性存疑（覆盖率不足/政策风险/分红历史不稳）→ 观望
+    - range: 30-49
+      description: 股息不可持续或前瞻风险较高 → 回避
+    - range: 0-29
+      description: 高息陷阱或一票否决 → 明确回避
     decision_thresholds:
-      buy: 75                              # ≥ 75 → 建仓收息
-      watch: [30, 74]                      # 30-74 → 观望
-      avoid: 29                            # ≤ 29 → 回避
-
-  # ---- Agent 输出字段 ----
+      buy: 75
+      avoid: 29
+      watch:
+      - 30
+      - 74
   synthesis_fields:
   - '股息可持续性: 强 / 中 / 弱 / 不可持续'
   - '当前股息率: 百分比'
@@ -197,10 +202,6 @@ framework:
   - '最终建议: 建仓收息 / 观望 / 回避'
   - '综合评分: 0-100分'
   - '信心水平: 高 / 中 / 低'
-
-# ============================================================
-# LLM 配置
-# ============================================================
 llm:
   base_url_env: LLM_BASE_URL
   api_key_env: LLM_API_KEY
