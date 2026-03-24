@@ -154,6 +154,7 @@
     html += '<div class="card-head">';
     html += `<div><div class="op-name">${esc(op.name)}</div><div class="op-id">${esc(op.id)}</div></div>`;
     html += `<span class="category-badge ${catClass}">${esc(catLabel)}</span>`;
+    html += '<span class="expand-hint">点击展开 ▼</span>';
     html += "</div>";
 
     // Tags

@@ -12,7 +12,7 @@
 <header class="site-header">
   <h1>thesis-backtester</h1>
   <p class="tagline">把定性投资判断变成可回测对象</p>
-  <a class="gh-link" href="https://github.com/geniucker-dev/thesis-backtester" target="_blank" rel="noopener">
+  <a class="gh-link" href="https://github.com/turtlequant/thesis-backtester" target="_blank" rel="noopener">
     <svg class="gh-icon" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
     GitHub
   </a>
@@ -62,8 +62,8 @@
       <div class="stat-label">回避信号准确率</div>
     </div>
     <div class="stat-card">
-      <div class="stat-value">26</div>
-      <div class="stat-label">V2 算子数</div>
+      <div class="stat-value">37</div>
+      <div class="stat-label">V2 算子数（含行业专用）</div>
     </div>
   </div>
 
@@ -155,8 +155,7 @@
     <p>算子是分析的最小单元，定义在 <code>operators/v2/</code> 目录下的 Markdown 文件中。每个算子包含 YAML 前置元数据和 Markdown 分析指引。</p>
 
     <h4>文件格式</h4>
-    <div class="code-block">
-<span class="punct">---</span>
+    <pre class="code-block"><span class="punct">---</span>
 <span class="key">id</span><span class="punct">:</span> <span class="string">my_operator</span>
 <span class="key">name</span><span class="punct">:</span> <span class="string">我的分析算子</span>
 <span class="key">category</span><span class="punct">:</span> <span class="string">fundamental</span>
@@ -177,8 +176,7 @@
 <span>说明这个算子要回答什么问题...</span>
 
 <span class="comment">### 分析步骤</span>
-<span>具体的分析指引，Agent 会按照这些步骤执行分析...</span>
-    </div>
+<span>具体的分析指引，Agent 会按照这些步骤执行分析...</span></pre>
 
     <h4>关键字段说明</h4>
     <ul>
@@ -196,8 +194,7 @@
     <p>策略是算子的编排方案，定义在 <code>strategies/&lt;name&gt;/strategy.yaml</code> 中。</p>
 
     <h4>基本结构</h4>
-    <div class="code-block">
-<span class="key">meta</span><span class="punct">:</span>
+    <pre class="code-block"><span class="key">meta</span><span class="punct">:</span>
   <span class="key">name</span><span class="punct">:</span> <span class="string">我的策略</span>
   <span class="key">version</span><span class="punct">:</span> <span class="string">"1.0"</span>
 
@@ -224,8 +221,7 @@
         <span class="key">instruction</span><span class="punct">:</span> <span class="string">综合分析给出评分...</span>
     <span class="key">decision_thresholds</span><span class="punct">:</span>
       <span class="key">buy</span><span class="punct">:</span> <span class="string">75</span>
-      <span class="key">avoid</span><span class="punct">:</span> <span class="string">29</span>
-    </div>
+      <span class="key">avoid</span><span class="punct">:</span> <span class="string">29</span></pre>
 
     <h4>设计要点</h4>
     <ul>
@@ -244,11 +240,11 @@
       <li>创建特性分支: <code>git checkout -b feature/my-operator</code></li>
       <li>添加或修改算子/策略文件</li>
       <li>本地测试:
-        <div class="code-block"><span class="comment"># 测试算子能否被正确加载</span>
+        <pre class="code-block"><span class="comment"># 测试算子能否被正确加载</span>
 python -m src.engine.launcher strategies/v6_enhanced/strategy.yaml agent-analyze 601288.SH 2024-06-30
 
 <span class="comment"># 重新生成站点数据</span>
-python docs/site/build.py</div>
+python docs/site/build.py</pre>
       </li>
       <li>提交 PR，说明变更内容和测试结果</li>
     </ol>
@@ -265,7 +261,7 @@ python docs/site/build.py</div>
   <div class="contribute-section">
     <h3>项目链接</h3>
     <ul>
-      <li>GitHub: <a href="https://github.com/geniucker-dev/thesis-backtester" target="_blank">github.com/geniucker-dev/thesis-backtester</a></li>
+      <li>GitHub: <a href="https://github.com/turtlequant/thesis-backtester" target="_blank">github.com/geniucker-dev/thesis-backtester</a></li>
       <li>License: AGPL-3.0</li>
     </ul>
   </div>

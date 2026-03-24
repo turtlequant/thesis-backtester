@@ -279,6 +279,17 @@ body {
   display: block;
 }
 
+.expand-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-left: auto;
+  padding-left: 0.5rem;
+}
+
+.op-card.expanded .expand-hint {
+  display: none;
+}
+
 .detail-section {
   margin-bottom: 0.6rem;
 }
