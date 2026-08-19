@@ -1,0 +1,22 @@
+schema_version: 1
+id: dv
+name: 股息率
+description: 优先使用滚动十二个月股息率，缺失时回退到当期股息率。
+category: dividend
+tags: [分红, 收益]
+type: cross_section
+grain: security_date
+engine: polars
+inputs:
+  ttm: dividend.yield_ttm
+  ratio: dividend.yield_ratio
+optional_inputs: [ttm, ratio]
+expression: coalesce(col("ttm"), col("ratio"))
+output:
+  dtype: float64
+  unit: percent
+  direction: higher_better
+policies:
+  null: propagate
+  point_in_time: strict
+  enabled: true

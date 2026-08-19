@@ -2,12 +2,9 @@
 Strategy management endpoints.
 """
 import logging
-from pathlib import Path
-from typing import List
-
 from fastapi import APIRouter, HTTPException
 
-from src.data.settings import PROJECT_ROOT
+from src.data.settings import STRATEGIES_ROOT
 from src.engine.config import StrategyConfig
 
 logger = logging.getLogger(__name__)
@@ -26,7 +23,7 @@ _STRATEGY_DESCRIPTIONS = {
 @router.get("")
 async def list_strategies():
     """List all available strategies with descriptions."""
-    strategies_dir = PROJECT_ROOT / "strategies"
+    strategies_dir = STRATEGIES_ROOT
     if not strategies_dir.exists():
         return []
 
@@ -62,7 +59,7 @@ async def list_strategies():
 @router.get("/{name}/chapters")
 async def get_chapters(name: str):
     """Get chapter details for a strategy."""
-    yaml_path = PROJECT_ROOT / "strategies" / name / "strategy.yaml"
+    yaml_path = STRATEGIES_ROOT / name / "strategy.yaml"
     if not yaml_path.exists():
         raise HTTPException(status_code=404, detail=f"Strategy not found: {name}")
 

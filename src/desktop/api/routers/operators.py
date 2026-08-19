@@ -2,34 +2,70 @@
 Operator management endpoints — list, view, edit, create operators.
 """
 import logging
-from pathlib import Path
-from typing import Any, Dict, List, Optional
+import re
+from typing import Dict, List, Optional
 
 import yaml
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from src.data.settings import PROJECT_ROOT
+from src.data.settings import WORKSPACE_ROOT
 from src.engine.operators import Operator, OperatorRegistry
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api/operators", tags=["operators"])
 
-OPERATORS_DIR = "operators/v2"
+DEFAULT_OPERATOR_VERSION = "v2"
 
 
-def _get_registry() -> OperatorRegistry:
+def _available_operator_versions() -> List[dict]:
+    """Discover versioned operator libraries without accepting arbitrary paths."""
+    root = WORKSPACE_ROOT / "operators"
+    versions = []
+    if not root.exists():
+        return versions
+    for path in root.iterdir():
+        if not path.is_dir() or not re.fullmatch(r"v\d+", path.name):
+            continue
+        registry = OperatorRegistry(operators_dir=f"operators/{path.name}")
+        public = registry.list_all()
+        all_operators = registry.list_all(include_internal=True)
+        versions.append(
+            {
+                "id": path.name,
+                "operators_dir": f"operators/{path.name}",
+                "label": f"{path.name}（{'当前版本' if path.name == DEFAULT_OPERATOR_VERSION else '历史版本'}）",
+                "operator_count": len(public),
+                "internal_count": len(all_operators) - len(public),
+                "current": path.name == DEFAULT_OPERATOR_VERSION,
+            }
+        )
+    versions.sort(key=lambda item: int(item["id"][1:]), reverse=True)
+    return versions
+
+
+def _normalize_version(version: str = DEFAULT_OPERATOR_VERSION) -> tuple[str, str]:
+    raw = str(version or DEFAULT_OPERATOR_VERSION).strip().replace("\\", "/")
+    version_id = raw.split("/", 1)[1] if raw.startswith("operators/") else raw
+    available = {item["id"]: item for item in _available_operator_versions()}
+    if version_id not in available:
+        raise HTTPException(status_code=404, detail=f"Operator library not found: {raw}")
+    return version_id, available[version_id]["operators_dir"]
+
+
+def _get_registry(version: str = DEFAULT_OPERATOR_VERSION) -> tuple[OperatorRegistry, str, str]:
     """Create a fresh operator registry."""
-    return OperatorRegistry(operators_dir=OPERATORS_DIR)
+    version_id, operators_dir = _normalize_version(version)
+    return OperatorRegistry(operators_dir=operators_dir), version_id, operators_dir
 
 
-def _operator_to_dict(op: Operator) -> dict:
+def _operator_to_dict(op: Operator, version_id: str, operators_dir: str) -> dict:
     """Serialize an Operator to a JSON-friendly dict."""
     # Derive category from source_path subdirectory
     category = ""
     if op.source_path:
-        rel = op.source_path.relative_to(PROJECT_ROOT / OPERATORS_DIR)
+        rel = op.source_path.relative_to(WORKSPACE_ROOT / operators_dir)
         if len(rel.parts) > 1:
             category = rel.parts[0]
 
@@ -46,19 +82,27 @@ def _operator_to_dict(op: Operator) -> dict:
         "data_needed": op.data_needed,
         "weight": op.weight,
         "score_range": op.score_range,
+        "history_variant": op.history_variant,
+        "execution_mode": op.execution_mode,
+        "selectable": op.execution_mode != "history_adapter",
+        "library_version": version_id,
+        "operators_dir": operators_dir,
         "file_path": str(op.source_path) if op.source_path else "",
     }
 
 
 @router.get("")
-async def list_operators():
+async def list_operators(
+    version: str = DEFAULT_OPERATOR_VERSION,
+    include_internal: bool = False,
+):
     """List all operators grouped by category."""
-    registry = _get_registry()
-    operators = registry.list_all()
+    registry, version_id, operators_dir = _get_registry(version)
+    operators = registry.list_all(include_internal=include_internal)
 
     grouped: Dict[str, List[dict]] = {}
     for op in operators:
-        d = _operator_to_dict(op)
+        d = _operator_to_dict(op, version_id, operators_dir)
         cat = d["category"] or "uncategorized"
         grouped.setdefault(cat, []).append(d)
 
@@ -70,18 +114,31 @@ async def list_operators():
         "categories": sorted(grouped.keys()),
         "operators": grouped,
         "total": len(operators),
+        "version": version_id,
+        "operators_dir": operators_dir,
+        "available_versions": _available_operator_versions(),
+        "include_internal": include_internal,
+    }
+
+
+@router.get("/versions")
+async def list_operator_versions():
+    """List operator library versions available to the desktop editor."""
+    return {
+        "default": DEFAULT_OPERATOR_VERSION,
+        "versions": _available_operator_versions(),
     }
 
 
 @router.get("/{op_id}")
-async def get_operator(op_id: str):
+async def get_operator(op_id: str, version: str = DEFAULT_OPERATOR_VERSION):
     """Get full operator detail including markdown content."""
-    registry = _get_registry()
+    registry, version_id, operators_dir = _get_registry(version)
     op = registry.get(op_id)
     if not op:
         raise HTTPException(status_code=404, detail=f"Operator not found: {op_id}")
 
-    d = _operator_to_dict(op)
+    d = _operator_to_dict(op, version_id, operators_dir)
 
     # Read full raw content from file
     raw_content = ""
@@ -101,6 +158,8 @@ class OperatorUpdate(BaseModel):
     gate: Optional[dict] = None
     weight: Optional[float] = None
     score_range: Optional[str] = None
+    history_variant: Optional[str] = None
+    execution_mode: Optional[str] = None
     content: Optional[str] = None  # markdown body
 
 
@@ -114,6 +173,8 @@ class OperatorCreate(BaseModel):
     gate: dict = {}
     weight: float = 1.0
     score_range: str = "0-100"
+    history_variant: str = ""
+    execution_mode: str = "standard"
     content: str = ""
 
 
@@ -124,9 +185,13 @@ def _build_file_content(meta: dict, body: str) -> str:
 
 
 @router.put("/{op_id}")
-async def update_operator(op_id: str, update: OperatorUpdate):
+async def update_operator(
+    op_id: str,
+    update: OperatorUpdate,
+    version: str = DEFAULT_OPERATOR_VERSION,
+):
     """Update an existing operator (write back to .md file)."""
-    registry = _get_registry()
+    registry, version_id, operators_dir = _get_registry(version)
     op = registry.get(op_id)
     if not op:
         raise HTTPException(status_code=404, detail=f"Operator not found: {op_id}")
@@ -164,6 +229,15 @@ async def update_operator(op_id: str, update: OperatorUpdate):
         meta["weight"] = update.weight
     if update.score_range is not None:
         meta["score_range"] = update.score_range
+    if update.history_variant is not None:
+        if update.history_variant:
+            meta["history_variant"] = update.history_variant
+        else:
+            meta.pop("history_variant", None)
+    if update.execution_mode is not None:
+        if update.execution_mode not in {"standard", "history_adapter"}:
+            raise HTTPException(status_code=422, detail="Unsupported execution_mode")
+        meta["execution_mode"] = update.execution_mode
 
     # Use new content or keep existing
     body = update.content if update.content is not None else op.content
@@ -173,10 +247,10 @@ async def update_operator(op_id: str, update: OperatorUpdate):
     op.source_path.write_text(new_content, encoding="utf-8")
 
     # Return updated operator
-    registry2 = _get_registry()
+    registry2, _, _ = _get_registry(version_id)
     updated = registry2.get(op_id)
     if updated:
-        d = _operator_to_dict(updated)
+        d = _operator_to_dict(updated, version_id, operators_dir)
         d["content"] = updated.content
         return d
 
@@ -184,18 +258,22 @@ async def update_operator(op_id: str, update: OperatorUpdate):
 
 
 @router.post("")
-async def create_operator(data: OperatorCreate):
+async def create_operator(
+    data: OperatorCreate,
+    version: str = DEFAULT_OPERATOR_VERSION,
+):
     """Create a new operator (.md file)."""
+    version_id, operators_dir = _normalize_version(version)
     # Determine target directory
     category = data.category or "uncategorized"
-    target_dir = PROJECT_ROOT / OPERATORS_DIR / category
+    target_dir = WORKSPACE_ROOT / operators_dir / category
     target_dir.mkdir(parents=True, exist_ok=True)
 
     target_file = target_dir / f"{data.id}.md"
     if target_file.exists():
         raise HTTPException(
             status_code=409,
-            detail=f"Operator file already exists: {target_file.relative_to(PROJECT_ROOT)}",
+            detail=f"Operator file already exists: {target_file.relative_to(WORKSPACE_ROOT)}",
         )
 
     # Build frontmatter
@@ -213,15 +291,21 @@ async def create_operator(data: OperatorCreate):
         meta["weight"] = data.weight
     if data.score_range != "0-100":
         meta["score_range"] = data.score_range
+    if data.history_variant:
+        meta["history_variant"] = data.history_variant
+    if data.execution_mode not in {"standard", "history_adapter"}:
+        raise HTTPException(status_code=422, detail="Unsupported execution_mode")
+    if data.execution_mode != "standard":
+        meta["execution_mode"] = data.execution_mode
 
     content = _build_file_content(meta, data.content)
     target_file.write_text(content, encoding="utf-8")
 
     # Return created operator
-    registry = _get_registry()
+    registry, _, _ = _get_registry(version_id)
     op = registry.get(data.id)
     if op:
-        d = _operator_to_dict(op)
+        d = _operator_to_dict(op, version_id, operators_dir)
         d["content"] = op.content
         return d
 

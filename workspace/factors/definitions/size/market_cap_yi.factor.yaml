@@ -1,0 +1,20 @@
+schema_version: 1
+id: market_cap_yi
+name: 总市值（亿）
+description: 将数据源总市值从万元换算为亿元。
+category: size
+tags: [规模]
+type: cross_section
+grain: security_date
+engine: polars
+inputs:
+  value: size.total_market_value_wan
+expression: round(col("value") / 10000.0, 2)
+output:
+  dtype: float64
+  unit: hundred_million_cny
+  direction: higher_better
+policies:
+  null: propagate
+  point_in_time: strict
+  enabled: true

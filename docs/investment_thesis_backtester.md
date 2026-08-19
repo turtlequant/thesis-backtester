@@ -1,5 +1,7 @@
 # 投资思路回测引擎 — 产品设计文档
 
+> **文档性质：历史研究记录。** 本文保留项目早期的问题定义和研究设想，不代表当前产品状态或既定路线。当前能力与使用入口见 [文档索引](README.md) 和 [功能指引](PRODUCT_GUIDE.md)。
+
 ## 一、核心洞察
 
 传统量化回测只能验证可数值化的交易规则（PE<10买入、均线金叉做多），但大量真实的投资决策依赖定性判断：
@@ -188,7 +190,7 @@
 
 ### 4.2 待验证
 
-新策略只需：创建 `strategies/<name>/strategy.yaml` + 组合算子 → 即可运行回测。
+新策略只需：创建 `workspace/strategies/<name>/strategy.yaml` + 组合算子 → 即可运行回测。
 
 | 思路 | 核心问题 | 框架化方向 |
 |------|---------|-----------|
@@ -204,8 +206,8 @@
 
 | 组件 | 技术 | 路径 |
 |------|------|------|
-| 数据获取 | Tushare Pro API（Provider 抽象） | `src/data/tushare/provider.py` |
-| 数据存储 | Parquet（zstd 压缩，月/股票分区） | `src/data/storage.py` |
+| 数据获取 | BaoStock / Tushare / AKShare（独立 Provider 适配） | `src/data/provider.py` |
+| 数据存储 | 按 Provider 隔离的 SQLite（月/股票逻辑分区） | `src/data/storage.py` |
 | 时间点快照 | ThreadPoolExecutor 并行 I/O | `src/data/snapshot.py` |
 | 算子注册 | OperatorRegistry（自动 schema） | `src/engine/operators.py` |
 | 因子注册 | FactorRegistry（截面+时序） | `src/engine/factors.py` |

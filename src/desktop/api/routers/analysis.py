@@ -2,8 +2,8 @@
 Analysis endpoints — start, monitor, and retrieve analysis results.
 """
 import asyncio
-import json
 import logging
+import threading
 from typing import Optional
 
 from fastapi import APIRouter, HTTPException, WebSocket, WebSocketDisconnect
@@ -31,48 +31,79 @@ class AnalysisRequest(BaseModel):
 
 # ==================== Stock Search ====================
 
-# Cached stock list (preloaded at startup)
-_stock_list_cache = None
-_stock_list_loading = False
+# Provider-aware stock search caches: provider -> (database version, rows).
+_stock_list_caches = {}
+_stock_list_loading = set()
+_stock_list_lock = threading.Lock()
 
 
-def preload_stock_list():
-    """Preload stock list in background thread at server startup."""
-    global _stock_list_cache, _stock_list_loading
-    if _stock_list_cache is not None or _stock_list_loading:
-        return
-    _stock_list_loading = True
+def _stock_list_version(provider: str):
+    """Return a lightweight version key that changes after a local DB write."""
+    if provider == "akshare":
+        return "instant"
+    from src.data.config import get_provider_db_path
 
-    import threading
+    path = get_provider_db_path(provider)
+    candidates = (path, path.with_name(path.name + "-wal"))
+    return tuple(
+        (candidate.stat().st_mtime_ns, candidate.stat().st_size)
+        if candidate.exists()
+        else None
+        for candidate in candidates
+    )
+
+
+def _load_stock_list(provider: str):
+    """Load a stock list strictly from the selected provider's own boundary."""
+    if provider == "akshare":
+        import akshare as ak
+
+        frame = ak.stock_info_a_code_name()
+        return [
+            {"code": str(row["code"]), "name": str(row["name"])}
+            for _, row in frame.iterrows()
+        ]
+
+    from src.data import storage
+
+    frame = storage.load_one("basic", "", "stock_list", provider=provider)
+    if frame.empty:
+        return []
+    if "list_status" in frame.columns:
+        frame = frame[frame["list_status"] == "L"]
+    return [
+        {"code": str(row["ts_code"]), "name": str(row["name"])}
+        for _, row in frame.iterrows()
+    ]
+
+
+def preload_stock_list(provider_name: str = None):
+    """Preload one provider's stock list without cross-provider fallback."""
+    from src.data.config import get_active_provider_name
+
+    provider = (provider_name or get_active_provider_name()).lower()
+    version = _stock_list_version(provider)
+    with _stock_list_lock:
+        cached = _stock_list_caches.get(provider)
+        if (cached and cached[0] == version) or provider in _stock_list_loading:
+            return
+        _stock_list_loading.add(provider)
+
     def _load():
-        global _stock_list_cache, _stock_list_loading
-        # Try local parquet first (fastest)
         try:
-            from src.data import api as data_api
-            sl = data_api.get_stock_list()
-            if not sl.empty:
-                _stock_list_cache = [
-                    {"code": row["ts_code"], "name": row["name"]}
-                    for _, row in sl.iterrows()
-                ]
-                logger.info(f"Preloaded {len(_stock_list_cache)} stocks from local data")
-                _stock_list_loading = False
-                return
-        except Exception:
-            pass
-
-        # Fallback: AKShare
-        try:
-            import akshare as ak
-            df = ak.stock_info_a_code_name()
-            _stock_list_cache = [
-                {"code": row["code"], "name": row["name"]}
-                for _, row in df.iterrows()
-            ]
-            logger.info(f"Preloaded {len(_stock_list_cache)} stocks from AKShare")
-        except Exception as e:
-            logger.error(f"Failed to preload stock list: {e}")
-        _stock_list_loading = False
+            rows = _load_stock_list(provider)
+            final_version = _stock_list_version(provider)
+            with _stock_list_lock:
+                _stock_list_caches[provider] = (final_version, rows)
+            if rows:
+                logger.info("Preloaded %s stocks from %s", len(rows), provider)
+            elif provider != "akshare":
+                logger.info("%s 本地股票列表为空，请先初始化基础数据", provider)
+        except Exception as exc:
+            logger.error("Failed to preload stock list from %s: %s", provider, exc)
+        finally:
+            with _stock_list_lock:
+                _stock_list_loading.discard(provider)
 
     threading.Thread(target=_load, daemon=True).start()
 
@@ -83,14 +114,20 @@ async def search_stocks(q: str = "", limit: int = 10):
     if not q or len(q) < 1:
         return []
 
-    if _stock_list_cache is None:
-        # Still loading, try synchronous fallback
-        preload_stock_list()
-        return []  # Return empty, will be ready on next request
+    from src.data.config import get_active_provider_name
+
+    provider = get_active_provider_name()
+    version = _stock_list_version(provider)
+    preload_stock_list(provider)
+    with _stock_list_lock:
+        cached = _stock_list_caches.get(provider)
+        stock_list = cached[1] if cached and cached[0] == version else None
+    if stock_list is None:
+        return []
 
     q_lower = q.lower()
     results = []
-    for s in _stock_list_cache:
+    for s in stock_list:
         if q_lower in s["code"].lower() or q_lower in s["name"].lower():
             # Normalize code format: 601288 → 601288.SH
             code = s["code"]
@@ -118,30 +155,24 @@ async def test_data_fetch(ts_code: str):
 
     def _fetch():
         try:
-            from src.desktop.api.services.data_service import get_provider
-            provider = get_provider()
-
-            # Test each data source (pass ts_code as-is, each method handles format internally)
-            code = ts_code
+            snapshot, _, errors, _ = create_snapshot_for_analysis(ts_code)
             tests = [
-                ("日线行情", lambda: provider.fetch_daily_single(code, '20240101', '20251231')),
-                ("资产负债表", lambda: provider.fetch_balancesheet(code)),
-                ("利润表", lambda: provider.fetch_income(code)),
-                ("现金流量表", lambda: provider.fetch_cashflow(code)),
-                ("财务指标", lambda: provider.fetch_financial_indicator(code)),
-                ("分红历史", lambda: provider.fetch_dividend(code)),
-                ("十大股东", lambda: provider.fetch_top10_holders(code)),
-                ("近期新闻", lambda: provider.fetch_news(code, limit=5)),
-                ("资金流向", lambda: provider.fetch_fund_flow(code, days=5)),
-                ("大盘指数", lambda: provider.fetch_index_daily(days=5)),
+                ("日线行情", snapshot.price_history),
+                ("每日指标", snapshot.daily_indicators),
+                ("资产负债表/指标", snapshot.balancesheet),
+                ("利润表/指标", snapshot.income),
+                ("现金流量表/指标", snapshot.cashflow),
+                ("财务指标", snapshot.fina_indicator),
+                ("分红历史", snapshot.dividend),
+                ("十大股东", snapshot.top10_holders),
+                ("近期新闻", snapshot.news),
+                ("资金流向", snapshot.fund_flow),
+                ("大盘指数", snapshot.index_daily),
             ]
-
-            for name, fn in tests:
-                try:
-                    df = fn()
-                    sources.append({"name": name, "ok": len(df) > 0, "rows": len(df)})
-                except Exception as e:
-                    sources.append({"name": name, "ok": False, "rows": 0, "error": str(e)[:80]})
+            for name, frame in tests:
+                sources.append({"name": name, "ok": not frame.empty, "rows": len(frame)})
+            if errors:
+                return "; ".join(errors)
         except Exception as e:
             return str(e)
         return None
@@ -177,7 +208,7 @@ async def preview_industry_route(ts_code: str, strategy: str):
                     row = df[df['item'] == '行业']
                     if not row.empty:
                         return str(row.iloc[0]['value']).replace('Ⅱ','').replace('Ⅲ','').strip()
-            except:
+            except Exception:
                 pass
             # Fallback: check local stock list
             try:
@@ -186,23 +217,23 @@ async def preview_industry_route(ts_code: str, strategy: str):
                 match = sl[sl['ts_code'] == ts_code]
                 if not match.empty:
                     return match.iloc[0].get('industry', '')
-            except:
+            except Exception:
                 pass
             return ""
 
         with ThreadPoolExecutor() as pool:
             industry = await loop.run_in_executor(pool, _get_industry)
-    except:
+    except Exception:
         pass
 
     if not industry:
         return {"industry": "", "routed": False, "chapters": []}
 
     # Load strategy and compute routing
-    from src.data.settings import PROJECT_ROOT
+    from src.data.settings import STRATEGIES_ROOT
     from src.engine.config import StrategyConfig
 
-    strategy_path = PROJECT_ROOT / "strategies" / strategy / "strategy.yaml"
+    strategy_path = STRATEGIES_ROOT / strategy / "strategy.yaml"
     if not strategy_path.exists():
         return {"industry": industry, "routed": False, "chapters": []}
 
@@ -316,8 +347,8 @@ async def start_analysis(request: AnalysisRequest):
         raise HTTPException(status_code=400, detail=error_msg)
 
     # Resolve strategy path
-    from src.data.settings import PROJECT_ROOT
-    strategy_path = PROJECT_ROOT / "strategies" / request.strategy / "strategy.yaml"
+    from src.data.settings import STRATEGIES_ROOT
+    strategy_path = STRATEGIES_ROOT / request.strategy / "strategy.yaml"
     if not strategy_path.exists():
         raise HTTPException(
             status_code=404,
@@ -441,9 +472,9 @@ async def get_status(task_id: str):
     chapters = []
     try:
         from src.engine.config import StrategyConfig
-        from src.data.settings import PROJECT_ROOT
+        from src.data.settings import STRATEGIES_ROOT
         config = StrategyConfig.from_yaml(
-            PROJECT_ROOT / "strategies" / task.strategy_name / "strategy.yaml"
+            STRATEGIES_ROOT / task.strategy_name / "strategy.yaml"
         )
         for ch in config.get_chapter_defs():
             ch_id = ch["id"]

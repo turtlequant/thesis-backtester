@@ -1,0 +1,20 @@
+schema_version: 1
+id: bp
+name: B/P 比率
+description: 账面价值相对市价的比率，等于 1/PB。
+category: valuation
+tags: [估值, 价值]
+type: cross_section
+grain: security_date
+engine: polars
+inputs:
+  pb: valuation.pb
+expression: round(safe_div(1.0, col("pb")), 4)
+output:
+  dtype: float64
+  unit: ratio
+  direction: higher_better
+policies:
+  null: propagate
+  point_in_time: strict
+  enabled: true

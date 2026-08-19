@@ -8,7 +8,7 @@ Agent 运行时 — 核心编排器
   4. 收集每章结构化输出 → 汇总综合研判
 
 用法:
-    python -m src.agent.runtime strategies/v6_value/strategy.yaml 601288.SH 2024-06-30
+    python -m src.agent.runtime workspace/strategies/v6_value/strategy.yaml 601288.SH 2024-06-30
 """
 import asyncio
 import json
@@ -24,7 +24,7 @@ from src.data.snapshot import create_snapshot, StockSnapshot, snapshot_to_markdo
 from src.engine.config import StrategyConfig
 
 from .client import LLMClient, LLMConfig
-from .tools import ToolSandbox, TOOL_DEFINITIONS
+from .tools import ToolSandbox, get_tool_definitions
 from .schemas import schema_to_prompt_description, dataclass_to_json_schema
 
 logger = logging.getLogger(__name__)
@@ -125,7 +125,12 @@ def build_system_prompt(
 """
 
     # 分析框架内容（算子驱动，含行业路由）
-    framework_content = _build_framework_content(chapter, config, industry=snapshot.industry)
+    framework_content = _build_framework_content(
+        chapter,
+        config,
+        industry=snapshot.industry,
+        history_mode=blind_mode,
+    )
 
     return f"""你是一位{analyst_role}，正在使用「{version_string}」框架进行深度分析。
 
@@ -166,19 +171,24 @@ def _build_framework_content(
     chapter: dict,
     config: StrategyConfig,
     industry: str = None,
+    history_mode: bool = False,
 ) -> str:
     """从章节定义中的算子组合构建分析框架内容
 
     如果传入 industry，自动执行行业路由：
     - 跳过 gate.exclude_industry 匹配的算子
-    - 补充 gate.only_industry 匹配的行业专用算子
+    - 仅保留 gate.only_industry 匹配的行业专用算子
     """
     operators = chapter.get('operators', [])
     if not operators:
         return "（无分析框架内容）"
 
     registry = config.get_operator_registry()
-    ops = registry.resolve(operators, industry=industry)
+    ops = registry.resolve(
+        operators,
+        industry=industry,
+        history_mode=history_mode,
+    )
     if not ops:
         return "（无分析框架内容）"
 
@@ -223,7 +233,21 @@ def build_synthesis_prompt(
             else:
                 prior_text += str(output) + "\n"
 
-    fields_text = "\n".join(f"{i+1}. **{f}**" for i, f in enumerate(synthesis_fields))
+    field_lines = []
+    for index, item in enumerate(synthesis_fields, 1):
+        if isinstance(item, dict):
+            field_name = str(item.get("field") or "").strip()
+            if not field_name:
+                continue
+            field_type = str(item.get("type") or "str").strip()
+            description = str(item.get("desc") or item.get("description") or "").strip()
+            suffix = f"（{field_type}）"
+            if description:
+                suffix += f"：{description}"
+            field_lines.append(f"{index}. **{field_name}** {suffix}")
+        else:
+            field_lines.append(f"{index}. **{item}**")
+    fields_text = "\n".join(field_lines)
 
     blind_rules = ""
     if blind_mode:
@@ -234,14 +258,24 @@ def build_synthesis_prompt(
     if thinking_steps:
         thinking_text = "\n## 思考步骤\n\n请严格按以下步骤进行综合研判：\n"
         for i, step in enumerate(thinking_steps, 1):
-            thinking_text += f"\n### 步骤 {i}: {step['step']}\n\n{step['instruction']}\n"
+            thinking_text += (
+                f"\n### 步骤 {i}: {step.get('step', '')}\n\n"
+                f"{step.get('instruction', '')}\n"
+            )
 
     # 构建评分锚点
     rubric_text = ""
     if scoring_rubric:
         rubric_text = "\n## 评分锚点（校准参考，不是公式）\n\n"
         for item in scoring_rubric:
-            rubric_text += f"- **{item['range']}分**: {item['description']}\n"
+            description = str(item.get("description") or "").strip()
+            if item.get("range"):
+                rubric_text += f"- **{item['range']}分**: {description}\n"
+                continue
+            if item.get("dimension"):
+                source = f" · 来源 {item['source_chapter']}" if item.get("source_chapter") else ""
+                weight = f" · 权重 {float(item['weight']):g}" if item.get("weight") is not None else ""
+                rubric_text += f"- **{item['dimension']}**{source}{weight}: {description}\n"
 
     # 构建决策边界
     threshold_text = ""
@@ -271,6 +305,14 @@ def build_synthesis_prompt(
 完成上述思考步骤后，输出包含以下字段的综合研判（用 ```json 包裹）：
 
 {fields_text}
+
+无论框架自定义了哪些字段，JSON 还必须稳定包含以下公共字段，供批量研判和历史验证读取：
+
+- `综合评分`: 0-100 的数值
+- `最终建议`: 框架允许的建议标签
+- `核心逻辑`: 一句话、可证伪的核心判断
+- `关键风险`: 字符串或字符串列表
+- `信心水平`: 高 / 中 / 低
 
 注意：
 - 一句话买入逻辑必须是可证伪的投资命题
@@ -306,7 +348,7 @@ async def run_agent_loop(
     messages.append({"role": "user", "content": user_msg})
 
     full_text_parts = []
-    tools = TOOL_DEFINITIONS
+    tools = get_tool_definitions(sandbox.blind_mode)
 
     for round_num in range(MAX_TOOL_ROUNDS):
         response = await client.chat(messages, tools=tools)
@@ -370,7 +412,11 @@ def _extract_json_from_text(text: str) -> Optional[Dict]:
 
 # ==================== Output Schema 加载 ====================
 
-def _load_output_schemas(config: StrategyConfig) -> Dict[str, str]:
+def _load_output_schemas(
+    config: StrategyConfig,
+    history_mode: bool = False,
+    industry: Optional[str] = None,
+) -> Dict[str, str]:
     """
     加载每章的 output schema 描述
 
@@ -403,7 +449,11 @@ def _load_output_schemas(config: StrategyConfig) -> Dict[str, str]:
             continue
         if registry is None:
             registry = config.get_operator_registry()
-        auto_schema = registry.compose_schema_text(operators)
+        auto_schema = registry.compose_schema_text(
+            operators,
+            industry=industry,
+            history_mode=history_mode,
+        )
         if auto_schema:
             result[ch_id] = auto_schema
 
@@ -475,7 +525,11 @@ async def run_blind_analysis(
     logger.info(f"Snapshot markdown: {len(snap_md)} chars")
 
     # 5. 加载 output schema（如有）
-    output_schema_map = _load_output_schemas(config)
+    output_schema_map = _load_output_schemas(
+        config,
+        history_mode=blind_mode,
+        industry=snapshot.industry,
+    )
 
     # 6. DAG 调度
     dag = build_dag(chapter_defs)
@@ -570,7 +624,10 @@ async def run_blind_analysis(
         "synthesis": synthesis_output or {},
         "metadata": {
             "ts_code": ts_code,
+            "stock_name": snapshot.stock_name,
             "cutoff_date": cutoff_date,
+            "framework_name": config.name,
+            "framework_version": config.version,
             "blind_mode": blind_mode,
             "model": client.config.model,
             "elapsed_seconds": round(elapsed, 1),
@@ -642,7 +699,7 @@ def main():
 
     if len(sys.argv) < 4:
         print("用法: python -m src.agent.runtime <strategy.yaml> <ts_code> <cutoff_date> [--no-blind]")
-        print("示例: python -m src.agent.runtime strategies/v6_value/strategy.yaml 601288.SH 2024-06-30")
+        print("示例: python -m src.agent.runtime workspace/strategies/v6_value/strategy.yaml 601288.SH 2024-06-30")
         sys.exit(1)
 
     yaml_path = sys.argv[1]

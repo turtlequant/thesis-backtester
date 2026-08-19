@@ -49,13 +49,19 @@ class LLMConfig:
         # model: 环境变量 LLM_MODEL > YAML > 默认 gpt-4o
         model_env = llm_raw.get("model_env", "LLM_MODEL")
         model = os.environ.get(model_env) or llm_raw.get("model", "gpt-4o")
+        temperature = float(
+            os.environ.get("LLM_TEMPERATURE", llm_raw.get("temperature", 0.1))
+        )
+        max_tokens = int(
+            os.environ.get("LLM_MAX_TOKENS", llm_raw.get("max_tokens", 8192))
+        )
 
         return cls(
             base_url=base_url,
             api_key=api_key,
             model=model,
-            max_tokens=llm_raw.get("max_tokens", 8192),
-            temperature=llm_raw.get("temperature", 0.1),
+            max_tokens=max_tokens,
+            temperature=temperature,
         )
 
 

@@ -141,22 +141,18 @@ def score_recommendation_quality(
     """
     评估建议质量（25%权重）
 
-    基于实际收益和总回报（含分红）
+    基于后复权价格序列计算的实际总收益
     """
     score = 50
     details = {}
 
     return_6m = outcome_detail.get('return_6m')
-    dividends = outcome_detail.get('actual_dividends', 0)
-    cutoff_price = outcome_detail.get('cutoff_price', 0)
 
     if return_6m is None:
         return 50, {"note": "数据不足"}
 
-    # 含分红总回报
+    # return_6m 已由后复权价格直接计算，不能再次拼接现金分红。
     total_return = return_6m
-    if cutoff_price > 0 and dividends > 0:
-        total_return += dividends / cutoff_price
 
     recommendation = synthesis.get('recommendation', '')
     is_buy = any(kw in recommendation for kw in ['买入', '加仓', '建仓'])

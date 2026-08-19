@@ -7,18 +7,16 @@
 用法:
     python -m src.screener.batch_backtest --top 50
     python -m src.screener.batch_backtest --dates 2023-06-30,2023-12-31,2024-06-30
-    python -m src.screener.batch_backtest --strategy strategies/v6_value/strategy.yaml
+    python -m src.screener.batch_backtest --strategy workspace/strategies/v6_value/strategy.yaml
 """
-import json
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
 from typing import List, Optional, Dict, TYPE_CHECKING
 
 import pandas as pd
 
-from src.data import api
-from src.backtest.outcome_collector import collect_forward_outcome, ForwardOutcome
+from src.backtest.outcome_collector import collect_forward_outcomes, ForwardOutcome
 from src.screener.quick_filter import screen_at_date, ScreenResult
 
 if TYPE_CHECKING:
@@ -99,7 +97,7 @@ def run_single_crosssection(
     cs_result = CrossSectionResult(cutoff_date=cutoff_date)
 
     # 1. 运行筛选
-    print(f"\n[1/2] 运行量化筛选...")
+    print("\n[1/2] 运行量化筛选...")
     screen = screen_at_date(cutoff_date, top_n=top_n, config=config)
     cs_result.screen_result = screen
     print(f"  {screen.summary}")
@@ -110,13 +108,14 @@ def run_single_crosssection(
 
     # 2. 采集前向收益
     if collect_outcomes:
-        print(f"\n[2/2] 采集前向收益 ({len(screen.candidates)} 只)...")
+        print(f"\n[2/2] 采集后复权前向收益 ({len(screen.candidates)} 只)...")
+        codes = screen.candidates['ts_code'].tolist()
+        cs_result.outcomes = collect_forward_outcomes(codes, cutoff_date)
         for i, (_, row) in enumerate(screen.candidates.iterrows(), 1):
             ts_code = row['ts_code']
             name = row.get('stock_name', ts_code)
             try:
-                outcome = collect_forward_outcome(ts_code, cutoff_date)
-                cs_result.outcomes[ts_code] = outcome
+                outcome = cs_result.outcomes[ts_code]
                 ret_6m = f"{outcome.return_6m*100:+.1f}%" if outcome.return_6m is not None else "N/A"
                 print(f"  [{i}/{len(screen.candidates)}] {name}: 6m={ret_6m}")
             except Exception as e:
@@ -172,6 +171,7 @@ def generate_report(results: List[CrossSectionResult], config: Optional["Strateg
         "",
         f"**生成时间**: {datetime.now().strftime('%Y-%m-%d %H:%M')}",
         f"**截面数量**: {len(results)}",
+        "**收益口径**: 后复权价格序列（不另行拼接现金分红）",
         "",
     ]
 

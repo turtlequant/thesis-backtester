@@ -1,0 +1,14 @@
+schema_version: 1
+id: fcf_ps
+name: 每股FCF(元)
+description: 截至当日已公告年报中的最新每股企业自由现金流。
+category: quality
+tags: [financial, annual, point_in_time]
+type: cross_section
+grain: security_date
+engine: polars
+execution: {mode: point_in_time, frequency: annual}
+inputs: {value: financial.fina_indicator.fcff_ps}
+expression: 'round(col("value"), 4)'
+output: {dtype: float64, unit: cny_per_share, direction: higher_better}
+policies: {null: propagate, point_in_time: strict, enabled: true}

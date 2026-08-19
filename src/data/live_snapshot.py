@@ -2,7 +2,7 @@
 实时快照生成器 — 基于 CrawlerProvider
 
 和 snapshot.py 的 create_snapshot 功能相同，但数据直接从 CrawlerProvider 获取，
-不依赖本地 Parquet 存储和 Tushare API。
+不依赖本地 SQLite 历史库或 Tushare API。
 
 用于 live-analyze 命令。
 """

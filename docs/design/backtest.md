@@ -28,15 +28,15 @@ backtest-screen                 backtest-agent                 backtest-eval
 
 ```bash
 # Step 1: 生成截面日期 + 逐截面筛选 + 保存 CSV
-python -m src.engine.launcher strategies/v6_value/strategy.yaml backtest-screen
+uv run python -m src.engine.launcher workspace/strategies/v6_value/strategy.yaml backtest-screen
 
 # Step 2: 并发 Agent 分析 (增量/重试/进度)
-python -m src.engine.launcher strategies/v6_value/strategy.yaml backtest-agent
-python -m src.engine.launcher strategies/v6_value/strategy.yaml backtest-agent --dry-run   # 仅查看任务量和成本估算
-python -m src.engine.launcher strategies/v6_value/strategy.yaml backtest-agent --retry 2   # 失败自动重试2轮
+uv run python -m src.engine.launcher workspace/strategies/v6_value/strategy.yaml backtest-agent
+uv run python -m src.engine.launcher workspace/strategies/v6_value/strategy.yaml backtest-agent --dry-run   # 仅查看任务量和成本估算
+uv run python -m src.engine.launcher workspace/strategies/v6_value/strategy.yaml backtest-agent --retry 2   # 失败自动重试2轮
 
 # Step 3: 采集前向收益 + 多基准绩效评估
-python -m src.engine.launcher strategies/v6_value/strategy.yaml backtest-eval
+uv run python -m src.engine.launcher workspace/strategies/v6_value/strategy.yaml backtest-eval
 ```
 
 ### 配置 (strategy.yaml)
@@ -91,7 +91,8 @@ Alpha 分析输出三层对比：
 
 #### 前向收益缓存
 
-`outcomes_cache/outcomes_{date}.json` 缓存每截面的收益数据，二次运行 eval 秒完。
+每次运行仍在 `outcomes_cache/outcomes_{date}.json` 保存独立结果快照；同时把可复用结果写入
+`workspace/data/outcomes_cache/forward_outcomes.db`。共享缓存按数据源和截面隔离，换策略或新建任务时可直接复用，跨过新的 1/3/6/12 个月期限后会自动补算。多个截面的待计算窗口先合并，再在 SQLite 内一次关联原始收盘价与复权因子，避免逐截面重复扫描行情库。收益、回撤和波动率统一由后复权价格序列计算，不使用“原始价格收益 + 现金分红”的人工拼接方式。
 
 ### outcome_collector.py — 前瞻收益采集
 
@@ -101,7 +102,7 @@ Alpha 分析输出三层对比：
 @dataclass
 class ForwardOutcome:
     cutoff_price: float          # 基准价格
-    return_1m/3m/6m/12m: float   # 各窗口收益率
+    return_1m/3m/6m/12m: float   # 各窗口后复权收益率
     max_drawdown_6m: float       # 6个月最大回撤
     max_gain_6m: float           # 6个月最大涨幅
     volatility_6m: float         # 日收益波动率
@@ -110,6 +111,10 @@ class ForwardOutcome:
 ```
 
 回看窗口 15 天，覆盖春节/国庆等长假。
+
+前向期限只有在观察日已经越过目标日期、且目标日前 10 个自然日内存在交易价格时才算成熟。未走完的 1/3/6/12 个月收益和 6 个月期间统计保持为空，不使用“截至当前”的部分收益替代。Outcome 缓存带语义版本；重新运行时旧口径缓存会失效，观察日跨过新的期限后也会自动重新采集。已经生成的旧报告仍按原始产物展示，但界面统一标记为“旧收益口径”，不会与新口径混淆。现金分红仍可作为投研事实单独记录，但不得再次加入绩效收益。
+
+这里输出的是多截面的前向收益验证，不等同于包含持仓账本、交易成本和可成交性约束的组合回测。
 
 ### quality_scorer.py — 5 维质量评分
 
@@ -127,9 +132,9 @@ class ForwardOutcome:
 
 在多截面运行量化筛选，评估筛选策略本身的历史表现。不涉及 Agent，可独立使用。
 
-### batch_live.py — 模拟盘批量分析
+### batch_live.py — 批量当前分析
 
-`src/desktop/batch_live.py` — 对多只股票进行实时批量分析，生成组合级汇总。用于模拟盘场景：选定一组候选股票后，批量运行 live-analyze 并汇总为组合视图。与回测模块独立，使用免费公开数据（CrawlerProvider）。
+`src/batch_live.py` 对多只股票运行当前分析并生成汇总。桌面端的“最新研判”提供更完整的策略引用、任务预览、暂停续跑和报告索引；该脚本主要保留作 CLI 批处理入口。
 
 ### crosssection.py — 跨截面对比
 

@@ -9,7 +9,7 @@
 支持的分级条件: min, max (per field, AND 逻辑)
 
 用法:
-    python -m src.engine.launcher strategies/v6_value/strategy.yaml screen 2024-06-30
+    python -m src.engine.launcher workspace/strategies/v6_value/strategy.yaml screen 2024-06-30
 """
 import logging
 from dataclasses import dataclass, field
@@ -27,6 +27,7 @@ logger = logging.getLogger(__name__)
 class ScreenResult:
     """筛选结果"""
     cutoff_date: str
+    effective_date: str = ""
     total_stocks: int = 0
     after_basic_filter: int = 0
     candidates: pd.DataFrame = field(default_factory=pd.DataFrame)
@@ -93,6 +94,8 @@ def _apply_excludes(df: pd.DataFrame, stock_list: pd.DataFrame, exclude_rules: L
 def _apply_filters(df: pd.DataFrame, filters: List[dict]) -> pd.DataFrame:
     """应用声明式过滤条件"""
     for f in filters:
+        if not f.get('enabled', True):
+            continue
         field_name = f['field']
 
         # 先解析字段（含 fallback），写回 df 以便后续评分使用
@@ -105,11 +108,20 @@ def _apply_filters(df: pd.DataFrame, filters: List[dict]) -> pd.DataFrame:
         # 过滤非空
         df = df[df[field_name].notna()]
 
-        # min/max
-        if 'min' in f:
-            df = df[df[field_name] >= f['min']]
-        if 'max' in f:
-            df = df[df[field_name] <= f['max']]
+        if 'percentile_min' in f or 'percentile_max' in f:
+            values = df[field_name].dropna()
+            if values.empty:
+                return df.iloc[0:0]
+            lower = float(f.get('percentile_min', 0)) / 100
+            upper = float(f.get('percentile_max', 100)) / 100
+            lower_value = values.quantile(lower)
+            upper_value = values.quantile(upper)
+            df = df[(df[field_name] >= lower_value) & (df[field_name] <= upper_value)]
+        else:
+            if 'min' in f:
+                df = df[df[field_name] >= f['min']]
+            if 'max' in f:
+                df = df[df[field_name] <= f['max']]
 
     return df
 
@@ -129,6 +141,19 @@ def _compute_scores(df: pd.DataFrame, factors: List[dict]) -> pd.Series:
     for f in factors:
         field_name = f['field']
         weight = f.get('weight', 1.0) / total_weight
+
+        if f.get('method') == 'percentile' or 'direction' in f:
+            if field_name not in df.columns:
+                continue
+            direction = f.get('direction', 'desc')
+            ranked = df[field_name].rank(
+                pct=True,
+                ascending=(direction == 'desc'),
+            ) * 100
+            fill_value = 0.0 if f.get('na_handling') == 'worst' else 50.0
+            score += ranked.fillna(fill_value) * weight
+            continue
+
         full_val = f.get('full', 0)
         zero_val = f.get('zero', 0)
         lower_better = f.get('lower_better', False)
@@ -229,6 +254,15 @@ def screen_at_date(
     default_label = config.get_default_tier_label()
     exclude_rules = config.get_exclude_rules()
     industry_cap = config.get_industry_cap()
+    required_factor_ids = list(dict.fromkeys(
+        [item.get('field') for item in filters + factors if item.get('field')]
+        + [
+            condition.get('field')
+            for tier in tiers
+            for condition in tier.get('conditions', [])
+            if condition.get('field')
+        ]
+    ))
 
     result = ScreenResult(cutoff_date=cutoff_date)
 
@@ -242,16 +276,25 @@ def screen_at_date(
         return result
 
     latest_date = di['trade_date'].max()
+    result.effective_date = str(latest_date)
     df = di[di['trade_date'] == latest_date].copy()
     result.total_stocks = len(df)
     print(f"  截面交易日: {latest_date}, 全市场 {len(df)} 只股票")
 
     # 2. 排除规则
-    stock_list = api.get_stock_list(only_active=True)
+    stock_list = api.get_stock_list(only_active=False)
+    if not stock_list.empty:
+        if 'list_date' in stock_list.columns:
+            stock_list = stock_list[
+                stock_list['list_date'].fillna('9999-12-31').astype(str) <= str(latest_date)
+            ]
+        if 'delist_date' in stock_list.columns:
+            delist_date = stock_list['delist_date'].fillna('').astype(str)
+            stock_list = stock_list[(delist_date == '') | (delist_date > str(latest_date))]
     if not stock_list.empty and exclude_rules:
         df = _apply_excludes(df, stock_list, exclude_rules)
 
-    # 2.5 加载预计算截面因子 (优先) 或在线计算 (兜底)
+    # 2.5 加载预计算截面因子，并在线补算尚未物化的新 DSL 因子。
     factors_df = api.get_factors(latest_date, latest_date)
     if not factors_df.empty:
         factor_cols = [c for c in factors_df.columns if c not in ('ts_code', 'trade_date')]
@@ -262,17 +305,52 @@ def screen_at_date(
                 on='ts_code', how='left',
             )
         logger.debug(f"使用预计算截面因子: {new_cols}")
-    else:
-        # 兜底: 在线计算
-        from src.engine.factors import FactorRegistry
-        factor_registry = FactorRegistry(strategy_dir=config.strategy_dir)
-        df = factor_registry.compute_all(df)
-        logger.debug("使用在线因子计算 (建议运行 update-factors 预计算)")
+
+    from src.engine.factors import FactorRegistry
+    factor_registry = FactorRegistry(strategy_dir=config.strategy_dir)
+    from src.engine.factor_catalog import FactorCatalog
+
+    catalog_assets = FactorCatalog().list_assets()
+    factor_assets = {
+        asset["id"]: asset
+        for asset in catalog_assets
+        if asset["asset_kind"] == "derived" and asset["engine"] == "polars"
+    }
+    stale_columns = [
+        factor_id
+        for factor_id, asset in factor_assets.items()
+        if not asset["materialization"].get("usable", False) and factor_id in df.columns
+    ]
+    if stale_columns:
+        df = df.drop(columns=stale_columns)
+        logger.debug("忽略定义版本过期的预计算因子: %s", stale_columns)
+    columns_before_online = set(df.columns)
+    df = factor_registry.compute_selected(df, required_factor_ids)
+    online_columns = sorted(set(df.columns) - columns_before_online)
+    if online_columns:
+        logger.debug("在线补算未物化因子: %s", online_columns)
 
     # 2.6 加载预计算时序因子 (静态属性, 按 ts_code 合并)
-    ts_factors_df = api.get_ts_factors()
+    point_in_time_ids = {
+        asset["id"]
+        for asset in catalog_assets
+        if asset.get("execution_mode") == "point_in_time"
+    }
+    timeseries_ids = {factor.id for factor in factor_registry.list_timeseries()}
+    required_ts_ids = sorted(
+        set(required_factor_ids).intersection(timeseries_ids) - point_in_time_ids
+    )
+    ts_factors_df = (
+        api.get_ts_factors(columns=['ts_code', *required_ts_ids])
+        if required_ts_ids
+        else pd.DataFrame()
+    )
     if not ts_factors_df.empty:
-        ts_cols = [c for c in ts_factors_df.columns if c != 'ts_code']
+        ts_cols = [
+            column
+            for column in ts_factors_df.columns
+            if column != "ts_code" and column not in point_in_time_ids
+        ]
         new_ts_cols = [c for c in ts_cols if c not in df.columns]
         if new_ts_cols:
             df = df.merge(

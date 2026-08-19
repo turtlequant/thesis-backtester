@@ -1,0 +1,120 @@
+# ============================================================
+# 快速评估：3 章精简分析
+# ============================================================
+# 10-15 分钟出结论，适合快速筛选和初步判断
+# 核心三问：可信吗？健康吗？便宜吗？
+#
+# 设计理念：
+#   - 跳过压力测试和特殊分析，聚焦核心判断
+#   - 信心水平强制偏保守（精简分析不足以支撑高信心）
+#   - 高分结果建议用 v6_enhanced 做完整分析确认
+#   - 适合批量扫描：从 50 只候选中快速缩小到 10-15 只值得深入的
+#
+# 命令：
+#   python -m src.engine.launcher strategies/quick_scan/strategy.yaml agent-analyze 601288.SH 2024-06-30
+
+meta:
+  name: 快速评估
+  version: "2.0"
+
+# ============================================================
+# Agent 分析框架（3 章精简）
+# ============================================================
+framework:
+  operators_dir: operators/v2
+  analyst_role: 高效的投资分析师，快速识别机会和风险，宁可漏掉好股票也不放过坏股票
+
+  chapters:
+  # ---- 第一章: 公司概况（合并数据核查+基本面）----
+  - id: ch01_overview
+    chapter: 1
+    title: 公司概况与数据核查
+    operators: [data_source_grading, quick_screen_5min, soe_identification, stream_classification, debt_structure]
+    dependencies: []
+
+  # ---- 第二章: 盈利与现金流 ----
+  - id: ch02_quality
+    chapter: 2
+    title: 盈利质量与现金流
+    operators: [cash_trend_5y, owner_earnings, pe_trap_detection]
+    dependencies: [ch01_overview]
+
+  # ---- 第三章: 估值与结论 ----
+  - id: ch03_valuation
+    chapter: 3
+    title: 估值判断与投资建议
+    operators: [safety_margin, valuation_dividend, valuation_fcf]
+    dependencies: [ch01_overview, ch02_quality]
+
+  # ---- 综合研判（精简 4 步）----
+  synthesis:
+    thinking_steps:
+      - step: 快速排除
+        instruction: |
+          有没有致命问题？以下任一触发 → 直接回避（评分 ≤ 30）：
+          - 数据不可信 / ST / 审计非标
+          - 负债结构危险（有息负债率 > 60% 且利息覆盖不足）
+          - 经营现金流连续 2 年为负
+          - PE trap 触发（低 PE 但利润不可持续）
+          - FCF 为负且无合理解释
+
+      - step: 一致性快检
+        instruction: |
+          30 秒检查：
+          - Ch01 判定负债危险 vs Ch03 给出激进估值 → 矛盾，降分
+          - Ch02 现金流质量差 vs Ch03 FCF估值乐观 → 矛盾，降分
+          存在矛盾时，评分上限 60。
+
+      - step: 核心判断
+        instruction: |
+          用两句话回答：
+          1. 这家公司的核心盈利能力如何？赚的是真金白银吗？
+          2. 当前价格是否低估？安全边际够不够？
+          快速评估不追求精确，追求方向正确。
+
+      - step: 评分
+        instruction: |
+          基于以上快速分析，给出评分和建议。
+          注意：
+          - 这是快速评估，信心水平应偏保守（默认"中"或"低"）
+          - 快速评估的"值得深入"≠完整分析的"买入"
+          - 高分结果建议用 v6_enhanced 策略做完整 8 章分析确认
+
+    # 评分锚点（快速评估专用：更保守）
+    scoring_rubric:
+      - range: "80-100"
+        description: "明显低估 + 基本面无明显瑕疵 + 各项快检通过 → 强烈建议做完整分析"
+      - range: "60-79"
+        description: "有一定吸引力但快速评估信息不足以下结论 → 建议做完整分析"
+      - range: "40-59"
+        description: "吸引力有限或存在明确疑虑 → 可做可不做完整分析"
+      - range: "0-39"
+        description: "不推荐或存在明显风险 → 跳过"
+
+    # 决策边界（快速评估更严格：80 分才建议深入）
+    decision_thresholds:
+      buy: 80                              # ≥ 80 → 值得深入分析
+      watch: [40, 79]                      # 40-79 → 观望
+      avoid: 39                            # ≤ 39 → 跳过
+
+  # ---- Agent 输出字段（精简）----
+  synthesis_fields:
+  - '投资类型: 纯硬收息 / 价值发现 / 质量成长(GARP) / 周期型 / 特殊情况'
+  - '一句话买入逻辑（强制）: 可证伪的投资命题'
+  - '关键风险: Top 3 风险点'
+  - '一致性快检: 通过 / 存在矛盾'
+  - '最终建议: 值得深入 / 观望 / 跳过'
+  - '综合评分: 0-100分'
+  - '信心水平: 高 / 中 / 低（快速评估建议偏保守）'
+  - '是否建议完整分析: 是(用v6_enhanced) / 否'
+
+# ============================================================
+# LLM 配置
+# ============================================================
+llm:
+  base_url_env: LLM_BASE_URL
+  api_key_env: LLM_API_KEY
+  base_url: https://api.deepseek.com
+  model: deepseek-chat
+  max_tokens: 8192
+  temperature: 0.1

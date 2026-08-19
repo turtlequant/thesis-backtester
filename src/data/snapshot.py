@@ -19,13 +19,12 @@ Python:
     snap = create_snapshot('601288.SH', '2024-06-30')
     md = snapshot_to_markdown(snap, blind_mode=True)
 """
-import json
 import hashlib
 from concurrent.futures import ThreadPoolExecutor
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import List, Optional, Dict, Any
+from typing import List
 
 import pandas as pd
 
@@ -226,22 +225,28 @@ def _filter_by_announcement_date(
     """
     按公告日期过滤财报数据（时间边界核心逻辑）
 
-    优先使用 ann_date/f_ann_date，若缺失则通过 disclosure_date 表查找
+    优先使用版本公告日 ann_date，若缺失再使用首次公告日 f_ann_date。
+    同一报告期存在修订时，只保留截止日当时最新的已知版本。
     """
     if df.empty:
         return df
 
-    # 优先用 f_ann_date（首次公告日），其次 ann_date
+    # 修订数据只能从其自身 ann_date 起可见；若优先使用 f_ann_date，
+    # 会把后来修订的数值泄漏到首次公告日。
     ann_col = None
-    if 'f_ann_date' in df.columns and df['f_ann_date'].notna().any():
-        ann_col = 'f_ann_date'
-    elif 'ann_date' in df.columns and df['ann_date'].notna().any():
+    if 'ann_date' in df.columns and df['ann_date'].notna().any():
         ann_col = 'ann_date'
+    elif 'f_ann_date' in df.columns and df['f_ann_date'].notna().any():
+        ann_col = 'f_ann_date'
 
     if ann_col:
         # 直接按公告日期过滤
         mask = df[ann_col].notna() & (df[ann_col] <= cutoff_date)
-        return df[mask].reset_index(drop=True)
+        known = df[mask].sort_values(ann_col)
+        version_keys = [key for key in ('ts_code', 'end_date', 'report_type') if key in known]
+        if version_keys:
+            known = known.drop_duplicates(version_keys, keep='last')
+        return known.reset_index(drop=True)
 
     # 回退：通过 disclosure_date 表关联
     if not disclosure_df.empty and 'end_date' in df.columns:
@@ -308,7 +313,7 @@ def snapshot_to_markdown(snapshot: StockSnapshot, blind_mode: bool = False) -> s
         lines.append("# 标的公司数据快照")
     else:
         lines.append(f"# {snapshot.stock_name}（{snapshot.ts_code}）数据快照")
-    lines.append(f"")
+    lines.append("")
     lines.append(f"**截止日期**: {snapshot.cutoff_date}")
     if snapshot.industry:
         lines.append(f"**所属行业**: {snapshot.industry}")
@@ -320,7 +325,7 @@ def snapshot_to_markdown(snapshot: StockSnapshot, blind_mode: bool = False) -> s
     lines.append(f"**数据源**: {', '.join(snapshot.data_sources)}")
     if snapshot.warnings:
         lines.append(f"**警告**: {'; '.join(snapshot.warnings)}")
-    lines.append(f"")
+    lines.append("")
 
     # 最新行情
     if not snapshot.price_history.empty:
@@ -677,10 +682,10 @@ def snapshot_to_markdown(snapshot: StockSnapshot, blind_mode: bool = False) -> s
     # 时间边界声明
     lines.append("---")
     lines.append(f"> **严格时间边界**: 以上所有数据截止于 **{snapshot.cutoff_date}**。")
-    lines.append(f"> 分析时禁止使用任何该日期之后的信息。")
-    lines.append(f"> 未出现的数据代表在该时间点不可获取。")
+    lines.append("> 分析时禁止使用任何该日期之后的信息。")
+    lines.append("> 未出现的数据代表在该时间点不可获取。")
     if blind_mode:
-        lines.append(f"> **盲测模式**: 公司名称和股票代码已隐藏，请仅基于提供的数据进行分析。")
+        lines.append("> **盲测模式**: 公司名称和股票代码已隐藏，请仅基于提供的数据进行分析。")
 
     return "\n".join(lines)
 

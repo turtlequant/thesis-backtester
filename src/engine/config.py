@@ -5,18 +5,19 @@
 支持新格式（meta/paths/screening.filters 声明式）和旧格式的向后兼容。
 
 用法:
-    config = StrategyConfig.from_yaml("strategies/v6_value/strategy.yaml")
+    config = StrategyConfig.from_yaml("workspace/strategies/v6_value/strategy.yaml")
     config.get_filters()
     config.get_chapter_defs()
 """
 import importlib
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import Any, Dict, List, Optional
 
 import yaml
 
-from src.data.settings import PROJECT_ROOT
+from src.data.settings import PROJECT_ROOT, STRATEGIES_ROOT, WORKSPACE_ROOT
+from src.engine.framework_validation import normalize_synthesis_fields
 
 
 @dataclass
@@ -32,7 +33,8 @@ class StrategyConfig:
         """从 YAML 文件加载策略配置"""
         path = Path(path)
         if not path.is_absolute():
-            path = PROJECT_ROOT / path
+            project_candidate = PROJECT_ROOT / path
+            path = project_candidate if project_candidate.exists() else WORKSPACE_ROOT / path
 
         if not path.exists():
             raise FileNotFoundError(f"策略配置文件不存在: {path}")
@@ -139,9 +141,9 @@ class StrategyConfig:
         framework = self.raw.get('framework', {})
         return framework.get('analyst_role', '投资分析师')
 
-    def get_synthesis_fields(self) -> List[str]:
+    def get_synthesis_fields(self) -> List[Dict[str, Any]]:
         framework = self.raw.get('framework', {})
-        return framework.get('synthesis_fields', [])
+        return normalize_synthesis_fields(framework.get('synthesis_fields', []))
 
     def get_synthesis_config(self) -> dict:
         """获取综合研判配置（thinking_steps, scoring_rubric, decision_thresholds）"""
@@ -347,12 +349,12 @@ def get_default_config() -> StrategyConfig:
     """获取默认策略配置"""
     global _DEFAULT_CONFIG
     if _DEFAULT_CONFIG is None:
-        default_yaml = PROJECT_ROOT / "strategies" / "v6_value" / "strategy.yaml"
+        default_yaml = STRATEGIES_ROOT / "v6_value" / "strategy.yaml"
         if default_yaml.exists():
             _DEFAULT_CONFIG = StrategyConfig.from_yaml(default_yaml)
         else:
             raise FileNotFoundError(
                 f"默认策略配置不存在: {default_yaml}\n"
-                "请确保 strategies/v6_value/strategy.yaml 已创建"
+                "请确保 workspace/strategies/v6_value/strategy.yaml 已创建"
             )
     return _DEFAULT_CONFIG

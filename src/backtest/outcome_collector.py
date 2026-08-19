@@ -14,8 +14,8 @@
 """
 import sqlite3
 from datetime import datetime, timedelta
-from typing import Dict, Any, Optional, List
-from dataclasses import dataclass, field, asdict
+from typing import Dict, List, Mapping, Optional, Sequence
+from dataclasses import dataclass
 
 import pandas as pd
 
@@ -31,7 +31,7 @@ class ForwardOutcome:
     cutoff_date: str
     cutoff_price: float = 0.0
 
-    # 前向收益率
+    # 前向收益率（后复权价格序列）
     return_1m: Optional[float] = None
     return_3m: Optional[float] = None
     return_6m: Optional[float] = None
@@ -84,10 +84,36 @@ def _find_nearest_trade_date(
 
     if direction == "forward":
         candidates = [d for d in dates if d >= target_date]
-        return candidates[0] if candidates else None
-    else:
+        selected = candidates[0] if candidates else None
+    elif direction == "backward":
         candidates = [d for d in dates if d <= target_date]
-        return candidates[-1] if candidates else None
+        selected = candidates[-1] if candidates else None
+    else:
+        raise ValueError(f"不支持的交易日查找方向: {direction}")
+
+    if selected is None:
+        return None
+
+    offset = abs(
+        (
+            datetime.strptime(selected, "%Y-%m-%d")
+            - datetime.strptime(target_date, "%Y-%m-%d")
+        ).days
+    )
+    return selected if offset <= max_offset else None
+
+
+def _has_forward_horizon_elapsed(
+    target_date: str,
+    *,
+    as_of_date: Optional[str] = None,
+) -> bool:
+    """判断前向期限在观察日是否已经完整走完。"""
+    observed_at = as_of_date or datetime.now().strftime("%Y-%m-%d")
+    return datetime.strptime(target_date, "%Y-%m-%d") <= datetime.strptime(
+        observed_at,
+        "%Y-%m-%d",
+    )
 
 
 def collect_forward_outcome(
@@ -104,34 +130,192 @@ def collect_forward_outcome(
     Returns:
         ForwardOutcome 实际结果
     """
+    end_date = _add_months(cutoff_date, 13)
+    start_date = (
+        datetime.strptime(cutoff_date, "%Y-%m-%d") - timedelta(days=15)
+    ).strftime("%Y-%m-%d")
+    daily = api.get_daily_adjusted(
+        start_date,
+        end_date,
+        ts_code=ts_code,
+        adjust='hfq',
+        columns=['ts_code', 'trade_date', 'close'],
+        keep_raw_prices=True,
+    )
+    dividends = api.get_dividend(ts_code)
+    return _build_forward_outcome(ts_code, cutoff_date, daily, dividends)
+
+
+def collect_forward_outcomes(
+    ts_codes: List[str],
+    cutoff_date: str,
+) -> Dict[str, ForwardOutcome]:
+    """一次查询并计算同一截面的多只股票前向结果。"""
+    codes = list(dict.fromkeys(str(code) for code in ts_codes if code))
+    if not codes:
+        return {}
+
+    end_date = _add_months(cutoff_date, 13)
+    start_date = (
+        datetime.strptime(cutoff_date, "%Y-%m-%d") - timedelta(days=15)
+    ).strftime("%Y-%m-%d")
+    daily = api.get_daily_adjusted(
+        start_date,
+        end_date,
+        ts_code=codes,
+        adjust='hfq',
+        columns=['ts_code', 'trade_date', 'close'],
+        keep_raw_prices=True,
+    )
+    dividends = api.get_dividends(
+        codes,
+        columns=['ts_code', 'end_date', 'ex_date', 'cash_div_tax'],
+    )
+
+    daily_groups = (
+        {str(code): frame for code, frame in daily.groupby('ts_code', sort=False)}
+        if not daily.empty and 'ts_code' in daily.columns
+        else {}
+    )
+    dividend_groups = (
+        {str(code): frame for code, frame in dividends.groupby('ts_code', sort=False)}
+        if not dividends.empty and 'ts_code' in dividends.columns
+        else {}
+    )
+
+    outcomes: Dict[str, ForwardOutcome] = {}
+    for code in codes:
+        outcomes[code] = _build_forward_outcome(
+            code,
+            cutoff_date,
+            daily_groups.get(code, pd.DataFrame()),
+            dividend_groups.get(code, pd.DataFrame()),
+            warn=False,
+        )
+    return outcomes
+
+
+def collect_forward_outcomes_by_cutoff(
+    requests: Mapping[str, Sequence[str]],
+) -> Dict[str, Dict[str, ForwardOutcome]]:
+    """一次读取多个截面的行情，并按截面计算前向结果。"""
+    normalized = {
+        str(cutoff_date): list(dict.fromkeys(str(code) for code in codes if code))
+        for cutoff_date, codes in requests.items()
+        if codes
+    }
+    if not normalized:
+        return {}
+
+    windows = []
+    all_codes = []
+    for cutoff_date, codes in normalized.items():
+        start_date = (
+            datetime.strptime(cutoff_date, "%Y-%m-%d") - timedelta(days=15)
+        ).strftime("%Y-%m-%d")
+        end_date = _add_months(cutoff_date, 13)
+        windows.extend((code, start_date, end_date) for code in codes)
+        all_codes.extend(codes)
+
+    daily = api.get_daily_hfq_windows(windows)
+    dividends = api.get_dividends(
+        list(dict.fromkeys(all_codes)),
+        columns=["ts_code", "end_date", "ex_date", "cash_div_tax"],
+    )
+    daily_groups = (
+        {str(code): frame for code, frame in daily.groupby("ts_code", sort=False)}
+        if not daily.empty and "ts_code" in daily.columns
+        else {}
+    )
+    dividend_groups = (
+        {str(code): frame for code, frame in dividends.groupby("ts_code", sort=False)}
+        if not dividends.empty and "ts_code" in dividends.columns
+        else {}
+    )
+
+    results: Dict[str, Dict[str, ForwardOutcome]] = {}
+    for cutoff_date, codes in normalized.items():
+        start_date = (
+            datetime.strptime(cutoff_date, "%Y-%m-%d") - timedelta(days=15)
+        ).strftime("%Y-%m-%d")
+        end_date = _add_months(cutoff_date, 13)
+        cutoff_results: Dict[str, ForwardOutcome] = {}
+        for code in codes:
+            stock_daily = daily_groups.get(code, pd.DataFrame())
+            if not stock_daily.empty:
+                stock_daily = stock_daily[
+                    (stock_daily["trade_date"] >= start_date)
+                    & (stock_daily["trade_date"] <= end_date)
+                ]
+            cutoff_results[code] = _build_forward_outcome(
+                code,
+                cutoff_date,
+                stock_daily,
+                dividend_groups.get(code, pd.DataFrame()),
+                warn=False,
+            )
+        results[cutoff_date] = cutoff_results
+    return results
+
+
+def _build_forward_outcome(
+    ts_code: str,
+    cutoff_date: str,
+    daily: pd.DataFrame,
+    dividends: Optional[pd.DataFrame] = None,
+    *,
+    warn: bool = True,
+    as_of_date: Optional[str] = None,
+) -> ForwardOutcome:
+    """用已加载的数据计算单只股票结果，不执行任何数据库查询。"""
+    observed_at = as_of_date or datetime.now().strftime("%Y-%m-%d")
     outcome = ForwardOutcome(
         ts_code=ts_code,
         cutoff_date=cutoff_date,
-        collection_date=datetime.now().strftime("%Y-%m-%d"),
+        collection_date=observed_at,
     )
 
-    # 获取截面后12个月的日线数据（使用 YYYY-MM-DD 格式）
     end_date = _add_months(cutoff_date, 13)  # 多取1个月余量
-    start_date = (datetime.strptime(cutoff_date, "%Y-%m-%d") - timedelta(days=15)).strftime("%Y-%m-%d")
-
-    daily = api.get_daily(start_date, end_date, ts_code=ts_code)
     if daily.empty:
-        print(f"  警告: {ts_code} 无日线数据 ({start_date}~{end_date})")
+        if warn:
+            start_date = (
+                datetime.strptime(cutoff_date, "%Y-%m-%d") - timedelta(days=15)
+            ).strftime("%Y-%m-%d")
+            print(f"  警告: {ts_code} 无日线数据 ({start_date}~{end_date})")
+        return outcome
+
+    daily = daily.copy()
+    daily['trade_date'] = pd.to_datetime(daily['trade_date'], errors='coerce')
+    daily['close'] = pd.to_numeric(daily['close'], errors='coerce')
+    # close 是后复权价格，raw_close 仅用于展示真实交易价格。直接调用
+    # _build_forward_outcome 的兼容路径没有 raw_close，此时退回传入价格。
+    if 'raw_close' in daily.columns:
+        daily['raw_close'] = pd.to_numeric(daily['raw_close'], errors='coerce')
+    else:
+        daily['raw_close'] = daily['close']
+    daily = daily.dropna(subset=['trade_date', 'close']).sort_values('trade_date')
+    daily['trade_date'] = daily['trade_date'].dt.strftime('%Y-%m-%d')
+    # 即使调用方意外传入未来行情，也不能越过本次结果采集的观察日。
+    daily = daily[daily['trade_date'] <= observed_at]
+    if daily.empty:
         return outcome
 
     # 找到截面日的收盘价（向前找最近交易日）
     cutoff_trade = _find_nearest_trade_date(daily, cutoff_date, direction="backward")
     if not cutoff_trade:
-        print(f"  警告: 找不到 {cutoff_date} 附近的交易日")
+        if warn:
+            print(f"  警告: 找不到 {cutoff_date} 附近的交易日")
         return outcome
 
     cutoff_row = daily[daily['trade_date'] == cutoff_trade].iloc[0]
-    outcome.cutoff_price = float(cutoff_row['close'])
+    cutoff_adjusted_price = float(cutoff_row['close'])
+    outcome.cutoff_price = float(cutoff_row['raw_close'])
 
     # 截面后的数据
     forward_daily = daily[daily['trade_date'] > cutoff_trade].sort_values('trade_date')
     if forward_daily.empty:
-        print(f"  警告: {cutoff_date} 之后无交易数据")
+        if warn:
+            print(f"  警告: {cutoff_date} 之后无交易数据")
         return outcome
 
     # 计算可用月数
@@ -147,16 +331,31 @@ def collect_forward_outcome(
         (12, 'return_12m', 'price_12m'),
     ]:
         target = _add_months(cutoff_date, months)
+        if not _has_forward_horizon_elapsed(target, as_of_date=observed_at):
+            continue
         trade_date = _find_nearest_trade_date(forward_daily, target, direction="backward")
         if trade_date:
-            price = float(forward_daily[forward_daily['trade_date'] == trade_date].iloc[0]['close'])
-            ret = (price - outcome.cutoff_price) / outcome.cutoff_price
+            terminal_row = forward_daily[forward_daily['trade_date'] == trade_date].iloc[0]
+            adjusted_price = float(terminal_row['close'])
+            raw_price = float(terminal_row['raw_close'])
+            ret = (adjusted_price - cutoff_adjusted_price) / cutoff_adjusted_price
             setattr(outcome, attr_return, ret)
-            setattr(outcome, attr_price, price)
+            setattr(outcome, attr_price, raw_price)
 
     # 6个月内最大回撤和最大涨幅
     target_6m = _add_months(cutoff_date, 6)
-    data_6m = forward_daily[forward_daily['trade_date'] <= target_6m]
+    terminal_6m = None
+    if _has_forward_horizon_elapsed(target_6m, as_of_date=observed_at):
+        terminal_6m = _find_nearest_trade_date(
+            forward_daily,
+            target_6m,
+            direction="backward",
+        )
+    data_6m = (
+        forward_daily[forward_daily['trade_date'] <= terminal_6m]
+        if terminal_6m
+        else pd.DataFrame()
+    )
     if not data_6m.empty:
         prices = data_6m['close'].values
         # 最大回撤
@@ -171,7 +370,9 @@ def collect_forward_outcome(
         outcome.max_drawdown_6m = max_dd
 
         # 最大涨幅（相对截面价）
-        outcome.max_gain_6m = (float(prices.max()) - outcome.cutoff_price) / outcome.cutoff_price
+        outcome.max_gain_6m = (
+            float(prices.max()) - cutoff_adjusted_price
+        ) / cutoff_adjusted_price
 
         # 波动率
         returns = data_6m['close'].pct_change().dropna()
@@ -180,15 +381,17 @@ def collect_forward_outcome(
 
     # 实际分红
     try:
-        dividends = api.get_dividend(ts_code)
-        if not dividends.empty and 'ex_date' in dividends.columns:
+        if dividends is not None and not dividends.empty and 'ex_date' in dividends.columns:
             end_12m = _add_months(cutoff_date, 12)
+            ex_dates = pd.to_datetime(dividends['ex_date'], errors='coerce')
             period_div = dividends[
-                (dividends['ex_date'] > cutoff_date.replace('-', '')) &
-                (dividends['ex_date'] <= end_12m.replace('-', ''))
+                (ex_dates > pd.Timestamp(cutoff_date)) &
+                (ex_dates <= pd.Timestamp(end_12m))
             ]
             if not period_div.empty and 'cash_div_tax' in period_div.columns:
-                outcome.actual_dividends = float(period_div['cash_div_tax'].sum())
+                outcome.actual_dividends = float(
+                    pd.to_numeric(period_div['cash_div_tax'], errors='coerce').sum()
+                )
     except Exception:
         pass  # 分红数据非关键
 
@@ -300,7 +503,7 @@ def format_outcome(outcome: ForwardOutcome) -> str:
         f"**截面价格**: {outcome.cutoff_price:.2f}元",
         f"**数据可用月数**: {outcome.data_available_months}个月",
         "",
-        "### 前向收益率",
+        "### 前向收益率（后复权）",
         "",
         "| 时间窗口 | 收益率 | 价格 |",
         "|---------|--------|------|",

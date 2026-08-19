@@ -5,7 +5,7 @@
 所有配置从 StrategyConfig 读取，引擎层不含任何策略默认值。
 
 用法:
-    python -m src.engine.launcher strategies/v6_value/strategy.yaml analyze 601288.SH 2024-06-30
+    python -m src.engine.launcher workspace/strategies/v6_value/strategy.yaml analyze 601288.SH 2024-06-30
 """
 import json
 import sqlite3

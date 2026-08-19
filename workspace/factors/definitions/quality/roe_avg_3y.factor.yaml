@@ -1,0 +1,14 @@
+schema_version: 1
+id: roe_avg_3y
+name: 3年平均ROE(%)
+description: 截至当日已公告年报中最近三期 ROE 的算术平均，至少需要两期。
+category: quality
+tags: [financial, annual, rolling, point_in_time]
+type: cross_section
+grain: security_date
+engine: polars
+execution: {mode: point_in_time, frequency: annual}
+inputs: {value: financial.fina_indicator.roe}
+expression: 'round(rolling_mean(col("value"), 3, 2), 2)'
+output: {dtype: float64, unit: percent, direction: higher_better}
+policies: {null: propagate, point_in_time: strict, enabled: true}

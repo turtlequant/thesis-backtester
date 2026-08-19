@@ -5,15 +5,49 @@ __pycache__/
 *.egg-info/
 dist/
 build/
+.build/
 .eggs/
 
-# Data (API-fetched market data, too large for git)
+# Runtime research data (databases, reports, conversations and user settings)
+workspace/data/
+workspace/.env
+workspace/.env.*
+
+# Only the five built-in framework definitions belong to the public source and
+# standard release. Complete user frameworks and generated research artifacts
+# are carried by the separately built private baseline archive.
+workspace/strategies/*
+!workspace/strategies/__init__.py
+!workspace/strategies/bank_analysis/
+!workspace/strategies/income_focus/
+!workspace/strategies/quick_scan/
+!workspace/strategies/v6_enhanced/
+!workspace/strategies/v6_value/
+workspace/strategies/bank_analysis/*
+workspace/strategies/income_focus/*
+workspace/strategies/quick_scan/*
+workspace/strategies/v6_enhanced/*
+workspace/strategies/v6_value/*
+!workspace/strategies/bank_analysis/strategy.yaml
+!workspace/strategies/income_focus/strategy.yaml
+!workspace/strategies/quick_scan/strategy.yaml
+!workspace/strategies/v6_enhanced/strategy.yaml
+!workspace/strategies/v6_value/strategy.yaml
+
+# Development-only placeholder; not part of the standard operator library.
+workspace/operators/v2/misc/
+
+# Legacy pre-workspace runtime paths retained for safe upgrades.
 data/tushare/
 data/financial/
 data/snapshots/
 data/analysis_results/
 data/private/
 data/live_cache/
+data/providers/
+data/data_config.json
+data/control.db*
+data/desktop/
 
 # IDE
 .vscode/
@@ -25,7 +59,6 @@ data/live_cache/
 # Environment
 .env
 .env.*
-!.env.example
 .conda/
 .venv/
 
@@ -41,11 +74,11 @@ Thumbs.db
 src/desktop/config.json
 src/desktop/chat_history.json
 
-# Generated backtest artifacts
+# Generated artifacts under the legacy strategies root
 strategies/*/backtest/prompts/
 strategies/*/backtest/reports/
 strategies/*/backtest/logs/
 strategies/*/backtest/screen_backtest_*
 
-# Live analysis raw data (runtime generated, too large for git)
+# Live analysis raw data under the legacy strategies root
 strategies/*/live/*/raw_data/

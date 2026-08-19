@@ -1,0 +1,387 @@
+schema_version: 1
+fields:
+  - id: turnover_rate
+    semantic_id: market.turnover_rate
+    name: 换手率
+    description: 交易日换手率。
+    category: 交易
+    column: turnover_rate
+    dtype: float64
+    unit: percent
+    grain: security_date
+    time_field: trade_date
+    preferred_direction: desc
+    roles: [screening, factor_input]
+    bindings:
+      tushare: {dataset: daily/indicator, field: turnover_rate, compatibility: exact}
+      baostock: {dataset: daily/indicator, field: turnover_rate, compatibility: exact}
+
+  - id: pe_ttm
+    semantic_id: valuation.pe_ttm
+    name: 市盈率 TTM
+    description: 总市值相对滚动十二个月盈利的倍数。
+    category: 估值
+    column: pe_ttm
+    dtype: float64
+    unit: ratio
+    grain: security_date
+    time_field: trade_date
+    preferred_direction: asc
+    roles: [screening, factor_input]
+    bindings:
+      tushare: {dataset: daily/indicator, field: pe_ttm, compatibility: exact}
+      baostock: {dataset: daily/indicator, field: pe_ttm, compatibility: exact}
+
+  - id: pb
+    semantic_id: valuation.pb
+    name: 市净率
+    description: 总市值相对净资产的倍数。
+    category: 估值
+    column: pb
+    dtype: float64
+    unit: ratio
+    grain: security_date
+    time_field: trade_date
+    preferred_direction: asc
+    roles: [screening, factor_input]
+    bindings:
+      tushare: {dataset: daily/indicator, field: pb, compatibility: exact}
+      baostock: {dataset: daily/indicator, field: pb, compatibility: exact}
+
+  - id: ps_ttm
+    semantic_id: valuation.ps_ttm
+    name: 市销率 TTM
+    description: 总市值相对滚动十二个月营业收入的倍数。
+    category: 估值
+    column: ps_ttm
+    dtype: float64
+    unit: ratio
+    grain: security_date
+    time_field: trade_date
+    preferred_direction: asc
+    roles: [screening, factor_input]
+    bindings:
+      tushare: {dataset: daily/indicator, field: ps_ttm, compatibility: exact}
+      baostock: {dataset: daily/indicator, field: ps_ttm, compatibility: exact}
+
+  - id: pcf_ncf_ttm
+    semantic_id: valuation.pcf_ncf_ttm
+    name: 市现率 TTM
+    description: 总市值相对滚动经营净现金流的倍数。
+    category: 估值
+    column: pcf_ncf_ttm
+    dtype: float64
+    unit: ratio
+    grain: security_date
+    time_field: trade_date
+    preferred_direction: asc
+    roles: [screening, factor_input]
+    bindings:
+      tushare: {dataset: daily/indicator, field: pcf_ncf_ttm, compatibility: unavailable, note: Tushare daily_basic 官方字段不包含市现率；不可按原生字段使用。}
+      baostock: {dataset: daily/indicator, field: pcf_ncf_ttm, compatibility: exact}
+
+  - id: total_mv
+    semantic_id: size.total_market_value_wan
+    name: 总市值（万元）
+    description: 数据源原始总市值口径。
+    category: 规模
+    column: total_mv
+    dtype: float64
+    unit: ten_thousand_cny
+    grain: security_date
+    time_field: trade_date
+    preferred_direction: desc
+    roles: [screening, factor_input]
+    bindings:
+      tushare: {dataset: daily/indicator, field: total_mv, compatibility: exact}
+
+  - id: circ_mv
+    semantic_id: size.float_market_value_wan
+    name: 流通市值（万元）
+    description: 数据源原始流通市值口径。
+    category: 规模
+    column: circ_mv
+    dtype: float64
+    unit: ten_thousand_cny
+    grain: security_date
+    time_field: trade_date
+    preferred_direction: desc
+    roles: [screening, factor_input]
+    bindings:
+      tushare: {dataset: daily/indicator, field: circ_mv, compatibility: exact}
+
+  - id: dv_ttm
+    semantic_id: dividend.yield_ttm
+    name: 股息率 TTM
+    description: 滚动十二个月股息率。
+    category: 分红
+    column: dv_ttm
+    dtype: float64
+    unit: percent
+    grain: security_date
+    time_field: trade_date
+    preferred_direction: desc
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: daily/indicator, field: dv_ttm, compatibility: exact}
+
+  - id: dv_ratio
+    semantic_id: dividend.yield_ratio
+    name: 股息率
+    description: 数据源报告的当期股息率。
+    category: 分红
+    column: dv_ratio
+    dtype: float64
+    unit: percent
+    grain: security_date
+    time_field: trade_date
+    preferred_direction: desc
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: daily/indicator, field: dv_ratio, compatibility: exact}
+
+  # Point-in-time financial statement fields. These are source metadata only;
+  # reusable calculations over them live in the factor DSL.
+  - id: financial_current_ratio
+    semantic_id: financial.fina_indicator.current_ratio
+    name: 流动比率（财报）
+    description: 财务指标表披露的流动比率。
+    category: 偿债
+    column: current_ratio
+    dtype: float64
+    unit: ratio
+    grain: security_report
+    time_field: ann_date
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: financial/fina_indicator, field: current_ratio, compatibility: exact}
+      baostock: {dataset: financial/fina_indicator, field: current_ratio, compatibility: exact}
+
+  - id: financial_debt_to_assets
+    semantic_id: financial.fina_indicator.debt_to_assets
+    name: 资产负债率（财报）
+    description: 财务指标表披露的资产负债率。
+    category: 偿债
+    column: debt_to_assets
+    dtype: float64
+    unit: percent
+    grain: security_report
+    time_field: ann_date
+    preferred_direction: asc
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: financial/fina_indicator, field: debt_to_assets, compatibility: exact}
+      baostock: {dataset: financial/fina_indicator, field: debt_to_assets, compatibility: exact}
+
+  - id: financial_eps
+    semantic_id: financial.fina_indicator.eps
+    name: 每股收益（财报）
+    description: 财务指标表披露的基本每股收益。
+    category: 质量
+    column: eps
+    dtype: float64
+    unit: cny_per_share
+    grain: security_report
+    time_field: ann_date
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: financial/fina_indicator, field: eps, compatibility: exact}
+      baostock: {dataset: financial/fina_indicator, field: eps, compatibility: exact}
+
+  - id: financial_fcff_ps
+    semantic_id: financial.fina_indicator.fcff_ps
+    name: 每股企业自由现金流（财报）
+    description: 财务指标表披露的每股企业自由现金流。
+    category: 质量
+    column: fcff_ps
+    dtype: float64
+    unit: cny_per_share
+    grain: security_report
+    time_field: ann_date
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: financial/fina_indicator, field: fcff_ps, compatibility: exact}
+      baostock: {dataset: financial/fina_indicator, field: fcff_ps, compatibility: unavailable, note: BaoStock 财务接口不提供 FCFF/股。}
+
+  - id: financial_gross_margin
+    semantic_id: financial.fina_indicator.grossprofit_margin
+    name: 毛利率（财报）
+    description: 财务指标表披露的销售毛利率。
+    category: 质量
+    column: grossprofit_margin
+    dtype: float64
+    unit: percent
+    grain: security_report
+    time_field: ann_date
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: financial/fina_indicator, field: grossprofit_margin, compatibility: exact}
+      baostock: {dataset: financial/fina_indicator, field: grossprofit_margin, compatibility: exact}
+
+  - id: financial_interest_debt_ratio
+    semantic_id: financial.fina_indicator.int_to_talcap
+    name: 有息负债占总资本（财报）
+    description: 财务指标表披露的有息负债占总资本比例。
+    category: 偿债
+    column: int_to_talcap
+    dtype: float64
+    unit: percent
+    grain: security_report
+    time_field: ann_date
+    preferred_direction: asc
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: financial/fina_indicator, field: int_to_talcap, compatibility: exact}
+      baostock: {dataset: financial/fina_indicator, field: int_to_talcap, compatibility: unavailable, note: BaoStock 财务接口不提供该口径。}
+
+  - id: financial_net_margin
+    semantic_id: financial.fina_indicator.netprofit_margin
+    name: 净利率（财报）
+    description: 财务指标表披露的销售净利率。
+    category: 质量
+    column: netprofit_margin
+    dtype: float64
+    unit: percent
+    grain: security_report
+    time_field: ann_date
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: financial/fina_indicator, field: netprofit_margin, compatibility: exact}
+      baostock: {dataset: financial/fina_indicator, field: netprofit_margin, compatibility: exact}
+
+  - id: financial_profit_yoy
+    semantic_id: financial.fina_indicator.netprofit_yoy
+    name: 净利润同比（财报）
+    description: 财务指标表披露的归母净利润同比增速。
+    category: 成长
+    column: netprofit_yoy
+    dtype: float64
+    unit: percent
+    grain: security_report
+    time_field: ann_date
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: financial/fina_indicator, field: netprofit_yoy, compatibility: exact}
+      baostock: {dataset: financial/fina_indicator, field: netprofit_yoy, compatibility: unavailable, note: BaoStock 对应字段不是同一精确口径。}
+
+  - id: financial_revenue_yoy
+    semantic_id: financial.fina_indicator.or_yoy
+    name: 营收同比（财报）
+    description: 财务指标表披露的营业收入同比增速。
+    category: 成长
+    column: or_yoy
+    dtype: float64
+    unit: percent
+    grain: security_report
+    time_field: ann_date
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: financial/fina_indicator, field: or_yoy, compatibility: exact}
+      baostock: {dataset: financial/fina_indicator, field: or_yoy, compatibility: unavailable, note: BaoStock 对应字段不是同一精确口径。}
+
+  - id: financial_roe
+    semantic_id: financial.fina_indicator.roe
+    name: ROE（财报）
+    description: 财务指标表披露的净资产收益率。
+    category: 质量
+    column: roe
+    dtype: float64
+    unit: percent
+    grain: security_report
+    time_field: ann_date
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: financial/fina_indicator, field: roe, compatibility: exact}
+      baostock: {dataset: financial/fina_indicator, field: roe, compatibility: unavailable, note: BaoStock 使用 roeAvg，不能作为 Tushare ROE 的精确替代。}
+
+  - id: financial_roic
+    semantic_id: financial.fina_indicator.roic
+    name: ROIC（财报）
+    description: 财务指标表披露的投入资本回报率。
+    category: 质量
+    column: roic
+    dtype: float64
+    unit: percent
+    grain: security_report
+    time_field: ann_date
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: financial/fina_indicator, field: roic, compatibility: exact}
+      baostock: {dataset: financial/fina_indicator, field: roic, compatibility: unavailable, note: BaoStock 财务接口不提供 ROIC。}
+
+  - id: income_profit_parent
+    semantic_id: financial.income.n_income_attr_p
+    name: 归母净利润（利润表）
+    description: 利润表归属于母公司股东的净利润。
+    category: 成长
+    column: n_income_attr_p
+    dtype: float64
+    unit: cny
+    grain: security_report
+    time_field: ann_date
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: financial/income, field: n_income_attr_p, compatibility: exact}
+      baostock: {dataset: financial/income, field: net_profit, compatibility: approximate, note: BaoStock 净利润口径不保证等同归母净利润。}
+
+  - id: income_revenue
+    semantic_id: financial.income.revenue
+    name: 营业收入（利润表）
+    description: 利润表营业收入。
+    category: 成长
+    column: revenue
+    dtype: float64
+    unit: cny
+    grain: security_report
+    time_field: ann_date
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: financial/income, field: revenue, compatibility: exact}
+      baostock: {dataset: financial/income, field: revenue, compatibility: exact}
+
+  - id: cashflow_operating_net
+    semantic_id: financial.cashflow.n_cashflow_act
+    name: 经营活动现金流净额（现金流量表）
+    description: 现金流量表经营活动产生的现金流量净额。
+    category: 质量
+    column: n_cashflow_act
+    dtype: float64
+    unit: cny
+    grain: security_report
+    time_field: ann_date
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: financial/cashflow, field: n_cashflow_act, compatibility: exact}
+      baostock: {dataset: financial/cashflow, field: n_cashflow_act, compatibility: unavailable, note: BaoStock 当前规范化表没有该精确字段。}
+
+  - id: dividend_cash_before_tax
+    semantic_id: financial.dividend.cash_div_tax
+    name: 每股税前现金分红
+    description: 按报告年度汇总的每股税前现金分红。
+    category: 分红
+    column: cash_div_tax
+    dtype: float64
+    unit: cny_per_share
+    grain: security_report
+    time_field: ann_date
+    aggregation: sum
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: financial/dividend, field: cash_div_tax, compatibility: exact}
+      baostock: {dataset: financial/dividend, field: cash_div, compatibility: exact}
+
+  - id: dividend_cash
+    semantic_id: financial.dividend.cash_div
+    name: 每股现金分红
+    description: 按报告年度汇总的每股现金分红。
+    category: 分红
+    column: cash_div
+    dtype: float64
+    unit: cny_per_share
+    grain: security_report
+    time_field: ann_date
+    aggregation: sum
+    roles: [factor_input]
+    bindings:
+      tushare: {dataset: financial/dividend, field: cash_div, compatibility: exact}
+      baostock: {dataset: financial/dividend, field: cash_div, compatibility: exact}

@@ -1,0 +1,14 @@
+schema_version: 1
+id: dividend_years
+name: 连续分红年数
+description: 截至当日已公告年度现金分红连续为正的年数。
+category: dividend
+tags: [financial, annual, rolling, point_in_time]
+type: cross_section
+grain: security_date
+engine: polars
+execution: {mode: point_in_time, frequency: annual}
+inputs: {value: financial.dividend.cash_div}
+expression: 'positive_streak(col("value"))'
+output: {dtype: float64, unit: years, direction: higher_better}
+policies: {null: propagate, point_in_time: strict, enabled: true}

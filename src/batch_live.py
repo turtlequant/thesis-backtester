@@ -19,6 +19,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import List, Optional
 
+from src.data.settings import STRATEGIES_ROOT
+
 logger = logging.getLogger(__name__)
 
 # 银行行业关键词
@@ -26,8 +28,8 @@ BANK_INDUSTRIES = {'银行'}
 
 # 默认策略映射
 STRATEGY_MAP = {
-    'bank': 'strategies/bank_analysis/strategy.yaml',
-    'default': 'strategies/v6_enhanced/strategy.yaml',
+    'bank': STRATEGIES_ROOT / 'bank_analysis' / 'strategy.yaml',
+    'default': STRATEGIES_ROOT / 'v6_enhanced' / 'strategy.yaml',
 }
 
 
@@ -67,10 +69,10 @@ def detect_industry(ts_code: str) -> str:
     return ''
 
 
-def route_strategy(ts_code: str, force_strategy: Optional[str] = None) -> str:
+def route_strategy(ts_code: str, force_strategy: Optional[str] = None) -> Path:
     """根据行业路由到对应策略"""
     if force_strategy:
-        return f"strategies/{force_strategy}/strategy.yaml"
+        return STRATEGIES_ROOT / force_strategy / "strategy.yaml"
 
     industry = detect_industry(ts_code)
     if industry in BANK_INDUSTRIES:
@@ -84,8 +86,7 @@ def create_hybrid_snapshot(ts_code: str, cutoff_date: str):
     - Tushare：核心财务数据（快速、稳定）
     - AKShare：实时补充数据（新闻、资金流）
     """
-    from src.data.snapshot import StockSnapshot, create_snapshot
-    from src.data import api
+    from src.data.snapshot import create_snapshot
 
     # 1. 用 Tushare 创建基础 snapshot
     snapshot = create_snapshot(ts_code, cutoff_date)
@@ -98,7 +99,6 @@ def create_hybrid_snapshot(ts_code: str, cutoff_date: str):
         # 新闻
         if snapshot.news.empty:
             try:
-                code = ts_code.split('.')[0]
                 news = crawler.fetch_news(ts_code, limit=15)
                 if not news.empty:
                     snapshot.news = news
@@ -156,7 +156,7 @@ async def analyze_single(
     strategy_name = Path(strategy_path).parent.name
 
     # 检查是否已有报告（增量跳过）
-    live_dir = Path(f"strategies/{strategy_name}/live")
+    live_dir = config.strategy_dir / "live"
     report_dir = live_dir / f"{ts_code}_{cutoff_date}"
     report_file = report_dir / f"{ts_code}_{cutoff_date}_structured.json"
     if report_file.exists():
@@ -203,6 +203,7 @@ async def analyze_single(
             config=config,
             blind_mode=False,
             output_dir=output_dir,
+            snapshot=snapshot,
         )
         syn = result.get('synthesis', {})
         elapsed = round(time.time() - start, 1)
@@ -243,7 +244,7 @@ async def batch_analyze(
     semaphore = asyncio.Semaphore(concurrency)
 
     print(f"\n{'='*60}")
-    print(f"批量实时分析")
+    print("批量实时分析")
     print(f"  截面日期: {cutoff_date}")
     print(f"  股票数量: {total}")
     print(f"  并发数: {concurrency}")
@@ -251,7 +252,7 @@ async def batch_analyze(
     if force_strategy:
         print(f"  强制策略: {force_strategy}")
     else:
-        print(f"  策略路由: 自动（银行→bank_analysis, 其他→v6_enhanced）")
+        print("  策略路由: 自动（银行→bank_analysis, 其他→v6_enhanced）")
     print(f"{'='*60}\n")
 
     start_time = time.time()
@@ -298,7 +299,7 @@ async def batch_analyze(
     failed = sum(1 for r in results if r['status'] not in ('success', 'skipped'))
 
     print(f"\n{'='*60}")
-    print(f"批量分析完成")
+    print("批量分析完成")
     print(f"  成功: {success}, 跳过: {skipped}, 失败: {failed}")
     print(f"  总耗时: {total_elapsed/60:.1f} 分钟")
     print(f"{'='*60}")

@@ -1,7 +1,8 @@
 """
-Data service — wraps CrawlerProvider for the desktop API.
+Data service for provider-consistent desktop analysis.
 
-Handles live snapshot creation, validation, and daily caching.
+Historical providers read their isolated local SQLite; AKShare keeps the live
+snapshot and daily-cache workflow.
 """
 import logging
 import time
@@ -12,8 +13,10 @@ from typing import Tuple, List, Optional
 import pandas as pd
 
 from src.data.crawler import CrawlerProvider
+from src.data.config import get_active_provider_name
 from src.data.live_snapshot import create_live_snapshot, validate_live_snapshot
-from src.data.snapshot import StockSnapshot
+from src.data.snapshot import StockSnapshot, create_snapshot
+from src.data.storage import get_database_path
 
 logger = logging.getLogger(__name__)
 
@@ -31,16 +34,16 @@ def get_provider() -> CrawlerProvider:
 
 def _get_cache_dir(ts_code: str) -> Path:
     """Get the public cache directory for a stock + today's date."""
-    from src.data.settings import PROJECT_ROOT
+    from src.data.settings import DATA_ROOT
     today = time.strftime("%Y-%m-%d")
-    return PROJECT_ROOT / "data" / "live_cache" / f"{ts_code}_{today}"
+    return DATA_ROOT / "live_cache" / f"{ts_code}_{today}"
 
 
 def _find_cached_raw_data(ts_code: str, strategy_path: str = None) -> Optional[Path]:
     """
     Check if today's cached data already exists for this stock.
 
-    Looks in the public cache directory: data/live_cache/<ts_code>_<date>/
+    Looks in the public cache directory: workspace/data/live_cache/<ts_code>_<date>/
     """
     cache_dir = _get_cache_dir(ts_code)
     if _is_valid_cache(cache_dir):
@@ -106,7 +109,24 @@ def create_snapshot_for_analysis(
     Returns:
         (snapshot, is_valid, errors, warnings)
     """
-    # Check cache first
+    active_provider = get_active_provider_name()
+    if active_provider != "akshare":
+        cutoff = time.strftime("%Y-%m-%d")
+        snapshot = create_snapshot(ts_code, cutoff)
+        is_valid, errors, warnings = validate_live_snapshot(snapshot)
+        if snapshot.price_history.empty:
+            errors.insert(
+                0,
+                f"{active_provider} 本地库没有 {ts_code} 的行情，请先在“数据”页面下载",
+            )
+            is_valid = False
+        warnings.insert(
+            0,
+            f"使用 {active_provider} 本地 SQLite 数据口径（{get_database_path(active_provider)}）",
+        )
+        return snapshot, is_valid, errors, warnings
+
+    # AKShare instant analysis keeps its daily cache.
     cached_dir = _find_cached_raw_data(ts_code, strategy_path)
     if cached_dir:
         logger.info(f"Using cached data for {ts_code} from {cached_dir}")

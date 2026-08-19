@@ -1,0 +1,228 @@
+meta:
+  name: V6 价值投资分析
+  version: '6.0'
+screening:
+  exclude:
+  - field: name
+    contains:
+    - ST
+    - 退
+  industry_cap: 3
+  agent_batch:
+    ratio: 0.2
+    max: 20
+  filters:
+  - field: pe_ttm
+    min: 0.01
+    max: 15.0
+  - field: pb
+    min: 0.01
+  - field: total_mv
+    min: 1000000.0
+  - field: dv
+    min: 0.01
+  scoring:
+    factors:
+    - field: pe_ttm
+      weight: 0.3
+      lower_better: true
+      full: 6.0
+      zero: 15.0
+    - field: pb
+      weight: 0.3
+      lower_better: true
+      full: 0.5
+      zero: 1.5
+    - field: dv
+      weight: 0.4
+      lower_better: false
+      full: 8.0
+      zero: 2.0
+    tiers:
+    - name: 金龟
+      conditions:
+      - field: pe_ttm
+        max: 8.0
+      - field: pb
+        max: 0.8
+      - field: dv
+        min: 7.0
+    - name: 银龟
+      conditions:
+      - field: pe_ttm
+        max: 10.0
+      - field: pb
+        max: 1.0
+      - field: dv
+        min: 5.0
+    - name: 铜龟
+      conditions:
+      - field: pe_ttm
+        max: 12.0
+      - field: pb
+        max: 1.2
+      - field: dv
+        min: 4.0
+    default_tier: 不达标
+framework:
+  operators_dir: operators/v1
+  analyst_role: 严谨的价值投资分析师
+  chapters:
+  - id: ch01_screening
+    chapter: 1
+    title: 数据核查与快速筛选
+    operators:
+    - data_source_grading
+    - geopolitical_exclusion
+    - quick_screen_5min
+    dependencies: []
+  - id: ch02_fundamental
+    chapter: 2
+    title: 基本面分析
+    operators:
+    - soe_identification
+    - stream_classification
+    - debt_structure
+    - cycle_analysis
+    - management_integrity
+    dependencies:
+    - ch01_screening
+  - id: ch03_cashflow
+    chapter: 3
+    title: 现金流与盈利质量
+    operators:
+    - cash_trend_5y
+    - performance_restoration
+    - owner_earnings
+    dependencies:
+    - ch01_screening
+    - ch02_fundamental
+  - id: ch04_valuation
+    chapter: 4
+    title: 估值与安全边际
+    operators:
+    - pe_trap_detection
+    - valuation_fcf
+    - valuation_dividend
+    - safety_margin
+    dependencies:
+    - ch02_fundamental
+    - ch03_cashflow
+  - id: ch05_stress
+    chapter: 5
+    title: 压力测试与特殊分析
+    operators:
+    - stress_test
+    - cigar_butt
+    - light_asset_model
+    dependencies:
+    - ch03_cashflow
+    - ch04_valuation
+  - id: ch06_decision
+    chapter: 6
+    title: 投资决策与持仓管理
+    operators:
+    - apple_trading_model
+    - valuation_repair
+    - position_management
+    dependencies:
+    - ch04_valuation
+    - ch05_stress
+  synthesis:
+    thinking_steps:
+    - step: 一票否决
+      instruction: '检查是否触发以下任一条件（触发则直接回避，评分 ≤ 25）：
+
+        - 数据不可信（Ch01 未通过初筛，数据源评级为 D/E）
+
+        - 管理层诚信评估为"不可信"（财务造假嫌疑、频繁违规）
+
+        - 有息负债结构为"危险"且经营现金流无法覆盖利息
+
+        - 审计意见非标准无保留（保留意见、否定意见、无法表示意见）
+
+        如果触发否决，简要说明原因后直接给出回避建议，无需后续步骤。
+
+        '
+    - step: 识别投资机会类型
+      instruction: '基于 Ch02 流派判定，确认这属于哪种投资机会，并明确后续评估侧重：
+
+        - 纯硬收息：核心看股息可持续性（派息率 < 70%、现金流覆盖）、分红历史稳定性
+
+        - 价值发现：核心看安全边际（当前价 vs 内在价值）、估值修复催化剂是否存在
+
+        - 烟蒂股：核心看清算价值（净流动资产 vs 市值）、资产变现可能性
+
+        - 关联方资源：核心看政策依赖度、资源获取的可持续性
+
+        不同流派的评分侧重不同——不要用纯硬收息的标准去评价值发现型标的。
+
+        '
+    - step: 核心矛盾
+      instruction: '回答两个关键问题（各用 1-2 句话）：
+
+        1. 最可能让我亏钱的原因是什么？（综合 Ch05 压力测试 + Ch02 风险因素）
+
+        2. 如果买入，我赚的是什么钱？（估值修复 / 股息收入 / 业绩拐点）
+
+        如果问题 1 的答案比问题 2 更有说服力，应倾向回避或低分观望。
+
+        '
+    - step: 评分与决策
+      instruction: '信号分层权重：核心信号（基本面、现金流、估值）决定买卖；筛选规则仅作参考提示，不构成否决。
+
+        基于以上三步分析，参照评分锚点给出综合评分，并确保评分与最终建议一致。
+
+        评分时特别注意：不要被单一亮点拉高分数，也不要被单一瑕疵拉低——综合权衡。
+
+        '
+    scoring_rubric:
+    - range: 85-100
+      description: 极度低估 + 现金流强劲 + 管理层可信 + 无重大风险 + 明确催化剂
+    - range: 70-84
+      description: 明确低估 + 基本面健康 + 风险可控 → 买入区间
+    - range: 50-69
+      description: 有一定吸引力但存在明确疑虑（周期位置不确定、管理层存疑、行业逆风）→ 观望
+    - range: 30-49
+      description: 风险收益不对称，下行风险大于上行空间 → 偏向回避
+    - range: 0-29
+      description: 重大风险、价值陷阱、数据不可信、或一票否决 → 明确回避
+    decision_thresholds:
+      buy: 70
+      avoid: 29
+      watch:
+      - 30
+      - 69
+  synthesis_fields:
+  - '流派判定: 纯硬收息 / 价值发现 / 烟蒂股 / 关联方资源'
+  - '龟级评定: 金龟 / 银龟 / 铜龟 / 不达标'
+  - '核心估值指标: EV/FCF倍数、安全边际'
+  - '苹果买卖模型: 正常价 / 买入价 / 卖出价'
+  - '一句话买入逻辑（强制）: 可证伪的投资命题'
+  - '关键风险: Top 3-5 风险点'
+  - '管理人诚信评估: 可信 / 存疑 / 不可信'
+  - '最终建议: 买入 / 观望 / 回避'
+  - '综合评分: 0-100分'
+  - '信心水平: 高 / 中 / 低'
+backtest:
+  start_date: '2020-06-30'
+  end_date: '2025-12-31'
+  cross_section_interval: 6m
+  top_n: 50
+  agent_concurrency: 10
+  forward_periods:
+  - months: 1
+    label: 1个月
+  - months: 3
+    label: 3个月
+  - months: 6
+    label: 6个月
+  - months: 12
+    label: 12个月
+llm:
+  base_url_env: LLM_BASE_URL
+  api_key_env: LLM_API_KEY
+  base_url: https://api.openai.com/v1
+  model: gpt-4o
+  max_tokens: 8192
+  temperature: 0.1

@@ -65,7 +65,7 @@
       .catch((err) => {
         console.error("Failed to load data:", err);
         document.getElementById("tab-operators").innerHTML =
-          '<p style="padding:2rem;color:#ef4444;">Failed to load data. Make sure to run <code>python docs/site/build.py</code> first.</p>';
+          '<p style="padding:2rem;color:#ef4444;">Failed to load data. Make sure to run <code>uv run python docs/site/build.py</code> first.</p>';
       });
   }
 

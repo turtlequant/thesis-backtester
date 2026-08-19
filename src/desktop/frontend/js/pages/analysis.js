@@ -6,6 +6,10 @@
 const AnalysisPage = {
     template: `
 <div class="page-analysis">
+    <workspace-page-header eyebrow="结构化投研 · 单股研究" title="个股分析" description="选择股票与研究框架，沿固定章节 DAG 形成可复核的结构化判断。">
+        <template #meta><span class="page-header-chip"><span>状态</span>{{ statusText }}</span></template>
+    </workspace-page-header>
+
     <!-- Input Panel -->
     <div class="card input-card">
         <h2>开始分析</h2>
@@ -661,8 +665,10 @@ const AnalysisPage = {
             if (!this.canStart) return;
 
             this.error = null;
-            // Update global context for chat assistant
-            window._appContext = { stock_code: this.tsCode.trim(), strategy: this.selectedStrategy };
+            // Update the context Agent with the exact run the user is starting.
+            const context = { stock_code: this.tsCode.trim(), strategy: this.selectedStrategy };
+            if (window.setAppContext) window.setAppContext(context);
+            else window._appContext = context;
 
             // 前置校验：股票代码
             if (!this.tsCode.trim()) {

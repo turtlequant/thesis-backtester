@@ -11,34 +11,61 @@ async function apiFetch(path, options = {}) {
     const url = `${API_BASE}${path}`;
     const defaults = {
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
     };
     const merged = { ...defaults, ...options };
 
+    let response;
     try {
-        const response = await fetch(url, merged);
-
-        if (!response.ok) {
-            let detail = `HTTP ${response.status}`;
-            try {
-                const body = await response.json();
-                detail = body.detail || detail;
-            } catch {}
-            throw new Error(detail);
-        }
-
-        return await response.json();
+        response = await fetch(url, merged);
     } catch (error) {
-        if (error.message.startsWith('HTTP')) {
-            throw error;
-        }
-        throw new Error(`Network error: ${error.message}`);
+        throw new Error(`网络连接失败：${error.message || String(error)}`);
     }
+
+    if (!response.ok) {
+        let detail = `HTTP ${response.status}`;
+        try {
+            const body = await response.json();
+            if (Array.isArray(body.detail)) {
+                detail = body.detail.map(item => {
+                    const location = Array.isArray(item.loc) ? item.loc.filter(part => part !== 'body').join('.') : '';
+                    return `${location ? `${location}：` : ''}${item.msg || JSON.stringify(item)}`;
+                }).join('；');
+            } else if (typeof body.detail === 'string') {
+                detail = body.detail;
+            } else if (body.detail) {
+                detail = JSON.stringify(body.detail);
+            }
+        } catch {}
+        if (response.status === 401 && detail === 'LAN login required') {
+            window.dispatchEvent(new CustomEvent('lan-auth-required'));
+        }
+        throw new Error(detail);
+    }
+
+    return await response.json();
 }
 
 /**
  * API client object with typed methods.
  */
 const api = {
+    // ---- Network access ----
+    getNetworkSession() {
+        return apiFetch('/api/network/session');
+    },
+
+    loginNetwork(accessToken) {
+        return apiFetch('/api/network/login', {
+            method: 'POST',
+            body: JSON.stringify({ access_token: accessToken }),
+        });
+    },
+
+    logoutNetwork() {
+        return apiFetch('/api/network/logout', { method: 'POST' });
+    },
+
     // ---- Analysis ----
     startAnalysis(tsCode, strategy, autoConfirm = true) {
         return apiFetch('/api/analysis/start', {
@@ -83,8 +110,13 @@ const api = {
     },
 
     // ---- Reports ----
-    listReports() {
-        return apiFetch('/api/reports');
+    listReports(params = {}) {
+        const search = new URLSearchParams();
+        for (const [key, value] of Object.entries(params)) {
+            if (value !== '' && value !== null && value !== undefined) search.set(key, String(value));
+        }
+        const query = search.toString();
+        return apiFetch(`/api/reports${query ? `?${query}` : ''}`);
     },
 
     getReport(reportId) {
@@ -142,6 +174,10 @@ const api = {
     },
 
     // ---- Settings ----
+    getAppInfo() {
+        return apiFetch('/api/settings/app-info');
+    },
+
     getSettings() {
         return apiFetch('/api/settings');
     },
@@ -152,23 +188,77 @@ const api = {
             body: JSON.stringify(data),
         });
     },
+
+    // ---- Local data management ----
+    listDataProviders() {
+        return apiFetch('/api/datasources/providers');
+    },
+
+    getDataStatus(provider) {
+        return apiFetch(`/api/datasources/status?provider=${encodeURIComponent(provider)}`);
+    },
+
+    testDataProvider(provider) {
+        return apiFetch(`/api/datasources/test/${encodeURIComponent(provider)}`, { method: 'POST' });
+    },
+
+    startDataJob(data) {
+        return apiFetch('/api/datasources/jobs', {
+            method: 'POST',
+            body: JSON.stringify(data),
+        });
+    },
+
+    listDataJobs() {
+        return apiFetch('/api/datasources/jobs');
+    },
+
+    getDataJob(jobId) {
+        return apiFetch(`/api/datasources/jobs/${jobId}`);
+    },
+
+    cancelDataJob(jobId) {
+        return apiFetch(`/api/datasources/jobs/${jobId}/cancel`, { method: 'POST' });
+    },
+
+    // ---- Research workspaces ----
+    listCrossSectionPresets() {
+        return apiFetch('/api/research/cross-section/presets');
+    },
+
+    startCrossSectionRun(data) {
+        return apiFetch('/api/research/cross-section/start', {
+            method: 'POST',
+            body: JSON.stringify(data),
+        });
+    },
+
+    listResearchJobs(kind = 'cross_section') {
+        return apiFetch(`/api/research/jobs?kind=${encodeURIComponent(kind)}`);
+    },
+
+    getResearchJob(jobId) {
+        return apiFetch(`/api/research/jobs/${jobId}`);
+    },
+
 };
 
 // Export for use in Vue components
 window.api = api;
 
 // ---- Chat ----
-api.sendChatMessage = function(message, context) {
+api.sendChatMessage = function(message, context, conversationId = 'qualitative:analysis') {
     return apiFetch('/api/chat', {
         method: 'POST',
-        body: JSON.stringify({ message, context }),
+        body: JSON.stringify({ message, context, conversation_id: conversationId }),
     });
 };
 
-api.getChatHistory = function() {
-    return apiFetch('/api/chat/history');
+api.getChatHistory = function(conversationId = 'qualitative:analysis') {
+    return apiFetch(`/api/chat/history?conversation_id=${encodeURIComponent(conversationId)}`);
 };
 
-api.clearChatHistory = function() {
-    return apiFetch('/api/chat/history', { method: 'DELETE' });
+api.clearChatHistory = function(conversationId = 'qualitative:analysis') {
+    const url = `/api/chat/history?conversation_id=${encodeURIComponent(conversationId)}`;
+    return apiFetch(url, { method: 'DELETE' });
 };

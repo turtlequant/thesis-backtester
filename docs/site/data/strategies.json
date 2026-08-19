@@ -34,7 +34,7 @@
         "title": "盈利能力与资产质量",
         "operators": [
           "bank_nim",
-          "asset_quality"
+          "bank_asset_quality"
         ],
         "dependencies": [
           "ch01_screening",
@@ -205,9 +205,7 @@
           "geopolitical_exclusion",
           "soe_identification"
         ],
-        "dependencies": [
-          "ch02_new"
-        ]
+        "dependencies": []
       },
       {
         "id": "ch02_new",
@@ -220,6 +218,19 @@
         ],
         "dependencies": [
           "ch01_new"
+        ]
+      },
+      {
+        "id": "ch03_new",
+        "chapter": 3,
+        "title": "护城河分析",
+        "operators": [
+          "industry_position",
+          "cash_trend_5y",
+          "soe_identification"
+        ],
+        "dependencies": [
+          "ch02_new"
         ]
       }
     ],

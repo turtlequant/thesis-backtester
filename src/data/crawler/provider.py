@@ -14,6 +14,8 @@ from typing import Optional
 
 import pandas as pd
 
+from ..provider import PROVIDER_CAPABILITIES, ProviderCapabilities
+
 logger = logging.getLogger(__name__)
 
 # AKShare 接口调用间隔（秒），避免被封
@@ -161,7 +163,11 @@ class CrawlerProvider:
 
     @property
     def name(self) -> str:
-        return "crawler"
+        return "akshare"
+
+    @property
+    def capabilities(self) -> ProviderCapabilities:
+        return PROVIDER_CAPABILITIES["akshare"]
 
     # ==================== 日线行情 ====================
 

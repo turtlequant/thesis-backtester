@@ -208,7 +208,7 @@ build_synthesis_prompt() 组装:
 
 ## 工具沙盒 (ToolSandbox)
 
-Agent 通过 tool_use 主动查询数据。`tools.py` 定义了 16 种查询类型。
+Agent 通过 tool use 主动查询数据。`tools.py` 对外只提供受控的快照查询与分析上下文工具，并在工具参数内区分财务和市场数据类型；它不提供文件、网络或代码执行权限。
 
 ### 可用工具
 
@@ -294,13 +294,13 @@ def _extract_json_from_text(text):
 
 ```bash
 # Agent 盲测分析
-python -m src.engine.launcher strategies/v6_value/strategy.yaml agent-analyze 601288.SH 2024-06-30
+uv run python -m src.engine.launcher workspace/strategies/v6_value/strategy.yaml agent-analyze 601288.SH 2024-06-30
 
 # 非盲测模式
-python -m src.engine.launcher strategies/v6_value/strategy.yaml agent-analyze 601288.SH 2024-06-30 --no-blind
+uv run python -m src.engine.launcher workspace/strategies/v6_value/strategy.yaml agent-analyze 601288.SH 2024-06-30 --no-blind
 
 # 直接调用
-python -m src.agent.runtime strategies/v6_value/strategy.yaml 601288.SH 2024-06-30
+uv run python -m src.agent.runtime workspace/strategies/v6_value/strategy.yaml 601288.SH 2024-06-30
 ```
 
 ## 安全约束

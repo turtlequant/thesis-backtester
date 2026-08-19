@@ -5,8 +5,8 @@
 算子 = Markdown 文件 + YAML frontmatter，是独立的非结构化分析指令单元。
 
 解析优先级:
-    1. strategies/<name>/operators/  (策略私有)
-    2. operators/                     (全局共享)
+    1. workspace/strategies/<name>/operators/  (策略私有)
+    2. workspace/operators/                     (全局共享)
 
 用法:
     registry = OperatorRegistry(config)
@@ -20,7 +20,7 @@ from typing import Any, Dict, List, Optional
 
 import yaml
 
-from src.data.settings import PROJECT_ROOT
+from src.data.settings import OPERATORS_ROOT, WORKSPACE_ROOT
 
 logger = logging.getLogger(__name__)
 
@@ -45,6 +45,8 @@ class Operator:
     gate: Dict[str, Any] = field(default_factory=dict)  # 行业门控 {exclude_industry: [...]}
     weight: float = 1.0         # LLM 评分权重 (多算子加权平均)
     score_range: str = "0-100"  # 评分范围
+    history_variant: str = ""     # 严格历史验证时替换为该算子 ID
+    execution_mode: str = "standard"  # standard | history_adapter
     content: str = ""           # markdown 正文 (不含 frontmatter)
     source_path: Path = None    # 来源文件路径
 
@@ -86,6 +88,8 @@ class Operator:
             gate=meta.get('gate', {}),
             weight=float(meta.get('weight', 1.0)),
             score_range=meta.get('score_range', '0-100'),
+            history_variant=str(meta.get('history_variant', '') or ''),
+            execution_mode=str(meta.get('execution_mode', 'standard') or 'standard'),
             content=body.strip(),
             source_path=path,
         )
@@ -134,9 +138,10 @@ class OperatorRegistry:
             operators_dir: 指定算子目录（如 'operators/v1'），None 则使用默认 'operators/v2'
         """
         if operators_dir:
-            global_dir = PROJECT_ROOT / operators_dir
+            path = Path(operators_dir)
+            global_dir = path if path.is_absolute() else WORKSPACE_ROOT / path
         else:
-            global_dir = PROJECT_ROOT / "operators" / "v2"
+            global_dir = OPERATORS_ROOT / "v2"
         self._load_dir(global_dir)
 
     def _load_strategy(self, strategy_dir: Path):
@@ -195,7 +200,12 @@ class OperatorRegistry:
         aliases = self.INDUSTRY_ALIASES.get(gate_industry, [])
         return actual_industry in aliases
 
-    def resolve(self, op_ids: List[str], industry: str = None) -> List[Operator]:
+    def resolve(
+        self,
+        op_ids: List[str],
+        industry: str = None,
+        history_mode: bool = False,
+    ) -> List[Operator]:
         """按 ID 列表解析算子, 保持顺序, 跳过找不到的。
 
         如果传入 industry，自动执行行业路由：
@@ -211,6 +221,14 @@ class OperatorRegistry:
                 logger.warning(f"算子未找到: {op_id}")
                 continue
 
+            if history_mode and op.history_variant:
+                history_op = self.get(op.history_variant)
+                if history_op is None:
+                    raise ValueError(
+                        f"算子 {op.id} 声明的历史实现不存在: {op.history_variant}"
+                    )
+                op = history_op
+
             # 行业门控检查
             if industry and op.gate:
                 exclude = op.gate.get('exclude_industry', [])
@@ -218,11 +236,16 @@ class OperatorRegistry:
                     skipped.append(op_id)
                     logger.info(f"行业路由: 跳过 {op_id}（不适用于 {industry}）")
                     continue
+                only = op.gate.get('only_industry', [])
+                if only and not any(self._match_industry(ind, industry) for ind in only):
+                    skipped.append(op_id)
+                    logger.info(f"行业路由: 跳过 {op_id}（仅适用于 {only}）")
+                    continue
 
             result.append(op)
 
         # 注意：行业专用算子不自动补充到章节中。
-        # 自动路由只负责"跳过不适用的算子"。
+        # 自动路由只负责跳过不适用或不属于目标行业的算子。
         # 行业专用算子（如银行 PB-ROE 估值）应在策略编排中显式配置。
         # 这样避免跨章节误注入的问题。
 
@@ -231,9 +254,12 @@ class OperatorRegistry:
 
         return result
 
-    def list_all(self) -> List[Operator]:
-        """列出所有可用算子"""
-        return list(self._operators.values())
+    def list_all(self, include_internal: bool = False) -> List[Operator]:
+        """列出可用算子；历史适配实现默认不暴露为可编排算子。"""
+        operators = list(self._operators.values())
+        if include_internal:
+            return operators
+        return [op for op in operators if op.execution_mode != "history_adapter"]
 
     def list_by_tag(self, tag: str) -> List[Operator]:
         """按标签筛选算子"""
@@ -267,7 +293,12 @@ class OperatorRegistry:
                     result.append(d)
         return result
 
-    def compose_schema_text(self, op_ids: List[str], industry: str = None) -> str:
+    def compose_schema_text(
+        self,
+        op_ids: List[str],
+        industry: str = None,
+        history_mode: bool = False,
+    ) -> str:
         """
         从算子 outputs 定义自动生成章节 schema 描述文本
 
@@ -284,7 +315,7 @@ class OperatorRegistry:
             'bool': 'boolean',
             'list': 'array of strings',
         }
-        ops = self.resolve(op_ids, industry=industry)
+        ops = self.resolve(op_ids, industry=industry, history_mode=history_mode)
         lines = []
         seen_fields = set()
         for op in ops:

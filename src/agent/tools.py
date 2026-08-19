@@ -160,6 +160,17 @@ TOOL_DEFINITIONS: List[Dict[str, Any]] = [
 ]
 
 
+def get_tool_definitions(blind_mode: bool = True) -> List[Dict[str, Any]]:
+    """Expose real-time context only outside strict historical/blind runs."""
+    if not blind_mode:
+        return TOOL_DEFINITIONS
+    return [
+        item
+        for item in TOOL_DEFINITIONS
+        if item.get("function", {}).get("name") != "query_market_context"
+    ]
+
+
 # ==================== Tool 沙箱 ====================
 
 class ToolSandbox:
@@ -193,6 +204,11 @@ class ToolSandbox:
             elif tool_name == "get_analysis_context":
                 return self._get_analysis_context()
             elif tool_name == "query_market_context":
+                if self.blind_mode:
+                    return json.dumps(
+                        {"error": "严格历史模式禁止查询实时市场上下文"},
+                        ensure_ascii=False,
+                    )
                 return self._query_market_context(**arguments)
             else:
                 return json.dumps({"error": f"未知工具: {tool_name}"}, ensure_ascii=False)

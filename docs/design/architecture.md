@@ -1,259 +1,178 @@
-# 整体架构设计
+# 整体架构
 
-## 定位
+## 产品定位
 
-AI Agent 驱动的定性投资分析工具。通过可配置的策略实例，对 A 股股票进行结构化深度分析，并通过盲测回测验证分析质量。
+Thesis Backtester 是面向 A 股的结构化投研与历史验证工具。系统的核心不是让 Agent 自由决定研究路径，而是把研究方法拆成可复用算子，再通过分层章节和依赖关系组成确定性 DAG。LLM 在既定管线中完成分析、解释和辅助配置，不能绕过时间边界或在运行中改变管线。
 
-核心理念：**Engine（论文无关）+ Instance（特定投资哲学）**，由 YAML 配置 + 算子组合驱动。
+产品只维护一套应用。桌面窗口和浏览器访问共享同一个 FastAPI 服务、Vue 前端和业务 API。
+
+## 核心不变量
+
+1. **算子是研究能力的最小复用单元**：定义输入要求、分析步骤、输出契约和适用边界。
+2. **框架是分层研究路径**：章节可组合多个算子，章节之间按依赖组成 DAG，而不是任意拖线的单算子流程。
+3. **执行是确定性的**：任务启动后冻结数据截面、策略、框架和参数；LLM 只在节点内部工作。
+4. **历史结果必须时点安全**：任何输入都必须在分析日已经可获得，当前资讯不能冒充历史信息。
+5. **数据源不静默混用**：BaoStock、Tushare 和 AKShare 是独立适配器，结果必须能追溯到明确的数据口径。
 
 ## 系统分层
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        Strategy Instance                        │
-│  strategy.yaml (筛选 + 章节 + 算子组合 + LLM 配置，一站式定义)    │
-│  (每个投资哲学一个目录，所有参数在此定义)                           │
-└─────────────────────────┬───────────────────────────────────────┘
-                          │ 读取配置
-┌─────────────────────────▼───────────────────────────────────────┐
-│                      Engine Layer (src/engine/)                  │
-│  StrategyConfig · Launcher · FactorRegistry · OperatorRegistry  │
-│  Tracker (SQLite)                                               │
-│  (策略无关的通用引擎，不含任何投资哲学假设)                         │
-└──────┬──────────┬──────────┬──────────┬─────────────────────────┘
-       │          │          │          │
-┌──────▼───┐ ┌───▼────┐ ┌──▼────┐ ┌───▼──────┐
-│ Screener │ │ Agent  │ │ Back- │ │ Desktop  │
-│ 量化筛选  │ │ 盲测分析│ │ test  │ │ 投研工具  │
-│          │ │        │ │ 回测  │ │ FastAPI  │
-└──────┬───┘ └───┬────┘ └──┬────┘ └───┬──────┘
-       │         │         │          │
-┌──────▼─────────▼─────────▼──────────▼───────────────────────────┐
-│                      Data Layer (src/data/)                      │
-│  Provider(抽象) · Storage(Parquet) · Updater · FactorStore · API │
-│  Snapshot(时点快照)                                               │
-└──────┬──────────────────────────────────────────────────────────┘
-       │
-┌──────▼──────────────────────────────────────────────────────────┐
-│                    External Data Sources                         │
-│  Tushare API · AKShare（免费爬虫） · (CSV · Wind ... 未来扩展)     │
-└─────────────────────────────────────────────────────────────────┘
+```text
+┌─────────────────────────────────────────────────────────────┐
+│                     Desktop / Browser UI                    │
+│  基础设施        截面筛选        结构化投研        页面级助手   │
+└──────────────────────────┬──────────────────────────────────┘
+                           │ HTTP / WebSocket
+┌──────────────────────────▼──────────────────────────────────┐
+│                   Desktop API (FastAPI)                     │
+│  routers · services · job state · report index · auth      │
+└───────────────┬───────────────────────┬─────────────────────┘
+                │                       │
+┌───────────────▼──────────────┐ ┌──────▼────────────────────┐
+│       Research Engine        │ │      Analysis Runtime     │
+│ factor/operator registry     │ │ chapter DAG · LLM tools  │
+│ screener · backtest · tracker│ │ snapshot · report output │
+└───────────────┬──────────────┘ └──────┬────────────────────┘
+                └───────────────┬───────┘
+┌───────────────────────────────▼─────────────────────────────┐
+│                         Data Layer                          │
+│ provider registry · updater · SQLite storage · factor store│
+│ field catalog · point-in-time snapshot · maintenance jobs  │
+└───────────────┬────────────────┬────────────────┬───────────┘
+                │                │                │
+         BaoStock adapter  Tushare adapter  AKShare adapter
 ```
 
-## 核心模块职责
+## 三个工作区
 
-| 模块 | 路径 | 职责 | 依赖 |
-|------|------|------|------|
-| **StrategyConfig** | `src/engine/config.py` | 加载 YAML，提供所有策略参数的统一访问接口 | 无 |
-| **Launcher** | `src/engine/launcher.py` | CLI 入口，命令分发（策略命令 + 数据命令） | StrategyConfig |
-| **FactorRegistry** | `src/engine/factors.py` | 发现、加载、执行量化因子（截面 + 时序） | factors/ 目录 |
-| **OperatorRegistry** | `src/engine/operators.py` | 发现、加载、组合定性分析算子（含自动 schema 生成） | operators/ 目录 |
-| **Tracker** | `src/engine/tracker.py` | 分析运行生命周期管理（SQLite） | StrategyConfig |
-| **QuickFilter** | `src/screener/quick_filter.py` | 声明式量化筛选（过滤 → 评分 → 分级） | Data API, FactorStore |
-| **Agent Runtime** | `src/agent/runtime.py` | LLM Agent 盲测分析（DAG 调度 + tool_use + prompt 组装） | Snapshot, OperatorRegistry |
-| **Backtest** | `src/backtest/` | 批量回测 + 前瞻收益采集 + 质量评分 | Agent, Data API |
-| **Desktop App** | `src/desktop/main.py` | FastAPI + Vue 3 投研分析工具（6 页面 + 浮动聊天助手） | StrategyConfig, Screener |
-| **DataProvider** | `src/data/provider.py` | 数据源抽象协议 + 注册表 | 无 |
-| **Storage** | `src/data/storage.py` | Parquet 持久化（月分区/股票分区） | 无 |
-| **DataUpdater** | `src/data/updater.py` | 数据获取编排（批量 + 增量） | Provider, Storage |
-| **FactorStore** | `src/data/factor_store.py` | 因子预计算与存储 | Storage, FactorRegistry |
-| **API** | `src/data/api.py` | 公共只读查询接口 | Storage |
-| **Snapshot** | `src/data/snapshot.py` | 时点快照生成（严格时间边界） | API |
+| 工作区 | 用户任务 | 核心输出 |
+|---|---|---|
+| 基础设施 | 维护数据、因子、算子、框架和系统连接 | 可用数据口径与可执行研究资产 |
+| 截面筛选 | 构建数值策略、按日期选股、历史验证 | 候选名单、收益曲线、方案比较 |
+| 结构化投研 | 个股分析、最新批量研判、框架历史验证、报告阅读 | 章节结论、证据链、报告与框架增量效果 |
 
-## 目录结构
+工作区只代表任务入口，不代表不同版本或不同权限。截面筛选可以被结构化投研单向引用；截面筛选本身不依赖定性结果。
 
-```
-invest_analysis/
-├── src/
-│   ├── engine/              # 策略无关引擎
-│   │   ├── config.py        #   StrategyConfig
-│   │   ├── launcher.py      #   CLI 入口
-│   │   ├── factors.py       #   FactorRegistry（截面+时序）
-│   │   ├── operators.py     #   OperatorRegistry（自动 schema）
-│   │   └── tracker.py       #   运行追踪 (SQLite)
-│   ├── data/                # 数据层
-│   │   ├── provider.py      #   DataProvider 协议 + 注册表
-│   │   ├── storage.py       #   Parquet 读写（含 predicate pushdown）
-│   │   ├── updater.py       #   DataUpdater 编排
-│   │   ├── factor_store.py  #   因子预计算
-│   │   ├── api.py           #   只读查询接口（含 lru_cache）
-│   │   ├── snapshot.py      #   时点快照（并行 I/O）
-│   │   ├── settings.py      #   配置常量
-│   │   └── tushare/         #   Tushare 实现
-│   │       ├── __init__.py
-│   │       └── provider.py
-│   ├── agent/               # LLM Agent
-│   │   ├── runtime.py       #   主调度器（DAG + prompt 组装 + agent loop）
-│   │   ├── client.py        #   OpenAI 兼容异步客户端
-│   │   ├── tools.py         #   工具沙盒（16 种数据查询）
-│   │   └── schemas.py       #   输出 Schema 工具
-│   ├── screener/            # 量化筛选
-│   │   └── quick_filter.py
-│   ├── backtest/            # 回测验证
-│   │   ├── batch_backtest.py    # 批量截面回测
-│   │   ├── crosssection.py     # 跨截面对比
-│   │   ├── outcome_collector.py # 前瞻收益采集
-│   │   └── quality_scorer.py   # 5维质量评分
-│   └── desktop/             # FastAPI + Vue 3 Desktop App
-│       ├── main.py          #   Entry point
-│       └── batch_live.py    #   Mock portfolio batch analysis
-├── factors/                 # 量化因子定义（.py）
-├── operators/               # 定性分析算子（.md，含 YAML frontmatter）
-│   ├── screening/           #   数据质量、地缘政治、快速筛选、央国企
-│   ├── fundamental/         #   负债、周期、现金流、管理层、流派分类
-│   ├── valuation/           #   FCF、股息、PE陷阱、安全边际、所有者收益、估值修复
-│   ├── decision/            #   苹果模型、仓位管理、压力测试
-│   ├── special/             #   烟蒂股、轻资产模式
-│   ├── bank/                #   银行专项（4 个：NIM、资产质量、资本充足、PPOP）
-│   ├── manufacturing/       #   制造业专项（3 个：产能周期、成本结构、订单簿）
-│   ├── consumer/            #   消费专项（2 个：品牌护城河、渠道分析）
-│   └── tech/                #   科技专项（2 个：研发效率、平台锁定）
-├── strategies/              # 策略实例
-│   └── v6_value/            #   V6 价值投资（算子驱动）
-│       └── strategy.yaml    #   一站式配置：筛选 + 章节 + 算子 + LLM
-├── data/                    # 本地数据存储
-│   ├── tushare/             #   市场数据 (Parquet)
-│   └── financial/           #   财报数据 (Parquet)
-└── docs/                    # 设计文档
+## 核心模块
+
+| 模块 | 主要路径 | 职责 |
+|---|---|---|
+| 配置与注册表 | `src/engine/config.py`、`factors.py`、`operators.py` | 加载策略、因子和算子，校验元数据与输出契约 |
+| 框架校验 | `src/engine/framework_validation.py` | 校验章节、依赖、算子引用和 DAG |
+| 截面筛选 | `src/screener/quick_filter.py` | 过滤、排名和候选生成 |
+| 历史验证 | `src/backtest/` | 前向收益、截面统计、聚合和质量评价 |
+| Agent 运行时 | `src/agent/` | 在冻结章节内组装提示、调用数据工具、产生结构化输出 |
+| 数据抽象 | `src/data/provider.py`、`field_catalog.py` | 定义 Provider 能力和统一语义字段 |
+| 数据维护 | `src/data/updater.py`、`jobs.py` | 全量/增量任务、检查点、失败恢复和状态追踪 |
+| 数据存储 | `src/data/storage.py`、`factor_store.py` | Provider 隔离的 SQLite 与因子物化 |
+| 时点快照 | `src/data/snapshot.py`、`live_snapshot.py` | 为历史分析和当前分析提供边界明确的输入 |
+| 桌面服务 | `src/desktop/` | 桌面生命周期、API、WebSocket、前端与局域网认证 |
+
+## 四条主要执行流
+
+### 1. 数据维护
+
+```text
+选择 Provider → 检查能力与凭据 → 创建下载任务
+→ 按数据集维护检查点 → SQLite 原子提交
+→ 物化派生因子 → 更新覆盖状态
 ```
 
-## 数据流
+BaoStock 和 Tushare 负责各自口径下的历史数据闭环；AKShare 仅用于当前即时分析。不同 Provider 使用独立数据库，查询层不会自动拼接来源。具体契约见 [数据层设计](data_layer.md)。
 
-### 完整分析 Pipeline
+### 2. 截面筛选与历史验证
 
-```
-strategy.yaml ──→ StrategyConfig
-                      │
-          ┌───────────┼───────────────────┐
-          ▼           ▼                   ▼
-    FactorRegistry  OperatorRegistry   章节定义
-          │           │ (自动 schema)      │
-          ▼           │                   │
-    FactorStore       │                   │
-    (预计算因子)       │                   │
-          │           └───────┐           │
-          ▼                   ▼           ▼
-    QuickFilter         runtime.py ←── Snapshot
-    (量化筛选)        (prompt 组装 + DAG) (时点快照)
-          │               │
-          ▼               ▼
-    候选股票列表      Agent Loop (tool_use)
-                          │
-                          ▼
-                    分析报告 + 结构化输出
-                          │
-                    ┌─────┼──────┐
-                    ▼     ▼      ▼
-              Tracker  Outcome  Quality
-              (存储)   (收益)   (评分)
+```text
+指标与过滤条件 → 加权排名 → 当前截面预览 → 保存策略
+                                      │
+                                      ├→ 指定日期生成候选名单
+                                      └→ 多历史截面生成候选并计算前向收益
 ```
 
-### 筛选 Pipeline（QuickFilter）
+策略定义、日期范围、截面频率和持有数量共同决定结果归属。任何参数变化都会使旧结果退出当前上下文，避免用旧回测解释新参数。
 
-```
-全市场 ~5500 只
-    │
-    ▼ 排除规则 (ST/退市/...)
-  ~4000 只
-    │
-    ▼ 预计算截面因子 + 时序因子合并
-    │
-    ▼ 声明式过滤 (PE/PB/DV/市值...)
-  ~300 只
-    │
-    ▼ 加权评分 (0-100)
-    │
-    ▼ 龟级分级 (金龟/银龟/铜龟/不达标)
-    │
-    ▼ Top N
-  50 只候选
+### 3. 结构化个股分析与最新研判
+
+```text
+股票 / 筛选候选 + 框架 + 分析时点
+→ 冻结输入 → 章节拓扑排序
+→ 逐批执行章节中的算子组合
+→ 汇总结构化结论与证据 → 写入报告与索引
 ```
 
-### Agent 分析 Pipeline
+每个章节可以包含多个同方向算子；章节输出作为后续依赖章节的上下文。Agent 可使用与界面相同的数据和配置 API，但不得改变运行中的 DAG。
 
-```
-章节 DAG（strategy.yaml 中定义）
-    │
-    ▼ 拓扑排序 → 批次
+### 4. 框架历史验证
 
-Batch 1: [ch01_screening]              ← 无依赖
-Batch 2: [ch02_fundamental]            ← 依赖 ch01
-Batch 3: [ch03_cashflow]               ← 依赖 ch01, ch02
-Batch 4: [ch04_valuation]              ← 依赖 ch02, ch03
-Batch 5: [ch05_stress]                 ← 依赖 ch03, ch04
-Batch 6: [ch06_decision]               ← 依赖 ch04, ch05
-
-每个章节:
-  算子加载 → compose_content() + compose_schema_text()
-  ↓
-  System Prompt = 角色 + 时间边界 + 行业提示 + 算子指令 + 快照 + schema
-  ↓
-  LLM Agent Loop (max 15 rounds)
-    ├→ tool_call: query_financial_data(data_type, periods)
-    ├→ tool_call: get_analysis_context()
-    └→ 返回: 分析文本 + 结构化 JSON
-  ↓
-  输出作为后续章节的 prior_context
+```text
+历史截面 → 数值筛选 → 历史快照
+→ 校验算子时点边界 → 必要时切换历史实现
+→ 执行相同章节与输出契约 → 计算前向收益和增量效果
 ```
 
-## 关键设计变更（v5.5.6 → v6）
+仅当前可用的算子必须映射到输出字段和类型完全一致的内部历史实现。没有安全等价实现时任务会在执行前失败；系统不会静默跳过算子或用当前新闻回填历史。
 
-| 维度 | v5.5.6 | v6 |
-|------|--------|-----|
-| 分析框架定义 | template.md 手写 Prompt 模板 | operators/*.md 算子组合 |
-| 章节定义 | chapters.yaml 独立文件 | strategy.yaml 内联 framework.chapters |
-| 输出 Schema | output_schema.py 手写 dataclass | 算子 frontmatter outputs 自动生成 |
-| Prompt 组装 | FrameworkParser + PromptBuilder 独立模块 | runtime.py 内联 build_system_prompt() |
-| 行业处理 | 无 | 算子前置门控 + system prompt 行业提示 |
-| 数据查询 | 顺序 I/O | 并行 ThreadPoolExecutor + predicate pushdown |
+## 算子与框架
+
+- 用户可见算子位于 `workspace/operators/v2/` 的业务分类目录。
+- `history_adapters/` 是严格历史验证的内部执行资产，不出现在普通算子库，也不能作为独立研究能力宣传。
+- 框架位于 `workspace/strategies/<name>/strategy.yaml`，集中声明章节、算子组合、依赖和综合规则。
+- 算子输出由 YAML frontmatter 定义，框架适配和下游聚合都以该契约为准。
+
+详见 [算子设计](operators.md) 和 [v2 算子目录](../../workspace/operators/v2/README.md)。
+
+## 数据与运行时持久化
+
+| 内容 | 位置 | 说明 |
+|---|---|---|
+| Provider 市场数据 | `workspace/data/providers/<provider>/market.db` | 各来源物理隔离，SQLite WAL |
+| 下载与自动更新状态 | `workspace/data/control.db` | 任务、阶段、检查点和维护状态 |
+| 应用配置与对话 | `workspace/data/desktop/` | 工作区运行时状态，不写入源码目录 |
+| 正式研究结果 | 报告文件 + SQLite 索引 | 报告文件是事实来源，索引用于分页和检索 |
+
+用户运行产生的数据、配置和报告不属于项目源码。仓库内置策略和算子是基础资产，用户可在同一契约下创建自己的资产。
+
+## 本地与局域网边界
+
+- 默认只监听 `127.0.0.1`，桌面窗口和本机浏览器不要求登录。
+- 只有用户在设置中显式开启并重启后，服务才监听 `0.0.0.0`。
+- 远程 HTTP API 与 WebSocket 共用会话认证；访问口令只展示一次，磁盘只保存哈希。
+- 重置口令会立即使旧远程会话失效。
+- 远程登录拥有完整应用能力，因此局域网模式只适合可信专用网络，不应直接暴露到公网。
 
 ## 设计原则
 
-### 1. 算子驱动（Operator-Driven）
+### 单应用、多适配器
 
-分析逻辑以算子（.md 文件）为最小单元。策略通过在 strategy.yaml 中组合算子构建分析框架，无需编写模板或手动拼接 prompt。输出 schema 从算子 frontmatter 的 outputs 字段自动生成。
+Provider 差异通过能力声明、字段目录和独立存储显式表达。统一的是上层访问契约，不是强行补齐或混合不同来源的数据。
 
-### 2. 配置驱动（Config-Driven）
+### 时间边界优先
 
-所有策略特定的值都在 `strategy.yaml` 中定义。引擎代码不包含任何投资哲学假设，不存在硬编码的默认值。
+历史任务以公告日、交易日和实际可得性裁剪输入。性能优化不能改变时点语义，LLM 也不能请求分析日之后的数据。
 
-### 3. 时间边界（Time Boundary）
+### 结果与配置绑定
 
-所有分析严格遵守截止日期。数据层按公告日期（ann_date）硬过滤，防止前视偏差（look-ahead bias）。
+策略、框架、参数和 Provider 共同构成执行指纹。界面只把与当前指纹一致的结果当作当前结果展示。
 
-### 4. Provider 抽象
+### API 同权
 
-数据获取与存储解耦。通过 `DataProvider` Protocol 定义接口，更换数据源（Tushare → AKShare/CSV）只需实现协议。
+人工界面和投研助手复用现有 API，不建立另一套隐藏工具协议。涉及修改的操作仍通过结构化请求和用户确认完成。
 
-### 5. 因子预计算
+## 技术栈与扩展点
 
-两类因子均预先全量计算，筛选时直接读取：
-- **截面因子**：按交易日计算，月分区存储
-- **时序因子**：每股票计算一次，单文件存储
+| 领域 | 当前实现 | 扩展方式 |
+|---|---|---|
+| 语言与环境 | Python 3.11+、uv | 在 `pyproject.toml` 统一依赖和命令 |
+| 服务与界面 | FastAPI、Vue 3、pywebview | 新增 Router、Service 和对应页面模块 |
+| 存储 | SQLite WAL | 通过 Storage/API 扩展表和查询，不绕过 Provider 隔离 |
+| 新数据源 | `DataProvider` 协议 | 实现适配器、能力声明和字段绑定 |
+| 新因子 | 因子定义与受限 DSL | 声明依赖、频率、执行模式和时点安全性 |
+| 新算子 | Markdown + YAML frontmatter | 定义输入、步骤、输出契约和数据边界 |
+| 新框架 | `strategy.yaml` | 组合既有算子，声明章节依赖和综合规则 |
+| LLM | OpenAI 兼容接口 | 只替换客户端配置，不改变确定性编排边界 |
 
-### 6. 盲测验证
+## 非目标
 
-通过隐藏公司名称和代码，强制 Agent 仅基于财务数据做出判断，消除认知偏差。后续通过前瞻收益回测验证分析质量。
-
-## 技术栈
-
-| 组件 | 技术选型 |
-|------|---------|
-| 语言 | Python 3.9+ |
-| 数据存储 | Parquet (zstd 压缩) |
-| 数据库 | SQLite (分析追踪) |
-| LLM 接口 | OpenAI 兼容 API (async) |
-| CLI | 内置 sys.argv 解析 |
-| 桌面端 | FastAPI + Vue 3 |
-| 数据源 | Tushare Pro API + AKShare（免费爬虫） |
-
-## 扩展点
-
-| 扩展方向 | 实现方式 |
-|---------|---------|
-| 新数据源 | 实现 `DataProvider` Protocol，注册到 provider registry |
-| 新截面因子 | 在 `factors/` 添加 `.py` 文件，定义 `META` + `compute(df)` |
-| 新时序因子 | 在 `factors/` 添加 `.py` 文件，`META.type='timeseries'`，`compute(ts_code, api)` |
-| 新分析算子 | 在 `operators/` 添加 `.md` 文件，YAML frontmatter + Markdown 指令 |
-| 新策略实例 | 创建 `strategies/<name>/strategy.yaml`，组合算子 |
-| 新评分维度 | 在 `quality_scorer.py` 添加评分函数，更新权重 |
+- 不提供实盘下单、自动资产管理或收益承诺。
+- 不以自由 Agent 取代结构化研究流程。
+- 不把多个数据源拼成不可追溯的“更完整”数据集。
+- 不为展示方便静默跳过失败算子、未来数据检查或输出契约校验。

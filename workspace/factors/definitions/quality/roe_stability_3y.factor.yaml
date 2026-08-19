@@ -1,0 +1,14 @@
+schema_version: 1
+id: roe_stability_3y
+name: 3年ROE波动系数
+description: 最近三期已公告年报 ROE 的样本标准差除以均值绝对值，越小越稳定。
+category: quality
+tags: [financial, annual, rolling, point_in_time]
+type: cross_section
+grain: security_date
+engine: polars
+execution: {mode: point_in_time, frequency: annual}
+inputs: {value: financial.fina_indicator.roe}
+expression: 'round(when(abs(rolling_mean(col("value"), 3, 2)) >= 0.01, safe_div(rolling_std(col("value"), 3, 2), abs(rolling_mean(col("value"), 3, 2))), lit(None)), 4)'
+output: {dtype: float64, unit: ratio, direction: lower_better}
+policies: {null: propagate, point_in_time: strict, enabled: true}

@@ -45,7 +45,7 @@
             "desc": "资产质量综合评价"
           }
         ],
-        "file_path": "operators/v2/bank/asset_quality.md",
+        "file_path": "operators\\v2\\bank\\bank_asset_quality.md",
         "gate": {
           "only_industry": [
             "银行"
@@ -93,7 +93,7 @@
             "desc": "盈利能力综合评价"
           }
         ],
-        "file_path": "operators/v2/bank/bank_nim.md",
+        "file_path": "operators\\v2\\bank\\bank_nim.md",
         "gate": {
           "only_industry": [
             "银行"
@@ -143,7 +143,7 @@
             "desc": "压力测试综合结论"
           }
         ],
-        "file_path": "operators/v2/bank/bank_stress_test.md",
+        "file_path": "operators\\v2\\bank\\bank_stress_test.md",
         "gate": {
           "only_industry": [
             "银行"
@@ -198,7 +198,7 @@
             "desc": "估值综合结论"
           }
         ],
-        "file_path": "operators/v2/bank/pb_roe_valuation.md",
+        "file_path": "operators\\v2\\bank\\pb_roe_valuation.md",
         "gate": {
           "only_industry": [
             "银行"
@@ -250,7 +250,7 @@
             "desc": "护城河综合结论"
           }
         ],
-        "file_path": "operators/v2/consumer/brand_moat.md",
+        "file_path": "operators\\v2\\consumer\\consumer_brand_moat.md",
         "gate": {
           "only_industry": [
             "食品饮料",
@@ -302,7 +302,7 @@
             "desc": "增长持续性综合判断"
           }
         ],
-        "file_path": "operators/v2/consumer/consumer_growth.md",
+        "file_path": "operators\\v2\\consumer\\consumer_growth.md",
         "gate": {
           "only_industry": [
             "食品饮料",
@@ -351,7 +351,7 @@
             "desc": "一句话买入逻辑(可证伪、可量化、有时限)"
           }
         ],
-        "file_path": "operators/v2/decision/apple_trading_model.md"
+        "file_path": "operators\\v2\\decision\\apple_trading_model.md"
       },
       {
         "id": "position_management",
@@ -395,7 +395,7 @@
             "desc": "宏观事件影响评估(无影响/短期压制/需警惕/止损)"
           }
         ],
-        "file_path": "operators/v2/decision/position_management.md"
+        "file_path": "operators\\v2\\decision\\position_management.md"
       },
       {
         "id": "stress_test",
@@ -435,7 +435,7 @@
             "desc": "通过/勉强通过/不通过"
           }
         ],
-        "file_path": "operators/v2/decision/stress_test.md"
+        "file_path": "operators\\v2\\decision\\stress_test.md"
       }
     ],
     "forward_risk": [
@@ -482,7 +482,7 @@
             "desc": "下游行业被AI改变导致的间接需求萎缩风险"
           }
         ],
-        "file_path": "operators/v2/forward_risk/ai_disruption.md"
+        "file_path": "operators\\v2\\forward_risk\\ai_disruption.md"
       },
       {
         "id": "industry_position",
@@ -538,7 +538,8 @@
             "desc": "波特五力综合评级与关键结论"
           }
         ],
-        "file_path": "operators/v2/forward_risk/industry_position.md"
+        "file_path": "operators\\v2\\forward_risk\\industry_position.md",
+        "history_variant": "industry_position_history"
       },
       {
         "id": "market_sentiment",
@@ -584,7 +585,8 @@
             "desc": "个股所属行业与大盘的情绪偏离描述"
           }
         ],
-        "file_path": "operators/v2/forward_risk/market_sentiment.md"
+        "file_path": "operators\\v2\\forward_risk\\market_sentiment.md",
+        "history_variant": "market_sentiment_history"
       },
       {
         "id": "news_signal",
@@ -626,7 +628,8 @@
             "desc": "新闻数据可用性标记"
           }
         ],
-        "file_path": "operators/v2/forward_risk/news_signal.md"
+        "file_path": "operators\\v2\\forward_risk\\news_signal.md",
+        "history_variant": "news_signal_history"
       },
       {
         "id": "policy_risk",
@@ -687,7 +690,8 @@
             "desc": "影响该公司的关键政策清单"
           }
         ],
-        "file_path": "operators/v2/forward_risk/policy_risk.md"
+        "file_path": "operators\\v2\\forward_risk\\policy_risk.md",
+        "history_variant": "policy_risk_history"
       }
     ],
     "fundamental": [
@@ -733,7 +737,7 @@
             "desc": "趋势信号：改善/稳定/恶化/拐点"
           }
         ],
-        "file_path": "operators/v2/fundamental/cash_trend_5y.md",
+        "file_path": "operators\\v2\\fundamental\\cash_trend_5y.md",
         "gate": {
           "exclude_industry": [
             "银行",
@@ -787,7 +791,7 @@
             "desc": "周期判断的关键依据"
           }
         ],
-        "file_path": "operators/v2/fundamental/cycle_analysis.md"
+        "file_path": "operators\\v2\\fundamental\\cycle_analysis.md"
       },
       {
         "id": "debt_structure",
@@ -820,7 +824,7 @@
             "desc": "健康/可接受/警惕/危险"
           }
         ],
-        "file_path": "operators/v2/fundamental/debt_structure.md",
+        "file_path": "operators\\v2\\fundamental\\debt_structure.md",
         "gate": {
           "exclude_industry": [
             "银行",
@@ -863,7 +867,7 @@
             "desc": "诚信红旗信号列表"
           }
         ],
-        "file_path": "operators/v2/fundamental/management_integrity.md"
+        "file_path": "operators\\v2\\fundamental\\management_integrity.md"
       },
       {
         "id": "performance_restoration",
@@ -898,7 +902,7 @@
             "desc": "还原后实际经营利润（亿）"
           }
         ],
-        "file_path": "operators/v2/fundamental/performance_restoration.md"
+        "file_path": "operators\\v2\\fundamental\\performance_restoration.md"
       },
       {
         "id": "stream_classification",
@@ -928,7 +932,7 @@
             "desc": "流派归属的关键判据与推理过程"
           }
         ],
-        "file_path": "operators/v2/fundamental/stream_classification.md"
+        "file_path": "operators\\v2\\fundamental\\stream_classification.md"
       }
     ],
     "manufacturing": [
@@ -976,65 +980,12 @@
             "desc": "产能周期综合判断与投资建议"
           }
         ],
-        "file_path": "operators/v2/manufacturing/capacity_cycle.md",
+        "file_path": "operators\\v2\\manufacturing\\capacity_cycle.md",
         "gate": {
           "only_industry": [
             "钢铁",
             "煤炭",
             "化工"
-          ]
-        }
-      },
-      {
-        "id": "roic_analysis",
-        "name": "ROIC 与资本效率",
-        "category": "manufacturing",
-        "dir_category": "manufacturing",
-        "tags": [
-          "fundamental",
-          "roic",
-          "capital_efficiency",
-          "manufacturing"
-        ],
-        "data_needed": [
-          "income",
-          "balancesheet",
-          "cashflow"
-        ],
-        "outputs": [
-          {
-            "field": "roic_current",
-            "type": "float",
-            "desc": "当前ROIC（%）"
-          },
-          {
-            "field": "roic_5y_avg",
-            "type": "float",
-            "desc": "5年平均ROIC（%）"
-          },
-          {
-            "field": "invested_capital",
-            "type": "float",
-            "desc": "投入资本（亿元）"
-          },
-          {
-            "field": "roic_vs_wacc",
-            "type": "str",
-            "desc": "ROIC与WACC对比（创造价值/持平/毁灭价值）"
-          },
-          {
-            "field": "capital_efficiency_verdict",
-            "type": "str",
-            "desc": "资本效率综合评价"
-          }
-        ],
-        "file_path": "operators/v2/manufacturing/roic_analysis.md",
-        "gate": {
-          "only_industry": [
-            "钢铁",
-            "煤炭",
-            "化工",
-            "汽车"
           ]
         }
       },
@@ -1082,7 +1033,7 @@
             "desc": "上下游议价地位综合判断"
           }
         ],
-        "file_path": "operators/v2/manufacturing/supply_chain_position.md",
+        "file_path": "operators\\v2\\manufacturing\\mfg_supply_chain_position.md",
         "gate": {
           "only_industry": [
             "钢铁",
@@ -1090,6 +1041,59 @@
             "化工",
             "汽车",
             "家电"
+          ]
+        }
+      },
+      {
+        "id": "roic_analysis",
+        "name": "ROIC 与资本效率",
+        "category": "manufacturing",
+        "dir_category": "manufacturing",
+        "tags": [
+          "fundamental",
+          "roic",
+          "capital_efficiency",
+          "manufacturing"
+        ],
+        "data_needed": [
+          "income",
+          "balancesheet",
+          "cashflow"
+        ],
+        "outputs": [
+          {
+            "field": "roic_current",
+            "type": "float",
+            "desc": "当前ROIC（%）"
+          },
+          {
+            "field": "roic_5y_avg",
+            "type": "float",
+            "desc": "5年平均ROIC（%）"
+          },
+          {
+            "field": "invested_capital",
+            "type": "float",
+            "desc": "投入资本（亿元）"
+          },
+          {
+            "field": "roic_vs_wacc",
+            "type": "str",
+            "desc": "ROIC与WACC对比（创造价值/持平/毁灭价值）"
+          },
+          {
+            "field": "capital_efficiency_verdict",
+            "type": "str",
+            "desc": "资本效率综合评价"
+          }
+        ],
+        "file_path": "operators\\v2\\manufacturing\\roic_analysis.md",
+        "gate": {
+          "only_industry": [
+            "钢铁",
+            "煤炭",
+            "化工",
+            "汽车"
           ]
         }
       }
@@ -1125,7 +1129,7 @@
             "desc": "数据质量警告列表"
           }
         ],
-        "file_path": "operators/v2/screening/data_source_grading.md"
+        "file_path": "operators\\v2\\screening\\data_source_grading.md"
       },
       {
         "id": "geopolitical_exclusion",
@@ -1158,7 +1162,7 @@
             "desc": "是否一票否决"
           }
         ],
-        "file_path": "operators/v2/screening/geopolitical_exclusion.md"
+        "file_path": "operators\\v2\\screening\\geopolitical_exclusion.md"
       },
       {
         "id": "quick_screen_5min",
@@ -1201,7 +1205,7 @@
             "desc": "筛选结论备注"
           }
         ],
-        "file_path": "operators/v2/screening/quick_screen_5min.md"
+        "file_path": "operators\\v2\\screening\\quick_screen_5min.md"
       },
       {
         "id": "soe_identification",
@@ -1233,7 +1237,7 @@
             "desc": "最终控制人名称"
           }
         ],
-        "file_path": "operators/v2/screening/soe_identification.md"
+        "file_path": "operators\\v2\\screening\\soe_identification.md"
       }
     ],
     "special": [
@@ -1266,7 +1270,7 @@
             "desc": "T级加权清算价值(亿元)"
           }
         ],
-        "file_path": "operators/v2/special/cigar_butt.md"
+        "file_path": "operators\\v2\\special\\cigar_butt.md"
       },
       {
         "id": "light_asset_model",
@@ -1297,7 +1301,7 @@
             "desc": "经常性收入占比(%)"
           }
         ],
-        "file_path": "operators/v2/special/light_asset_model.md"
+        "file_path": "operators\\v2\\special\\light_asset_model.md"
       }
     ],
     "tech": [
@@ -1339,7 +1343,7 @@
             "desc": "成长性综合结论"
           }
         ],
-        "file_path": "operators/v2/tech/tech_growth.md",
+        "file_path": "operators\\v2\\tech\\tech_growth.md",
         "gate": {
           "only_industry": [
             "科技"
@@ -1386,7 +1390,7 @@
             "desc": "估值综合结论"
           }
         ],
-        "file_path": "operators/v2/tech/tech_valuation.md",
+        "file_path": "operators\\v2\\tech\\tech_valuation.md",
         "gate": {
           "only_industry": [
             "科技"
@@ -1438,7 +1442,7 @@
             "desc": "所有者收益计算是否有效(负值时为false)"
           }
         ],
-        "file_path": "operators/v2/valuation/owner_earnings.md",
+        "file_path": "operators\\v2\\valuation\\owner_earnings.md",
         "gate": {
           "exclude_industry": [
             "银行",
@@ -1482,7 +1486,7 @@
             "desc": "推荐估值方法"
           }
         ],
-        "file_path": "operators/v2/valuation/pe_trap_detection.md"
+        "file_path": "operators\\v2\\valuation\\pe_trap_detection.md"
       },
       {
         "id": "safety_margin",
@@ -1523,7 +1527,7 @@
             "desc": "卖出价位(元)"
           }
         ],
-        "file_path": "operators/v2/valuation/safety_margin.md"
+        "file_path": "operators\\v2\\valuation\\safety_margin.md"
       },
       {
         "id": "valuation_dividend",
@@ -1553,7 +1557,8 @@
             "desc": "股息是否可持续"
           }
         ],
-        "file_path": "operators/v2/valuation/valuation_dividend.md"
+        "file_path": "operators\\v2\\valuation\\valuation_dividend.md",
+        "history_variant": "valuation_dividend_history"
       },
       {
         "id": "valuation_fcf",
@@ -1608,7 +1613,7 @@
             "desc": "双向验证结论(一致/需调整)"
           }
         ],
-        "file_path": "operators/v2/valuation/valuation_fcf.md",
+        "file_path": "operators\\v2\\valuation\\valuation_fcf.md",
         "gate": {
           "exclude_industry": [
             "银行",
@@ -1652,7 +1657,7 @@
             "desc": "预期修复回报率(%)"
           }
         ],
-        "file_path": "operators/v2/valuation/valuation_repair.md"
+        "file_path": "operators\\v2\\valuation\\valuation_repair.md"
       }
     ]
   }

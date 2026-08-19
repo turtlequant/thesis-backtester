@@ -1,0 +1,14 @@
+schema_version: 1
+id: interest_debt_ratio
+name: 有息负债占比(%)
+description: 截至当日已公告年报中的最新有息负债占总资本比例。
+category: solvency
+tags: [financial, annual, point_in_time]
+type: cross_section
+grain: security_date
+engine: polars
+execution: {mode: point_in_time, frequency: annual}
+inputs: {value: financial.fina_indicator.int_to_talcap}
+expression: 'round(col("value"), 2)'
+output: {dtype: float64, unit: percent, direction: lower_better}
+policies: {null: propagate, point_in_time: strict, enabled: true}

@@ -1,0 +1,20 @@
+schema_version: 1
+id: ep
+name: 盈利收益率
+description: 盈利相对市价的收益率，等于 100/PE_TTM。
+category: valuation
+tags: [估值, 价值]
+type: cross_section
+grain: security_date
+engine: polars
+inputs:
+  pe: valuation.pe_ttm
+expression: round(safe_div(100.0, col("pe")), 2)
+output:
+  dtype: float64
+  unit: percent
+  direction: higher_better
+policies:
+  null: propagate
+  point_in_time: strict
+  enabled: true

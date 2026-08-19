@@ -1,5 +1,7 @@
 # 规模扩展与框架优化计划
 
+> **文档性质：历史研究记录。** 本文保存早期实验规模与阶段计划，其中的“当前状态”不代表现状。当前产品能力见 [文档索引](README.md) 和 [功能指引](PRODUCT_GUIDE.md)。
+
 ## 一、当前状态（v6）
 
 | 维度 | 当前 | 目标 |
@@ -30,13 +32,13 @@ backtest-eval                # ③ 前向收益 + 五基准评估（分钟级，
 **运行方式**：
 ```bash
 # 查看任务量和成本预估
-python -m src.engine.launcher strategies/v6_value/strategy.yaml backtest-agent --dry-run
+python -m src.engine.launcher workspace/strategies/v6_value/strategy.yaml backtest-agent --dry-run
 
 # 执行（增量，已有报告自动跳过）
-python -m src.engine.launcher strategies/v6_value/strategy.yaml backtest-agent
+python -m src.engine.launcher workspace/strategies/v6_value/strategy.yaml backtest-agent
 
 # 评估绩效
-python -m src.engine.launcher strategies/v6_value/strategy.yaml backtest-eval
+python -m src.engine.launcher workspace/strategies/v6_value/strategy.yaml backtest-eval
 ```
 
 **预估成本**：~¥48（119只 × ¥0.4/只，DeepSeek 定价）
@@ -72,7 +74,7 @@ backtest:
 创建新策略实例验证引擎通用性：
 
 ```bash
-strategies/
+workspace/strategies/
 ├── v6_value/       # 当前：深度价值 + 高股息
 ├── growth/         # 新建：成长股策略
 └── cyclical/       # 新建：周期股策略
@@ -96,7 +98,7 @@ llm:                 # LLM 配置（模型 + 温度 + token 限制）
 
 ### 创建新策略
 
-1. 创建 `strategies/<name>/strategy.yaml`（参考 v6_value 的注释版配置）
+1. 创建 `workspace/strategies/<name>/strategy.yaml`（参考 v6_value 的注释版配置）
 2. 选择和组合已有算子（或创建新算子）
 3. 运行 `backtest-screen` → `backtest-agent` → `backtest-eval`
 

@@ -1,0 +1,20 @@
+schema_version: 1
+id: circ_mv_yi
+name: 流通市值（亿）
+description: 将数据源流通市值从万元换算为亿元。
+category: size
+tags: [规模, 流动性]
+type: cross_section
+grain: security_date
+engine: polars
+inputs:
+  value: size.float_market_value_wan
+expression: round(col("value") / 10000.0, 2)
+output:
+  dtype: float64
+  unit: hundred_million_cny
+  direction: higher_better
+policies:
+  null: propagate
+  point_in_time: strict
+  enabled: true

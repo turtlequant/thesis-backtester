@@ -1,0 +1,14 @@
+schema_version: 1
+id: debt_to_assets
+name: 资产负债率(%)
+description: 截至当日已公告年报中的最新资产负债率。
+category: solvency
+tags: [financial, annual, point_in_time]
+type: cross_section
+grain: security_date
+engine: polars
+execution: {mode: point_in_time, frequency: annual}
+inputs: {value: financial.fina_indicator.debt_to_assets}
+expression: 'round(col("value"), 2)'
+output: {dtype: float64, unit: percent, direction: lower_better}
+policies: {null: propagate, point_in_time: strict, enabled: true}

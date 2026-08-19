@@ -6,7 +6,7 @@ Reads operators and strategies, generates JSON index files.
 Must be run from the project root directory.
 
 Usage:
-    python docs/site/build.py
+    uv run python docs/site/build.py
 """
 
 import json
@@ -16,13 +16,14 @@ from pathlib import Path
 try:
     import yaml
 except ImportError:
-    print("ERROR: pyyaml is required. Install with: pip install pyyaml")
+    print("ERROR: pyyaml is required. Run the script through the project environment: uv run python docs/site/build.py")
     sys.exit(1)
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
-OPERATORS_DIR = PROJECT_ROOT / "operators" / "v2"
-STRATEGIES_DIR = PROJECT_ROOT / "strategies"
+WORKSPACE_ROOT = PROJECT_ROOT / "workspace"
+OPERATORS_DIR = WORKSPACE_ROOT / "operators" / "v2"
+STRATEGIES_DIR = WORKSPACE_ROOT / "strategies"
 OUTPUT_DIR = Path(__file__).resolve().parent / "data"
 
 
@@ -52,7 +53,7 @@ def parse_frontmatter(md_path: Path) -> dict | None:
 
 
 def build_operators() -> dict:
-    """Scan operators/v2/**/*.md and build the operators index."""
+    """Scan workspace/operators/v2/**/*.md and build the operators index."""
     categories: dict[str, list] = {}
     total = 0
 
@@ -68,6 +69,10 @@ def build_operators() -> dict:
         fm = parse_frontmatter(md_path)
         if fm is None or "id" not in fm:
             print(f"  SKIP: {md_path.relative_to(PROJECT_ROOT)} (no valid frontmatter)")
+            continue
+        if fm.get("execution_mode") == "history_adapter":
+            continue
+        if "test" in fm.get("tags", []):
             continue
 
         # Determine category from directory name or frontmatter
@@ -91,6 +96,8 @@ def build_operators() -> dict:
         # Include gate info if present
         if "gate" in fm:
             entry["gate"] = fm["gate"]
+        if fm.get("history_variant"):
+            entry["history_variant"] = fm["history_variant"]
 
         categories.setdefault(dir_category, []).append(entry)
         total += 1
@@ -100,7 +107,7 @@ def build_operators() -> dict:
 
 
 def build_strategies() -> list:
-    """Scan strategies/*/strategy.yaml and build the strategies index."""
+    """Scan workspace/strategies/*/strategy.yaml and build the strategies index."""
     strategies = []
 
     if not STRATEGIES_DIR.exists():

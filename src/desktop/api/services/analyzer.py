@@ -11,12 +11,10 @@ import os
 import time
 import uuid
 from dataclasses import dataclass, field
-from datetime import datetime
 from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from src.agent.runtime import run_blind_analysis
 from src.data.snapshot import StockSnapshot
 from src.engine.config import StrategyConfig
 
@@ -84,13 +82,18 @@ class AnalysisTask:
 class AnalysisManager:
     """Manages concurrent analysis tasks."""
 
-    def __init__(self, project_root: Path):
+    def __init__(self, project_root: Path, config_path: Optional[Path] = None):
         self.project_root = project_root
+        self.config_path = config_path
         self.tasks: Dict[str, AnalysisTask] = {}
 
     def _get_settings(self) -> dict:
         """Load settings from config.json."""
-        config_path = self.project_root / "desktop" / "config.json"
+        config_path = self.config_path
+        if config_path is None:
+            from src.desktop.runtime import DESKTOP_CONFIG_PATH
+
+            config_path = DESKTOP_CONFIG_PATH
         if config_path.exists():
             return json.loads(config_path.read_text(encoding="utf-8"))
         return {}
@@ -105,6 +108,8 @@ class AnalysisManager:
             os.environ["LLM_MODEL"] = settings["llm_model"]
         if settings.get("temperature") is not None:
             os.environ["LLM_TEMPERATURE"] = str(settings["temperature"])
+        if settings.get("max_tokens") is not None:
+            os.environ["LLM_MAX_TOKENS"] = str(settings["max_tokens"])
 
     def create_task(self, ts_code: str, strategy_name: str, strategy_path: str) -> AnalysisTask:
         """Create a new analysis task."""
@@ -169,6 +174,11 @@ class AnalysisManager:
             except Exception as e:
                 logger.warning(f"Failed to save snapshot preview: {e}")
 
+            # Agent/OpenAI dependencies are only needed after the user starts an
+            # analysis. Keeping this import off the desktop startup path avoids
+            # paying their import cost before the first window is visible.
+            from src.agent.runtime import run_blind_analysis
+
             result = await run_blind_analysis(
                 ts_code=task.ts_code,
                 cutoff_date=snapshot.cutoff_date,
@@ -196,88 +206,25 @@ class AnalysisManager:
             task._emit(ProgressEvent(event="error", data={"message": str(e)}))
 
     def get_all_reports(self) -> List[dict]:
-        """
-        List all saved reports from all strategies' live/ directories.
-        """
-        reports = []
-        strategies_dir = self.project_root / "strategies"
-        if not strategies_dir.exists():
-            return reports
+        """List indexed reports while reconciling new or changed artifacts."""
+        from src.desktop.api.services import report_index
 
-        for strategy_dir in strategies_dir.iterdir():
-            if not strategy_dir.is_dir():
-                continue
-            live_dir = strategy_dir / "live"
-            if not live_dir.exists():
-                continue
+        return report_index.list_reports(self.project_root)
 
-            # Find all structured JSON files (both in subdirs and root)
-            for json_file in sorted(live_dir.glob("**/*_structured.json"), reverse=True):
-                try:
-                    data = json.loads(json_file.read_text(encoding="utf-8"))
-                    metadata = data.get("metadata", {})
-                    synthesis = data.get("synthesis", {})
+    def get_reports_page(self, **params) -> dict:
+        """Query one filtered report-index page without loading report bodies."""
+        from src.desktop.api.services import report_index
 
-                    report_md = json_file.with_name(
-                        json_file.name.replace("_structured.json", "_report.md")
-                    )
-
-                    reports.append({
-                        "id": f"{strategy_dir.name}__{json_file.stem}",
-                        "file_path": str(json_file),
-                        "report_path": str(report_md) if report_md.exists() else None,
-                        "strategy": strategy_dir.name,
-                        "ts_code": metadata.get("ts_code", ""),
-                        "cutoff_date": metadata.get("cutoff_date", ""),
-                        "model": metadata.get("model", ""),
-                        "elapsed_seconds": metadata.get("elapsed_seconds", 0),
-                        "score": synthesis.get("综合评分", synthesis.get("score", "")),
-                        "recommendation": synthesis.get("最终建议", synthesis.get("recommendation", "")),
-                        "created_at": datetime.fromtimestamp(
-                            json_file.stat().st_mtime
-                        ).strftime("%Y-%m-%d %H:%M:%S"),
-                    })
-                except Exception as e:
-                    logger.warning(f"Failed to parse report {json_file}: {e}")
-
-        return sorted(reports, key=lambda r: r["created_at"], reverse=True)
+        return report_index.search_reports(self.project_root, **params)
 
     def get_report(self, report_id: str) -> Optional[dict]:
-        """Get a specific report by ID."""
-        for report in self.get_all_reports():
-            if report["id"] == report_id:
-                # Load full content
-                json_path = Path(report["file_path"])
-                data = json.loads(json_path.read_text(encoding="utf-8"))
+        """Load one indexed report and its readable/evidence artifacts."""
+        from src.desktop.api.services import report_index
 
-                # Load markdown report if available
-                report_text = ""
-                if report.get("report_path"):
-                    report_path = Path(report["report_path"])
-                    if report_path.exists():
-                        report_text = report_path.read_text(encoding="utf-8")
-
-                return {
-                    **report,
-                    "full_data": data,
-                    "report_text": report_text,
-                }
-        return None
+        return report_index.get_report(report_id, self.project_root)
 
     def delete_report(self, report_id: str) -> bool:
-        """Delete a report by ID."""
-        for report in self.get_all_reports():
-            if report["id"] == report_id:
-                try:
-                    json_path = Path(report["file_path"])
-                    if json_path.exists():
-                        json_path.unlink()
-                    if report.get("report_path"):
-                        report_path = Path(report["report_path"])
-                        if report_path.exists():
-                            report_path.unlink()
-                    return True
-                except Exception as e:
-                    logger.error(f"Failed to delete report {report_id}: {e}")
-                    return False
-        return False
+        """Delete the two report artifacts and remove their index row."""
+        from src.desktop.api.services import report_index
+
+        return report_index.delete_report(report_id, self.project_root)

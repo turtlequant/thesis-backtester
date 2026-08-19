@@ -1,0 +1,16 @@
+schema_version: 1
+id: dividend_payout_3y
+name: 3年分红比率(%)
+description: 最近三期已公告年度每股现金分红与每股收益比率的平均值。
+category: dividend
+tags: [financial, annual, rolling, point_in_time]
+type: cross_section
+grain: security_date
+engine: polars
+execution: {mode: point_in_time, frequency: annual}
+inputs:
+  dividend: financial.dividend.cash_div_tax
+  eps: financial.fina_indicator.eps
+expression: 'round(rolling_mean(safe_div(col("dividend"), col("eps")) * 100.0, 3, 2), 2)'
+output: {dtype: float64, unit: percent, direction: higher_better}
+policies: {null: propagate, point_in_time: strict, enabled: true}

@@ -6,9 +6,21 @@
 const OperatorsPage = {
     template: `
 <div class="page-operators">
+    <workspace-page-header eyebrow="基础设施 · 研究方法" title="算子库" description="维护可复用的结构化研究步骤、数据依赖与标准输出。">
+        <template #meta><span class="page-header-chip"><span>当前版本</span>{{ selectedVersion }}</span><span class="page-header-chip"><span>算子数量</span>{{ totalCount }}</span></template>
+        <template #actions><button class="btn btn-primary btn-small" @click="showCreateForm">+ 新建算子</button></template>
+    </workspace-page-header>
+
     <!-- Top: Category Tabs -->
     <div class="card">
-        <h2>算子管理</h2>
+        <div class="operator-version-bar">
+            <div class="operator-version-tabs">
+                <button v-for="version in versions" :key="version.id" class="operator-version-tab" :class="{ active: selectedVersion === version.id }" @click="selectVersion(version.id)">
+                    <strong>{{ version.id }}</strong><span>{{ version.current ? '当前版本' : '历史版本' }}</span><em>{{ version.operator_count }} 个</em>
+                </button>
+            </div>
+            <label class="operator-internal-toggle"><input type="checkbox" v-model="showInternal" @change="loadOperators" />显示严格历史适配实现</label>
+        </div>
         <div class="category-tabs">
             <button
                 class="category-tab"
@@ -39,7 +51,7 @@ const OperatorsPage = {
             <div class="operators-list">
                 <div
                     v-for="op in filteredOperators"
-                    :key="op.id"
+                    :key="selectedVersion + ':' + op.id"
                     class="operator-list-item"
                     :class="{ active: selectedOperator && selectedOperator.id === op.id }"
                     @click="selectOperator(op)"
@@ -48,14 +60,13 @@ const OperatorsPage = {
                     <div class="op-item-meta">
                         <span class="op-item-id">{{ op.id }}</span>
                         <span class="op-item-cat">{{ op.category }}</span>
+                        <span class="op-version-badge">{{ op.library_version }}</span>
+                        <span class="op-history-badge" v-if="op.execution_mode === 'history_adapter'">历史适配</span>
                     </div>
                 </div>
                 <div class="empty-state" v-if="filteredOperators.length === 0">
                     暂无匹配算子
                 </div>
-            </div>
-            <div class="operators-list-footer">
-                <button class="btn btn-primary" @click="showCreateForm">+ 新建算子</button>
             </div>
         </div>
 
@@ -76,6 +87,18 @@ const OperatorsPage = {
                     <div class="op-field-row">
                         <span class="op-field-label">分类</span>
                         <span class="op-field-value">{{ detailOperator.category }}</span>
+                    </div>
+                    <div class="op-field-row">
+                        <span class="op-field-label">算子版本</span>
+                        <span class="op-field-value"><span class="op-version-badge">{{ detailOperator.library_version }}</span> {{ detailOperator.operators_dir }}</span>
+                    </div>
+                    <div class="op-field-row">
+                        <span class="op-field-label">执行类型</span>
+                        <span class="op-field-value">{{ detailOperator.execution_mode === 'history_adapter' ? '严格历史适配实现' : '标准算子' }}</span>
+                    </div>
+                    <div class="op-field-row" v-if="detailOperator.history_variant">
+                        <span class="op-field-label">历史替代</span>
+                        <span class="op-field-value mono">{{ detailOperator.history_variant }}</span>
                     </div>
                     <div class="op-field-row">
                         <span class="op-field-label">标签</span>
@@ -180,6 +203,18 @@ const OperatorsPage = {
                         <input type="text" v-model="editForm.tagsText" placeholder="fundamental, debt" />
                     </div>
                     <div class="setting-item">
+                        <label>执行类型</label>
+                        <select v-model="editForm.executionMode">
+                            <option value="standard">标准算子</option>
+                            <option value="history_adapter">严格历史适配实现</option>
+                        </select>
+                        <small class="setting-hint">历史适配实现会在框架验证时由标准算子的“历史替代”自动调用，不直接参与普通框架编排。</small>
+                    </div>
+                    <div class="setting-item" v-if="editForm.executionMode === 'standard'">
+                        <label>严格历史替代算子 ID</label>
+                        <input type="text" v-model="editForm.historyVariant" placeholder="留空表示无需替代" />
+                    </div>
+                    <div class="setting-item">
                         <label>数据依赖（勾选算子所需的数据源）</label>
                         <div class="data-need-grid" v-if="availableDataSources.length > 0">
                             <label
@@ -271,6 +306,9 @@ const OperatorsPage = {
             categories: [],
             operatorsByCategory: {},
             totalCount: 0,
+            versions: [],
+            selectedVersion: 'v2',
+            showInternal: false,
             selectedCategory: '',
             searchText: '',
             selectedOperator: null,
@@ -288,6 +326,8 @@ const OperatorsPage = {
                 gateExclude: [],
                 gateOnly: [],
                 outputsText: '',
+                historyVariant: '',
+                executionMode: 'standard',
                 content: '',
             },
             saving: false,
@@ -327,7 +367,71 @@ const OperatorsPage = {
         this.loadDataSources();
     },
 
+    mounted() {
+        this._resourceUpdatedHandler = event => this.handleResourceUpdated(event);
+        window.addEventListener('app-resource-updated', this._resourceUpdatedHandler);
+        this.syncAgentContext();
+    },
+
+    beforeUnmount() {
+        if (this._resourceUpdatedHandler) {
+            window.removeEventListener('app-resource-updated', this._resourceUpdatedHandler);
+        }
+    },
+
+    watch: {
+        editForm: {
+            deep: true,
+            handler() {
+                if (this.editMode) this.syncAgentContext();
+            },
+        },
+    },
+
     methods: {
+        syncAgentContext() {
+            const op = this.detailOperator || this.selectedOperator;
+            const context = {
+                operator_id: op?.id || this.editForm.id || '',
+                operator_name: op?.name || this.editForm.name || (this.isCreating ? '新建算子' : ''),
+                mode: this.isCreating ? 'create' : (this.editMode ? 'edit' : 'view'),
+                library_version: this.selectedVersion,
+                operators_dir: `operators/${this.selectedVersion}`,
+                operator: op || null,
+            };
+            if (this.editMode) {
+                context.draft = {
+                    id: this.editForm.id,
+                    name: this.editForm.name,
+                    category: this.editForm.category === '__new__'
+                        ? this.editForm.newCategory
+                        : this.editForm.category,
+                    tags: this.parseTags(this.editForm.tagsText),
+                    data_needed: Array.from(this.editForm.dataNeedSet || []),
+                    gate: this.buildGate(),
+                    outputs: this.parseOutputs(this.editForm.outputsText),
+                    history_variant: this.editForm.historyVariant,
+                    execution_mode: this.editForm.executionMode,
+                    content: this.editForm.content,
+                };
+            }
+            if (window.setAppContext) window.setAppContext(context);
+            else window._appContext = context;
+        },
+
+        async handleResourceUpdated(event) {
+            const detail = event.detail || {};
+            if (!String(detail.action?.path || '').startsWith('/api/operators')) return;
+            await this.loadOperators();
+            if (detail.result?.id) {
+                this.selectedOperator = detail.result;
+                this.detailOperator = detail.result;
+                this.editMode = false;
+                this.isCreating = false;
+            }
+            this.syncAgentContext();
+        },
+
         async loadDataSources() {
             try {
                 const resp = await fetch('/api/datasources');
@@ -381,10 +485,19 @@ const OperatorsPage = {
 
         async loadOperators() {
             try {
-                const data = await apiFetch('/api/operators');
+                const selectedId = this.selectedOperator?.id || this.detailOperator?.id || '';
+                const params = new URLSearchParams({ version: this.selectedVersion });
+                if (this.showInternal) params.set('include_internal', 'true');
+                const data = await apiFetch(`/api/operators?${params.toString()}`);
+                this.versions = data.available_versions || this.versions;
+                this.selectedVersion = data.version || this.selectedVersion;
                 this.categories = data.categories || [];
                 this.operatorsByCategory = data.operators || {};
                 this.totalCount = data.total || 0;
+                if (!this.isCreating && !this.editMode) {
+                    const first = this.allOperators.find(op => op.id === selectedId) || this.allOperators[0];
+                    if (first && this.detailOperator?.id !== first.id) await this.selectOperator(first);
+                }
             } catch (e) {
                 console.error('Failed to load operators:', e);
             }
@@ -395,7 +508,8 @@ const OperatorsPage = {
             this.editMode = false;
             this.isCreating = false;
             try {
-                this.detailOperator = await apiFetch(`/api/operators/${op.id}`);
+                this.detailOperator = await apiFetch(`/api/operators/${op.id}?version=${encodeURIComponent(this.selectedVersion)}`);
+                this.syncAgentContext();
             } catch (e) {
                 console.error('Failed to load operator detail:', e);
             }
@@ -419,8 +533,11 @@ const OperatorsPage = {
                 outputsText: (op.outputs || []).map(o =>
                     `${o.field}|${o.type}|${o.desc || ''}`
                 ).join('\n'),
+                historyVariant: op.history_variant || '',
+                executionMode: op.execution_mode || 'standard',
                 content: op.content || '',
             };
+            this.syncAgentContext();
         },
 
         showCreateForm() {
@@ -439,8 +556,11 @@ const OperatorsPage = {
                 gateExclude: [],
                 gateOnly: [],
                 outputsText: '',
+                historyVariant: '',
+                executionMode: 'standard',
                 content: '',
             };
+            this.syncAgentContext();
         },
 
         cancelEdit() {
@@ -450,6 +570,7 @@ const OperatorsPage = {
                 this.detailOperator = null;
                 this.selectedOperator = null;
             }
+            this.syncAgentContext();
         },
 
         parseOutputs(text) {
@@ -489,7 +610,7 @@ const OperatorsPage = {
                         throw new Error('ID、名称和分类为必填项');
                     }
 
-                    const result = await apiFetch('/api/operators', {
+                    const result = await apiFetch(`/api/operators?version=${encodeURIComponent(this.selectedVersion)}`, {
                         method: 'POST',
                         body: JSON.stringify({
                             id: this.editForm.id,
@@ -499,6 +620,8 @@ const OperatorsPage = {
                             data_needed: dataNeed,
                             gate: this.buildGate(),
                             outputs: outputs,
+                            history_variant: this.editForm.historyVariant,
+                            execution_mode: this.editForm.executionMode,
                             content: this.editForm.content,
                         }),
                     });
@@ -509,7 +632,7 @@ const OperatorsPage = {
                     this.detailOperator = result;
                     this.selectedOperator = result;
                 } else {
-                    const result = await apiFetch(`/api/operators/${this.editForm.id}`, {
+                    const result = await apiFetch(`/api/operators/${this.editForm.id}?version=${encodeURIComponent(this.selectedVersion)}`, {
                         method: 'PUT',
                         body: JSON.stringify({
                             name: this.editForm.name,
@@ -517,6 +640,8 @@ const OperatorsPage = {
                             data_needed: dataNeed,
                             gate: this.buildGate(),
                             outputs: outputs,
+                            history_variant: this.editForm.historyVariant,
+                            execution_mode: this.editForm.executionMode,
                             content: this.editForm.content,
                         }),
                     });
@@ -528,6 +653,7 @@ const OperatorsPage = {
 
                 // Reload list
                 await this.loadOperators();
+                this.syncAgentContext();
             } catch (e) {
                 this.saveSuccess = false;
                 this.saveMessage = `保存失败: ${e.message}`;
@@ -535,6 +661,18 @@ const OperatorsPage = {
                 this.saving = false;
                 setTimeout(() => { this.saveMessage = ''; }, 3000);
             }
+        },
+
+        async selectVersion(version) {
+            if (version === this.selectedVersion) return;
+            this.selectedVersion = version;
+            this.selectedCategory = '';
+            this.selectedOperator = null;
+            this.detailOperator = null;
+            this.editMode = false;
+            this.isCreating = false;
+            await this.loadOperators();
+            this.syncAgentContext();
         },
     },
 };

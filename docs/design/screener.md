@@ -1,10 +1,10 @@
-# 基础过滤层设计
+# 截面筛选引擎设计
 
 ## 定位
 
 声明式量化筛选引擎。通过 YAML 配置定义排除规则、过滤条件、评分因子和分级标准，从全市场 ~5500 只股票中筛选出符合特定投资哲学的候选标的。
 
-核心特点：**零代码筛选** — 所有筛选逻辑均在 strategy.yaml 中声明，引擎代码完全策略无关。
+核心特点：**零代码筛选**。桌面端把规则保存为独立筛选策略；内置研究实例也可以在 `strategy.yaml` 中声明同一类过滤和评分规则。截面筛选不读取定性分析结果，结构化投研只能单向引用其策略或候选池。
 
 ## 筛选流水线
 
@@ -42,7 +42,7 @@
 
 ## YAML 配置结构
 
-以 `strategies/v6_value/strategy.yaml` 的 `screening` 部分为例：
+以 `workspace/strategies/v6_value/strategy.yaml` 的 `screening` 部分为例：
 
 ```yaml
 screening:
@@ -216,16 +216,16 @@ class ScreenResult:
 
 ```bash
 # 通过 Launcher（推荐）
-python -m src.engine.launcher strategies/v6_value/strategy.yaml screen 2024-06-30
-python -m src.engine.launcher strategies/v6_value/strategy.yaml screen 2024-06-30 --top 100
+uv run python -m src.engine.launcher workspace/strategies/v6_value/strategy.yaml screen 2024-06-30
+uv run python -m src.engine.launcher workspace/strategies/v6_value/strategy.yaml screen 2024-06-30 --top 100
 
 # 直接模块调用
-python -m src.screener.quick_filter 2024-06-30
+uv run python -m src.screener.quick_filter 2024-06-30
 ```
 
 ## 设计约束
 
 1. **无副作用**：筛选过程只读数据，不修改任何状态
-2. **可重复性**：相同 cutoff_date + strategy.yaml → 相同结果
+2. **可重复性**：相同 Provider、截面日期和策略快照产生相同数值结果
 3. **策略无关**：引擎不包含"PE 低于多少算便宜"的假设，全部由 YAML 声明
-4. **StrategyConfig 驱动**：筛选参数通过 `StrategyConfig` 加载，无 fallback 默认值
+4. **结果绑定**：策略定义、日期区间、截面频率和持有数量共同决定历史验证结果归属

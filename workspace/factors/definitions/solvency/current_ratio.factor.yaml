@@ -1,0 +1,14 @@
+schema_version: 1
+id: current_ratio
+name: 流动比率
+description: 截至当日已公告年报中的最新流动比率。
+category: solvency
+tags: [financial, annual, point_in_time]
+type: cross_section
+grain: security_date
+engine: polars
+execution: {mode: point_in_time, frequency: annual}
+inputs: {value: financial.fina_indicator.current_ratio}
+expression: 'round(col("value"), 2)'
+output: {dtype: float64, unit: ratio, direction: higher_better}
+policies: {null: propagate, point_in_time: strict, enabled: true}

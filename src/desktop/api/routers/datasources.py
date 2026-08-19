@@ -1,7 +1,18 @@
-"""
-Data sources registry — describes all available data for operator analysis.
-"""
-from fastapi import APIRouter
+"""Data catalog, provider status and local download management endpoints."""
+import time
+from typing import List, Optional
+
+from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel
+
+from src.data.config import load_data_config
+from src.data.jobs import job_manager
+from src.data.provider import (
+    PROVIDER_CAPABILITIES,
+    clear_provider_cache,
+    get_provider,
+)
+from src.data.storage import get_database_status
 
 router = APIRouter(prefix="/api/datasources", tags=["datasources"])
 
@@ -196,15 +207,150 @@ _CATEGORIES = sorted(set(s["category"] for s in DATA_SOURCES))
 @router.get("")
 async def list_datasources():
     """List all available data sources grouped by category."""
+    provider = load_data_config()["provider"]
+    capability = PROVIDER_CAPABILITIES[provider]
+    instant_only = {"news", "fund_flow", "index_daily", "industry_summary"}
+    baostock_supported = {
+        "basic_info", "price_history", "daily_indicators", "balancesheet",
+        "income", "cashflow", "fina_indicator", "dividend",
+    }
+    baostock_overrides = {
+        "daily_indicators": {
+            "description": "PE(TTM)、PB、PS、PCF 与换手率；BaoStock 不提供总市值和股息率日快照。",
+            "key_columns": ["trade_date", "pe_ttm", "pb", "ps_ttm", "pcf_ncf_ttm"],
+        },
+        "balancesheet": {
+            "description": "流动比率、速动比率、资产负债率等偿债结构指标，不是完整资产负债表。",
+            "key_columns": ["ann_date", "end_date", "current_ratio", "quick_ratio", "debt_to_assets"],
+        },
+        "income": {
+            "description": "营收、净利润、EPS、ROE 与利润率摘要，不是完整利润表科目。",
+            "key_columns": ["ann_date", "end_date", "revenue", "net_profit", "eps", "roe"],
+        },
+        "cashflow": {
+            "description": "经营现金流与收入、净利润等比率指标，不是完整现金流量表。",
+            "key_columns": ["ann_date", "end_date", "ocf_to_revenue", "ocf_to_net_profit"],
+        },
+    }
+
+    enriched = []
+    for source in DATA_SOURCES:
+        item = dict(source)
+        if provider == "akshare":
+            available = True
+        elif source["id"] in instant_only:
+            available = False
+        elif provider == "baostock":
+            available = source["id"] in baostock_supported
+        else:
+            available = True
+        item["available"] = available
+        item["source"] = capability.label if available else "当前数据口径不提供"
+        if provider == "baostock" and source["id"] in baostock_overrides:
+            item.update(baostock_overrides[source["id"]])
+        enriched.append(item)
+
     grouped = {}
     for cat in _CATEGORIES:
-        grouped[cat] = [s for s in DATA_SOURCES if s["category"] == cat]
+        grouped[cat] = [s for s in enriched if s["category"] == cat]
     return {
         "categories": _CATEGORIES,
         "sources": grouped,
-        "total": len(DATA_SOURCES),
-        "all": DATA_SOURCES,
+        "total": len(enriched),
+        "all": enriched,
+        "provider": provider,
     }
+
+
+class DataJobRequest(BaseModel):
+    provider: Optional[str] = None
+    job_type: str
+    start_date: Optional[str] = None
+    end_date: Optional[str] = None
+    codes: Optional[List[str]] = None
+
+
+@router.get("/providers")
+async def list_provider_status():
+    config = load_data_config()
+    providers = []
+    for name, capability in PROVIDER_CAPABILITIES.items():
+        item = capability.to_dict()
+        item["selected"] = name == config["provider"]
+        item["storage"] = get_database_status(name)
+        providers.append(item)
+    return {"selected": config["provider"], "providers": providers}
+
+
+@router.get("/status")
+async def data_status(provider: Optional[str] = None):
+    name = (provider or load_data_config()["provider"]).lower()
+    if name not in PROVIDER_CAPABILITIES:
+        raise HTTPException(status_code=400, detail=f"不支持的数据源: {name}")
+    return get_database_status(name)
+
+
+@router.post("/test/{provider_name}")
+async def test_provider(provider_name: str):
+    name = provider_name.lower()
+    if name not in PROVIDER_CAPABILITIES:
+        raise HTTPException(status_code=404, detail=f"不支持的数据源: {name}")
+    started = time.time()
+    try:
+        provider = get_provider(name)
+        if hasattr(provider, "test_connection"):
+            result = provider.test_connection()
+        elif name == "tushare":
+            frame = provider.fetch_trade_calendar("2024-01-01", "2024-01-10")
+            result = {"success": not frame.empty, "message": "Tushare 连接正常", "rows": len(frame)}
+        else:
+            result = {"success": True, "message": "AKShare 已安装；实际可用性取决于目标公开页面"}
+        result["elapsed"] = round(time.time() - started, 2)
+        return result
+    except Exception as exc:
+        clear_provider_cache(name)
+        return {
+            "success": False,
+            "message": "连接失败",
+            "error": str(exc)[:500],
+            "elapsed": round(time.time() - started, 2),
+        }
+
+
+@router.post("/jobs")
+async def create_data_job(request: DataJobRequest):
+    provider = (request.provider or load_data_config()["provider"]).lower()
+    try:
+        return job_manager.start_job(
+            provider,
+            request.job_type,
+            request.start_date,
+            request.end_date,
+            request.codes,
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+@router.get("/jobs")
+async def list_data_jobs(limit: int = 30):
+    return {"jobs": job_manager.list_jobs(limit)}
+
+
+@router.get("/jobs/{job_id}")
+async def get_data_job(job_id: str):
+    try:
+        return job_manager.get_job(job_id)
+    except KeyError as exc:
+        raise HTTPException(status_code=404, detail="任务不存在") from exc
+
+
+@router.post("/jobs/{job_id}/cancel")
+async def cancel_data_job(job_id: str):
+    try:
+        return job_manager.cancel_job(job_id)
+    except KeyError as exc:
+        raise HTTPException(status_code=404, detail="任务不存在") from exc
 
 
 @router.get("/{source_id}")

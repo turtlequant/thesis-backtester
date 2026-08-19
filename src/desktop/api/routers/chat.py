@@ -2,18 +2,20 @@
 Chat assistant endpoints — floating AI assistant for the desktop tool.
 
 Provides context-aware chat using the same LLM configured in settings.
-Maintains conversation history in memory (max 20 messages).
+Maintains independent page-scoped histories (max 20 messages each).
 Supports streaming (SSE) for real-time token display.
 """
 import json
 import logging
+import re
 import time
 from pathlib import Path
-from typing import List, Optional
+from threading import RLock
+from typing import Dict, List, Optional
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 logger = logging.getLogger(__name__)
 
@@ -23,42 +25,102 @@ router = APIRouter(prefix="/api/chat", tags=["chat"])
 _config_path: Optional[Path] = None
 _project_root: Optional[Path] = None
 
-# In-memory conversation history
-_history: List[dict] = []
+# In-memory conversation histories, keyed by ``workspace:page``.
+_histories: Dict[str, List[dict]] = {}
 MAX_HISTORY = 20
 _history_path: Optional[Path] = None
+_history_lock = RLock()
+_CONVERSATION_PATTERN = re.compile(r"^[A-Za-z0-9_-]+:[A-Za-z0-9_-]+$")
+_LEGACY_CONVERSATION = "qualitative:analysis"
+
+
+def _conversation_key(value: str) -> str:
+    key = str(value or "").strip()
+    if len(key) > 120 or not _CONVERSATION_PATTERN.fullmatch(key):
+        raise HTTPException(status_code=400, detail="无效的对话标识")
+    return key
+
+
+def _normalize_messages(value: object) -> List[dict]:
+    if not isinstance(value, list):
+        return []
+    messages = []
+    for item in value[-MAX_HISTORY:]:
+        if not isinstance(item, dict):
+            continue
+        role = str(item.get("role", ""))
+        content = item.get("content")
+        if role not in {"user", "assistant"} or not isinstance(content, str):
+            continue
+        try:
+            timestamp = float(item.get("timestamp", 0.0))
+        except (TypeError, ValueError):
+            timestamp = 0.0
+        messages.append({"role": role, "content": content, "timestamp": timestamp})
+    return messages
 
 
 def _save_history():
-    """Persist history to disk."""
-    if _history_path:
+    """Persist every conversation to one external, atomically replaced file."""
+    if not _history_path:
+        return
+    with _history_lock:
         try:
-            _history_path.write_text(
-                json.dumps(_history, ensure_ascii=False, indent=2),
+            _history_path.parent.mkdir(parents=True, exist_ok=True)
+            payload = {
+                "version": 1,
+                "conversations": _histories,
+            }
+            temporary = _history_path.with_suffix(_history_path.suffix + ".tmp")
+            temporary.write_text(
+                json.dumps(payload, ensure_ascii=False, indent=2),
                 encoding="utf-8",
             )
-        except Exception as e:
-            logger.warning(f"Failed to save chat history: {e}")
+            temporary.replace(_history_path)
+        except Exception as exc:
+            logger.warning("Failed to save chat histories: %s", exc)
 
 
 def _load_history():
-    """Load history from disk on startup."""
-    global _history
-    if _history_path and _history_path.exists():
+    """Load histories and upgrade the legacy single-list representation."""
+    global _histories
+    with _history_lock:
+        _histories = {}
+        if not _history_path or not _history_path.exists():
+            return
         try:
-            _history = json.loads(_history_path.read_text(encoding="utf-8"))
-            logger.info(f"Loaded {len(_history)} chat messages from {_history_path}")
-        except Exception as e:
-            logger.warning(f"Failed to load chat history: {e}")
-            _history = []
+            stored = json.loads(_history_path.read_text(encoding="utf-8"))
+            if isinstance(stored, list):
+                _histories[_LEGACY_CONVERSATION] = _normalize_messages(stored)
+                _save_history()
+            elif isinstance(stored, dict):
+                conversations = stored.get("conversations", {})
+                if isinstance(conversations, dict):
+                    for key, messages in conversations.items():
+                        if _CONVERSATION_PATTERN.fullmatch(str(key)):
+                            _histories[str(key)] = _normalize_messages(messages)
+            total = sum(len(messages) for messages in _histories.values())
+            logger.info(
+                "Loaded %s chat messages across %s conversations from %s",
+                total,
+                len(_histories),
+                _history_path,
+            )
+        except Exception as exc:
+            logger.warning("Failed to load chat histories: %s", exc)
+            _histories = {}
 
 
-def set_config(config_path: Path, project_root: Path):
+def set_config(
+    config_path: Path,
+    project_root: Path,
+    history_path: Optional[Path] = None,
+):
     """Set paths (called during startup)."""
     global _config_path, _project_root, _history_path
     _config_path = config_path
     _project_root = project_root
-    _history_path = config_path.parent / "chat_history.json"
+    _history_path = history_path or config_path.parent / "chat_history.json"
     _load_history()
 
 
@@ -86,15 +148,40 @@ def _load_llm_settings() -> dict:
 def _build_system_prompt(context: dict) -> str:
     """Build context-aware system prompt for the chat assistant."""
     base = (
-        "你是投研分析工具的智能助手，帮助用户使用平台功能、理解分析报告、配置算子和策略。\n\n"
+        "你是 Thesis Backtester 中的投研辅助 Agent。帮助用户理解报告、使用功能、设计算子和研究框架。\n\n"
+        "## 工作边界\n"
+        "- 算子是研究方法片段；一个分析方向可以组合多个算子。\n"
+        "- 分析方向/章节之间由固定 DAG 调度。分析运行期间不得建议或尝试动态改变 DAG。\n"
+        "- 中央结构化页面是权威状态，你负责辅助用户操作，不用自由 Agent 取代既有管线。\n"
+        "- 人工操作和你的操作使用相同的现有 API、相同字段和相同权限。\n\n"
         "## 平台功能概览\n"
-        "- **分析页**：输入股票代码和策略，启动AI深度分析，实时查看进度\n"
-        "- **报告页**：查看和管理所有已完成的分析报告\n"
-        "- **算子页**：浏览和编辑分析算子（.md文件），算子定义分析逻辑\n"
-        "- **编排页**：管理策略框架，配置章节和算子组合\n"
-        "- **数据页**：管理数据源状态和更新\n"
-        "- **设置页**：配置LLM API连接参数\n\n"
-        "回答要简洁实用，直接帮助用户解决问题。如果用户问的是报告内容相关的问题，基于提供的上下文回答。"
+        "- **基础设施工作区**：维护数据、算子、研究框架和系统设置\n"
+        "- **结构化投研工作区**：按固定章节 DAG 完成个股分析、最新批量研判、严格历史框架验证并管理报告\n"
+        "- **截面筛选工作区**：维护纯数值策略，执行当前截面并验证历史前向收益；LLM 只辅助配置和解释\n\n"
+        "## 结构化修改\n"
+        "当且仅当用户明确要求创建或修改算子、研究框架或筛选策略，并且上下文足够时，在简短说明后输出一个 "
+        "```app-action 代码块。代码块内只能是一个 JSON 对象或数组，不要把普通示例放进该代码块。\n"
+        "每个对象格式：\n"
+        '{"title":"修改摘要","description":"变化说明","method":"POST或PUT",'
+        '"path":"现有API路径","body":{}}\n'
+        "允许的写入路径只有：POST /api/operators、PUT /api/operators/{id}、"
+        "POST /api/frameworks、PUT /api/frameworks/{name}、"
+        "POST /api/research/screening-strategies、"
+        "PUT /api/research/screening-strategies/{id}。不要省略 /api/research 前缀，也不要创造新的 API。\n"
+        "算子更新 body 可包含 name、tags、data_needed、outputs、gate、weight、score_range、content。\n"
+        "算子创建 body 必须包含 id、name、category，可包含上述其余字段。\n"
+        "框架更新 body 可包含 display_name、version、operators_dir、analyst_role、chapters、synthesis；"
+        "chapters 中每项包含 id、chapter、title、operators、dependencies。\n"
+        "筛选策略 body 必须完整包含 name、description、definition；definition 必须包含 "
+        "exclude_st、industry_cap、filters、ranking。filters 只能使用当前页面 available_fields 中的字段 id，"
+        "每项格式为 field、enabled、mode 以及对应的 min/max 或 percentile_min/percentile_max；"
+        "ranking 每项格式为 field、weight、direction、na_handling。修改策略使用当前 screening_strategy.id。\n"
+        "注意字段单位：total_mv 和 circ_mv 的单位是万元，例如 50 亿元必须写成 500000 万元；"
+        "market_cap_yi 和 circ_mv_yi 的单位才是亿元。修改数值前必须按 available_fields 的名称和说明换算，"
+        "不得把自然语言中的元或亿元数值直接填入万元字段。\n"
+        "输出 app-action 只表示生成了待应用修改，必须提示用户点击“应用修改”，不得声称已经提交或生效。\n"
+        "不要直接修改正在执行的分析；框架修改只作用于后续运行。\n\n"
+        "回答要简洁、具体。解释问题时只回答，不输出 app-action。"
     )
 
     page = context.get("page", "")
@@ -103,15 +190,28 @@ def _build_system_prompt(context: dict) -> str:
     if page == "reports" and context.get("report_id"):
         report_content = _load_report_context(context["report_id"])
         if report_content:
-            extra_context.append(f"\n## 当前查看的报告\n{report_content}")
+            extra_context.append(
+                f"\n## 当前查看的报告（完整正文，共 {len(report_content)} 字符）\n"
+                "以下内容是报告阅读器展示的完整正文。解读时必须覆盖相关章节与最终综合结论，"
+                "不要只根据开头章节推断。\n"
+                f"{report_content}"
+            )
 
     if page == "analysis":
-        parts = ["\n## 当前页面：分析"]
+        parts = ["\n## 当前页面：个股分析"]
         if context.get("stock_code"):
             parts.append(f"用户正在分析的股票：{context['stock_code']}")
         if context.get("strategy"):
             parts.append(f"使用的策略：{context['strategy']}")
         extra_context.append("\n".join(parts))
+
+    if page in {"qualitative-latest", "qualitative-validation"}:
+        boundary = (
+            "这是最新截面批量研判。筛选策略只负责数值候选池，固定研究框架负责逐股结论。"
+            if page == "qualitative-latest"
+            else "这是严格历史框架验证。必须比较市场、纯筛选池与框架研判层，且不能绕过历史可用性拦截。"
+        )
+        extra_context.append(f"\n## 当前页面：结构化投研批量流程\n{boundary}")
 
     if page == "operators":
         operators_summary = _load_operators_summary()
@@ -123,57 +223,37 @@ def _build_system_prompt(context: dict) -> str:
         if frameworks_summary:
             extra_context.append(f"\n## 可用策略框架\n{frameworks_summary}")
 
+    # 前端传入当前选中对象或编辑草稿，使助手能够操作中央页面的同一状态。
+    # 限制长度，避免意外把整个运行报告或过大的页面状态塞入上下文。
+    visible_context = {
+        key: value for key, value in context.items()
+        if key not in {"report_content", "raw_data"}
+    }
+    try:
+        context_json = json.dumps(visible_context, ensure_ascii=False, indent=2)
+        if len(context_json) > 16000:
+            context_json = context_json[:16000] + "\n...（页面上下文已截断）"
+        extra_context.append(f"\n## 当前页面结构化上下文\n```json\n{context_json}\n```")
+    except (TypeError, ValueError):
+        pass
+
     return base + "\n".join(extra_context)
 
 
 def _load_report_context(report_id: str) -> str:
-    """Try to load report content for context injection.
-
-    report_id format: 'strategy__stock_date_structured' (e.g., 'v6_enhanced__000001.SZ_2026-03-23_structured')
-    """
+    """Load the complete indexed report source for assistant context."""
     if not _project_root:
         return ""
     try:
-        strategies_dir = _project_root / "strategies"
-        if not strategies_dir.exists():
-            return ""
+        from src.desktop.api.services import report_index
 
-        # Parse report_id: strategy__run_dir_structured
-        strategy_name = None
-        run_dir_name = None
-        if "__" in report_id:
-            strategy_name, rest = report_id.split("__", 1)
-            # Remove '_structured' suffix to get directory name
-            run_dir_name = rest.replace("_structured", "")
-
-        if strategy_name and run_dir_name:
-            # Direct lookup
-            run_dir = strategies_dir / strategy_name / "live" / run_dir_name
-            if run_dir.is_dir():
-                for pattern in ["*_report.md", "report.md"]:
-                    for report_file in run_dir.glob(pattern):
-                        content = report_file.read_text(encoding="utf-8")
-                        if len(content) > 4000:
-                            content = content[:4000] + "\n...(报告内容已截断)"
-                        return content
-
-        # Fallback: search all directories
-        for strategy_dir in strategies_dir.iterdir():
-            if not strategy_dir.is_dir():
-                continue
-            live_dir = strategy_dir / "live"
-            if not live_dir.exists():
-                continue
-            for run_dir in live_dir.iterdir():
-                if not run_dir.is_dir():
-                    continue
-                if report_id in run_dir.name or run_dir.name in report_id:
-                    for pattern in ["*_report.md", "report.md"]:
-                        for report_file in run_dir.glob(pattern):
-                            content = report_file.read_text(encoding="utf-8")
-                            if len(content) > 4000:
-                                content = content[:4000] + "\n...(报告内容已截断)"
-                            return content
+        content = report_index.load_report_source_text(report_id, _project_root)
+        logger.debug(
+            "Loaded report context: report_id=%s chars=%s",
+            report_id,
+            len(content),
+        )
+        return content
     except Exception as e:
         logger.warning(f"Failed to load report context: {e}")
     return ""
@@ -230,7 +310,13 @@ def _load_frameworks_summary() -> str:
 
 class ChatRequest(BaseModel):
     message: str
-    context: dict = {}
+    context: dict = Field(default_factory=dict)
+    conversation_id: str = Field(
+        default=_LEGACY_CONVERSATION,
+        min_length=3,
+        max_length=120,
+        pattern=r"^[A-Za-z0-9_-]+:[A-Za-z0-9_-]+$",
+    )
 
 
 @router.post("")
@@ -238,6 +324,7 @@ async def chat(request: ChatRequest):
     """Send a message to the chat assistant (streaming SSE)."""
     logger.debug(f"Chat request: context={request.context}")
     settings = _load_llm_settings()
+    conversation_id = _conversation_key(request.conversation_id)
 
     if not settings["api_key"]:
         async def error_stream():
@@ -251,17 +338,18 @@ async def chat(request: ChatRequest):
         "content": request.message,
         "timestamp": time.time(),
     }
-    _history.append(user_msg)
-
-    # Trim history
-    while len(_history) > MAX_HISTORY:
-        _history.pop(0)
+    with _history_lock:
+        history = _histories.setdefault(conversation_id, [])
+        history.append(user_msg)
+        del history[:-MAX_HISTORY]
     _save_history()
 
     # Build messages for LLM
     system_prompt = _build_system_prompt(request.context)
     messages = [{"role": "system", "content": system_prompt}]
-    for msg in _history:
+    with _history_lock:
+        history_snapshot = list(_histories.get(conversation_id, []))
+    for msg in history_snapshot:
         messages.append({"role": msg["role"], "content": msg["content"]})
 
     async def stream_response():
@@ -275,7 +363,7 @@ async def chat(request: ChatRequest):
             response = client.chat.completions.create(
                 model=settings["model"],
                 messages=messages,
-                max_tokens=2048,
+                max_tokens=4096,
                 temperature=settings["temperature"],
                 stream=True,
             )
@@ -291,13 +379,14 @@ async def chat(request: ChatRequest):
             yield f"data: {json.dumps({'delta': error_msg})}\n\n"
 
         # Save assistant reply to history
-        _history.append({
-            "role": "assistant",
-            "content": full_reply,
-            "timestamp": time.time(),
-        })
-        while len(_history) > MAX_HISTORY:
-            _history.pop(0)
+        with _history_lock:
+            history = _histories.setdefault(conversation_id, [])
+            history.append({
+                "role": "assistant",
+                "content": full_reply,
+                "timestamp": time.time(),
+            })
+            del history[:-MAX_HISTORY]
         _save_history()
 
         yield "data: [DONE]\n\n"
@@ -305,18 +394,36 @@ async def chat(request: ChatRequest):
     return StreamingResponse(stream_response(), media_type="text/event-stream")
 
 
+@router.get("/conversations")
+async def list_conversations():
+    """List persisted conversations without returning their message bodies."""
+    with _history_lock:
+        return [
+            {
+                "id": key,
+                "message_count": len(messages),
+                "updated_at": max(
+                    (float(message.get("timestamp", 0.0)) for message in messages),
+                    default=0.0,
+                ),
+            }
+            for key, messages in sorted(_histories.items())
+        ]
+
+
 @router.get("/history")
-async def get_history():
+async def get_history(conversation_id: str = _LEGACY_CONVERSATION):
     """Return chat history."""
-    return [
-        {"role": msg["role"], "content": msg["content"], "timestamp": msg["timestamp"]}
-        for msg in _history
-    ]
+    key = _conversation_key(conversation_id)
+    with _history_lock:
+        return [dict(message) for message in _histories.get(key, [])]
 
 
 @router.delete("/history")
-async def clear_history():
-    """Clear chat history."""
-    _history.clear()
+async def clear_history(conversation_id: str = _LEGACY_CONVERSATION):
+    """Clear only the selected page conversation."""
+    key = _conversation_key(conversation_id)
+    with _history_lock:
+        _histories.pop(key, None)
     _save_history()
-    return {"message": "Chat history cleared"}
+    return {"message": "Chat history cleared", "conversation_id": key}

@@ -5,9 +5,9 @@
 
 用法:
     # 策略命令 (需要 strategy.yaml)
-    python -m src.engine.launcher strategies/v6_value/strategy.yaml screen 2024-06-30
-    python -m src.engine.launcher strategies/v6_value/strategy.yaml analyze 601288.SH 2024-06-30
-    python -m src.engine.launcher strategies/v6_value/strategy.yaml agent-analyze 601288.SH 2024-06-30
+    python -m src.engine.launcher workspace/strategies/v6_value/strategy.yaml screen 2024-06-30
+    python -m src.engine.launcher workspace/strategies/v6_value/strategy.yaml analyze 601288.SH 2024-06-30
+    python -m src.engine.launcher workspace/strategies/v6_value/strategy.yaml agent-analyze 601288.SH 2024-06-30
 
     # 数据命令 (不需要 strategy.yaml)
     python -m src.engine.launcher data update-daily
@@ -63,7 +63,7 @@ def main():
 
 
 def _print_usage():
-    S = "strategies/v6_value/strategy.yaml"
+    S = "workspace/strategies/v6_value/strategy.yaml"
     print("用法:")
     print(f"  python -m src.engine.launcher <strategy.yaml> <command> [args...]")
     print(f"  python -m src.engine.launcher data <command> [args...]")
@@ -239,8 +239,13 @@ def _cmd_data_status():
 
     print(f"\n股票列表: {status.get('stock_list', {}).get('active_count', 0)} 只活跃")
 
-    from src.data.settings import DATA_START_DATE
-    print(f"数据起始日期: {DATA_START_DATE}")
+    from src.data.config import get_active_provider_name, get_data_start_date
+    from src.data.storage import get_database_path
+
+    provider = get_active_provider_name()
+    print(f"数据源: {provider}")
+    print(f"SQLite: {get_database_path(provider)}")
+    print(f"数据起始日期: {get_data_start_date()}")
 
 
 def _cmd_screen(config: StrategyConfig, args: list):

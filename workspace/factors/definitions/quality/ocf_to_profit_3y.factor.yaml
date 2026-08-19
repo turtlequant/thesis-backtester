@@ -1,0 +1,16 @@
+schema_version: 1
+id: ocf_to_profit_3y
+name: 3年现金转换率(%)
+description: 最近三期已公告年报经营现金流累计值除以归母净利润累计值，至少需要两期。
+category: quality
+tags: [financial, annual, rolling, point_in_time]
+type: cross_section
+grain: security_date
+engine: polars
+execution: {mode: point_in_time, frequency: annual}
+inputs:
+  ocf: financial.cashflow.n_cashflow_act
+  profit: financial.income.n_income_attr_p
+expression: 'round(when(rolling_sum(col("profit"), 3, 2) > 0, safe_div(rolling_sum(col("ocf"), 3, 2), rolling_sum(col("profit"), 3, 2)) * 100.0, lit(None)), 2)'
+output: {dtype: float64, unit: percent, direction: higher_better}
+policies: {null: propagate, point_in_time: strict, enabled: true}
